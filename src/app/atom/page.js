@@ -1,8 +1,9 @@
 "use client";
+
 import { exampleNumberAtom } from "@/lib/atoms";
 import { useAtom } from "jotai";
 
-export default function Home() {
+export default function AtomPage() {
   const [number, setNumber] = useAtom(exampleNumberAtom);
-  return <div>Hi, lets get started boi, number: {number}</div>;
+  return <div>Dis page brah,, numbaah : {number}</div>;
 }
