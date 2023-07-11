@@ -3,6 +3,7 @@ import JotaiProvider from "@/providers/providers";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div>
-          <Link href={"/atom"}>Atom Page</Link>
-        </div>
-        <JotaiProvider>{children}</JotaiProvider>
+      <body className={`${inter.className}`}>
+        <main className="flex flex-col w-screen h-screen">
+          <NavBar />
+          <JotaiProvider>{children}</JotaiProvider>
+        </main>
       </body>
     </html>
   );

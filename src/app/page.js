@@ -1,8 +1,14 @@
-"use client";
-import { exampleNumberAtom } from "@/lib/atoms";
-import { useAtom } from "jotai";
+// this is landing page -> handle country level routing here
+
+import SelectCountryButton from "@/components/SelectCountryButton";
 
 export default function Home() {
-  const [number, setNumber] = useAtom(exampleNumberAtom);
-  return <div>Hi, lets get started boi, number: {number}</div>;
+  return (
+    <div className="w-full h-full bg-pink-200 flex justify-center items-center">
+      <section className="w-1/2 h-1/2 flex flex-col items-center bg-white rounded-lg p-2">
+        <h2>Select your country</h2>
+        <SelectCountryButton />
+      </section>
+    </div>
+  );
 }
