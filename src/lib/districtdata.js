@@ -2,6 +2,7 @@
 
 import clientPromise from "./mongodb";
 
+// **being used**
 // returns everything from that country @ ${country}-district-data
 async function getDistricts(country) {
   const client = await clientPromise;
@@ -35,6 +36,7 @@ async function getDataBy(obj) {
   return allDistricts;
 }
 
+// **being used**
 // returns an array of objects containing province name and province_id
 // eg. [{ PROVINCE: 'Navoiy', PROVINCE_ID: 'UZB.9_1' }, ... etc]
 async function getUniqueProvinces(country) {
