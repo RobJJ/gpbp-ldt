@@ -66,11 +66,11 @@ export default function SelectCountryButton() {
           </div>
         </div>
       )}
-      {/* change style of button based off if user has selected a country yet */}
+      {/* change style of button based off if user has selected a country yet, if using Link, deactivate! */}
       <div
         className={` p-2 rounded ${country ? "bg-green-300" : "bg-slate-300"}`}
       >
-        <Link href={`/country/${country}`}>Explore</Link>
+        <Link href={`/dashboard/${country}`}>Explore</Link>
       </div>
     </div>
   );
