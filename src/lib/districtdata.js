@@ -37,11 +37,11 @@ async function getDataBy(obj) {
 
 // returns an array of objects containing province name and province_id
 // eg. [{ PROVINCE: 'Navoiy', PROVINCE_ID: 'UZB.9_1' }, ... etc]
-async function getUniqueProvinces() {
+async function getUniqueProvinces(country) {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
   const uniqueProvinces = await db
-    .collection("districts")
+    .collection(`${country}-district-data`)
     .aggregate([
       {
         $group: {
