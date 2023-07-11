@@ -2,7 +2,7 @@
 
 import clientPromise from "./mongodb";
 
-// returns everything
+// returns everything from that country @ ${country}-district-data
 async function getDistricts(country) {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
