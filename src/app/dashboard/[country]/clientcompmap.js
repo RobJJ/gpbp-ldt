@@ -4,12 +4,12 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 // this comp
 
-export default function ServerCompMap({ chosenCountry }) {
+export default function ClientCompMap({ chosenCountry }) {
   const router = useRouter();
   const pathname = usePathname();
 
   function handleClick() {
-    router.push(`/dashboard/${chosenCountry}?poop=skinky`);
+    router.push(`/dashboard/${chosenCountry}?layer=skinky`);
   }
   return (
     <div>

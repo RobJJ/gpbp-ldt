@@ -8,7 +8,6 @@ const currentAvailableCountries = [
   { name: "uzbekistan", id: 1 },
   { name: "kosovo", id: 2 },
   { name: "vietnam", id: 3 },
-  { name: "serbia", id: 4 },
 ];
 
 export default function SelectCountryButton() {
@@ -66,7 +65,7 @@ export default function SelectCountryButton() {
           </div>
         </div>
       )}
-      {/* change style of button based off if user has selected a country yet, if using Link, deactivate! */}
+      {/* potentially handle any additional logic at this step */}
       <div
         className={` p-2 rounded ${country ? "bg-green-300" : "bg-slate-300"}`}
       >

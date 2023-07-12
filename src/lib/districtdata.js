@@ -14,6 +14,29 @@ async function getDistricts(country) {
   return allDistricts;
 }
 
+async function getProvinces(country) {
+  const client = await clientPromise;
+  const db = client.db(process.env.MONGO_DB_NAME);
+  const allDistricts = await db
+    .collection(`${country}-district-data`)
+    .find({})
+    .toArray();
+  return allDistricts;
+}
+
+// ** note **
+// [country] from params,, [layer] from searchParams
+// options: province, district
+async function getAllDataBy(country, layer) {
+  const client = await clientPromise;
+  const db = client.db(process.env.MONGO_DB_NAME);
+  const data = await db
+    .collection(`${country}${layer ? `-${layer}-data` : ""}`)
+    .find({})
+    .toArray();
+  return data;
+}
+
 async function getDataByYear(year) {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
@@ -26,15 +49,15 @@ async function getDataByYear(year) {
 
 // this fetch will take any params and fetch...
 // this would be a good time to use typescript, to avoid strange input vars
-async function getDataBy(obj) {
-  const client = await clientPromise;
-  const db = client.db(process.env.MONGO_DB_NAME);
-  const allDistricts = await db
-    .collection("districts")
-    .find({ ...obj })
-    .toArray();
-  return allDistricts;
-}
+// async function getDataBy(obj) {
+//   const client = await clientPromise;
+//   const db = client.db(process.env.MONGO_DB_NAME);
+//   const allDistricts = await db
+//     .collection("districts")
+//     .find({ ...obj })
+//     .toArray();
+//   return allDistricts;
+// }
 
 // **being used**
 // returns an array of objects containing province name and province_id
@@ -74,7 +97,7 @@ async function getUniqueYears() {
 module.exports = {
   getDistricts,
   getDataByYear,
-  getDataBy,
+  getAllDataBy,
   getUniqueProvinces,
   getUniqueYears,
 };
