@@ -10,10 +10,15 @@ export default function CountryPageLayout({ children, params }) {
   return (
     <div className="w-full h-full flex flex-col">
       <FilterButton />
-      <section className="w-full h-full bg-white flex gap-2 p-5">
-        <ClientCompMap />
-        {children}
-      </section>
+      <main className="w-full h-full bg-white flex gap-2 p-5">
+        <section className="w-1/2 h-full">
+          <ClientCompMap />
+        </section>
+        <section className="w-1/2 h-full flex flex-col">
+          <div className="w-full bg-red-400">Breadcrumbs here</div>
+          {children}
+        </section>
+      </main>
     </div>
   );
 }
