@@ -17,6 +17,14 @@ export default function BreadCrumbs({ params }) {
           {params.province}/
         </Link>
       )}
+      {params.district && (
+        <Link
+          href={`/dashboard/${params.country}/${params.province}/${params.district}`}
+          className="bg-white"
+        >
+          {params.district}
+        </Link>
+      )}
     </div>
   );
 }

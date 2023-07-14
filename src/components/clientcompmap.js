@@ -19,6 +19,7 @@ export default function ClientCompMap({ params }) {
       </span>
       {params.country && <span>{params.country}</span>}
       {params.province && <span>{params.province}</span>}
+      {params.district && <span>{params.district}</span>}
       {/*<button onClick={handleClick} className="bg-slate-200 p-1">
         Change the router
   </button>*/}
