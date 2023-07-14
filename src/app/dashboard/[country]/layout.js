@@ -14,7 +14,9 @@ import ClientCompMap from "@/components/clientcompmap";
 export default function CountryPageLayout({ children }) {
   // const pathname = usePathname();
   const params = useParams();
-  console.log("[CountryPageLayout] : rendered : params", params);
+  
+
+  // console.log("[CountryPageLayout] : rendered : searchParams", searchParams);
   // const router = useRouter();
   return (
     <div className="w-full h-full flex flex-col">
