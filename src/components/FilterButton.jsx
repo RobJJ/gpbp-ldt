@@ -29,7 +29,10 @@ export default function FilterButton({}) {
       />
       <span>year: {searchParams.get("year")}</span>
       <span>score_one: {searchParams.get("score_one")}</span>
-      <span>score_two: {searchParams.get("score_two")}</span>
+      {/* test to hide if map/scatter searchParam */}
+      {searchParams.has("visual") && (
+        <span>score_two: {searchParams.get("score_two")}</span>
+      )}
     </div>
   );
 }
