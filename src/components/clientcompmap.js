@@ -9,10 +9,10 @@ export default function ClientCompMap({ chosenCountry }) {
   const pathname = usePathname();
 
   function handleClick() {
-    router.push(`/dashboard/${chosenCountry}?layer=skinky`);
+    router.push(`/dashboard/${chosenCountry}?layer=district`);
   }
   return (
-    <div>
+    <div className="w-1/2 h-full bg-purple-200">
       <button onClick={handleClick} className="bg-slate-200 p-1">
         Change the router
       </button>

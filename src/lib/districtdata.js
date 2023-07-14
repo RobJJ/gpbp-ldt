@@ -26,12 +26,12 @@ async function getProvinces(country) {
 
 // ** note **
 // [country] from params,, [layer] from searchParams
-// options: province, district
+// options: province, district ()
 async function getAllDataBy(country, layer) {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
   const data = await db
-    .collection(`${country}${layer ? `-${layer}-data` : ""}`)
+    .collection(`${country}-${layer}-data`)
     .find({})
     .toArray();
   return data;

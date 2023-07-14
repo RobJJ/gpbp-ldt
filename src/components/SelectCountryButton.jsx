@@ -69,7 +69,7 @@ export default function SelectCountryButton() {
       <div
         className={` p-2 rounded ${country ? "bg-green-300" : "bg-slate-300"}`}
       >
-        <Link href={`/dashboard/${country}`}>Explore</Link>
+        <Link href={`/dashboard/${country}?layer=province`}>Explore</Link>
       </div>
     </div>
   );
