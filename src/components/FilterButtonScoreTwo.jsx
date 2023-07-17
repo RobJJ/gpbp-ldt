@@ -9,17 +9,18 @@ const availableScores = [
   { id: 2, type: "envr" },
   { id: 3, type: "air" },
   { id: 4, type: "temp" },
-  { id: 4, type: "forest" },
+  { id: 5, type: "forest" },
 ];
 
 export default function FilterButtonScoreTwo({
   paramScoreTwo,
   createQueryString,
+  filterState,
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
+  // const router = useRouter();
+  // const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [scoreTwo, setScoreTwo] = useState(false);
+  //   const [scoreTwo, setScoreTwo] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -27,9 +28,10 @@ export default function FilterButtonScoreTwo({
 
   const handleCountrySelect = (e) => {
     const choice = e.target.dataset.tag;
+    filterState.set("score_two", choice);
 
-    setYear(choice);
-    router.push(pathname + "?" + createQueryString("year", choice));
+    // setScoreTwo(choice);
+    // router.push(pathname + "?" + createQueryString("score_two", choice));
     // createQueryString("year", choice);
     setIsOpen(!isOpen);
   };
@@ -43,7 +45,7 @@ export default function FilterButtonScoreTwo({
             type="button"
             className="inline-flex justify-center items-center w-28 h-5 rounded-md border border-gray-400 px-4 py-1 bg-white text-md leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-            {scoreTwo ? scoreTwo : paramScoreTwo}
+            {filterState.get("score_two")}
             <FaAngleDown className="text-base ml-1" />
           </button>
         </span>

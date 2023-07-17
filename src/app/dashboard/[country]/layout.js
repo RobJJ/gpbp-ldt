@@ -14,8 +14,12 @@ import FilterNavbar from "@/components/FilterNavbar";
 export default function CountryPageLayout({ children }) {
   // const pathname = usePathname();
   const params = useParams();
+  const searchParams = useSearchParams();
 
-  console.log("[CountryPageLayout] : rendered ");
+  console.log(
+    "[CountryPageLayout] : rendered : searchParams year?? ",
+    searchParams.get("year")
+  );
   // const router = useRouter();
   return (
     <div className="w-full h-full flex flex-col">
