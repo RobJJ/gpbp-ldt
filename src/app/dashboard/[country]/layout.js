@@ -8,8 +8,8 @@ import {
 } from "next/navigation";
 
 import BreadCrumbs from "@/components/BreadCrumbs";
-import FilterButton from "@/components/FilterButton";
 import ClientCompMap from "@/components/clientcompmap";
+import FilterNavbar from "@/components/FilterNavbar";
 
 export default function CountryPageLayout({ children }) {
   // const pathname = usePathname();
@@ -19,7 +19,7 @@ export default function CountryPageLayout({ children }) {
   // const router = useRouter();
   return (
     <div className="w-full h-full flex flex-col">
-      <FilterButton />
+      <FilterNavbar />
       <main className="w-full h-full bg-white flex gap-2 p-5">
         <section className="w-1/2 h-full">
           <ClientCompMap params={params} />

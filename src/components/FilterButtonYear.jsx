@@ -12,7 +12,7 @@ const availableYears = [
   { id: 4, year: "2019" },
 ];
 
-export default function FilterBarButtonYear({ paramYear, createQueryString }) {
+export default function FilterButtonYear({ paramYear, createQueryString }) {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
