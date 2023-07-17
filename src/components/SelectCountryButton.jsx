@@ -70,7 +70,11 @@ export default function SelectCountryButton() {
         className={` p-2 rounded ${country ? "bg-green-300" : "bg-slate-300"}`}
       >
         <Link
-          href={`/dashboard/${country}?year=2022&score_one=eco&score_two=envr`}
+          // href={`/dashboard/${country}?year=2022&score_one=eco&score_two=envr`}
+          href={{
+            pathname: `/dashboard/${country}`,
+            query: { year: "2022", score_one: "eco", score_two: "envr" },
+          }}
         >
           Explore
         </Link>
