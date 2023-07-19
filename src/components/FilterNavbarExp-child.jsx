@@ -2,8 +2,12 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-export default function FilterNavbarExpChild({ yearParam, scoreOneParam }) {
-//   console.log("adqwdqw", scoreOneParam, yearParam);
+export default function FilterNavbarExpChild({
+  yearParam,
+  scoreOneParam,
+  scoreTwoParam,
+}) {
+  //   console.log("adqwdqw", scoreOneParam, yearParam);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -14,7 +18,9 @@ export default function FilterNavbarExpChild({ yearParam, scoreOneParam }) {
   // handle changing router here...
   const handleSubmit = (event) => {
     event.preventDefault();
-    router.push(`${pathname}?year=${year}&score_one=${topic}`);
+    router.push(
+      `${pathname}?year=${year}&score_one=${topic}&score_two=${scoreTwoParam}`
+    );
   };
   const handleYearChange = (event) => {
     setYear(event.target.value);

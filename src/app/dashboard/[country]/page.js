@@ -2,7 +2,9 @@
 
 import CountryPageListComponent from "@/components/CountryPageListComponent";
 
-export default function CountryPage({ params }) {
+export default function CountryPage({ params, searchParams }) {
+  console.log("[CountryPage] : rendered : params : ", params);
+  console.log("[CountryPage] : rendered : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 gap-2">
       <section className="w-full h-1/2 bg-purple-100">
@@ -12,7 +14,10 @@ export default function CountryPage({ params }) {
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
 
-      <CountryPageListComponent country={params.country} />
+      <CountryPageListComponent
+        country={params.country}
+        searchParams={searchParams}
+      />
     </div>
   );
 }
