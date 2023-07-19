@@ -1,12 +1,19 @@
 "use client";
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import {
+  usePathname,
+  useSearchParams,
+  useRouter,
+  useParams,
+} from "next/navigation";
 
 // this comp
 
-export default function ClientCompMap({ params }) {
+export default function ClientCompMap() {
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
+  const searchParams = useSearchParams();
 
   // function handleClick() {
   //   router.push(`/dashboard/${chosenCountry}?layer=district`);
@@ -17,12 +24,18 @@ export default function ClientCompMap({ params }) {
         This visual component is fixed at [country] level. Im getting data based
         on the params.....
       </span>
-      {params.country && <span>{params.country}</span>}
-      {params.province && <span>{params.province}</span>}
-      {params.district && <span>{params.district}</span>}
-      {/*<button onClick={handleClick} className="bg-slate-200 p-1">
+      <div>
+        {params.country && <span>{params.country}</span>}
+        {params.province && <span>{params.province}</span>}
+        {params.district && <span>{params.district}</span>}
+        {/*<button onClick={handleClick} className="bg-slate-200 p-1">
         Change the router
   </button>*/}
+      </div>
+      <div className="flex flex-col">
+        <span>year:{searchParams.get("year")}</span>
+        <span>score_one: {searchParams.get("score_one")}</span>
+      </div>
     </div>
   );
 }

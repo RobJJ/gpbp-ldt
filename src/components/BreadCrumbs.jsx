@@ -1,6 +1,9 @@
+"use client";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default function BreadCrumbs({ params }) {
+export default function BreadCrumbs() {
+  const params = useParams();
   // console.log("typeof params from breadcrumbs:", typeof params);
   return (
     <div className="w-full bg-red-200 flex gap-5 p-1">
