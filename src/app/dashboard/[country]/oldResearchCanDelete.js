@@ -7,7 +7,7 @@ import {
 } from "../../../lib/districtdata";
 import ServerCompFacts from "./servercompfacts";
 import ServerCompList from "./servercomplist";
-import ClientCompMap from "../../../components/clientcompmap";
+import ClientCompMap from "../../../components/clientcompvisual";
 
 const pretendData = {
   country: "bro youre reading the country data!",

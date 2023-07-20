@@ -33,7 +33,7 @@ export default function FilterNavbarExpChild({
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full bg-pink-300 flex items-center justify-center p-2 gap-5"
+      className="bg-white flex items-center justify-center px-2 gap-5"
     >
       <select
         value={year}
