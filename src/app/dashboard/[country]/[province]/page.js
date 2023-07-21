@@ -5,20 +5,24 @@ import Link from "next/link";
 // ok we have access to the params and searchParams because this is page.js and dynamic
 export default function ProvincePage({ params, searchParams }) {
   // fetch data here for the chosen Province!!
-  // console.log("[ProvincePage] : rendered : params : ", params);
+  console.log("[ProvincePage] : rendered : server");
   // console.log("[ProvincePage] : rendered : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-orange-200 flex flex-col p-2 gap-2">
-      <span className="bg-orange-100 rounded">
-        This will be the top card component for the province.... it will show
-        the highcharts here This component needs to fetch data based on the
-        country-province combination... the searchParams dont matter
+      <span className="w-full h-1/2 bg-orange-100 rounded text-2xl font-bold">
+        [PROVINCE LEVEL] : SHOW highcharts HERE <br />
+        ** fetch data in this{" "}
+        <span className="text-red-500">async server component</span> based on
+        province selected - feed data to the highcharts component **
       </span>
-      <span className="bg-orange-100 rounded">
-        This will be the bottom List component still,, but it will list the
-        districts in the province... this component needs the country-province
-        data...it does needs the YEAR info from searchParams,,,
+      <span className="w-full h-1/2 bg-orange-100 rounded text-2xl font-bold">
+        [PROVINCE LEVEL] : SHOW list HERE <br />
+        ** fetch data in this{" "}
+        <span className="text-red-500">async server component</span> based on
+        province selected - feed data to the list component **
       </span>
+
+      {/* example of a district from list that links to its district page */}
       <Link
         href={{
           pathname: `/dashboard/${params.country}/${params.province}/testDistrictBitch`,

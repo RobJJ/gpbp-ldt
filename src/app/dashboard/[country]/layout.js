@@ -17,7 +17,7 @@ export default function CountryPageLayout({ children }) {
 
   //
 
-  // console.log("[CountryPageLayout] : rendered : searchParams?");
+  console.log("[CountryPageLayout] : rendered : server");
 
   return (
     <div className="w-full h-full flex flex-col">

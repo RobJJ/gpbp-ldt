@@ -3,14 +3,15 @@
 import CountryPageListComponent from "@/components/CountryPageListComponent";
 
 export default function CountryPage({ params, searchParams }) {
-  // console.log("[CountryPage] : rendered : params : ", params);
+  console.log("[CountryPage] : rendered : server");
   // console.log("[CountryPage] : rendered : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 gap-2">
-      <section className="w-full h-1/2 bg-purple-100">
-        Top: Facts cards for country level shit. We need country data from DB
-        here.. the data we fetch is just based on what country we are looking
-        at.. ezzee
+      <section className="w-full h-1/2 bg-purple-100 text-2xl font-bold">
+        [COUNTRY LEVEL] : SHOW CARDS HERE <br />
+        ** fetch data in this{" "}
+        <span className="text-red-500">async server component</span> based on
+        country **
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
 
