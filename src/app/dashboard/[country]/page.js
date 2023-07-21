@@ -1,10 +1,12 @@
 // ** note ** this is a dynamic server comp. Can fetch params and data here
 
 import CountryPageListComponent from "@/components/CountryPageListComponent";
+import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 
-export default function CountryPage({ params, searchParams }) {
+export default async function CountryPage({ params, searchParams }) {
   console.log("[CountryPage] : rendered : server");
   // console.log("[CountryPage] : rendered : searchParams : ", searchParams);
+
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 gap-2">
       <section className="w-full h-1/2 bg-purple-100 text-2xl font-bold">

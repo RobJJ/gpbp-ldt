@@ -5,9 +5,9 @@ import { useParams, useSearchParams } from "next/navigation";
 export default function BreadCrumbs() {
   const params = useParams();
   const searchParams = useSearchParams();
-  // console.log("typeof params from breadcrumbs:", typeof params);
+  console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full bg-red-200 flex gap-5 p-1">
+    <div className="w-full bg-slate-500 flex gap-5 p-1">
       {params.country && (
         <Link
           href={{

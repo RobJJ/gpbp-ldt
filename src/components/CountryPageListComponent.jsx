@@ -1,23 +1,29 @@
 // "use client";
+import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
 import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
-export default function CountryPageListComponent({ country, searchParams }) {
+export default async function CountryPageListComponent({
+  country,
+  searchParams,
+}) {
   console.log("[CountryPageListComponent] rendered: server");
-  // get data here based on country and searchParams
-  // const router = useRouter();
-  // const pathname = usePathname();
-  // const handleProvinceClick = () => {
-  //   router.push(`/dashboard/${country}/testProvinceBitch`);
-  // };
+  // ***** working ****
+  // data based on [country] and year
+  // const provinceData = await getAllProvincesInSelectedCountryByYear(
+  //   country,
+  //   searchParams.year
+  // );
+  // console.log("[CountryPageListComponent] : data :", provinceData);
+
   return (
     <section className="w-full h-1/2 bg-purple-100 flex flex-col gap-5">
       <span className="text-2xl font-bold">
         [COUNTRY LEVEL] : show list of provinces here <br />
         ** fetch data in this{" "}
         <span className="text-red-500">async server component</span> based on
-        country and year
+        country and year :: <span className="text-green-500">working</span>
       </span>
       {/* example link navigation from province list item */}
       <Link
