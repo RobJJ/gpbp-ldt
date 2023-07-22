@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
-export default async function CountryPageListComponent({
+export default async function ProvincePageListComponent({
   country,
   searchParams,
+  province,
 }) {
-  console.log("[CountryPageListComponent] rendered: server");
+  console.log("[ProvincePageListComponent] rendered: server");
   // ***** working ****
   // data based on [country] and year
   // const provinceData = await getAllProvincesInSelectedCountryByYear(
@@ -19,25 +20,22 @@ export default async function CountryPageListComponent({
 
   return (
     <section className="w-full h-1/2 bg-purple-100 flex flex-col gap-5">
-      <span className="text-2xl font-bold">
-        [COUNTRY LEVEL] : show list of provinces here <br />
+      <span className="w-full h-1/2 bg-orange-100 rounded text-2xl font-bold">
+        [PROVINCE LEVEL] : SHOW list HERE <br />
         ** fetch data in this{" "}
         <span className="text-red-500">async server component</span> based on
-        country and year :: <span className="text-green-500">working</span>
+        province selected - feed data to the list component **
       </span>
-      {/* example link navigation from province list item */}
+      {/* example of a district from list that links to its district page */}
       <Link
         href={{
-          pathname: `/dashboard/${country}/XKO.1_1`,
-          query: {
-            year: `${searchParams.year}`,
-            score_one: `${searchParams.score_one}`,
-            score_two: `${searchParams.score_two}`,
-          },
+          pathname: `/dashboard/${country}/${province}/testDistrictBitch`,
+          // can spread the searchParams!!!! *******
+          query: { ...searchParams },
         }}
         className="bg-blue-200"
       >
-        Go to this province!
+        You can navigate to a district from here
       </Link>
     </section>
   );
