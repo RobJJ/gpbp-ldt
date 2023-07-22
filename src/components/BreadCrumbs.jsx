@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+const unidecode = require("unidecode");
 
 export default function BreadCrumbs() {
   const params = useParams();
   const searchParams = useSearchParams();
+
   console.log("[BreadCrumbs] : rendered ");
   return (
     <div className="w-full bg-slate-500 flex gap-5 p-1">
