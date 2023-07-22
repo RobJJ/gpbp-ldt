@@ -3,6 +3,7 @@ import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import VisualComponentClientParent from "./VisualComponentClientParent";
 
 // stream in data here to let layout.js load in async
+// this components purpose is to set up the initial data for components
 
 export default async function LayoutVisualComponent({ country, province }) {
   console.log("[ClientCompVisual] : rendered");

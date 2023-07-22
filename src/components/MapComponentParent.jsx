@@ -8,7 +8,11 @@ import { useState } from "react";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
-// ** if params changes, this component will be rerendered by its parent
+// ** if params changes, this component will be rerendered by its parent and it will receive new params to search by
+// GEO
+// ** if (provinceSelected) becomes true is true, then it needs to grab geodata districts that match province_id
+// GED
+// ** this data changes based on year, and score_one..
 
 export default function MapComponentParent({
   geojsonDataProvince,
@@ -20,11 +24,7 @@ export default function MapComponentParent({
   score_one,
   score_two,
 }) {
-  const [currentGeoData, setCurrentGeoData] = useState(geojsonDataProvince);
-  console.log("[MapComponentParent] : rendered ");
-  // this component gets immediate access to the province geodata and geddata through parent props on server
-  // this component needs to now listen to the params and take that data and mutate it...
-  // if a province is clicked the params will change and trigger reload.. we must then fetch the province-districts data for the geodata and the geddata
+  // we have everything we need here and it updates based on URL params + searchParams
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col">
@@ -36,9 +36,10 @@ export default function MapComponentParent({
         Country:{countrySelected}...province:{provinceSelected}... district:
         {districtSelected}
       </span>
+      {/*mimic a province click.. we need to pull in the district geodata here.. when clicked, it will trigger the rerender */}
       <Link
         href={{
-          pathname: `/dashboard/${countrySelected}/${unidecode("Đakovica")}`,
+          pathname: `/dashboard/${countrySelected}/Đakovica`,
           // can spread the searchParams!!!! *******
           query: { year, score_one, score_two },
         }}

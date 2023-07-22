@@ -28,7 +28,7 @@ export default function BreadCrumbs() {
       {params.province && (
         <Link
           href={{
-            pathname: `/dashboard/${params.country}/${params.province}`,
+            pathname: `/dashboard/${params.country}/${params.province}}`,
             query: {
               year: searchParams.get("year"),
               score_one: searchParams.get("score_one"),
@@ -37,7 +37,7 @@ export default function BreadCrumbs() {
           }}
           className="bg-white"
         >
-          {params.province}/
+          {decodeURIComponent(params.province)}/
         </Link>
       )}
       {params.district && (
