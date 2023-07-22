@@ -6,6 +6,7 @@
 // fetch data based on [country], [year] --  this will set up the default pos of the map
 
 export default function ScatterComponentParent() {
+  console.log("[ScatterComponentParent] : rendered ");
   return (
     <section className="w-full h-full bg-yellow-200">
       I AM SCATTER COMPONENT

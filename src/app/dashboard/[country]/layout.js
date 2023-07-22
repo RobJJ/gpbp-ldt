@@ -8,7 +8,7 @@ import {
 } from "next/navigation";
 
 import BreadCrumbs from "@/components/BreadCrumbs";
-import ClientCompVisual from "@/components/clientcompvisual";
+import LayoutVisualComponent from "@/components/LayoutVisualComponent";
 
 import FilterNavbarExp from "@/components/FilterNavbarExp";
 import { Suspense } from "react";
@@ -34,7 +34,7 @@ export default function CountryPageLayout({ children, params }) {
               </div>
             }
           >
-            <ClientCompVisual
+            <LayoutVisualComponent
               country={params.country}
               province={params.province}
             />
