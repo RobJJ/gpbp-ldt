@@ -21,8 +21,9 @@ export default function VisualComponentClientParent({
         <MapComponentParent
           geojsonDataProvince={geojsonDataProvince}
           gedDataProvince={gedDataProvince}
-          provinceSelected={params.province}
           countrySelected={params.country}
+          provinceSelected={params.province}
+          districtSelected={params.district}
           year={searchParams.get("year")}
           score_one={searchParams.get("score_one")}
           score_two={searchParams.get("score_two")}

@@ -13,8 +13,9 @@ import { useState } from "react";
 export default function MapComponentParent({
   geojsonDataProvince,
   gedDataProvince,
-  provinceSelected,
   countrySelected,
+  provinceSelected,
+  districtSelected,
   year,
   score_one,
   score_two,
@@ -31,6 +32,10 @@ export default function MapComponentParent({
       <span>
         Year:{year}....Score_One:{score_one}... Score_Two:{score_two}
       </span>
+      <span>
+        Country:{countrySelected}...province:{provinceSelected}... district:
+        {districtSelected}
+      </span>
       <Link
         href={{
           pathname: `/dashboard/${countrySelected}/${unidecode("Đakovica")}`,
@@ -39,7 +44,19 @@ export default function MapComponentParent({
         }}
         className="bg-blue-200"
       >
-        You can navigate to a district from here
+        You can navigate to a [PROVINCE] from here
+      </Link>
+      <Link
+        href={{
+          pathname: `/dashboard/${countrySelected}/${provinceSelected}/${unidecode(
+            "Dečani"
+          )}`,
+          // can spread the searchParams!!!! *******
+          query: { year, score_one, score_two },
+        }}
+        className="bg-blue-200"
+      >
+        You can navigate to a [DISTRICT] from here
       </Link>
     </section>
   );
