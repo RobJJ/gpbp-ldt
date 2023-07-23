@@ -9,7 +9,7 @@ function SwitchComponent() {
   const [visual, setVisual] = useState(false);
   // visual atom: defaults to "map",, can be "map" or "scatter"
   const [visualType, setVisualType] = useAtom(visualTypeSelected);
-  console.log("[SwitchComponent] : visualType :", visualType);
+  // console.log("[SwitchComponent] : visualType :", visualType);
   const props = useSpring({
     left: visual ? "0%" : "50%",
     backgroundColor: "#4345AA",

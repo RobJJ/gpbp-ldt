@@ -1,20 +1,23 @@
-import { getProvinceGeojson } from "@/lib/geojsonData";
+import { getDistrictGeojson, getProvinceGeojson } from "@/lib/geojsonData";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import VisualComponentClientParent from "./VisualComponentClientParent";
 
 // stream in data here to let layout.js load in async
 // this components purpose is to set up the initial data for components
 
-export default async function LayoutVisualComponent({ country, province }) {
-  console.log("[ClientCompVisual] : rendered");
-  // by default,, when country is selected,, you need the [country]-province-geojson and [country]-province-data... so just fetch that straight away and pass down to parent... the map needs both, the scatter only needs the geddata
+export default async function LayoutVisualComponent({ country }) {
+  console.log("[LayoutVisualComponent] : rendered");
+  // load in initial data from SERVER
+  // try cache these on server! - or try stream them in??
   const geojsonDataProvince = await getProvinceGeojson(country);
+  const geojsonDataDistrict = await getDistrictGeojson(country);
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
 
   return (
     <div className="w-full h-full flex">
       <VisualComponentClientParent
         geojsonDataProvince={geojsonDataProvince}
+        geojsonDataDistrict={geojsonDataDistrict}
         gedDataProvince={gedDataProvince}
       />
     </div>

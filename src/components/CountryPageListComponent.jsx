@@ -2,7 +2,6 @@
 import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
 import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-// const unidecode = require("unidecode");
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
 export default async function CountryPageListComponent({

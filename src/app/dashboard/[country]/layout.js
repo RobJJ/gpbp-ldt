@@ -36,7 +36,8 @@ export default function CountryPageLayout({ children, params }) {
           >
             <LayoutVisualComponent
               country={params.country}
-              province={params.province}
+              // province={params.province}
+              // district={params.district}
             />
           </Suspense>
         </section>

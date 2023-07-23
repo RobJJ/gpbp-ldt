@@ -24,7 +24,8 @@ export const getDistrictGeojson = cache(async (country) => {
   return JSON.parse(JSON.stringify(data));
 });
 
-export const getDistrictsGeoDataBasedOnSelectedProvince = cache(
+// lets rather fetch all districts geo data at the start of application load... we should try cache it on server though
+export const getDistrictsGeoDataBasedOnSelectedProvinceId = cache(
   async (country, province_id) => {
     const allDistrictsGeoData = await getDistrictGeojson(country);
     return allDistrictsGeoData.features.filter((feature) => {
