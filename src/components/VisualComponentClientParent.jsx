@@ -13,7 +13,7 @@ export default function VisualComponentClientParent({
   geojsonDataDistrict,
   gedDataProvince,
 }) {
-  // console.log("[VisualComponentClientParent] : rendered");
+  console.log("[VisualComponentClientParent] : rendered");
   const params = useParams();
   const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);

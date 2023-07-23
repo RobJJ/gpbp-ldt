@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { cache, useState } from "react";
 import { useQuery } from "react-query";
 
 // this component receieves the GED data for provinces... it uses that by default... when a province is clicked,, this component will by rendered again by its parent.. it must then fetch data about that province and display that new information on the chart
@@ -15,11 +15,11 @@ export default function ScatterComponentParent({
   // const { data, isLoading } = useDistricts();
   const { data, isLoading } = useQuery({
     queryKey: "districts",
-    queryFn: async () => {
+    queryFn: cache(async () => {
       const res = await fetch("/api/districts");
       const data = await res.json();
       return data;
-    },
+    }),
   });
 
   if (isLoading) {
