@@ -35,8 +35,13 @@ export default function VisualComponentClientParent({
       )}
       {visualType === "scatter" && (
         <ScatterComponentParent
-          geojsonDataProvince={geojsonDataProvince}
           gedDataProvince={gedDataProvince}
+          countrySelected={params.country}
+          provinceSelected={params.province}
+          districtSelected={params.district}
+          year={searchParams.get("year")}
+          score_one={searchParams.get("score_one")}
+          score_two={searchParams.get("score_two")}
         />
       )}
     </div>

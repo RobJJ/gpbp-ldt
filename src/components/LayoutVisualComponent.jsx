@@ -5,7 +5,11 @@ import VisualComponentClientParent from "./VisualComponentClientParent";
 // stream in data here to let layout.js load in async
 // this components purpose is to set up the initial data for components
 
-export default async function LayoutVisualComponent({ country }) {
+export default async function LayoutVisualComponent({
+  country,
+  province,
+  district,
+}) {
   console.log("[LayoutVisualComponent] : rendered");
   // load in initial data from SERVER
   // try cache these on server! - or try stream them in??

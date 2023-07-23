@@ -1,4 +1,5 @@
-import JotaiProvider from "@/providers/providers";
+import JotaiProvider from "@/providers/jotai-provider";
+import QueryProvider from "@/providers/query-provider";
 
 import "./globals.css";
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
       <body>
         <main className="flex flex-col w-screen h-screen">
           <NavBar />
-          <JotaiProvider>{children}</JotaiProvider>
+          <QueryProvider>
+            <JotaiProvider>{children}</JotaiProvider>
+          </QueryProvider>
         </main>
       </body>
     </html>
