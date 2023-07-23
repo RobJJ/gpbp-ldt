@@ -1,12 +1,3 @@
-// "use client";
-// test client implementation
-import {
-  usePathname,
-  useSearchParams,
-  useRouter,
-  useParams,
-} from "next/navigation";
-
 import BreadCrumbs from "@/components/BreadCrumbs";
 import LayoutVisualComponent from "@/components/LayoutVisualComponent";
 
@@ -15,9 +6,7 @@ import { Suspense } from "react";
 import Spinner from "../../../components/Spinner-normal-size.svg";
 import Image from "next/image";
 
-export default function CountryPageLayout({ children, params }) {
-  //
-
+export default async function CountryPageLayout({ children, params }) {
   //
 
   console.log("[CountryPageLayout] : rendered : server: PARAMS???", params);
