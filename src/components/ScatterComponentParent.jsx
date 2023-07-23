@@ -17,13 +17,17 @@ export default function ScatterComponentParent({
     queryKey: "districts",
     queryFn: async () => {
       const res = await fetch("/api/districts");
-      const data = await JSON.parse(res);
+      const data = await res.json();
       return data;
     },
   });
 
   if (isLoading) {
-    return <div className="w-full h-full bg-yellow-200">loading dude....</div>;
+    return (
+      <div className="w-full h-full bg-yellow-200">
+        loading dude....pls work!
+      </div>
+    );
   }
   console.log("data bro.....", data);
 
@@ -31,9 +35,11 @@ export default function ScatterComponentParent({
   //   // fetch GED data about the districts in that province.. replace the currentGEDdata
   // }
   return (
-    <section className="w-full h-full bg-yellow-200">
-      I have ged data for provinces.. example :: {gedDataProvince[0].PROVINCE}
-      .....
+    <section className="w-full h-full bg-yellow-200 flex flex-col">
+      <span>
+        I have ged data for provinces.. example :: {gedDataProvince[0].PROVINCE}
+      </span>
+      <span>GED ::: {data[0].PROVINCE}</span>
     </section>
   );
 }
