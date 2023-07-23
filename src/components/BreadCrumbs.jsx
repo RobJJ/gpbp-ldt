@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
-const unidecode = require("unidecode");
+// const unidecode = require("unidecode");
 
 export default function BreadCrumbs() {
   const params = useParams();
@@ -28,7 +28,7 @@ export default function BreadCrumbs() {
       {params.province && (
         <Link
           href={{
-            pathname: `/dashboard/${params.country}/${params.province}}`,
+            pathname: `/dashboard/${params.country}/${params.province}`,
             query: {
               year: searchParams.get("year"),
               score_one: searchParams.get("score_one"),
@@ -37,7 +37,7 @@ export default function BreadCrumbs() {
           }}
           className="bg-white"
         >
-          {decodeURIComponent(params.province)}/
+          {decodeURIComponent(params.province)}
         </Link>
       )}
       {params.district && (
@@ -52,7 +52,7 @@ export default function BreadCrumbs() {
           }}
           className="bg-white"
         >
-          {params.district}
+          {decodeURIComponent(params.district)}
         </Link>
       )}
     </div>

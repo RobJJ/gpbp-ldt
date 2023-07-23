@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-const unidecode = require("unidecode");
+// const unidecode = require("unidecode");
 // ** note :: make this component a server component that receives the needed props and fetches data that is then passed down to the client component to use
 
 import { useParams } from "next/navigation";
@@ -49,7 +49,7 @@ export default function MapComponentParent({
       </Link>
       <Link
         href={{
-          pathname: `/dashboard/${countrySelected}/${provinceSelected}/${unidecode(
+          pathname: `/dashboard/${countrySelected}/${provinceSelected}/${decodeURIComponent(
             "Dečani"
           )}`,
           // can spread the searchParams!!!! *******

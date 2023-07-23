@@ -2,7 +2,7 @@
 import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
 import Link from "next/link";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-const unidecode = require("unidecode");
+// const unidecode = require("unidecode");
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
 export default async function CountryPageListComponent({
@@ -26,10 +26,10 @@ export default async function CountryPageListComponent({
         <span className="text-red-500">async server component</span> based on
         country and year :: <span className="text-green-500">working</span>
       </span>
-      {/* example link navigation from province list item */}
+      {/* example link navigation from province list item decodeURIComponent(params.province) */}
       <Link
         href={{
-          pathname: `/dashboard/${country}/${unidecode("Đakovica")}`,
+          pathname: `/dashboard/${country}/${decodeURIComponent("Đakovica")}`,
           query: {
             year: `${searchParams.year}`,
             score_one: `${searchParams.score_one}`,

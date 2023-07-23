@@ -14,7 +14,7 @@ export default function FilterNavbarExpChild({
   const pathname = usePathname();
 
   // "map" or "scatter" :: we want to show two score selectors when "scatter"
-  const [visualType, setVisualType] = useAtom(visualTypeSelected);
+  const [visualType] = useAtom(visualTypeSelected);
 
   // the default values are coming from the searchParams so they are always in sync for user!
   const [year, setYear] = useState(yearParam);
