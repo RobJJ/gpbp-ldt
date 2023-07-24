@@ -9,9 +9,10 @@ import { useQuery } from "react-query";
 export default function ScatterComponentParent({
   gedDataProvince,
   provinceSelected,
+  data,
+  countrySelected,
 }) {
-  console.log("[ScatterComponentParent] : rendered ");
-  // const test = "sup";
+  console.log("[ScatterComponentParent] : rendered : data is : ", data);
 
   const [currentGEDdata, setCurrentGEDdata] = useState(gedDataProvince);
   // const { data, isLoading } = useDistricts();
@@ -28,25 +29,25 @@ export default function ScatterComponentParent({
   //   }),
   // });
   // ** exp
-  const { data, isLoading } = useQuery({
-    queryKey: ["districts", provinceSelected],
-    queryFn: cache(async ({ queryKey }) => {
-      const [_key, provinceSelected] = queryKey;
-      const provinceId = getProvinceId(gedDataProvince, provinceSelected);
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["districts", provinceSelected],
+  //   queryFn: cache(async ({ queryKey }) => {
+  //     const [_key, provinceSelected] = queryKey;
+  //     const provinceId = getProvinceId(gedDataProvince, provinceSelected);
 
-      const res = await fetch(`/api/provinces?province=${provinceId}`);
-      const data = await res.json();
-      return data;
-    }),
-  });
+  //     const res = await fetch(`/api/provinces?province=${provinceId}`);
+  //     const data = await res.json();
+  //     return data;
+  //   }),
+  // });
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-full bg-yellow-200">
-        loading dude....pls work!
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="w-full h-full bg-yellow-200">
+  //       loading dude....pls work!
+  //     </div>
+  //   );
+  // }
   // console.log("data bro.....", data);
 
   // if (provinceSelected) {
@@ -55,9 +56,19 @@ export default function ScatterComponentParent({
   return (
     <section className="w-full h-full bg-yellow-200 flex flex-col">
       <span>
-        I have ged data for provinces.. example :: {gedDataProvince[0].PROVINCE}
+        I have fetched the data... currently inside this component I have access
+        to the below data...
       </span>
-      <span>GED ::: {data[0].PROVINCE}</span>
+      <span>The Country: {countrySelected}</span>
+      {provinceSelected && <span>The Province: {provinceSelected}</span>}
+      {provinceSelected && (
+        <span>and the districts in this province ... are...</span>
+      )}
+
+      {provinceSelected &&
+        data.map((district) => {
+          return <span key={district.DISTRICT_ID}>{district.DISTRICT}</span>;
+        })}
     </section>
   );
 }
