@@ -1,5 +1,6 @@
 "use client";
 
+import { getProvinceId } from "@/lib/utils";
 import Link from "next/link";
 
 import { useParams } from "next/navigation";
@@ -12,13 +13,6 @@ import { useState } from "react";
 // ** if (provinceSelected) becomes true is true, then it needs to grab geodata districts that match province_id
 // GED
 // ** this data changes based on year, and score_one..
-
-function getProvinceId(data, province_name) {
-  const provinceObject = data.find(
-    (item) => item.PROVINCE === decodeURIComponent(province_name)
-  );
-  return provinceObject ? provinceObject.PROVINCE_ID : null;
-}
 
 export default function MapComponentParent({
   geojsonDataProvince,
@@ -38,10 +32,10 @@ export default function MapComponentParent({
   // when this component renders again,, we will check if province is true! if it is.. then we spread the districts into the currentGeoLayers state! this will show the districts inside!
   if (provinceSelected) {
     const provinceId = getProvinceId(gedDataProvince, provinceSelected);
-    // console.log(
-    //   "hey the province is true and the id of province is :: ",
-    //   provinceId
-    // );
+    console.log(
+      "hey the province is true and the id of province is :: ",
+      provinceId
+    );
 
     const districtsInSelectedProvince = geojsonDataDistrict[0].features.filter(
       (feature) => {

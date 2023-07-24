@@ -10,12 +10,15 @@ export default function ScatterComponentParent({
   provinceSelected,
 }) {
   console.log("[ScatterComponentParent] : rendered ");
+  // const test = "sup";
 
   const [currentGEDdata, setCurrentGEDdata] = useState(gedDataProvince);
   // const { data, isLoading } = useDistricts();
   const { data, isLoading } = useQuery({
-    queryKey: "districts",
-    queryFn: cache(async () => {
+    queryKey: ["districts", provinceSelected],
+    queryFn: cache(async ({ queryKey }) => {
+      const [_key, provinceSelected] = queryKey;
+      console.log("working as params?", decodeURIComponent(provinceSelected));
       const res = await fetch("/api/districts");
       const data = await res.json();
       return data;
@@ -29,7 +32,7 @@ export default function ScatterComponentParent({
       </div>
     );
   }
-  console.log("data bro.....", data);
+  // console.log("data bro.....", data);
 
   // if (provinceSelected) {
   //   // fetch GED data about the districts in that province.. replace the currentGEDdata
