@@ -30,23 +30,24 @@ export default function MapComponentParent({
   const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
 
   // when this component renders again,, we will check if province is true! if it is.. then we spread the districts into the currentGeoLayers state! this will show the districts inside!
-  if (provinceSelected) {
-    const provinceId = getProvinceId(gedDataProvince, provinceSelected);
-    console.log(
-      "hey the province is true and the id of province is :: ",
-      provinceId
-    );
+  // ** keeping for later use
+  // if (provinceSelected) {
+  //   const provinceId = getProvinceId(gedDataProvince, provinceSelected);
+  //   console.log(
+  //     "hey the province is true and the id of province is :: ",
+  //     provinceId
+  //   );
 
-    const districtsInSelectedProvince = geojsonDataDistrict[0].features.filter(
-      (feature) => {
-        return feature.properties.GID_1 === provinceId;
-      }
-    );
-    // console.log(
-    //   "districts found in selected province::",
-    //   districtsInSelectedProvince
-    // );
-  }
+  //   const districtsInSelectedProvince = geojsonDataDistrict[0].features.filter(
+  //     (feature) => {
+  //       return feature.properties.GID_1 === provinceId;
+  //     }
+  //   );
+  //   // console.log(
+  //   //   "districts found in selected province::",
+  //   //   districtsInSelectedProvince
+  //   // );
+  // }
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">

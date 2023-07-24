@@ -1,5 +1,6 @@
 "use client";
 
+import { getProvinceId } from "@/lib/utils";
 import { cache, useState } from "react";
 import { useQuery } from "react-query";
 
@@ -14,12 +15,26 @@ export default function ScatterComponentParent({
 
   const [currentGEDdata, setCurrentGEDdata] = useState(gedDataProvince);
   // const { data, isLoading } = useDistricts();
+  // ** working
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["districts", provinceSelected],
+  //   queryFn: cache(async ({ queryKey }) => {
+  //     const [_key, provinceSelected] = queryKey;
+  //     const provinceId = getProvinceId(gedDataProvince, provinceSelected);
+
+  //     const res = await fetch(`/api/districts`);
+  //     const data = await res.json();
+  //     return data;
+  //   }),
+  // });
+  // ** exp
   const { data, isLoading } = useQuery({
     queryKey: ["districts", provinceSelected],
     queryFn: cache(async ({ queryKey }) => {
       const [_key, provinceSelected] = queryKey;
-      console.log("working as params?", decodeURIComponent(provinceSelected));
-      const res = await fetch("/api/districts");
+      const provinceId = getProvinceId(gedDataProvince, provinceSelected);
+
+      const res = await fetch(`/api/provinces?province=${provinceId}`);
       const data = await res.json();
       return data;
     }),
