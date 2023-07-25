@@ -1,5 +1,8 @@
 // "use client";
-import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
+import {
+  getAllProvincesInSelectedCountry,
+  getAllProvincesInSelectedCountryByYear,
+} from "@/lib/provinceData";
 import Link from "next/link";
 import TableRow from "./TableRow";
 
@@ -11,11 +14,12 @@ export default async function CountryPageListComponent({
   console.log("[CountryPageListComponent] rendered: server");
   // ***** working ****
   // data based on [country] and year
-  const provinceData = await getAllProvincesInSelectedCountryByYear(
+  const provinceDataTest = await getAllProvincesInSelectedCountryByYear(
     country,
     searchParams.year
   );
-  console.log("[CountryPageListComponent] : data :", provinceData);
+  const provinceData = await getAllProvincesInSelectedCountry(country);
+  console.log("[CountryPageListComponent] : data :", provinceDataTest);
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -65,17 +69,24 @@ export default async function CountryPageListComponent({
       </section>
       {/* rows */}
       <section className="w-full h-full flex flex-col overflow-auto scrollbar-none">
-        {provinceData.map((district, idx) => (
-          <TableRow
-            country={country}
-            searchParams={searchParams}
-            key={idx + 1}
-            number={idx + 1}
-            regionName={district.PROVINCE}
-            econ={Math.round(district.ECON_SCORE)}
-            envr={Math.round(district.ENVR_SCORE)}
-          />
-        ))}
+        {provinceData
+          .filter((province) => province.YEAR === Number(searchParams.year))
+          .sort((a, b) => {
+            if (a.PROVINCE < b.PROVINCE) return -1;
+            if (a.PROVINCE > b.PROVINCE) return 1;
+            return 0;
+          })
+          .map((district, idx) => (
+            <TableRow
+              country={country}
+              searchParams={searchParams}
+              key={idx + 1}
+              number={idx + 1}
+              regionName={district.PROVINCE}
+              econ={Math.round(district.ECON_SCORE)}
+              envr={Math.round(district.ENVR_SCORE)}
+            />
+          ))}
       </section>
     </div>
   );
