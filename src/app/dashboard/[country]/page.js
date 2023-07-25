@@ -2,6 +2,7 @@
 
 import CountryPageListComponent from "@/components/CountryPageListComponent";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
+import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
   console.log("[CountryPage] : rendered : server");
@@ -16,11 +17,12 @@ export default async function CountryPage({ params, searchParams }) {
         country **
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
-
-      <CountryPageListComponent
-        country={params.country}
-        searchParams={searchParams}
-      />
+      <Suspense fallback={<div className="bg-slate-300">loading...</div>}>
+        <CountryPageListComponent
+          country={params.country}
+          searchParams={searchParams}
+        />
+      </Suspense>
     </div>
   );
 }
