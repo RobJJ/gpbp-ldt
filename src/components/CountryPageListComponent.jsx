@@ -18,7 +18,8 @@ export default async function CountryPageListComponent({
     country,
     searchParams.year
   );
-  const provinceData = await getAllProvincesInSelectedCountry(country);
+
+  // const provinceData = await getAllProvincesInSelectedCountry(country);
   console.log("[CountryPageListComponent] : data :", provinceDataTest);
 
   return (
@@ -31,12 +32,12 @@ export default async function CountryPageListComponent({
         <span className="text-sm text-blue-600 bg-white">Comapre Data</span>
       </section>
       {/* body */}
-      <section className="w-full bg-white font-bold flex text-center">
+      <section className="w-full bg-white font-bold flex text-center ">
         <span className="bg-red-100 w-1/12 border-2 border-black">No</span>
         <span className="bg-red-200 border-r-2 border-y-2 border-black w-5/12">
           District
         </span>
-        <span className="bg-red-300 w-3/12 border-y-2 border-black flex justify-center items-center gap-2 ">
+        <span className="bg-red-300 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
           <span>Environment</span>
           <span
             className="relative group
@@ -63,14 +64,15 @@ export default async function CountryPageListComponent({
             </svg>
           </span>
         </span>
-        <span className="bg-red-300 w-3/12 border-2 border-black">
+        <span className="bg-red-300 w-3/12 border-y-2 border-r-2 border-black">
           Economic
         </span>
       </section>
       {/* rows */}
-      <section className="w-full h-full flex flex-col overflow-auto scrollbar-none">
-        {provinceData
-          .filter((province) => province.YEAR === Number(searchParams.year))
+      <section
+        className={`w-full h-full flex flex-col  overflow-auto scrollbar-none `}
+      >
+        {provinceDataTest
           .sort((a, b) => {
             if (a.PROVINCE < b.PROVINCE) return -1;
             if (a.PROVINCE > b.PROVINCE) return 1;

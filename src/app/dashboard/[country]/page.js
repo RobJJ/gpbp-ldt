@@ -1,6 +1,7 @@
 // ** note ** this is a dynamic server comp. Can fetch params and data here
 
 import CountryPageListComponent from "@/components/CountryPageListComponent";
+import LoadingSpinner from "@/components/LoadingComponent";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";
 
@@ -18,11 +19,7 @@ export default async function CountryPage({ params, searchParams }) {
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
       <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
-        <Suspense
-          fallback={
-            <div className="bg-slate-300 w-full h-full">loading...</div>
-          }
-        >
+        <Suspense fallback={<LoadingSpinner />}>
           <CountryPageListComponent
             country={params.country}
             searchParams={searchParams}

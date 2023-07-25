@@ -40,25 +40,38 @@ export default function TableRow({
       >
         {regionName}
       </Link>
-      <span className="w-3/12 bg-white h-full p-2 flex items-center ">
-        <div className="w-full h-3/4 flex bg-slate-300">
+      <span className=" w-3/12 h-full p-2 border-r-2 border-black flex items-center bg-white">
+        <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
-            className={`h-full`}
+            className="h-full w-full"
             style={{
               backgroundColor: interpolateColor(envr),
               width: `${envr}%`,
+              // might be better to remove this easing effect as the color change is not leka
+              transition: "width 0.5s ease-in-out",
             }}
           />
+          <div className="absolute w-full h-full flex">
+            {[...Array(10)].map((_prop, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className={`w-[10%] h-full border-r border-white`}
+                />
+              );
+            })}
+          </div>
         </div>
       </span>
       {/* new way.. you have to create 10 blocks per province or district.. conciderably more divs but does it effect server side performance? */}
-      <span className=" w-3/12 h-full border-x-2 p-2 border-black flex items-center bg-white">
+      <span className=" w-3/12 h-full border-r-2 p-2 border-black flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
             className="h-full w-full"
             style={{
               backgroundColor: interpolateColor(econ),
               width: `${econ}%`,
+              // might be better to remove this easing effect as the color change is not leka
               transition: "width 0.5s ease-in-out",
             }}
           />

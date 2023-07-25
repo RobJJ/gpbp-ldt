@@ -15,3 +15,19 @@
 .group:hover .tooltip-content {
   opacity: 1;
 }
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 16px; /* This controls the width of the scrollbar */
+  background-color: white; /* This sets the background color of the scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #f90; /* This changes the color of the draggable scrolling element (thumb) */
+  border-radius: 10px; /* This rounds the corners of the draggable scrolling element (thumb) */
+  border: 2px solid #f5f5f5; /* Creates 'padding' for the scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  border-radius: 10px; /* This rounds the corners of the scrollbar track */
+  background-color: white; /* This changes the color of the track where the thumb moves */
+}
