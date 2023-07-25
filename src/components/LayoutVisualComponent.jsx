@@ -14,14 +14,14 @@ export default async function LayoutVisualComponent({
   // load in initial data from SERVER
   // try cache these on server! - or try stream them in??
   const geojsonDataProvince = await getProvinceGeojson(country);
-  const geojsonDataDistrict = await getDistrictGeojson(country);
+  // const geojsonDataDistrict = await getDistrictGeojson(country);
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
 
   return (
     <div className="w-full h-full flex">
       <VisualComponentClientParent
         geojsonDataProvince={geojsonDataProvince}
-        geojsonDataDistrict={geojsonDataDistrict}
+        // geojsonDataDistrict={geojsonDataDistrict}
         gedDataProvince={gedDataProvince}
       />
     </div>

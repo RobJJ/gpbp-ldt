@@ -16,7 +16,7 @@ import { useState } from "react";
 
 export default function MapComponentParent({
   geojsonDataProvince,
-  geojsonDataDistrict,
+  // geojsonDataDistrict,
   gedDataProvince,
   countrySelected,
   provinceSelected,
@@ -26,9 +26,13 @@ export default function MapComponentParent({
   score_two,
 }) {
   // console.log("[MapComponentParent] : rendered");
+  // ** test this approach when you bring the map in
+  // ** note :: have the geojsonProvince data as default,, load in the geojsonData based off the province_id that has been clicked,, if there is no province_id there will be no {data} from react-query... when you click a province on the map,, make the {data} spread into the [currentGeoLayers],, if you click a different one,, spread the provines geojsonData and then add in the new {data} from react query!!
+
   // default is the province geo layers
   const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
 
+  // ** note :: this method is slow because it firstly relies on the full geojsonDataDistrict which is loaded at server... or does this delay not matter at build???
   // when this component renders again,, we will check if province is true! if it is.. then we spread the districts into the currentGeoLayers state! this will show the districts inside!
   // ** keeping for later use
   // if (provinceSelected) {

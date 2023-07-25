@@ -13,7 +13,7 @@ import { cache } from "react";
 
 export default function VisualComponentClientParent({
   geojsonDataProvince,
-  geojsonDataDistrict,
+  // geojsonDataDistrict,
   gedDataProvince,
 }) {
   console.log("[VisualComponentClientParent] : rendered");
@@ -58,7 +58,7 @@ export default function VisualComponentClientParent({
       {visualType === "map" && (
         <MapComponentParent
           geojsonDataProvince={geojsonDataProvince}
-          geojsonDataDistrict={geojsonDataDistrict}
+          // geojsonDataDistrict={geojsonDataDistrict}
           gedDataProvince={gedDataProvince}
           countrySelected={params.country}
           provinceSelected={params.province}
