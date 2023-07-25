@@ -18,7 +18,7 @@ export default async function CountryPageListComponent({
   // console.log("[CountryPageListComponent] : data :", provinceData);
 
   return (
-    <div className="w-full h-full overflow-auto scrollbar-none">
+    <div className="w-full h-full flex flex-col">
       {/* header */}
       <section className="w-full flex justify-between bg-orange-200 px-2 py-1 items-center ">
         <span className="text-lg bg-white">
@@ -69,7 +69,7 @@ export default async function CountryPageListComponent({
           <TableRow
             key={idx + 1}
             number={idx + 1}
-            regionName={district.DISTRICT}
+            regionName={district.PROVINCE}
             econ={Math.round(district.ECON_SCORE)}
             envr={Math.round(district.ENVR_SCORE)}
           />

@@ -17,7 +17,7 @@ export default async function CountryPage({ params, searchParams }) {
         country **
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
-      <section className="w-full h-1/2 bg-purple-100 ">
+      <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
         <Suspense
           fallback={
             <div className="bg-slate-300 w-full h-full">loading...</div>
