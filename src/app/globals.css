@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.tooltip-content {
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.group:hover .tooltip-content {
+  opacity: 1;
+}

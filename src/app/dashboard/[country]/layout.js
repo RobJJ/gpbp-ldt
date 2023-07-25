@@ -12,9 +12,9 @@ export default async function CountryPageLayout({ children, params }) {
   console.log("[CountryPageLayout] : rendered : server: PARAMS???", params);
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full flex flex-col overflow-auto">
       <FilterNavbarExp />
-      <main className="w-full h-full bg-white flex gap-2 p-5">
+      <main className="w-full h-full bg-white flex gap-2 p-5 overflow-auto">
         <section className="w-1/2 h-full">
           <Suspense
             fallback={
@@ -30,7 +30,7 @@ export default async function CountryPageLayout({ children, params }) {
             />
           </Suspense>
         </section>
-        <section className="w-1/2 h-full flex flex-col gap-2">
+        <section className="w-1/2 h-full flex flex-col gap-2 overflow-auto">
           <BreadCrumbs />
           {children}
         </section>
