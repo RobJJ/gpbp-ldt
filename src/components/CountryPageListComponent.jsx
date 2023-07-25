@@ -38,11 +38,11 @@ export default async function CountryPageListComponent({
             className="relative group
               "
           >
-            <div className=" w-48 tooltip-content hidden group-hover:block absolute z-10 top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-800 text-white text-xs rounded py-1 px-4">
+            <div className="w-48 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-1 px-4">
               <div className="">
                 Learn more about how to calculate environmental scores
               </div>
-              {/* This section that links the user to the page, could also include the hash key and take them to the exact area on the page */}
+              {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
               <div className="text-blue-400">Learn more</div>
             </div>
             <svg
@@ -67,6 +67,8 @@ export default async function CountryPageListComponent({
       <section className="w-full h-full flex flex-col overflow-auto scrollbar-none">
         {provinceData.map((district, idx) => (
           <TableRow
+            country={country}
+            searchParams={searchParams}
             key={idx + 1}
             number={idx + 1}
             regionName={district.PROVINCE}
