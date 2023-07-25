@@ -52,7 +52,7 @@ export default function VisualComponentClientParent({
       </div>
     );
   }
-  console.log("we have passed the loading phase.. your data: ", data);
+  // console.log("we have passed the loading phase.. your data: ", data);
   return (
     <div className="w-full h-full">
       {visualType === "map" && (

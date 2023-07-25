@@ -7,7 +7,6 @@ import { FaAngleDown } from "react-icons/fa";
 const currentAvailableCountries = [
   { name: "uzbekistan", id: 1 },
   { name: "kosovo", id: 2 },
-  { name: "vietnam", id: 3 },
 ];
 
 export default function SelectCountryButton() {

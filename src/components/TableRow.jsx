@@ -64,7 +64,6 @@ export default function TableRow({
           />
           <div className="absolute w-full h-full flex">
             {[...Array(10)].map((_prop, idx) => {
-              console.log("idx", idx);
               return (
                 <div
                   key={idx}
@@ -74,36 +73,7 @@ export default function TableRow({
             })}
           </div>
         </div>
-
-        {/*<div className="w-full absolute top-0 h-3/4 flex bg-slate-300 ">
-          {[...Array(10).keys()].map((index) => {
-            let width = index < Math.ceil(econ / 10) ? "100%" : "0";
-            return (
-              <div
-                key={index}
-                className={`w-[10%] h-full ${
-                  index < 9 ? "border-r-2 border-white" : null
-                }`}
-              />
-            );
-          })}
-        </div>*/}
       </span>
-      {/* old method of creating the progress bar.. has one div that is filled to show % */}
-      {/*<span className="w-3/12 bg-white  p-2 flex items-center border-l-2 border-black">
-        <div className="w-full h-3/4 flex bg-slate-300">
-          <div
-            className={`h-full`}
-            style={{
-              backgroundColor: envrColor,
-              width: `${econ}%`,
-            }}
-          />
-        </div>
-        </span>*/}
-      {/*<span className="bg-purple-300 w-3/12 border-x-2  border-black p-2">
-        {econ}
-        </span>*/}
     </div>
   );
 }
