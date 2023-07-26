@@ -20,7 +20,7 @@ export default async function CountryPageListComponent({
   );
 
   // const provinceData = await getAllProvincesInSelectedCountry(country);
-  console.log("[CountryPageListComponent] : data :", provinceDataTest);
+  // console.log("[CountryPageListComponent] : data :", provinceDataTest);
 
   return (
     <div className="w-full h-full flex flex-col">

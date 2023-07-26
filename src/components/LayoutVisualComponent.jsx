@@ -10,7 +10,7 @@ export default async function LayoutVisualComponent({
   province,
   district,
 }) {
-  console.log("[LayoutVisualComponent] : rendered");
+  // console.log("[LayoutVisualComponent] : rendered");
   // load in initial data from SERVER
   // try cache these on server! - or try stream them in??
   const geojsonDataProvince = await getProvinceGeojson(country);
