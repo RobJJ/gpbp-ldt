@@ -7,6 +7,7 @@ import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 
 // highchartsMore(Highcharts);
+// **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
@@ -142,7 +143,7 @@ export default function ScatterComponentParent({
   score_one,
   score_two,
 }) {
-  // console.log("[ScatterComponentParent] : rendered : data :", data);
+  console.log("[ScatterComponentParent] : rendered : data :", data);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({

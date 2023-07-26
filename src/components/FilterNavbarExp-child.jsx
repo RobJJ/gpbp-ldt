@@ -72,7 +72,7 @@ export default function FilterNavbarExpChild({
           onChange={handleScoreTwoChange}
           className=" border rounded-md"
         >
-          <option value="econ">eco</option>
+          <option value="econ">econ</option>
           <option value="envr">envr</option>
           <option value="air">air</option>
           <option value="forest">forest</option>

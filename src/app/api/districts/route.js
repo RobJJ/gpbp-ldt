@@ -9,7 +9,7 @@ export async function GET(request) {
   const db = client.db(process.env.MONGO_DB_NAME);
   const data = await db
     .collection(`kosovo-province-data`)
-    .find({}, { _id: 0 })
+    .find({}, { projection: { _id: 0 } })
     .toArray();
   // allDistricts in an array of objects
   return NextResponse.json(data);

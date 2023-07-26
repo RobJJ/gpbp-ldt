@@ -13,7 +13,7 @@ export async function GET(request) {
   // get all data from province level for the country selected
   const data = await db
     .collection(`${country}-province-data`)
-    .find({}, { _id: 0 })
+    .find({}, { projection: { _id: 0 } })
     .toArray();
   //   // allDistricts in an array of objects
   return NextResponse.json(data);

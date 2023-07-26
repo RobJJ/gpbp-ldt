@@ -72,7 +72,7 @@ export default function SelectCountryButton() {
           // href={`/dashboard/${country}?year=2022&score_one=eco&score_two=envr`}
           href={{
             pathname: `/dashboard/${country}`,
-            query: { year: "2022", score_one: "eco", score_two: "envr" },
+            query: { year: "2022", score_one: "econ", score_two: "envr" },
           }}
         >
           Explore
