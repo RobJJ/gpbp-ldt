@@ -142,8 +142,10 @@ export default function ScatterComponentParent({
   year,
   score_one,
   score_two,
+  provinceSelected,
 }) {
-  console.log("[ScatterComponentParent] : rendered : data :", data);
+  // this comp will be triggered again by province selection being passed in
+  console.log("[ScatterComponentParent] : rendered : new data :", data);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -256,7 +258,7 @@ export default function ScatterComponentParent({
         //   },
         // },
         marker: {
-          radius: 3, // set the marker radius to 5 pixels
+          radius: 5, // set the marker radius to 5 pixels
         },
         // dataLabels: {
         //   enabled: true,
@@ -288,7 +290,7 @@ export default function ScatterComponentParent({
         data: dataMapping(data, year, score_one, score_two),
       },
     });
-  }, [year, score_one, score_two]);
+  }, [year, score_one, score_two, provinceSelected]);
 
   return (
     <div className="h-full w-full flex flex-col ">
