@@ -235,29 +235,13 @@ export default function ScatterComponentParent({
           events: {
             click: (dot) => {
               // when a province dot is clicked, we want to load that province in params
-              // console.log("im logging from the dot click!", dot.point.PROVINCE);
-              if (!provinceSelected) {
+              // console.log("im logging from the dot click!", dot.point);
+              if (!dot.point.DISTRICT_ID) {
                 router.push(
                   `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${year}&score_one=${score_one}&score_two=${score_two}`
                 );
               }
             },
-            // click: function () {
-            //   // console.log(`Hey fuker, this is the points data... ${this}`);
-            //   let districtExists = tabs.some((tab) => tab.id === this.id);
-            //   if (!districtExists) {
-            //     const newTab = {
-            //       id: this.id,
-            //       name: this.DISTRICT,
-            //       path: `summary/${this.id}`,
-            //     };
-            //     setTabs([...tabs, newTab]);
-            //   }
-            //   navigate(`summary/${this.id}`);
-            // console.log(
-            //   "this log is from scatter click:: current tabs are",
-            //   tabs
-            // );
           },
         },
       },
@@ -289,10 +273,6 @@ export default function ScatterComponentParent({
   });
 
   useEffect(() => {
-    console.log(
-      "triggered!!! is provinceSelected true though?",
-      Boolean(provinceSelected)
-    );
     setChartOptions({
       ...chartOptions,
       xAxis: {
