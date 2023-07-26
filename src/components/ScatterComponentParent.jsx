@@ -36,19 +36,18 @@ const urlToTooltipMatching = {
   temp: "Temp Score",
 };
 
-function dataMapping(data, year, x_score, y_score) {
+function dataMapping(data, year, x_score, y_score, provinceSelected) {
   const xAxisScore = urlToScoreMatching[x_score];
   const yAxisScore = urlToScoreMatching[y_score];
-  // console.log("xAxisScore::", xAxisScore);
-  // console.log("yAxisScore::", yAxisScore);
+  //
   return data
-    .filter((obj) => obj.YEAR === Number(year))
+    .filter((obj) => Number(obj.YEAR) === Number(year))
     .map(function (point) {
       return {
         ...point,
-        id: point.PROVINCE_ID,
-        x: Math.round(point[xAxisScore]),
-        y: Math.round(point[yAxisScore]),
+        id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
+        x: Math.round(Number(point[xAxisScore])),
+        y: Math.round(Number(point[yAxisScore])),
         // color: colorPanel[point.REGION],
         color: "#666666",
       };
@@ -251,14 +250,16 @@ export default function ScatterComponentParent({
       {
         // type: "scatter",
         // start with points that dont have parent
-        data: dataMapping(data, year, score_one, score_two),
+        data: dataMapping(data, year, score_one, score_two, provinceSelected),
         // states: {
         //   hover: {
         //     enabled: false,
         //   },
         // },
         marker: {
-          radius: 5, // set the marker radius to 5 pixels
+          // radius: 5, // set the marker radius to 5 pixels
+          // set radius based on dot type...
+          radius: provinceSelected ? 3 : 5,
         },
         // dataLabels: {
         //   enabled: true,
@@ -287,7 +288,10 @@ export default function ScatterComponentParent({
       },
       series: {
         ...chartOptions.series,
-        data: dataMapping(data, year, score_one, score_two),
+        marker: {
+          radius: provinceSelected ? 3 : 5,
+        },
+        data: dataMapping(data, year, score_one, score_two, provinceSelected),
       },
     });
   }, [year, score_one, score_two, provinceSelected]);
