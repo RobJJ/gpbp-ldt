@@ -6,7 +6,10 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 
-highchartsMore(Highcharts);
+// highchartsMore(Highcharts);
+if (typeof Highcharts === "object") {
+  highchartsMore(Highcharts);
+}
 
 // ** note:: be sure of what score from url is sitting on xAxis and which is on yAxis..
 // currently score_one will be x, and score_two will be y
@@ -23,6 +26,13 @@ const urlToLableMatching = {
   air: "Air Quality Score",
   forest: "Deforestation Score",
   temp: "Extreme Temperature Score",
+};
+const urlToTooltipMatching = {
+  econ: "Econ Score",
+  envr: "Env Score",
+  air: "Air Score",
+  forest: "Deforest Score",
+  temp: "Temp Score",
 };
 
 function dataMapping(data, year, x_score, y_score) {
@@ -167,8 +177,8 @@ export default function ScatterComponentParent({
       headerFormat: "<table>",
       pointFormat:
         '<tr><th colspan="2"><h3><u>{point.PROVINCE}</u></h3></th></tr>' +
-        "<tr><th>Env Score: </th><td>{point.x}</td></tr>" +
-        "<tr><th>Eco Score: </th><td>{point.y}</td></tr>",
+        `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
+        `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>`,
       followPointer: true,
       hideDelay: 0,
     },
@@ -187,7 +197,7 @@ export default function ScatterComponentParent({
       startOnTick: false,
       endOnTick: true,
       // maxPadding: 0.2,
-      tickLength: 0,
+      // tickLength: 0,
     },
     yAxis: {
       title: {
@@ -205,7 +215,7 @@ export default function ScatterComponentParent({
       series: {
         animation: {
           // controls animation of paint of points
-          // duration: 2000,
+          duration: 1500,
         },
         // removes lingering tooltip
         stickyTracking: false,
@@ -280,7 +290,7 @@ export default function ScatterComponentParent({
   }, [year, score_one, score_two]);
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-full w-full flex flex-col ">
       <HighchartsReact
         highcharts={Highcharts}
         options={chartOptions}
