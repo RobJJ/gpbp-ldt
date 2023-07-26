@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
+import { useRouter } from "next/navigation";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
@@ -141,10 +142,13 @@ export default function ScatterComponentParent({
   year,
   score_one,
   score_two,
+  countrySelected,
   provinceSelected,
 }) {
   // this comp will be triggered again by province selection being passed in
-  console.log("[ScatterComponentParent] : rendered : new data :", data);
+  console.log("[ScatterComponentParent] : rendered : new data :");
+
+  const router = useRouter();
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -178,7 +182,11 @@ export default function ScatterComponentParent({
       useHTML: true,
       headerFormat: "<table>",
       pointFormat:
-        '<tr><th colspan="2"><h3><u>{point.PROVINCE}</u></h3></th></tr>' +
+        `<tr><th colspan="2"><h3>${
+          provinceSelected
+            ? "<u>{point.DISTRICT}</u>"
+            : "<u>{point.PROVINCE}</u>"
+        }</h3></th></tr>` +
         `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
         `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>`,
       followPointer: true,
@@ -225,6 +233,15 @@ export default function ScatterComponentParent({
         colorByPoint: true,
         point: {
           events: {
+            click: (dot) => {
+              // when a province dot is clicked, we want to load that province in params
+              // console.log("im logging from the dot click!", dot.point.PROVINCE);
+              if (!provinceSelected) {
+                router.push(
+                  `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+                );
+              }
+            },
             // click: function () {
             //   // console.log(`Hey fuker, this is the points data... ${this}`);
             //   let districtExists = tabs.some((tab) => tab.id === this.id);
@@ -272,6 +289,10 @@ export default function ScatterComponentParent({
   });
 
   useEffect(() => {
+    console.log(
+      "triggered!!! is provinceSelected true though?",
+      Boolean(provinceSelected)
+    );
     setChartOptions({
       ...chartOptions,
       xAxis: {
@@ -285,6 +306,17 @@ export default function ScatterComponentParent({
         title: {
           text: `<b>${urlToLableMatching[score_two]}</b>`,
         },
+      },
+      tooltip: {
+        ...chartOptions.tooltip,
+        pointFormat:
+          `<tr><th colspan="2"><h3>${
+            provinceSelected
+              ? "<u>{point.DISTRICT}</u>"
+              : "<u>{point.PROVINCE}</u>"
+          }</h3></th></tr>` +
+          `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
+          `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>`,
       },
       series: {
         ...chartOptions.series,
