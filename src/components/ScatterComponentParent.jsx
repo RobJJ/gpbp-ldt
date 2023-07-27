@@ -50,7 +50,7 @@ function dataMapping(data, year, x_score, y_score, provinceSelected) {
         x: Math.round(Number(point[xAxisScore])),
         y: Math.round(Number(point[yAxisScore])),
         // color: colorPanel[point.REGION],
-        color: "#666666",
+        // color: "#666666",
       };
     });
 }
@@ -146,10 +146,11 @@ export default function ScatterComponentParent({
   provinceSelected,
 }) {
   // this comp will be triggered again by province selection being passed in
-  console.log("[ScatterComponentParent] : rendered : new data :");
+  // console.log("[ScatterComponentParent] : rendered : new data :");
 
   const router = useRouter();
 
+  let focusedPoint;
   let chart;
   const [chartOptions, setChartOptions] = useState({
     chart: {
@@ -166,8 +167,12 @@ export default function ScatterComponentParent({
         redraw: function () {
           drawQuadrants(this, "animate");
         },
+        click: (chart) => {
+          console.log("the chart has been clicccccked.. chart info?", chart);
+        },
       },
     },
+    colors: "#000000",
     credits: {
       enabled: false,
     },
@@ -230,16 +235,51 @@ export default function ScatterComponentParent({
         // removes lingering tooltip
         stickyTracking: false,
         // Assign a unique color to each point in the series
-        colorByPoint: true,
+        // colorByPoint: true,
+
         point: {
           events: {
             click: (dot) => {
               // when a province dot is clicked, we want to load that province in params
-              // console.log("im logging from the dot click!", dot.point);
+
               if (!dot.point.DISTRICT_ID) {
                 router.push(
                   `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${year}&score_one=${score_one}&score_two=${score_two}`
                 );
+                return;
+              }
+              if (dot.point.DISTRICT_ID) {
+                // if user clicks a district dot,, we want to highlite it
+                console.log(
+                  "you clicked a district dot bruv... lets have a look shall we...",
+                  dot.point
+                );
+                if (dot.point === focusedPoint) {
+                  // reset its styling because its active
+                  dot.point.update({
+                    color: "#000000",
+                    marker: { radius: 3 },
+                  });
+                  focusedPoint = null;
+                  return;
+                } else if (dot.point !== focusedPoint && focusedPoint) {
+                  focusedPoint.update({
+                    color: "#000000",
+                    marker: { radius: 3 },
+                  });
+                  focusedPoint = dot.point;
+                  dot.point.update({
+                    color: "#ff0000",
+                    marker: { radius: 5 },
+                  });
+                  return;
+                } else {
+                  focusedPoint = dot.point;
+                  dot.point.update({
+                    color: "#ff0000",
+                    marker: { radius: 5 },
+                  });
+                }
               }
             },
           },
@@ -250,6 +290,7 @@ export default function ScatterComponentParent({
     series: [
       {
         // type: "scatter",
+
         // start with points that dont have parent
         data: dataMapping(data, year, score_one, score_two, provinceSelected),
         // states: {
