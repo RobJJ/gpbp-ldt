@@ -17,8 +17,8 @@ export default function FilterButtonYear({
   createQueryString,
   filterState,
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
+  // const router = useRouter();
+  // const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   // const [year, setYear] = useState(false);
 

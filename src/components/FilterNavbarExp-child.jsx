@@ -1,18 +1,19 @@
 "use client";
 import { visualTypeSelected } from "@/lib/atoms";
 import { useAtom } from "jotai";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export default function FilterNavbarExpChild({
-  yearParam,
+  // yearParam,
   scoreOneParam,
   scoreTwoParam,
 }) {
   //   console.log("adqwdqw", scoreOneParam, yearParam);
   const router = useRouter();
   const pathname = usePathname();
-
+  const searchParams = useSearchParams();
+  let yearParam = searchParams.get("year");
   // "map" or "scatter" :: we want to show two score selectors when "scatter"
   const [visualType] = useAtom(visualTypeSelected);
 
@@ -20,6 +21,10 @@ export default function FilterNavbarExpChild({
   const [year, setYear] = useState(yearParam);
   const [scoreOne, setScoreOne] = useState(scoreOneParam);
   const [scoreTwo, setScoreTwo] = useState(scoreTwoParam);
+
+  useEffect(() => {
+    setYear(yearParam);
+  }, [yearParam]);
 
   // handle changing router here...
   const handleSubmit = (event) => {

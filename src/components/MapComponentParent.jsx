@@ -4,6 +4,7 @@ import { getProvinceId } from "@/lib/utils";
 import Link from "next/link";
 
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 // ** this is the actual map component
@@ -31,7 +32,7 @@ export default function MapComponentParent({
 
   // default is the province geo layers
   const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
-
+  const router = useRouter();
   // ** note :: this method is slow because it firstly relies on the full geojsonDataDistrict which is loaded at server... or does this delay not matter at build???
   // when this component renders again,, we will check if province is true! if it is.. then we spread the districts into the currentGeoLayers state! this will show the districts inside!
   // ** keeping for later use
@@ -87,6 +88,15 @@ export default function MapComponentParent({
       >
         You can navigate to a [DISTRICT] from here
       </Link>
+      <button
+        onClick={() =>
+          router.push(
+            `/dashboard/${countrySelected}?year=2021&score_one=${score_one}&score_two=${score_two}`
+          )
+        }
+      >
+        update the year here to 2021
+      </button>
     </section>
   );
 }

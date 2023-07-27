@@ -7,6 +7,7 @@ import SwitchComponent from "./MapScatterToggle";
 export default function FilterNavbarExp({}) {
   const searchParams = useSearchParams();
 
+  let yearParam = searchParams.get("year");
   //   console.log("[FilterNavbarExp] : searchParams passed through?", searchParams);
 
   return (
@@ -14,7 +15,7 @@ export default function FilterNavbarExp({}) {
       <SwitchComponent />
 
       <FilterNavbarExpChild
-        yearParam={searchParams.get("year")}
+        yearParam={yearParam}
         scoreOneParam={searchParams.get("score_one")}
         scoreTwoParam={searchParams.get("score_two")}
       />
