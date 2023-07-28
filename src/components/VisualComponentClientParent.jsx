@@ -11,19 +11,19 @@ import { cache } from "react";
 import { useGedData } from "@/lib/hooks/getGedDataQuery";
 import LoadingSpinner from "./LoadingComponent";
 
-// this components purpose is to sync the map and scatter components to the url filtering params and pass down data
+// this component receives initial data from server (geoprovince, and gedprovince data)
+// it also determines which visual to show, map or scatter based on the visualType from atom
 
 export default function VisualComponentClientParent({
   geojsonDataProvince,
-  // geojsonDataDistrict,
   gedDataProvince,
 }) {
   console.log("[VisualComponentClientParent] : rendered");
   const params = useParams();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
 
-  // const province = params.province;
+  // fetching data at this level,, maybe we should rather fetch this in the component
 
   const { data, isLoading } = useGedData(
     params.country,
@@ -45,9 +45,9 @@ export default function VisualComponentClientParent({
           countrySelected={params.country}
           provinceSelected={params.province}
           districtSelected={params.district}
-          year={searchParams.get("year")}
-          score_one={searchParams.get("score_one")}
-          score_two={searchParams.get("score_two")}
+          // year={searchParams.get("year")}
+          // score_one={searchParams.get("score_one")}
+          // score_two={searchParams.get("score_two")}
         />
       )}
       {visualType === "scatter" && (
@@ -55,12 +55,12 @@ export default function VisualComponentClientParent({
           // going to leave this out and handle above based on query params
           // gedDataProvince={gedDataProvince}
           data={data}
-          countrySelected={params.country}
-          provinceSelected={params.province}
-          districtSelected={params.district}
-          year={searchParams.get("year")}
-          score_one={searchParams.get("score_one")}
-          score_two={searchParams.get("score_two")}
+          // countrySelected={params.country}
+          // provinceSelected={params.province}
+          // districtSelected={params.district}
+          // year={searchParams.get("year")}
+          // score_one={searchParams.get("score_one")}
+          // score_two={searchParams.get("score_two")}
         />
       )}
     </div>

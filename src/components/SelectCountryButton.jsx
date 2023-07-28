@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
+// add available countries here :: potentially move this to the server options
 const currentAvailableCountries = [
   { name: "uzbekistan", id: 1 },
   { name: "kosovo", id: 2 },

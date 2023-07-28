@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
@@ -137,19 +137,22 @@ function drawQuadrants(chart, update) {
   });
 }
 
-export default function ScatterComponentParent({
-  data,
-  year,
-  score_one,
-  score_two,
-  countrySelected,
-  provinceSelected,
-  districtSelected,
-}) {
-  // this comp will be triggered again by province selection being passed in
-  console.log("[ScatterComponentParent] : rendered : year :", year);
+// potentially move alot of this state to the child of scatter that actually renders the scatter
 
+export default function ScatterComponentParent({ data }) {
+  // this comp will be triggered again by province selection being passed in
+
+  const searchParams = useSearchParams();
+  const params = useParams();
   const router = useRouter();
+
+  let countrySelected = params.country;
+  let provinceSelected = params.province;
+  let districtSelected = params.district;
+  let score_one = searchParams.get("score_one");
+  let score_two = searchParams.get("score_two");
+  let year = searchParams.get("year");
+  console.log("scatter has been rendered,, the year is : ", year);
 
   let focusedPoint;
 
@@ -190,7 +193,7 @@ export default function ScatterComponentParent({
       headerFormat: "<table>",
       pointFormat:
         `<tr><th colspan="2"><h3>${
-          provinceSelected
+          params.province
             ? "<u>{point.DISTRICT}</u>"
             : "<u>{point.PROVINCE}</u>"
         }</h3></th></tr>` +
@@ -338,7 +341,8 @@ export default function ScatterComponentParent({
   });
 
   useEffect(() => {
-    console.log("kbkjbkjlnkjn");
+    console.log("use effect triggered.. ");
+
     setChartOptions({
       ...chartOptions,
       xAxis: {
@@ -371,6 +375,15 @@ export default function ScatterComponentParent({
           radius: provinceSelected ? 3 : 5,
         },
         data: dataMapping(data, year, score_one, score_two, provinceSelected),
+      },
+      plotOptions: {
+        ...chartOptions.plotOptions,
+        series: {
+          ...chartOptions.plotOptions.series,
+          point: {
+            ...chartOptions.plotOptions.series.point,
+          },
+        },
       },
     });
   }, [year, score_one, score_two, provinceSelected]);
