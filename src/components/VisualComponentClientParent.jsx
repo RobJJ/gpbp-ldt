@@ -20,8 +20,12 @@ export default function VisualComponentClientParent({
 }) {
   console.log("[VisualComponentClientParent] : rendered");
   const params = useParams();
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
+
+  let year = searchParams.get("year");
+  let score_one = searchParams.get("score_one");
+  let score_two = searchParams.get("score_two");
 
   // fetching data at this level,, maybe we should rather fetch this in the component
 
@@ -45,9 +49,9 @@ export default function VisualComponentClientParent({
           countrySelected={params.country}
           provinceSelected={params.province}
           districtSelected={params.district}
-          // year={searchParams.get("year")}
-          // score_one={searchParams.get("score_one")}
-          // score_two={searchParams.get("score_two")}
+          year={year}
+          score_one={score_one}
+          score_two={score_two}
         />
       )}
       {visualType === "scatter" && (
@@ -55,6 +59,9 @@ export default function VisualComponentClientParent({
           // going to leave this out and handle above based on query params
           // gedDataProvince={gedDataProvince}
           data={data}
+          year={year}
+          score_one={score_one}
+          score_two={score_two}
           // countrySelected={params.country}
           // provinceSelected={params.province}
           // districtSelected={params.district}

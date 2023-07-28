@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -136,25 +136,27 @@ function drawQuadrants(chart, update) {
     height: bottomTo0,
   });
 }
-
+//
+let focusedPoint;
 // potentially move alot of this state to the child of scatter that actually renders the scatter
 
-export default function ScatterComponentParent({ data }) {
+export default function ScatterComponentParent({
+  data,
+  year,
+  score_one,
+  score_two,
+}) {
   // this comp will be triggered again by province selection being passed in
 
-  const searchParams = useSearchParams();
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   let countrySelected = params.country;
   let provinceSelected = params.province;
   let districtSelected = params.district;
-  let score_one = searchParams.get("score_one");
-  let score_two = searchParams.get("score_two");
-  let year = searchParams.get("year");
-  console.log("scatter has been rendered,, the year is : ", year);
 
-  let focusedPoint;
+  console.log("scatter has been rendered,, the focused year is : ", year);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -257,15 +259,19 @@ export default function ScatterComponentParent({ data }) {
               if (dot.point.DISTRICT_ID) {
                 // if user clicks a district dot,, we want to highlite it
                 // console.log(
+
                 //   "you clicked a district dot bruv... lets have a look shall we...",
                 //   dot.point
                 // );
                 if (dot.point === focusedPoint) {
                   // reset its styling because its active.. go back to province view
+
+                  // console.log("clicked dot,, focusedPoint??", focusedPoint);
                   dot.point.update({
                     color: "#000000",
                     marker: { radius: 3 },
                   });
+
                   // set to null before navigating,, so that breadcumb nav can have true when district useEffect triggers
                   focusedPoint = null;
 
@@ -291,6 +297,10 @@ export default function ScatterComponentParent({ data }) {
                   // console.log("focused point bro...", focusedPoint);
                   return;
                 } else {
+                  console.log(
+                    "you clicked a fresh dot,, what is the year?",
+                    year
+                  );
                   // there is no active dot
                   dot.point.update({
                     color: "#ff0000",
@@ -301,10 +311,7 @@ export default function ScatterComponentParent({ data }) {
                   router.push(
                     `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${year}&score_one=${score_one}&score_two=${score_two}`
                   );
-                  // console.log(
-                  //   "clicked the dot,, is province active?",
-                  //   provinceSelected
-                  // );
+
                   return;
                 }
               }
@@ -341,8 +348,7 @@ export default function ScatterComponentParent({ data }) {
   });
 
   useEffect(() => {
-    console.log("use effect triggered.. ");
-
+    console.log("your useEffect has fired!! the year values is::", year);
     setChartOptions({
       ...chartOptions,
       xAxis: {
@@ -376,29 +382,22 @@ export default function ScatterComponentParent({ data }) {
         },
         data: dataMapping(data, year, score_one, score_two, provinceSelected),
       },
-      plotOptions: {
-        ...chartOptions.plotOptions,
-        series: {
-          ...chartOptions.plotOptions.series,
-          point: {
-            ...chartOptions.plotOptions.series.point,
-          },
-        },
-      },
     });
-  }, [year, score_one, score_two, provinceSelected]);
+  }, [year, score_one, score_two, params.province]);
+  // to handle the district being unselected by the breadcrumbs
   // useEffect(() => {
-  //   console.log("did the use effect fire? focused point", focusedPoint);
-  //   // listen for the district removal,,
-  //   if (districtSelected === undefined && foc) {
+  //   console.log("did the use effect fire? focused poiint??", focusedPoint);
+  //   //
+  //   if (focusedPoint && !districtSelected) {
   //     focusedPoint.update({
   //       color: "#000000",
   //       marker: { radius: 3 },
   //     });
   //     focusedPoint = null;
-  //     return;
   //   }
-  //   return;
+  //   setChartOptions({
+  //     ...chartOptions,
+  //   });
   // }, [districtSelected]);
 
   return (
