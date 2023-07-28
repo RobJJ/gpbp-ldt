@@ -1,16 +1,7 @@
-import React from "react";
 import versioningImage from "../../../public/versioning.png";
 import Image from "next/image";
 
-// import { FaSpinner } from "react-icons/fa";
-
 export default function ReleaseNotes() {
-  // const [isImageLoading, setIsImageLoading] = useState(true);
-
-  // const handleImageLoad = () => {
-  //   setIsImageLoading(false);
-  // };
-
   return (
     <section className=" w-full h-full flex smlr:flex-col gap-1 overflow-auto bg-[#F5F8FB]">
       {/* LEFT PANEL */}

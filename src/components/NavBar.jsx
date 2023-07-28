@@ -15,6 +15,13 @@ export default function NavBar() {
       >
         Release Notes
       </Link>
+      <Link
+        className="underline font-bold text-lg text-white"
+        href={"/methodology"}
+        target="_blank"
+      >
+        Methodology
+      </Link>
     </div>
   );
 }
