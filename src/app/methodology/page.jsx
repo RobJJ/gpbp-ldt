@@ -13,7 +13,7 @@ export default function MethodologyPage() {
           </div>
         </section>
         <section className="h-full w-9/12 bg-red-300 px-8 pt-8 overflow-auto">
-          <main className="w-full h-full bg-red-200 flex flex-col gap-5 overflow-auto text-lg">
+          <main className="w-full h-full bg-red-200 flex flex-col gap-5 overflow-auto text-lg scroll-smooth">
             <div id="section1">
               <span className="font-bold text-xl">SECTION ONE</span>
               <br />
