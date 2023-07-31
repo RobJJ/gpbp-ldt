@@ -2,6 +2,7 @@
 
 import LoadingSpinner from "@/components/LoadingComponent";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
+import ProvincePageVisualParent from "@/components/ProvincePageVisualParent";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -21,9 +22,7 @@ export default function ProvincePage({ params, searchParams }) {
             Download Data | Methodology
           </span>
         </div>
-        <div className="w-full h-full bg-orange-400">
-          Line chart will go here
-        </div>
+        <ProvincePageVisualParent />
       </section>
       <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
         <Suspense fallback={<LoadingSpinner />}>
