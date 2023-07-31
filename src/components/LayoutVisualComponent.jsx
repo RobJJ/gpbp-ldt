@@ -7,8 +7,8 @@ import VisualComponentClientParent from "./VisualComponentClientParent";
 
 export default async function LayoutVisualComponent({
   country,
-  province,
-  district,
+  // province,
+  // district,
 }) {
   // console.log("[LayoutVisualComponent] : rendered");
   // load in initial data from SERVER

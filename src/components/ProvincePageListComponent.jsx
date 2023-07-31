@@ -31,7 +31,8 @@ export default async function CountryPageListComponent({
       {/* header */}
       <section className="w-full flex justify-between bg-orange-200 px-2 py-1 items-center ">
         <span className="text-lg bg-white">
-          Districts in <b>{province}</b> in <b>{searchParams.year}</b>
+          Districts in <b>{decodeURIComponent(province)}</b> in{" "}
+          <b>{searchParams.year}</b>
         </span>
         <span className="text-sm text-blue-600 bg-white">Compare Data</span>
       </section>

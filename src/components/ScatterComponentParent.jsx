@@ -160,7 +160,11 @@ export default function ScatterComponentParent({
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
+    accessibility: {
+      enabled: false,
+    },
     chart: {
+      // customYearValue: year,
       backgroundColor: "#fff",
       // plotBackgroundColor: "#F7F7F7",
       type: "scatter",
@@ -174,9 +178,6 @@ export default function ScatterComponentParent({
         redraw: function () {
           drawQuadrants(this, "animate");
         },
-        // click: (chart) => {
-        //   console.log("the chart has been clicccccked.. chart info?", chart);
-        // },
       },
     },
     colors: "#000000",
@@ -251,8 +252,12 @@ export default function ScatterComponentParent({
               // when a province dot is clicked, we want to load that province in params
 
               if (!dot.point.DISTRICT_ID) {
+                // console.log(
+                //   "you clicked a province dot.. lets see what this is::",
+                //   dot.point.YEAR
+                // );
                 router.push(
-                  `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+                  `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
                 return;
               }
@@ -276,7 +281,7 @@ export default function ScatterComponentParent({
                   focusedPoint = null;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${provinceSelected}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   return;
                 } else if (dot.point !== focusedPoint && focusedPoint) {
@@ -292,15 +297,15 @@ export default function ScatterComponentParent({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   // console.log("focused point bro...", focusedPoint);
                   return;
                 } else {
-                  console.log(
-                    "you clicked a fresh dot,, what is the year?",
-                    year
-                  );
+                  // console.log(
+                  //   "you clicked a fresh dot,, what is the year?",
+                  //   dot.point.YEAR
+                  // );
                   // there is no active dot
                   dot.point.update({
                     color: "#ff0000",
@@ -309,7 +314,7 @@ export default function ScatterComponentParent({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
 
                   return;
@@ -349,8 +354,13 @@ export default function ScatterComponentParent({
 
   useEffect(() => {
     console.log("your useEffect has fired!! the year values is::", year);
+
     setChartOptions({
       ...chartOptions,
+      // chart: {
+      //   ...chartOptions.chart,
+      //   customYearValue: year,
+      // },
       xAxis: {
         ...chartOptions.xAxis,
         title: {
@@ -382,6 +392,29 @@ export default function ScatterComponentParent({
         },
         data: dataMapping(data, year, score_one, score_two, provinceSelected),
       },
+      // plotOptions: {
+      //   series: {
+      //     ...chartOptions.plotOptions.series,
+      //     point: {
+      //       events: {
+      //         click: (dot) => {
+      //           // when a province dot is clicked, we want to load that province in params
+
+      //           if (!dot.point.DISTRICT_ID) {
+      //             console.log(
+      //               "you clicked a province dot.. lets see what this is::",
+      //               dot.point.YEAR
+      //             );
+      //             router.push(
+      //               `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+      //             );
+      //             return;
+      //           }
+      //         },
+      //       },
+      //     },
+      //   },
+      // },
     });
   }, [year, score_one, score_two, params.province]);
   // to handle the district being unselected by the breadcrumbs
