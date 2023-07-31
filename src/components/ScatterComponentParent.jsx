@@ -281,7 +281,7 @@ export default function ScatterComponentParent({
                   focusedPoint = null;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   return;
                 } else if (dot.point !== focusedPoint && focusedPoint) {
@@ -297,7 +297,7 @@ export default function ScatterComponentParent({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   // console.log("focused point bro...", focusedPoint);
                   return;
@@ -314,7 +314,7 @@ export default function ScatterComponentParent({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${provinceSelected}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
 
                   return;
@@ -418,20 +418,33 @@ export default function ScatterComponentParent({
     });
   }, [year, score_one, score_two, params.province]);
   // to handle the district being unselected by the breadcrumbs
-  // useEffect(() => {
-  //   console.log("did the use effect fire? focused poiint??", focusedPoint);
-  //   //
-  //   if (focusedPoint && !districtSelected) {
-  //     focusedPoint.update({
-  //       color: "#000000",
-  //       marker: { radius: 3 },
-  //     });
-  //     focusedPoint = null;
-  //   }
-  //   setChartOptions({
-  //     ...chartOptions,
-  //   });
-  // }, [districtSelected]);
+  useEffect(() => {
+    console.log("did the use effect fire? focused poiint??", focusedPoint);
+    // if user navigates from a district -> country breadcrumb nav
+    if (!provinceSelected && focusedPoint) {
+      focusedPoint.update({
+        color: "#000000",
+        marker: { radius: 5 },
+      });
+      focusedPoint = null;
+      return;
+    }
+
+    // if there is an active dot, but you have navigated back to province view
+    if (focusedPoint && !districtSelected) {
+      focusedPoint.update({
+        color: "#000000",
+        marker: { radius: 3 },
+      });
+      focusedPoint = null;
+
+      return;
+    }
+    setChartOptions({
+      ...chartOptions,
+    });
+    return;
+  }, [districtSelected]);
 
   return (
     <div className="h-full w-full flex flex-col ">
