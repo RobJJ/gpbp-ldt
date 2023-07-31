@@ -23,6 +23,7 @@ export default function TableRow({
   econ,
   envr,
   country,
+  province,
   searchParams,
 }) {
   return (
@@ -32,7 +33,9 @@ export default function TableRow({
       </span>
       <Link
         href={{
-          pathname: `/dashboard/${country}/${regionName}`,
+          pathname: !province
+            ? `/dashboard/${country}/${regionName}`
+            : `/dashboard/${country}/${province}/${regionName}`,
           // can spread the searchParams!!!! *******
           query: { ...searchParams },
         }}

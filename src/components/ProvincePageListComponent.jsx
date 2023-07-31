@@ -85,6 +85,7 @@ export default async function CountryPageListComponent({
           .map((district, idx) => (
             <TableRow
               country={country}
+              province={province}
               searchParams={searchParams}
               key={idx + 1}
               number={idx + 1}
