@@ -38,6 +38,21 @@ export const getProvinces = cache(async (country) => {
   return allDistricts;
 });
 
+export const getAllDistrictsInSelectedProvinceByYear = cache(
+  async (country, province_id, year) => {
+    const client = await clientPromise;
+    const db = client.db(process.env.MONGO_DB_NAME);
+    const allDistricts = await db
+      .collection(`${country}-district-data`)
+      .find(
+        { YEAR: year, PROVINCE_ID: province_id },
+        { projection: { _id: 0 } }
+      )
+      .toArray();
+    return allDistricts;
+  }
+);
+
 /////////////////////////////////////// OLD BELOW
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -29,13 +29,13 @@ export default async function CountryPageListComponent({
         <span className="text-lg bg-white">
           Provinces in <b>{country}</b> in <b>{searchParams.year}</b>
         </span>
-        <span className="text-sm text-blue-600 bg-white">Comapre Data</span>
+        <span className="text-sm text-blue-600 bg-white">Compare Data</span>
       </section>
       {/* body */}
       <section className="w-full bg-white font-bold flex text-center ">
         <span className="bg-red-100 w-1/12 border-2 border-black">No</span>
         <span className="bg-red-200 border-r-2 border-y-2 border-black w-5/12">
-          District
+          Province
         </span>
         <span className="bg-red-300 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
           <span>Environment</span>
@@ -78,15 +78,15 @@ export default async function CountryPageListComponent({
             if (a.PROVINCE > b.PROVINCE) return 1;
             return 0;
           })
-          .map((district, idx) => (
+          .map((province, idx) => (
             <TableRow
               country={country}
               searchParams={searchParams}
               key={idx + 1}
               number={idx + 1}
-              regionName={district.PROVINCE}
-              econ={Math.round(district.ECON_SCORE)}
-              envr={Math.round(district.ENVR_SCORE)}
+              regionName={province.PROVINCE}
+              econ={Math.round(province.ECON_SCORE)}
+              envr={Math.round(province.ENVR_SCORE)}
             />
           ))}
       </section>
