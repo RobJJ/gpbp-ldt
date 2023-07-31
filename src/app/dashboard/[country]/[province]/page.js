@@ -12,11 +12,18 @@ export default function ProvincePage({ params, searchParams }) {
   // console.log("[ProvincePage] : rendered : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-orange-200 flex flex-col p-2 gap-2">
-      <section className="w-full h-1/2 bg-orange-100 rounded text-2xl font-bold">
-        [PROVINCE LEVEL] : SHOW highcharts HERE <br />
-        ** fetch data in this{" "}
-        <span className="text-red-500">async server component</span> based on
-        province selected - feed data to the highcharts component **
+      <section className="w-full h-1/2 bg-orange-100 rounded">
+        <div className="w-full flex justify-between items-center bg-orange-300">
+          <span className="font-bold text-xl">
+            {decodeURIComponent(params.province)} Performance
+          </span>
+          <span className="text-blue-500 underline">
+            Download Data | Methodology
+          </span>
+        </div>
+        <div className="w-full h-full bg-orange-400">
+          Line chart will go here
+        </div>
       </section>
       <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
         <Suspense fallback={<LoadingSpinner />}>
