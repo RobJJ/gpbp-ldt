@@ -423,47 +423,17 @@ export default function ScatterComponentParent({
         chartRef.current.chart.series[0].data
       );
 
+      // find dot in chart array that matches in name in URL
       const pointToHighlite = chartRef.current.chart.series[0].data.find(
-        (point) => point.DISTRICT === districtSelected
+        (point) =>
+          decodeURIComponent(point.DISTRICT) ===
+          decodeURIComponent(districtSelected)
       );
       pointToHighlite.update({
         color: "#ff0000",
         marker: { radius: 5 },
       });
       focusedPoint = pointToHighlite;
-      // chartRef.current.chart.series[0].data
-      // let matchedScatterPoint = chartOptions.series[0].data.find(
-      //   (point) => point.DISTRICT === districtSelected
-      // );
-      // matchedScatterPoint = {
-      //   ...matchedScatterPoint,
-      //   marker: {
-      //     radius: 10,
-      //   },
-      // };
-      // let updatedArray = chartOptions.series[0].data.map((point) => {
-      //   if (point.DISTRICT === districtSelected) {
-      //     return {
-      //       ...point,
-      //       marker: {
-      //         radius: 10,
-      //       },
-      //     };
-      //   } else {
-      //     return point;
-      //   }
-      // });
-      // setChartOptions({
-      //   ...chartOptions,
-      //   series: [{ ...chartOptions.series, data: [...updatedArray] }],
-      // });
-      // // matchedScatterPoint.update();
-      // console.log("new array : ", updatedArray);
-      // matchedScatterPoint.update({
-      //   color: "#ff0000",
-      //   marker: { radius: 5 },
-      // });
-      // focusedPoint = matchedScatterPoint;
     }
 
     // if there is an active dot, but you have navigated back to province view
