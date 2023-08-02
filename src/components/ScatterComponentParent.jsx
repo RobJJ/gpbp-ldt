@@ -49,6 +49,10 @@ function dataMapping(data, year, x_score, y_score, provinceSelected) {
         id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
         x: Math.round(Number(point[xAxisScore])),
         y: Math.round(Number(point[yAxisScore])),
+        // marker: {
+        //   radius: 10,
+        // },
+        // radius: 6,
         // color: colorPanel[point.REGION],
         // color: "#666666",
       };
@@ -155,6 +159,8 @@ export default function ScatterComponentParent({
   let countrySelected = params.country;
   let provinceSelected = params.province;
   let districtSelected = params.district;
+
+  const chartRef = useRef();
 
   console.log("scatter has been rendered,, the focused year is : ", year);
 
@@ -321,6 +327,9 @@ export default function ScatterComponentParent({
                 }
               }
             },
+            // update: (dot) => {
+            //   console.log("you tried to update this dot?");
+            // },
           },
         },
       },
@@ -392,34 +401,11 @@ export default function ScatterComponentParent({
         },
         data: dataMapping(data, year, score_one, score_two, provinceSelected),
       },
-      // plotOptions: {
-      //   series: {
-      //     ...chartOptions.plotOptions.series,
-      //     point: {
-      //       events: {
-      //         click: (dot) => {
-      //           // when a province dot is clicked, we want to load that province in params
-
-      //           if (!dot.point.DISTRICT_ID) {
-      //             console.log(
-      //               "you clicked a province dot.. lets see what this is::",
-      //               dot.point.YEAR
-      //             );
-      //             router.push(
-      //               `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-      //             );
-      //             return;
-      //           }
-      //         },
-      //       },
-      //     },
-      //   },
-      // },
     });
   }, [year, score_one, score_two, params.province]);
   // to handle the district being unselected by the breadcrumbs
   useEffect(() => {
-    console.log("did the use effect fire? focused poiint??", focusedPoint);
+    // console.log("did the use effect fire? focused poiint??", focusedPoint);
     // if user navigates from a district -> country breadcrumb nav
     if (!provinceSelected && focusedPoint) {
       focusedPoint.update({
@@ -430,8 +416,59 @@ export default function ScatterComponentParent({
       return;
     }
 
+    // when a user navigates to the district from the district list instead of dot on scatter
+    if (!focusedPoint && districtSelected) {
+      console.log(
+        "Navigated to district from the list :: your chart Ref?",
+        chartRef.current.chart.series[0].data
+      );
+
+      const pointToHighlite = chartRef.current.chart.series[0].data.find(
+        (point) => point.DISTRICT === districtSelected
+      );
+      pointToHighlite.update({
+        color: "#ff0000",
+        marker: { radius: 5 },
+      });
+      focusedPoint = pointToHighlite;
+      // chartRef.current.chart.series[0].data
+      // let matchedScatterPoint = chartOptions.series[0].data.find(
+      //   (point) => point.DISTRICT === districtSelected
+      // );
+      // matchedScatterPoint = {
+      //   ...matchedScatterPoint,
+      //   marker: {
+      //     radius: 10,
+      //   },
+      // };
+      // let updatedArray = chartOptions.series[0].data.map((point) => {
+      //   if (point.DISTRICT === districtSelected) {
+      //     return {
+      //       ...point,
+      //       marker: {
+      //         radius: 10,
+      //       },
+      //     };
+      //   } else {
+      //     return point;
+      //   }
+      // });
+      // setChartOptions({
+      //   ...chartOptions,
+      //   series: [{ ...chartOptions.series, data: [...updatedArray] }],
+      // });
+      // // matchedScatterPoint.update();
+      // console.log("new array : ", updatedArray);
+      // matchedScatterPoint.update({
+      //   color: "#ff0000",
+      //   marker: { radius: 5 },
+      // });
+      // focusedPoint = matchedScatterPoint;
+    }
+
     // if there is an active dot, but you have navigated back to province view
     if (focusedPoint && !districtSelected) {
+      console.log("your focused point::", focusedPoint);
       focusedPoint.update({
         color: "#000000",
         marker: { radius: 3 },
@@ -440,6 +477,7 @@ export default function ScatterComponentParent({
 
       return;
     }
+    // why is this needed?
     setChartOptions({
       ...chartOptions,
     });
@@ -449,6 +487,7 @@ export default function ScatterComponentParent({
   return (
     <div className="h-full w-full flex flex-col ">
       <HighchartsReact
+        ref={chartRef}
         highcharts={Highcharts}
         options={chartOptions}
         containerProps={{ style: { height: "100%", width: "100%" } }}
