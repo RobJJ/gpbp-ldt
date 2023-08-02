@@ -162,7 +162,7 @@ export default function ScatterComponentParent({
 
   const chartRef = useRef();
 
-  console.log("scatter has been rendered,, the focused year is : ", year);
+  // console.log("scatter has been rendered,, the focused year is : ", year);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -362,7 +362,7 @@ export default function ScatterComponentParent({
   });
 
   useEffect(() => {
-    console.log("your useEffect has fired!! the year values is::", year);
+    // console.log("your useEffect has fired!! the year values is::", year);
 
     setChartOptions({
       ...chartOptions,
@@ -418,10 +418,10 @@ export default function ScatterComponentParent({
 
     // when a user navigates to the district from the district list instead of dot on scatter
     if (!focusedPoint && districtSelected) {
-      console.log(
-        "Navigated to district from the list :: your chart Ref?",
-        chartRef.current.chart.series[0].data
-      );
+      // console.log(
+      //   "Navigated to district from the list :: your chart Ref?",
+      //   chartRef.current.chart.series[0].data
+      // );
 
       // find dot in chart array that matches in name in URL
       const pointToHighlite = chartRef.current.chart.series[0].data.find(
@@ -438,7 +438,7 @@ export default function ScatterComponentParent({
 
     // if there is an active dot, but you have navigated back to province view
     if (focusedPoint && !districtSelected) {
-      console.log("your focused point::", focusedPoint);
+      // console.log("your focused point::", focusedPoint);
       focusedPoint.update({
         color: "#000000",
         marker: { radius: 3 },

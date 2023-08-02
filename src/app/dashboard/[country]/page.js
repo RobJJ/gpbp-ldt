@@ -6,7 +6,7 @@ import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
-  console.log("[CountryPage] : rendered : server");
+  // console.log("[CountryPage] : rendered : server");
   // console.log("[CountryPage] : rendered : searchParams : ", searchParams);
 
   return (

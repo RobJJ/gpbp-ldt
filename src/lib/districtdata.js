@@ -15,14 +15,17 @@ export const getDistricts = cache(async (country) => {
 
 // use province id to find all districts that belong
 export const getAllDistrictsInSelectedProvinceById = cache(
-  async (country, province) => {
+  async (country, province_id) => {
     const client = await clientPromise;
     const db = client.db(process.env.MONGO_DB_NAME);
     const allDistricts = await db
-      .collection(`${country}-province-data`)
-      .find({
-        PROVINCE: province,
-      })
+      .collection(`${country}-district-data`)
+      .find(
+        {
+          PROVINCE_ID: province_id,
+        },
+        { projection: { _id: 0 } }
+      )
       .toArray();
     return JSON.parse(JSON.stringify(allDistricts));
   }

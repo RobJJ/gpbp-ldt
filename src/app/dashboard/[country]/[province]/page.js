@@ -2,18 +2,21 @@
 
 import LoadingSpinner from "@/components/LoadingComponent";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
-import ProvincePageVisualParent from "@/components/ProvincePageVisualParent";
-import Link from "next/link";
+import ProvincePageVisual from "@/components/ProvincePageVisual";
 import { Suspense } from "react";
 
 // ok we have access to the params and searchParams because this is page.js and dynamic
 export default function ProvincePage({ params, searchParams }) {
   // fetch data here for the chosen Province!!
-  console.log("[ProvincePage] : rendered : server");
+  console.log(
+    "[ProvincePage] : rendered : server,, does the searchParams change??",
+    searchParams
+  );
   // console.log("[ProvincePage] : rendered : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-orange-200 flex flex-col p-2 gap-2">
       <section className="w-full h-1/2 bg-orange-100 rounded">
+        {/* header */}
         <div className="w-full flex justify-between items-center bg-orange-300">
           <span className="font-bold text-xl">
             {decodeURIComponent(params.province)} Performance
@@ -22,9 +25,17 @@ export default function ProvincePage({ params, searchParams }) {
             Download Data | Methodology
           </span>
         </div>
-        <ProvincePageVisualParent />
+        {/* main */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <ProvincePageVisual
+            country={params.country}
+            province={params.province}
+            searchParams={searchParams}
+          />
+        </Suspense>
       </section>
       <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
+        {/* this component is fetching data inside */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProvincePageListComponent
             country={params.country}

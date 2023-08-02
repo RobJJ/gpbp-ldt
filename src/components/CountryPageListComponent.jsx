@@ -11,7 +11,7 @@ export default async function CountryPageListComponent({
   country,
   searchParams,
 }) {
-  console.log("[CountryPageListComponent] rendered: server");
+  // console.log("[CountryPageListComponent] rendered: server");
   // ***** working ****
   // data based on [country] and year
   const provinceDataTest = await getAllProvincesInSelectedCountryByYear(

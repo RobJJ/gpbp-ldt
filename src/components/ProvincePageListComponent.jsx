@@ -6,7 +6,7 @@ import { getProvinceId } from "@/lib/utils";
 import { getAllDistrictsInSelectedProvinceByYear } from "@/lib/districtdata";
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
-export default async function CountryPageListComponent({
+export default async function ProvincePageListComponent({
   country,
   province,
   searchParams,
@@ -22,9 +22,6 @@ export default async function CountryPageListComponent({
     province_id,
     searchParams.year
   );
-
-  // const provinceData = await getAllProvincesInSelectedCountry(country);
-  console.log("[CountryPageListComponent] : data :", districtData);
 
   return (
     <div className="w-full h-full flex flex-col">
