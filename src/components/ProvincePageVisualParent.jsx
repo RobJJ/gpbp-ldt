@@ -16,7 +16,10 @@ export default function ProvincePageVisualParent({ provinceData }) {
         setSelectedTab={setSelectedTab}
       />
       {/* the scatter component that will render content based on selectedTab */}
-      <ProvincePageVisualChildVisual selectedTab={selectedTab} />
+      <ProvincePageVisualChildVisual
+        selectedTab={selectedTab}
+        provinceData={provinceData}
+      />
     </div>
   );
 }

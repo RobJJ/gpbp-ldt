@@ -10,11 +10,13 @@ import { getProvinceId } from "@/lib/utils";
 import { cache } from "react";
 import { useGedData } from "@/lib/hooks/getGedDataQuery";
 import LoadingSpinner from "./LoadingComponent";
+import ScatterComponentParentV2 from "./ScatterComponentParentV2";
 
 // this component receives initial data from server (geoprovince, and gedprovince data)
 // it also determines which visual to show, map or scatter based on the visualType from atom
 
-export default function VisualComponentClientParent({
+export default function VisualComponentClientParentV2({
+  gedDataDistrict,
   geojsonDataProvince,
   gedDataProvince,
 }) {
@@ -54,7 +56,20 @@ export default function VisualComponentClientParent({
         />
       )}
       {visualType === "scatter" && (
-        <ScatterComponentParent
+        <ScatterComponentParentV2
+          data={data}
+          year={year}
+          score_one={score_one}
+          score_two={score_two}
+        />
+      )}
+    </div>
+  );
+}
+
+// old version here -> still works
+{
+  /*<ScatterComponentParent
           // going to leave this out and handle above based on query params
           // gedDataProvince={gedDataProvince}
           data={data}
@@ -67,8 +82,5 @@ export default function VisualComponentClientParent({
           // year={searchParams.get("year")}
           // score_one={searchParams.get("score_one")}
           // score_two={searchParams.get("score_two")}
-        />
-      )}
-    </div>
-  );
+      />*/
 }

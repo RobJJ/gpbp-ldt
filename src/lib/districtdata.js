@@ -8,7 +8,7 @@ export const getDistricts = cache(async (country) => {
   const db = client.db(process.env.MONGO_DB_NAME);
   const allDistricts = await db
     .collection(`${country}-district-data`)
-    .find({})
+    .find({}, { projection: { _id: 0 } })
     .toArray();
   return allDistricts;
 });
