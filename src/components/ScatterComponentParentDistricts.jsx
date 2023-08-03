@@ -404,6 +404,7 @@ export default function ScatterComponentParentDistricts({
   useEffect(() => {
     // if user navigates from district -> country, and a point is in focus
     if (!districtSelected && focusedPoint) {
+      console.log("clicking around,, your focusedPoint ??", focusedPoint);
       focusedPoint.update({
         color: "#000000",
         marker: { radius: 3 },

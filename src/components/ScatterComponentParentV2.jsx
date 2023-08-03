@@ -69,19 +69,16 @@ function dataMappingTwo(
   province,
   provinceData
 ) {
-  console.log("the data Mapping has started .....");
   // match url scores to actual data values
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
   //
   const provinceID = province ? getProvinceId(provinceData, province) : false;
-  console.log("province ID matched?? :", provinceID);
+
   //
   const filteredData = provinceID
     ? dataType.filter((district) => district.PROVINCE_ID === provinceID)
     : dataType;
-  console.log("the filtered data for match province", filteredData);
-  console.log("the year:", year);
 
   return filteredData
     .filter((obj) => Number(obj.YEAR) === Number(year))

@@ -18,7 +18,7 @@ export default function FilterNavbarExp({}) {
 
       {/* adding this for changing toggle for scatter type */}
       <ScatterTypeToggle />
-
+      {/* maybe move the params etc to the actual component? */}
       <FilterNavbarExpChild
         yearParam={yearParam}
         scoreOneParam={searchParams.get("score_one")}
