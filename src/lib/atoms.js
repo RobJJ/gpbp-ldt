@@ -7,3 +7,6 @@ export const exampleNumberAtom = atom(5);
 // values can be "map" or "scatter"
 export const visualTypeSelected = atom("map");
 // export
+
+// the type of data you want to view at home page.. choices:  "districts" or "provinces"
+export const scatterViewType = atom("provinces");
