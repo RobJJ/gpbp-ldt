@@ -22,6 +22,8 @@ export default async function LayoutVisualComponent({
   // if we fetch all GED data here, it can run on server,, then you have all GED info, and can rather just filter the data based on what you need.. no need to additional calls to server with react query?
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
+  // console.log("gedData province length:", gedDataProvince.length);
+  // console.log("gedData district length:", gedDataDistrict.length);
 
   return (
     <div className="w-full h-full flex">

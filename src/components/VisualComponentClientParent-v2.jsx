@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 import { visualTypeSelected } from "@/lib/atoms";
 import { useQuery } from "react-query";
 import { getProvinceId } from "@/lib/utils";
-import { cache } from "react";
+import { cache, useEffect, useState } from "react";
 import { useGedData } from "@/lib/hooks/getGedDataQuery";
 import LoadingSpinner from "./LoadingComponent";
 import ScatterComponentParentV2 from "./ScatterComponentParentV2";
@@ -16,8 +16,8 @@ import ScatterComponentParentV2 from "./ScatterComponentParentV2";
 // it also determines which visual to show, map or scatter based on the visualType from atom
 
 export default function VisualComponentClientParentV2({
-  gedDataDistrict,
   geojsonDataProvince,
+  gedDataDistrict,
   gedDataProvince,
 }) {
   // console.log("[VisualComponentClientParent] : rendered");
@@ -25,21 +25,11 @@ export default function VisualComponentClientParentV2({
   const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
 
+  let province = params.province ? params.province : false;
   let year = searchParams.get("year");
   let score_one = searchParams.get("score_one");
   let score_two = searchParams.get("score_two");
 
-  // this data fetch info based on if province is selected or not... we dont need to fetch new data here instead write a function that runs when province changes to update the data... filter off the GED data that has been passed through the props.... we dont need to make another query to server - rather just filter based on year and province
-  const { data, isLoading } = useGedData(
-    params.country,
-    params.province,
-    gedDataProvince
-  );
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  // console.log("we have passed the loading phase.. your data: ", data);
   return (
     <div className="w-full h-full">
       {visualType === "map" && (
@@ -57,10 +47,12 @@ export default function VisualComponentClientParentV2({
       )}
       {visualType === "scatter" && (
         <ScatterComponentParentV2
-          data={data}
+          gedDataProvince={gedDataProvince}
+          gedDataDistrict={gedDataDistrict}
           year={year}
           score_one={score_one}
           score_two={score_two}
+          province={province}
         />
       )}
     </div>

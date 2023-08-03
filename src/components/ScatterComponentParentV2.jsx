@@ -6,6 +6,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { getProvinceId } from "@/lib/utils";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
@@ -55,6 +56,37 @@ function dataMapping(data, year, x_score, y_score, provinceSelected) {
         // radius: 6,
         // color: colorPanel[point.REGION],
         // color: "#666666",
+      };
+    });
+}
+// this is attempt at new function,, the data passed in is already the correct year..
+// reads scores and return the right array for the series.data
+function dataMappingTwo(
+  dataType,
+  year,
+  score_one,
+  score_two,
+  province,
+  provinceData
+) {
+  // match url scores to actual data values
+  const xAxisScore = urlToScoreMatching[score_one];
+  const yAxisScore = urlToScoreMatching[score_two];
+  //
+  const provinceID = province ? getProvinceId(provinceData, province) : false;
+  //
+  const filteredData = provinceID
+    ? dataType.filter((district) => district.PROVINCE_ID === provinceID)
+    : dataType;
+
+  return filteredData
+    .filter((obj) => Number(obj.YEAR) === Number(year))
+    .map(function (point) {
+      return {
+        ...point,
+        id: point.DISTRICT_ID ? point.DISTRICT_ID : point.PROVINCE_ID,
+        x: Math.round(Number(point[xAxisScore])),
+        y: Math.round(Number(point[yAxisScore])),
       };
     });
 }
@@ -145,10 +177,12 @@ let focusedPoint;
 // potentially move alot of this state to the child of scatter that actually renders the scatter
 
 export default function ScatterComponentParentV2({
-  data,
+  gedDataProvince,
+  gedDataDistrict,
   year,
   score_one,
   score_two,
+  province,
 }) {
   // this comp will be triggered again by province selection being passed in
 
@@ -337,25 +371,17 @@ export default function ScatterComponentParentV2({
 
     series: [
       {
-        // type: "scatter",
-
-        // start with points that dont have parent
-        data: dataMapping(data, year, score_one, score_two, provinceSelected),
-        // states: {
-        //   hover: {
-        //     enabled: false,
-        //   },
-        // },
+        data: dataMappingTwo(
+          gedDataProvince,
+          year,
+          score_one,
+          score_two,
+          province,
+          gedDataProvince
+        ),
         marker: {
-          // radius: 5, // set the marker radius to 5 pixels
-          // set radius based on dot type...
           radius: provinceSelected ? 3 : 5,
         },
-        // dataLabels: {
-        //   enabled: true,
-        //   format: "{point.district}",
-        // },
-
         cursor: "pointer",
       },
     ],
@@ -366,10 +392,6 @@ export default function ScatterComponentParentV2({
 
     setChartOptions({
       ...chartOptions,
-      // chart: {
-      //   ...chartOptions.chart,
-      //   customYearValue: year,
-      // },
       xAxis: {
         ...chartOptions.xAxis,
         title: {
@@ -386,9 +408,7 @@ export default function ScatterComponentParentV2({
         ...chartOptions.tooltip,
         pointFormat:
           `<tr><th colspan="2"><h3>${
-            provinceSelected
-              ? "<u>{point.DISTRICT}</u>"
-              : "<u>{point.PROVINCE}</u>"
+            province ? "<u>{point.DISTRICT}</u>" : "<u>{point.PROVINCE}</u>"
           }</h3></th></tr>` +
           `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
           `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>` +
@@ -399,10 +419,17 @@ export default function ScatterComponentParentV2({
         marker: {
           radius: provinceSelected ? 3 : 5,
         },
-        data: dataMapping(data, year, score_one, score_two, provinceSelected),
+        data: dataMappingTwo(
+          province ? gedDataDistrict : gedDataProvince,
+          year,
+          score_one,
+          score_two,
+          province,
+          gedDataProvince
+        ),
       },
     });
-  }, [year, score_one, score_two, params.province]);
+  }, [year, province, score_one, score_two]);
   // to handle the district being unselected by the breadcrumbs
   useEffect(() => {
     // console.log("did the use effect fire? focused poiint??", focusedPoint);
