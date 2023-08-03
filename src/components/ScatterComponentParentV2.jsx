@@ -179,10 +179,7 @@ let focusedPoint;
 export default function ScatterComponentParentV2({
   gedDataProvince,
   gedDataDistrict,
-  year,
-  score_one,
-  score_two,
-  province,
+  country,
 }) {
   // this comp will be triggered again by province selection being passed in
 
@@ -190,7 +187,10 @@ export default function ScatterComponentParentV2({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  let countrySelected = params.country;
+  // let countrySelected = params.country;
+  let year = searchParams.get("year");
+  let score_one = searchParams.get("score_one");
+  let score_two = searchParams.get("score_two");
   let provinceSelected = params.province;
   let districtSelected = params.district;
 
@@ -236,7 +236,7 @@ export default function ScatterComponentParentV2({
       headerFormat: "<table>",
       pointFormat:
         `<tr><th colspan="2"><h3>${
-          params.province
+          provinceSelected
             ? "<u>{point.DISTRICT}</u>"
             : "<u>{point.PROVINCE}</u>"
         }</h3></th></tr>` +
@@ -297,7 +297,7 @@ export default function ScatterComponentParentV2({
                 //   dot.point.YEAR
                 // );
                 router.push(
-                  `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                  `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
                 return;
               }
@@ -321,7 +321,7 @@ export default function ScatterComponentParentV2({
                   focusedPoint = null;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   return;
                 } else if (dot.point !== focusedPoint && focusedPoint) {
@@ -337,15 +337,11 @@ export default function ScatterComponentParentV2({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   // console.log("focused point bro...", focusedPoint);
                   return;
                 } else {
-                  // console.log(
-                  //   "you clicked a fresh dot,, what is the year?",
-                  //   dot.point.YEAR
-                  // );
                   // there is no active dot
                   dot.point.update({
                     color: "#ff0000",
@@ -354,16 +350,13 @@ export default function ScatterComponentParentV2({
                   focusedPoint = dot.point;
 
                   router.push(
-                    `/dashboard/${countrySelected}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                    `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
 
                   return;
                 }
               }
             },
-            // update: (dot) => {
-            //   console.log("you tried to update this dot?");
-            // },
           },
         },
       },
@@ -376,7 +369,7 @@ export default function ScatterComponentParentV2({
           year,
           score_one,
           score_two,
-          province,
+          provinceSelected,
           gedDataProvince
         ),
         marker: {
@@ -408,7 +401,9 @@ export default function ScatterComponentParentV2({
         ...chartOptions.tooltip,
         pointFormat:
           `<tr><th colspan="2"><h3>${
-            province ? "<u>{point.DISTRICT}</u>" : "<u>{point.PROVINCE}</u>"
+            provinceSelected
+              ? "<u>{point.DISTRICT}</u>"
+              : "<u>{point.PROVINCE}</u>"
           }</h3></th></tr>` +
           `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
           `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>` +
@@ -420,16 +415,16 @@ export default function ScatterComponentParentV2({
           radius: provinceSelected ? 3 : 5,
         },
         data: dataMappingTwo(
-          province ? gedDataDistrict : gedDataProvince,
+          provinceSelected ? gedDataDistrict : gedDataProvince,
           year,
           score_one,
           score_two,
-          province,
+          provinceSelected,
           gedDataProvince
         ),
       },
     });
-  }, [year, province, score_one, score_two]);
+  }, [year, provinceSelected, score_one, score_two]);
   // to handle the district being unselected by the breadcrumbs
   useEffect(() => {
     // console.log("did the use effect fire? focused poiint??", focusedPoint);

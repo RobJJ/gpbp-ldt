@@ -37,6 +37,7 @@ export default async function LayoutVisualComponent({
   {/* exp approach to data and comp handling */}
       <VisualComponentClientParentV2
         geojsonDataProvince={geojsonDataProvince}
+        country={country}
         // geojsonDataDistrict={geojsonDataDistrict}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}
