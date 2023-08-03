@@ -22,8 +22,8 @@ export default function VisualComponentClientParentV2({
   country,
 }) {
   // console.log("[VisualComponentClientParent] : rendered");
-  const params = useParams();
-  const searchParams = useSearchParams();
+  //   const params = useParams();
+  //   const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
 
   return (
@@ -45,3 +45,9 @@ export default function VisualComponentClientParentV2({
     </div>
   );
 }
+
+// ** note :: if we need a scatterplot that renders all districts.. maybe we just create a new instance of the current one and edit it to have only district functionality... 'districts' vs 'provinces' selection
+// all districts in countr -> click -> highlites and shows district view
+// route.push() will include its province name... updating url and then breadcrumbs responds
+// from breadcrumbs.. if you click the province, it will toggle the 'provinces' selection and take you to that province, showing its districts... meaning it will trigger then other scatter version, and then it should update based on the params set...
+//

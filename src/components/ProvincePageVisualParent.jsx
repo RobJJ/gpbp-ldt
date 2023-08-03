@@ -8,7 +8,7 @@ import ProvincePageVisualChildVisual from "./ProvincePageVisualChild-Visual";
 // it will handle the state to sync the tabs and the lineChart
 export default function ProvincePageVisualParent({ provinceData }) {
   const [selectedTab, setSelectedTab] = useState("Overview");
-  console.log("[PARENT] : tab is:", selectedTab);
+  // console.log("[PARENT] : tab is:", selectedTab);
   return (
     <div className="w-full h-full flex flex-col">
       <ProvincePageVisualChildHeader
