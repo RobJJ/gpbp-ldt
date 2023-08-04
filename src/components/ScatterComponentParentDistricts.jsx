@@ -167,7 +167,7 @@ function drawQuadrants(chart, update) {
   });
 }
 //
-let focusedPoint;
+// let focusedPoint;
 // potentially move alot of this state to the child of scatter that actually renders the scatter
 
 export default function ScatterComponentParentDistricts({
@@ -286,62 +286,6 @@ export default function ScatterComponentParentDistricts({
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
               }
-
-              //   if (dot.point.DISTRICT_ID) {
-              //     // if user clicks a district dot,, we want to highlite it
-              //     // console.log(
-
-              //     //   "you clicked a district dot bruv... lets have a look shall we...",
-              //     //   dot.point
-              //     // );
-              //     if (dot.point === focusedPoint) {
-              //       // reset its styling because its active.. go back to province view
-
-              //       // console.log("clicked dot,, focusedPoint??", focusedPoint);
-              //       dot.point.update({
-              //         color: "#000000",
-              //         marker: { radius: 3 },
-              //       });
-
-              //       // set to null before navigating,, so that breadcumb nav can have true when district useEffect triggers
-              //       focusedPoint = null;
-
-              //       router.push(
-              //         `/dashboard/${country}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-              //       );
-              //       return;
-              //     } else if (dot.point !== focusedPoint && focusedPoint) {
-              //       // there is already a active dot, update it, set new active dot
-              //       focusedPoint.update({
-              //         color: "#000000",
-              //         marker: { radius: 3 },
-              //       });
-              //       dot.point.update({
-              //         color: "#ff0000",
-              //         marker: { radius: 5 },
-              //       });
-              //       focusedPoint = dot.point;
-
-              //       router.push(
-              //         `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-              //       );
-              //       // console.log("focused point bro...", focusedPoint);
-              //       return;
-              //     } else {
-              //       // there is no active dot
-              //       dot.point.update({
-              //         color: "#ff0000",
-              //         marker: { radius: 5 },
-              //       });
-              //       focusedPoint = dot.point;
-
-              //       router.push(
-              //         `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-              //       );
-
-              //       return;
-              //     }
-              //   }
             },
           },
         },
@@ -456,17 +400,6 @@ export default function ScatterComponentParentDistricts({
         })
       );
     }
-    //3rd: country view
-    // if (!provinceSelected && !districtSelected) {
-    //   const allDotsAvailableOnChart = chartRef.current.chart.series[0].data;
-    //   //1st: update all dots back to default
-    //   allDotsAvailableOnChart.forEach((district) =>
-    //     district.update({
-    //       color: "#000000",
-    //       marker: { radius: 3 },
-    //     })
-    //   );
-    // }
   }, [districtSelected]);
 
   // listen for when user is at province view, and navigates to country from breadcrumbs.. the districtSelected will not trigger a new event because its not selected
@@ -483,59 +416,29 @@ export default function ScatterComponentParentDistricts({
         })
       );
     }
+    //2nd: for user navigates to province from breadcrumbs
+    if (!districtSelected && provinceSelected) {
+      const province_id = getProvinceId(gedDataProvince, provinceSelected);
+      const districtsInSelectedProvince =
+        chartRef.current.chart.series[0].data.filter(
+          (district) => district.PROVINCE_ID === province_id
+        );
+      const districtsNotInSelectedProvince =
+        chartRef.current.chart.series[0].data.filter(
+          (district) => district.PROVINCE_ID !== province_id
+        );
+      districtsNotInSelectedProvince.forEach((district) =>
+        district.update({ color: "#D3D3D3", marker: { radius: 3 } })
+      );
+      //2nd: update districtsInSelectedProvince
+      districtsInSelectedProvince.forEach((district) =>
+        district.update({
+          color: "#000000",
+          marker: { radius: 3 },
+        })
+      );
+    }
   }, [provinceSelected]);
-
-  //   useEffect(() => {
-  //     // if user navigates from district -> country, and a point is in focus
-  //     if (!districtSelected && !provinceSelected && focusedPoint) {
-  //       console.log("clicking around,, your focusedPoint ??", focusedPoint);
-  //       focusedPoint.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       });
-  //       focusedPoint = null;
-  //       return;
-  //     }
-  //     // user is on 'districts' scatter, and views the province
-  //     if (!districtSelected && provinceSelected && focusedPoint) {
-  //       focusedPoint.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       });
-  //       focusedPoint = null;
-  //       const arrayOfDistricts = chartRef.current.chart.series[0].data;
-  //       arrayOfDistricts.forEach((district) =>
-  //         district.update({ color: "#000000" })
-  //       );
-  //     }
-  //     console.log(
-  //       "you are in districts scatter mode.. you have navigated to a province from an active district"
-  //     );
-
-  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
-
-  //     const districtsNotInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID !== province_id
-  //       );
-  //     const districtsInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID === province_id
-  //       );
-  //     console.log(
-  //       "array of districts in the chosen province:",
-  //       districtsNotInSelectedProvince
-  //     );
-  //     districtsNotInSelectedProvince.forEach((district) =>
-  //       district.update({ color: "#D3D3D3" })
-  //     );
-  //     districtsInSelectedProvince.forEach((district) => {
-  //       district.update({ color: "#000000" });
-  //     });
-
-  //     if (!districtSelected && provinceSelected && !focusedPoint) {
-  //     }
-  //   }, [districtSelected]);
 
   return (
     <div className="h-full w-full flex flex-col ">
