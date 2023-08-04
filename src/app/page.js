@@ -40,7 +40,7 @@ export default function Home({ searchParams }) {
         {/*cards*/}
         <div className="w-full bg-slate-300">
           <h3 className="font-bold text-xl">Part of the PIMxPAM Suite:</h3>
-          <div className="w-full flex gap-2">
+          <div className="w-full flex gap-5">
             <LandingPageCardComponent
               header={"PIM x PAM"}
               text={"Public investment & asset management"}
