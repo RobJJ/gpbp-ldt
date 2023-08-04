@@ -280,10 +280,20 @@ export default function ScatterComponentParentDistricts({
           events: {
             click: (dot) => {
               // checking if the dot you clicked is a district dot
-              if (dot.point.DISTRICT_ID) {
+              if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
+                console.log(
+                  "hey you clicked the dot.. this dots props are:",
+                  dot.point.marker.radius
+                );
                 // 1st: just navigate to the path
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                );
+              }
+              // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
+              if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
+                router.push(
+                  `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
               }
             },
