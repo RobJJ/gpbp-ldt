@@ -6,17 +6,19 @@ import ReactPlayer from "react-player/youtube";
 
 export default function VideoComponent() {
   return (
-    <ReactPlayer
-      height={256}
-      width={500}
-      //   width="70%"
-      //   height="auto"
-      url="https://youtu.be/cgeh0Reo3tI"
-      controls={true}
-      // controls={false}
-      // light={true}
-      light={<Image src={thumbnail} alt="Thumbnail" />}
-    />
+    <>
+      <ReactPlayer
+        height={256}
+        width={500}
+        //   width="70%"
+        //   height="auto"
+        url="https://youtu.be/cgeh0Reo3tI"
+        controls={true}
+        // controls={false}
+        // light={true}
+        light={<Image src={thumbnail} alt="Thumbnail" />}
+      />
+    </>
   );
 }
 

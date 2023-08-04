@@ -20,7 +20,7 @@ export default function Home({ searchParams }) {
           </h3>
           <SelectCountryButton />
         </div>
-        <p className="w-full bg-slate-300">
+        <div className="w-full bg-slate-300">
           The Green Economy Diagnostic (GED) is a tool that maps the economic
           and environmental performance of sub-national regions within a
           country. It is designed to provide a comprehensive picture of the
@@ -30,7 +30,7 @@ export default function Home({ searchParams }) {
           and (ii) luminosity per capita levels. These indicators provide a
           snapshot of the economic well-being of districts and help to paint a
           picture of their level of development.
-        </p>
+        </div>
         <div className="w-full flex justify-center ">
           <VideoComponent />
         </div>
@@ -49,7 +49,7 @@ export default function Home({ searchParams }) {
               </div>
               <div>
                 <h5>PIM x PAM</h5>
-                <p>Public investment and asset management</p>
+                <div>Public investment and asset management</div>
                 <button>More info</button>
               </div>
             </span>

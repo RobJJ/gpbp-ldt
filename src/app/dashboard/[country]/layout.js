@@ -6,6 +6,11 @@ import { Suspense } from "react";
 import Spinner from "../../../components/Spinner-normal-size.svg";
 import Image from "next/image";
 
+export const metadata = {
+  title: "GED: Dashboard",
+  description: "Green Economy Diagnostic Tool",
+};
+
 export default async function CountryPageLayout({ children, params }) {
   //
 
