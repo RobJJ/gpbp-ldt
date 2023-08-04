@@ -1,9 +1,12 @@
 import VideoComponent from "@/components/VideoComponent";
 import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
+import gpbpIcon from "../../public/gpbp.png";
+import bdoIcon from "../../public/bdo.png";
 
 import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";
+import LandingPageCardComponent from "@/components/LandingPageCardComponent";
 
 export default function Home({ searchParams }) {
   // console.log("[HOME] : searchParams : ", searchParams);
@@ -20,7 +23,7 @@ export default function Home({ searchParams }) {
           </h3>
           <SelectCountryButton />
         </div>
-        <div className="w-full bg-slate-300">
+        <div className="w-full bg-slate-300 overflow-auto">
           The Green Economy Diagnostic (GED) is a tool that maps the economic
           and environmental performance of sub-national regions within a
           country. It is designed to provide a comprehensive picture of the
@@ -38,29 +41,24 @@ export default function Home({ searchParams }) {
         <div className="w-full bg-slate-300">
           <h3 className="font-bold text-xl">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-2">
-            <span className="w-1/3 bg-slate-100 border border-black flex gap-2">
-              <div className="flex justify-center items-center">
-                <Image
-                  src={pimpamIcon}
-                  alt="pimxpam icon"
-                  width={70}
-                  height={70}
-                />
-              </div>
-              <div>
-                <h5>PIM x PAM</h5>
-                <div>Public investment and asset management</div>
-                <button>More info</button>
-              </div>
-            </span>
-            <span className="w-1/3 bg-slate-100 border border-black flex">
-              <div>image</div>
-              <h5>Card Name</h5>
-            </span>
-            <span className="w-1/3 bg-slate-100 border border-black flex">
-              <div>image</div>
-              <h5>Card Name</h5>
-            </span>
+            <LandingPageCardComponent
+              header={"PIM x PAM"}
+              text={"Public investment & asset management"}
+              link={"https://pim-pam.net/"}
+              icon={pimpamIcon}
+            />
+            <LandingPageCardComponent
+              header={"GPBP"}
+              text={"Geospation Planning & Budgeting Platform"}
+              link={"https://gpbprtd.eu.pythonanywhere.com/"}
+              icon={gpbpIcon}
+            />
+            <LandingPageCardComponent
+              header={"BDO"}
+              text={"Big Data Observatory"}
+              link={"https://bdo-vietnam.com/"}
+              icon={bdoIcon}
+            />
           </div>
         </div>
       </section>
