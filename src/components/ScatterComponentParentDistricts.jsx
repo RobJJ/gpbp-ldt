@@ -304,14 +304,7 @@ export default function ScatterComponentParentDistricts({
 
     series: [
       {
-        data: dataMappingTwo(
-          gedDataDistrict,
-          year,
-          score_one,
-          score_two
-          //   provinceSelected,
-          //   gedDataProvince
-        ),
+        data: dataMappingTwo(gedDataDistrict, year, score_one, score_two),
         marker: {
           radius: 3,
         },
@@ -320,6 +313,7 @@ export default function ScatterComponentParentDistricts({
     ],
   });
 
+  // rewrite anything that references these 3 parameters to pass in latest values
   useEffect(() => {
     setChartOptions({
       ...chartOptions,
