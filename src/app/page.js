@@ -1,3 +1,4 @@
+import VideoComponent from "@/components/VideoComponent";
 import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 
@@ -31,10 +32,9 @@ export default function Home({ searchParams }) {
           picture of their level of development.
         </p>
         <div className="w-full flex justify-center ">
-          <div className="h-64 w-[500px] bg-slate-300 flex justify-center items-center">
-            VIDEO THUMBNAIL
-          </div>
+          <VideoComponent />
         </div>
+        {/*cards*/}
         <div className="w-full bg-slate-300">
           <h3 className="font-bold text-xl">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-2">
