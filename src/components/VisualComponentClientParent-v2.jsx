@@ -47,6 +47,7 @@ export default function VisualComponentClientParentV2({
       {/* this is the districts only component -> shows all districts at country level */}
       {visualType === "scatter" && scatterType === "districts" && (
         <ScatterComponentParentDistricts
+          gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           country={country}
         />
