@@ -91,6 +91,7 @@ export default function ProvincePageVisualChildVisual({
       align: "center",
       verticalAlign: "bottom",
       layout: "horizontal",
+      padding: 0,
     },
     xAxis: {
       title: {
