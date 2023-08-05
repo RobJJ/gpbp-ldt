@@ -74,7 +74,8 @@ export default function ProvincePageVisualChildVisual({
       enabled: false,
     },
     title: {
-      text: `${provinceData[0].PROVINCE} - Score over time`,
+      // text: `${provinceData[0].PROVINCE} - Score over time`,
+      text: undefined,
     },
     tooltip: {
       // enabled: false,
@@ -87,13 +88,14 @@ export default function ProvincePageVisualChildVisual({
     },
     legend: {
       enabled: true,
-      align: "right",
-      verticalAlign: "middle",
-      layout: "vertical",
+      align: "center",
+      verticalAlign: "bottom",
+      layout: "horizontal",
     },
     xAxis: {
       title: {
-        text: "<b>Years</b>",
+        // text: "<b>Years</b>",
+        text: undefined,
       },
       categories: [2019, 2020, 2021, 2022],
       tickInterval: 1,
@@ -103,7 +105,8 @@ export default function ProvincePageVisualChildVisual({
     },
     yAxis: {
       title: {
-        text: "<b>Scores</b>",
+        // text: "<b>Scores</b>",
+        text: undefined,
       },
       min: 0,
       max: 100,
@@ -120,7 +123,7 @@ export default function ProvincePageVisualChildVisual({
   });
 
   return (
-    <div className="h-full w-full flex">
+    <div className="h-full w-full flex overflow-auto">
       <HighchartsReact
         ref={chartRef}
         highcharts={Highcharts}

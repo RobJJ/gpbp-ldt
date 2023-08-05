@@ -23,7 +23,7 @@ export default async function ProvincePageVisual({
   // console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white flex overflow-auto">
       {/* this is the client parent that will handle the state */}
       <ProvincePageVisualParent provinceData={provinceData} />
     </div>
