@@ -13,6 +13,8 @@ export default async function ProvincePageListComponent({
 }) {
   // console.log("[CountryPageListComponent] rendered: server");
 
+  // REPLACE THIS FUNCTION WITH SOMETHING THAT DOESNT NEED TO CALL THE EXTRA PROVINCE_ID FUNCTION
+  // USE SOMETHING SIMILAR TO WHAT WE DID FOR THE VISUAL COMPONENT
   // call this cached function,,
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const province_id = await getProvinceId(gedDataProvince, province);

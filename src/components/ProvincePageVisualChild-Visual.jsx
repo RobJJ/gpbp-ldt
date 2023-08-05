@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
+// GOAL: Chart component: Receives ProvinceData : Tab selection -> listen for this change
 export default function ProvincePageVisualChildVisual({
   selectedTab,
   provinceData,
@@ -11,7 +10,7 @@ export default function ProvincePageVisualChildVisual({
 
   return (
     <section className="w-full h-full bg-blue-300">
-      Visual section: {selectedTab}
+      Visual section: {selectedTab}: {provinceData[0].PROVINCE}
     </section>
   );
 }

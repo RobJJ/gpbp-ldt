@@ -1,7 +1,10 @@
 // make this a server component that fetches its data for the selected province
 
 import { getAllDistrictsInSelectedProvinceById } from "@/lib/districtdata";
-import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
+import {
+  getAllProvincesInSelectedCountry,
+  getSelectedProvinceData,
+} from "@/lib/provinceData";
 import { getProvinceId } from "@/lib/utils";
 import ProvincePageVisualParent from "./ProvincePageVisualParent";
 
@@ -12,12 +15,10 @@ export default async function ProvincePageVisual({
   province,
   searchParams,
 }) {
-  const gedDataProvince = await getAllProvincesInSelectedCountry(country);
-  const province_id = await getProvinceId(gedDataProvince, province);
-  // console.log("province_id", province_id);
-  const provinceData = await getAllDistrictsInSelectedProvinceById(
+  // 1. Fetch data for selected province -> cached on server
+  const provinceData = await getSelectedProvinceData(
     country,
-    province_id
+    decodeURIComponent(province)
   );
   // console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
 
