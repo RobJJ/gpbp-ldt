@@ -1,9 +1,16 @@
 "use client";
 
-import { HighchartsReact } from "highcharts-react-official";
 import { useState } from "react";
 import { useRef } from "react";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import highchartsMore from "highcharts/highcharts-more";
 
+// highchartsMore(Highcharts);
+// **note :: this work around is for the SSR run of this client component and checks if function or object
+if (typeof Highcharts === "object") {
+  highchartsMore(Highcharts);
+}
 // testing the matching
 const tabToScoreType = {
   Overview: ["ECON_SCORE", "ENVR_SCORE"],
@@ -34,7 +41,9 @@ function sortData(data, tab) {
   const chartData = chartLinesArr.map((prop) => {
     return {
       name: scoreTypeToName[prop],
-      data: sortedProvinceDataByYear.map((provinceYear) => provinceYear[prop]),
+      data: sortedProvinceDataByYear.map((provinceYear) =>
+        Math.round(provinceYear[prop])
+      ),
     };
   });
   return chartData;
@@ -49,102 +58,75 @@ export default function ProvincePageVisualChildVisual({
     "We are in the visual: chartData is::",
     sortData(provinceData, selectedTab)
   );
-  // const chartRef = useRef();
+  const chartRef = useRef();
 
-  // let chart;
-  // const [chartOptions, setChartOptions] = useState({
-  //   chart: {
-  //     type: "line",
-  //     events: {
-  //       load: function () {
-  //         chart = this;
-  //       },
-  //     },
-  //   },
-  //   credits: {
-  //     enabled: false,
-  //   },
-  //   title: {
-  //     text: `${provinceData[0].PROVINCE} - Score over time`,
-  //   },
-  //   tooltip: {
-  //     // enabled: false,
-  //     borderRadius: 5,
-  //     borderWidth: 1,
-  //     shadow: true,
+  let chart;
+  const [chartOptions, setChartOptions] = useState({
+    chart: {
+      type: "line",
+      events: {
+        load: function () {
+          chart = this;
+        },
+      },
+    },
+    credits: {
+      enabled: false,
+    },
+    title: {
+      text: `${provinceData[0].PROVINCE} - Score over time`,
+    },
+    tooltip: {
+      // enabled: false,
+      borderRadius: 5,
+      borderWidth: 1,
+      shadow: true,
 
-  //     followPointer: true,
-  //     hideDelay: 0,
-  //   },
-  //   legend: {
-  //     enabled: true,
-  //     align: "right",
-  //     verticalAlign: "middle",
-  //     layout: "vertical",
-  //   },
-  //   xAxis: {
-  //     title: {
-  //       text: "<b>Years</b>",
-  //     },
-  //     categories: [2019, 2020, 2021, 2022],
-  //     tickInterval: 1,
-  //     accessibility: {
-  //       rangeDescription: "Range: 2019 to 2022",
-  //     },
-  //   },
-  //   yAxis: {
-  //     title: {
-  //       text: "<b>Scores</b>",
-  //     },
-  //     min: 0,
-  //     max: 100,
-  //   },
-  //   series: [
-  //     {
-  //       name: "Economic",
-  //       data: sortData(districtData, "ECON_SCORE"),
-  //       color: "#6554C0",
-  //     },
-  //     {
-  //       name: "Environmental",
-  //       data: sortData(districtData, "ENVR_SCORE"),
-  //       color: "#36B37E",
-  //     },
-  //     {
-  //       name: "Deforestation",
-  //       data: sortData(districtData, "FOREST_SCORE"),
-  //       color: "#FFAB00",
-  //     },
-  //     {
-  //       name: "Temperature",
-  //       data: sortData(districtData, "TEMP_SCORE"),
-  //       color: "#FF303A",
-  //     },
-  //     {
-  //       name: "Air Quality",
-  //       data: sortData(districtData, "AIR_SCORE"),
-  //       color: "#00B8D9",
-  //     },
-  //   ],
-  //   plotOptions: {
-  //     line: {
-  //       enableMouseTracking: true,
-  //     },
-  //     series: {
-  //       stickyTracking: false,
-  //     },
-  //   },
-  // });
+      followPointer: true,
+      hideDelay: 0,
+    },
+    legend: {
+      enabled: true,
+      align: "right",
+      verticalAlign: "middle",
+      layout: "vertical",
+    },
+    xAxis: {
+      title: {
+        text: "<b>Years</b>",
+      },
+      categories: [2019, 2020, 2021, 2022],
+      tickInterval: 1,
+      accessibility: {
+        rangeDescription: "Range: 2019 to 2022",
+      },
+    },
+    yAxis: {
+      title: {
+        text: "<b>Scores</b>",
+      },
+      min: 0,
+      max: 100,
+    },
+    series: sortData(provinceData, selectedTab),
+    plotOptions: {
+      line: {
+        enableMouseTracking: true,
+      },
+      series: {
+        stickyTracking: false,
+      },
+    },
+  });
 
-  // return (
-  //   <div className="h-full w-full flex">
-  //     <HighchartsReact
-  //       ref={chartRef}
-  //       highcharts={Highcharts}
-  //       options={chartOptions}
-  //       containerProps={{ style: { height: "100%", width: "100%" } }}
-  //     />
-  //   </div>
-  // );
-  return <div>Hello</div>;
+  return (
+    <div className="h-full w-full flex">
+      <HighchartsReact
+        ref={chartRef}
+        highcharts={Highcharts}
+        options={chartOptions}
+        containerProps={{ style: { height: "100%", width: "100%" } }}
+      />
+    </div>
+  );
 }
