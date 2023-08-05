@@ -3,16 +3,20 @@
 import LoadingSpinner from "@/components/LoadingComponent";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
 import ProvincePageVisual from "@/components/ProvincePageVisual";
+import { getSelectedProvinceData } from "@/lib/provinceData";
 import { Suspense } from "react";
 
 // ok we have access to the params and searchParams because this is page.js and dynamic
-export default function ProvincePage({ params, searchParams }) {
-  // fetch data here for the chosen Province!!
-  console.log(
-    "[ProvincePage] : rendered : server,, does the searchParams change??",
-    searchParams
+export default async function ProvincePage({ params, searchParams }) {
+  // fetch data here for the chosen Province!! This comp gets new params passed through
+  // Goal:: show the province data
+  //1. Need data based on [country] and [province_name]
+  const provinceData = await getSelectedProvinceData(
+    params.country,
+    decodeURIComponent(params.province)
   );
-  // console.log("[ProvincePage] : rendered : searchParams : ", searchParams);
+  console.log("[ProvincePage] : data fetched is : ", provinceData);
+
   return (
     <div className="w-full h-full bg-orange-200 flex flex-col p-2 gap-2">
       <section className="w-full h-1/2 bg-orange-100 rounded">
