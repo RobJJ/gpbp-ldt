@@ -1,21 +1,45 @@
 // ** note ** this is a dynamic server comp. Can fetch params and data here
 
+import CountryPageInfoCard from "@/components/CountryPageInfoCard";
 import CountryPageListComponent from "@/components/CountryPageListComponent";
 import LoadingSpinner from "@/components/LoadingComponent";
+import { getCountryInfo } from "@/lib/countryInfo";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
   // console.log("[CountryPage] : rendered : server");
   // console.log("[CountryPage] : rendered : searchParams : ", searchParams);
+  const countryInfo = await getCountryInfo(params.country);
+  // console.log("[CountryPage] loaded: data : ", countryInfo);
 
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 pb-0 gap-2 overflow-auto">
-      <section className="w-full h-1/2 bg-purple-100 text-2xl font-bold ">
-        [COUNTRY LEVEL] : SHOW CARDS HERE <br />
-        ** fetch data in this{" "}
-        <span className="text-red-500">async server component</span> based on
-        country **
+      <section className="w-full max-h-1/2 bg-purple-100 flex items-start flex-wrap gap-5">
+        <CountryPageInfoCard
+          label={"Admin 1 Regions"}
+          fact={countryInfo[0].regions_admin_1}
+        />
+        <CountryPageInfoCard
+          label={"Admin 2 Regions"}
+          fact={countryInfo[0].regions_admin_2}
+        />
+        <CountryPageInfoCard
+          label={"Total Population"}
+          fact={countryInfo[0].total_population}
+        />
+        <CountryPageInfoCard
+          label={"Total Area Size (km2)"}
+          fact={countryInfo[0].total_area_size}
+        />
+        <CountryPageInfoCard
+          label={"GDP PPP (constant 2017 international dollars)"}
+          fact={countryInfo[0].gpd_ppp}
+        />
+        <CountryPageInfoCard
+          label={"GDP per capita PPP (constant 2017 international dollars)"}
+          fact={countryInfo[0].gpd_per_capita_ppp}
+        />
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
       <section className="w-full h-1/2 bg-purple-100 overflow-auto scrollbar-none ">
