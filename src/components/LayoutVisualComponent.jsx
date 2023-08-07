@@ -4,26 +4,19 @@ import VisualComponentClientParent from "./VisualComponentClientParent";
 import { getDistricts } from "@/lib/districtdata";
 import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
-// stream in data here to let layout.js load in async
-// this components purpose is to set up the initial data for components
+// fetch GEO data and the ged data here... figure out how to make it faster by promise.all to allow concurrent calls
 
-export default async function LayoutVisualComponent({
-  country,
-  // province,
-  // district,
-}) {
-  // console.log("[LayoutVisualComponent] : rendered");
-  // load in initial data from SERVER
-  // try cache these on server! - or try stream them in??
-  const geojsonDataProvince = await getProvinceGeojson(country);
-  // const geojsonDataDistrict = await getDistrictGeojson(country);
-
-  // These two calls dont take that long!
-  // if we fetch all GED data here, it can run on server,, then you have all GED info, and can rather just filter the data based on what you need.. no need to additional calls to server with react query?
+export default async function LayoutVisualComponent({ country }) {
+  // think what needs to be awaited and what doesnt here... you dont need to await everything
+  const geojsonDataProvince = getProvinceGeojson(country);
+  const geojsonDataDistrict = getDistrictGeojson(country);
+  // this approach allows you to handle concurrent calls to the server?
+  const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
+  console.log("geoData is rdy::", geoData);
+  // const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
+
   const gedDataDistrict = await getDistricts(country);
-  // console.log("gedData province length:", gedDataProvince.length);
-  // console.log("gedData district length:", gedDataDistrict.length);
 
   return (
     <div className="w-full h-full flex">
@@ -37,8 +30,8 @@ export default async function LayoutVisualComponent({
   {/* exp approach to data and comp handling */}
       <VisualComponentClientParentV2
         geojsonDataProvince={geojsonDataProvince}
+        geojsonDataDistrict={geojsonDataDistrict}
         country={country}
-        // geojsonDataDistrict={geojsonDataDistrict}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}
       />

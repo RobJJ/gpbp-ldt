@@ -18,11 +18,12 @@ import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 
 export default function VisualComponentClientParentV2({
   geojsonDataProvince,
+  geojsonDataDistrict,
   gedDataDistrict,
   gedDataProvince,
   country,
 }) {
-  // console.log("[VisualComponentClientParent] : rendered");
+  console.log("[VisualComponentClientParent] : rendered");
   //   const params = useParams();
   //   const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
@@ -33,7 +34,7 @@ export default function VisualComponentClientParentV2({
       {visualType === "map" && (
         <MapComponentParent
           geojsonDataProvince={geojsonDataProvince}
-          // geojsonDataDistrict={geojsonDataDistrict}
+          geojsonDataDistrict={geojsonDataDistrict}
           gedDataProvince={gedDataProvince}
         />
       )}

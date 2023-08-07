@@ -5,6 +5,7 @@ import FilterNavbarExp from "@/components/FilterNavbarExp";
 import { Suspense } from "react";
 import Spinner from "../../../components/Spinner-normal-size.svg";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 export const metadata = {
   title: "GED: Dashboard",
@@ -28,11 +29,7 @@ export default async function CountryPageLayout({ children, params }) {
               </div>
             }
           >
-            <LayoutVisualComponent
-              country={params.country}
-              // province={params.province}
-              // district={params.district}
-            />
+            <LayoutVisualComponent country={params.country} />
           </Suspense>
         </section>
         <section className="w-1/2 h-full flex flex-col gap-2 overflow-auto">

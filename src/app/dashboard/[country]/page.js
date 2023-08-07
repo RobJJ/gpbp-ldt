@@ -8,14 +8,11 @@ import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
-  // console.log("[CountryPage] : rendered : server");
-  // console.log("[CountryPage] : rendered : searchParams : ", searchParams);
   const countryInfo = await getCountryInfo(params.country);
-  // console.log("[CountryPage] loaded: data : ", countryInfo);
 
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 pb-0 gap-2 overflow-auto">
-      <section className="w-full max-h-1/2 bg-purple-100 flex items-start flex-wrap gap-5">
+      <section className="w-full max-h-1/2 bg-purple-100 flex items-start flex-wrap gap-4">
         <CountryPageInfoCard
           label={"Admin 1 Regions"}
           fact={countryInfo[0].regions_admin_1}
