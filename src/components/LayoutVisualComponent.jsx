@@ -14,21 +14,18 @@ export default async function LayoutVisualComponent({ country }) {
   // think what needs to be awaited and what doesnt here... you dont need to await everything
   // const geojsonDataProvince = await getProvinceGeojson(country);
   // const geojsonDataDistrict = await getDistrictGeojson(country);
-  const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
   // this approach allows you to handle concurrent calls to the server?
-  // const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
-  console.log("province geo is rdy::", provinceGeoData);
-  console.log("district geo is rdy::", districtGeoData);
-  // const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
+  const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
+  //
+  // consider combining these two functions in a promise.all() function to handle concurrently
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
-
   const gedDataDistrict = await getDistricts(country);
 
   return (
     <div className="w-full h-full flex">
       <VisualComponentClientParentV2
-        // geojsonDataProvince={geojsonDataProvince}
-        // geojsonDataDistrict={geojsonDataDistrict}
+        provinceGeoData={provinceGeoData}
+        districtGeoData={districtGeoData}
         country={country}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}

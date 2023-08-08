@@ -16,12 +16,12 @@ import { useState } from "react";
 // ** this data changes based on year, and score_one..
 
 export default function MapComponentParent({
-  geojsonDataProvince,
-  geojsonDataDistrict,
+  provinceGeoData,
+  districtGeoData,
   gedDataProvince,
 }) {
-  const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
-  const router = useRouter();
+  // const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
+  // const router = useRouter();
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">

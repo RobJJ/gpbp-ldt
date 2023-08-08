@@ -17,8 +17,8 @@ import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 // it also determines which visual to show, map or scatter based on the visualType from atom
 
 export default function VisualComponentClientParentV2({
-  geojsonDataProvince,
-  geojsonDataDistrict,
+  provinceGeoData,
+  districtGeoData,
   gedDataDistrict,
   gedDataProvince,
   country,
@@ -33,8 +33,8 @@ export default function VisualComponentClientParentV2({
     <div className="w-full h-full">
       {visualType === "map" && (
         <MapComponentParent
-          // geojsonDataProvince={geojsonDataProvince}
-          // geojsonDataDistrict={geojsonDataDistrict}
+          provinceGeoData={provinceGeoData}
+          districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
         />
       )}
