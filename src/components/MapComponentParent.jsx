@@ -2,6 +2,8 @@
 
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { scatterViewType } from "@/lib/atoms";
+import { useAtom } from "jotai";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
@@ -31,8 +33,9 @@ export default function MapComponentParent({
       fillOpacity: 0.7,
     };
   };
-  // const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
-  // const router = useRouter();
+  const [scatterType] = useAtom(scatterViewType);
+  // the key allows the GeoJSON component to have a unique id and create different instances off it
+  let hashkey = Math.random();
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">
@@ -46,9 +49,9 @@ export default function MapComponentParent({
       >
         <TileLayer url={mapbox_url} />
         <GeoJSON
-          // key={hashkey}
+          key={hashkey}
           style={style}
-          data={provinceGeoData}
+          data={scatterType === "provinces" ? provinceGeoData : districtGeoData}
         />
       </MapContainer>
     </section>

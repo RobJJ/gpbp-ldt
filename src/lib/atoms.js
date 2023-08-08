@@ -10,3 +10,5 @@ export const visualTypeSelected = atom("map");
 
 // the type of data you want to view at home page.. choices:  "districts" or "provinces"
 export const scatterViewType = atom("provinces");
+//
+// export const mapViewType = atom()
