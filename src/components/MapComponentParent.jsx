@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 // ** this is the actual map component
@@ -10,14 +10,27 @@ import "leaflet/dist/leaflet.css";
 // ** if (provinceSelected) becomes true is true, then it needs to grab geodata districts that match province_id
 // GED
 // ** this data changes based on year, and score_one..
+// this property must be pulled in based on the {country} selected
 const defaultPosition = [44.3, 20.5];
 
 export default function MapComponentParent({
   provinceGeoData,
   districtGeoData,
   gedDataProvince,
+  gedDataDistrict,
   mapbox_url,
 }) {
+  const style = (feature) => {
+    return {
+      // need add a color matching function and pass in the score of the feature E8E8E8
+      fillColor: "#DFDFDF",
+      weight: 1,
+      opacity: 1,
+      color: "#666",
+      dashArray: "3",
+      fillOpacity: 0.7,
+    };
+  };
   // const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
   // const router = useRouter();
 
@@ -32,6 +45,11 @@ export default function MapComponentParent({
         // key={hashKey}
       >
         <TileLayer url={mapbox_url} />
+        <GeoJSON
+          // key={hashkey}
+          style={style}
+          data={provinceGeoData}
+        />
       </MapContainer>
     </section>
   );

@@ -41,6 +41,7 @@ export default function VisualComponentClientParentV2({
           provinceGeoData={provinceGeoData}
           districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
+          gedDataDistrict={gedDataDistrict}
           mapbox_url={mapbox_url}
         />
       )}
