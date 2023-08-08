@@ -1,7 +1,7 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
-import MapComponentParent from "./MapComponentParent";
+// import MapComponentParent from "./MapComponentParent";
 import ScatterComponentParent from "./ScatterComponentParent";
 import { useAtom } from "jotai";
 import { scatterViewType, visualTypeSelected } from "@/lib/atoms";
@@ -13,6 +13,10 @@ import LoadingSpinner from "./LoadingComponent";
 import ScatterComponentParentV2 from "./ScatterComponentParentV2";
 import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 
+const MapComponentParent = dynamic(() => import("./MapComponentParent"), {
+  ssr: false,
+});
+
 // this component receives initial data from server (geoprovince, and gedprovince data)
 // it also determines which visual to show, map or scatter based on the visualType from atom
 
@@ -22,6 +26,7 @@ export default function VisualComponentClientParentV2({
   gedDataDistrict,
   gedDataProvince,
   country,
+  mapbox_url,
 }) {
   console.log("[VisualComponentClientParent] : rendered");
   //   const params = useParams();
@@ -36,6 +41,7 @@ export default function VisualComponentClientParentV2({
           provinceGeoData={provinceGeoData}
           districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
+          mapbox_url={mapbox_url}
         />
       )}
       {visualType === "scatter" && scatterType === "provinces" && (

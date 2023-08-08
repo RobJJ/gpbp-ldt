@@ -1,11 +1,7 @@
 "use client";
 
-import { getProvinceId } from "@/lib/utils";
-import Link from "next/link";
-
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
@@ -14,18 +10,29 @@ import { useState } from "react";
 // ** if (provinceSelected) becomes true is true, then it needs to grab geodata districts that match province_id
 // GED
 // ** this data changes based on year, and score_one..
+const defaultPosition = [44.3, 20.5];
 
 export default function MapComponentParent({
   provinceGeoData,
   districtGeoData,
   gedDataProvince,
+  mapbox_url,
 }) {
   // const [currentGeoLayers, setCurrentGeoLayers] = useState(geojsonDataProvince);
   // const router = useRouter();
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">
-      qwdqwd
+      <MapContainer
+        center={defaultPosition}
+        zoom={7}
+        scrollWheelZoom={true}
+        className="h-full w-full"
+        // ref={nodeRef}
+        // key={hashKey}
+      >
+        <TileLayer url={mapbox_url} />
+      </MapContainer>
     </section>
   );
 }
