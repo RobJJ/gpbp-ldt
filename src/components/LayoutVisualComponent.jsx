@@ -21,6 +21,8 @@ export default async function LayoutVisualComponent({ country }) {
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
 
+  // grab country positions here for now
+  // const countryCenterPosition = process.env[`${country}`]
   const mapbox_url = process.env.MAPBOX_URL;
 
   return (

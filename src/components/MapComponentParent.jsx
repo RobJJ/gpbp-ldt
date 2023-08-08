@@ -13,9 +13,15 @@ import { useAtom } from "jotai";
 // GED
 // ** this data changes based on year, and score_one..
 // this property must be pulled in based on the {country} selected
-const defaultPosition = [44.3, 20.5];
+// names must match the country name passed in from landing page or url
+const defaultPositions = {
+  kosovo: [42.5, 20.6456],
+  serbia: [44.3, 20.5],
+  uzbekistan: [41.377491, 64.585262],
+};
 
 export default function MapComponentParent({
+  country,
   provinceGeoData,
   districtGeoData,
   gedDataProvince,
@@ -40,15 +46,17 @@ export default function MapComponentParent({
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">
       <MapContainer
-        center={defaultPosition}
+        center={defaultPositions[country]}
         zoom={7}
         scrollWheelZoom={true}
         className="h-full w-full"
         // ref={nodeRef}
-        // key={hashKey}
+        // adding hashkey here rerenders another entire map. ie resets pos etc
+        // key={hashkey}
       >
         <TileLayer url={mapbox_url} />
         <GeoJSON
+          // adding hashkey here just instanciates another GeoJSON component, ie does not render another map
           key={hashkey}
           style={style}
           data={scatterType === "provinces" ? provinceGeoData : districtGeoData}

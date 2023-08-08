@@ -38,6 +38,7 @@ export default function VisualComponentClientParentV2({
     <div className="w-full h-full">
       {visualType === "map" && (
         <MapComponentParent
+          country={country}
           provinceGeoData={provinceGeoData}
           districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
