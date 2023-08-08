@@ -33,8 +33,8 @@ export default function VisualComponentClientParentV2({
     <div className="w-full h-full">
       {visualType === "map" && (
         <MapComponentParent
-          geojsonDataProvince={geojsonDataProvince}
-          geojsonDataDistrict={geojsonDataDistrict}
+          // geojsonDataProvince={geojsonDataProvince}
+          // geojsonDataDistrict={geojsonDataDistrict}
           gedDataProvince={gedDataProvince}
         />
       )}

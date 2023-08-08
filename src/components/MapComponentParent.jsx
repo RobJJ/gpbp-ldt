@@ -25,11 +25,7 @@ export default function MapComponentParent({
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">
-      {geojsonDataDistrict ? (
-        <div className="text-xl font-bold"> geoDistrict rdy</div>
-      ) : (
-        <div className="text-xl font-bold">geoDistrict is not rdy</div>
-      )}
+      qwdqwd
     </section>
   );
 }

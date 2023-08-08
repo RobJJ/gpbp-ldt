@@ -1,4 +1,8 @@
-import { getDistrictGeojson, getProvinceGeojson } from "@/lib/geojsonData";
+import {
+  getDistrictGeojson,
+  getProvinceGeojson,
+  getAllGeojsonData,
+} from "@/lib/geojsonData";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import VisualComponentClientParent from "./VisualComponentClientParent";
 import { getDistricts } from "@/lib/districtdata";
@@ -8,11 +12,13 @@ import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
 export default async function LayoutVisualComponent({ country }) {
   // think what needs to be awaited and what doesnt here... you dont need to await everything
-  const geojsonDataProvince = getProvinceGeojson(country);
-  const geojsonDataDistrict = getDistrictGeojson(country);
+  // const geojsonDataProvince = await getProvinceGeojson(country);
+  // const geojsonDataDistrict = await getDistrictGeojson(country);
+  const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
   // this approach allows you to handle concurrent calls to the server?
-  const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
-  console.log("geoData is rdy::", geoData);
+  // const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
+  console.log("province geo is rdy::", provinceGeoData);
+  console.log("district geo is rdy::", districtGeoData);
   // const geoData = await Promise.all([geojsonDataProvince, geojsonDataDistrict]);
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
 
@@ -20,17 +26,9 @@ export default async function LayoutVisualComponent({ country }) {
 
   return (
     <div className="w-full h-full flex">
-      {/* 1st attempt - this is working but we will try optimise */}
-      {/*<VisualComponentClientParent
-        geojsonDataProvince={geojsonDataProvince}
-        // geojsonDataDistrict={geojsonDataDistrict}
-        gedDataDistrict={gedDataDistrict}
-        gedDataProvince={gedDataProvince}
-  />}
-  {/* exp approach to data and comp handling */}
       <VisualComponentClientParentV2
-        geojsonDataProvince={geojsonDataProvince}
-        geojsonDataDistrict={geojsonDataDistrict}
+        // geojsonDataProvince={geojsonDataProvince}
+        // geojsonDataDistrict={geojsonDataDistrict}
         country={country}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}
@@ -45,3 +43,11 @@ export default async function LayoutVisualComponent({ country }) {
 // <MapComponentParent>
 //   <MapChild country={params.country} year={searchParams.get("year")} />
 // </MapComponentParent>;
+
+// {/* 1st attempt - this is working but we will try optimise */}
+//       {/*<VisualComponentClientParent
+//         geojsonDataProvince={geojsonDataProvince}
+//         // geojsonDataDistrict={geojsonDataDistrict}
+//         gedDataDistrict={gedDataDistrict}
+//         gedDataProvince={gedDataProvince}
+//   />}
