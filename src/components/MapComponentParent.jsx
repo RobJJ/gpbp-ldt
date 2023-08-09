@@ -1,9 +1,8 @@
 "use client";
 
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { scatterViewType } from "@/lib/atoms";
-import { useAtom } from "jotai";
+import MapGeoJsonComponent from "./MapGeoJsonComponent";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
@@ -28,25 +27,13 @@ export default function MapComponentParent({
   gedDataDistrict,
   mapbox_url,
 }) {
-  const style = (feature) => {
-    return {
-      // need add a color matching function and pass in the score of the feature E8E8E8
-      fillColor: "#DFDFDF",
-      weight: 1,
-      opacity: 1,
-      color: "#666",
-      dashArray: "3",
-      fillOpacity: 0.7,
-    };
-  };
-  const [scatterType] = useAtom(scatterViewType);
   // the key allows the GeoJSON component to have a unique id and create different instances off it
-  let hashkey = Math.random();
 
   return (
     <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2">
       <MapContainer
         center={defaultPositions[country]}
+        // create a custom zoom value for each country.
         zoom={7}
         scrollWheelZoom={true}
         className="h-full w-full"
@@ -55,11 +42,9 @@ export default function MapComponentParent({
         // key={hashkey}
       >
         <TileLayer url={mapbox_url} />
-        <GeoJSON
-          // adding hashkey here just instanciates another GeoJSON component, ie does not render another map
-          key={hashkey}
-          style={style}
-          data={scatterType === "provinces" ? provinceGeoData : districtGeoData}
+        <MapGeoJsonComponent
+          provinceGeoData={provinceGeoData}
+          districtGeoData={districtGeoData}
         />
       </MapContainer>
     </section>
