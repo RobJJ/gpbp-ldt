@@ -30,15 +30,23 @@ export default function MapGeoJsonComponent({
     // GID_1 is province ID
     // GID_2 is district ID
     console.log("[clicked layer] : event :", e.target.feature.properties);
+    const country = e.target.feature.properties.COUNTRY.toLowerCase();
+    const province = e.target.feature.properties.NAME_1;
+    const district = e.target.feature.properties.NAME_2;
+    //
+    const year = searchParams.get("year");
+    const score_one = searchParams.get("score_one");
+    const score_two = searchParams.get("score_two");
+    //
+    //
     // GID_2 is not true means this layerClick is a province
     if (!e.target.feature.properties.GID_2) {
-      const country = e.target.feature.properties.COUNTRY.toLowerCase();
-      const province = e.target.feature.properties.NAME_1;
-      const year = searchParams.get("year");
-      const score_one = searchParams.get("score_one");
-      const score_two = searchParams.get("score_two");
       router.push(
         `/dashboard/${country}/${province}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+      );
+    } else {
+      router.push(
+        `/dashboard/${country}/${province}/${district}?year=${year}&score_one=${score_one}&score_two=${score_two}`
       );
     }
   };
