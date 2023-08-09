@@ -14,22 +14,38 @@ export default function MapGeoJsonComponent({
   const params = useParams();
   const searchParams = useSearchParams();
   //
+  let provinceSelected = decodeURIComponent(params.province);
+  //
   //
   const style = (feature) => {
-    return {
-      // need add a color matching function and pass in the score of the feature E8E8E8
-      fillColor: "#DFDFDF",
-      weight: 1,
-      opacity: 1,
-      color: "#666",
-      dashArray: "3",
-      fillOpacity: 0.7,
-    };
+    console.log("feature from style is : ", feature);
+    // if provinceSelected matches the feature.properties.NAME_1 then you must apply unique stlying
+    if (provinceSelected === feature.properties.NAME_1) {
+      return {
+        // need add a color matching function and pass in the score of the feature E8E8E8
+        fillColor: "#DFDFDF",
+        weight: 3,
+        opacity: 1,
+        color: "#F00",
+        dashArray: "1",
+        fillOpacity: 0.7,
+      };
+    } else {
+      return {
+        // need add a color matching function and pass in the score of the feature E8E8E8
+        fillColor: "#DFDFDF",
+        weight: 1,
+        opacity: 1,
+        color: "#666",
+        dashArray: "3",
+        fillOpacity: 0.7,
+      };
+    }
   };
   const handleLayerClick = (e) => {
     // GID_1 is province ID
     // GID_2 is district ID
-    console.log("[clicked layer] : event :", e.target.feature.properties);
+    // console.log("[clicked layer] : event :", e);
     const country = e.target.feature.properties.COUNTRY.toLowerCase();
     const province = e.target.feature.properties.NAME_1;
     const district = e.target.feature.properties.NAME_2;
