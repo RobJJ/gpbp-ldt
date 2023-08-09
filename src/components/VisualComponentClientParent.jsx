@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useSearchParams } from "next/navigation";
-import MapComponentParent from "./MapComponentParent";
+import MapComponentParent from "./MapComponentParentProvince";
 import ScatterComponentParent from "./ScatterComponentParent";
 import { useAtom } from "jotai";
 import { visualTypeSelected } from "@/lib/atoms";

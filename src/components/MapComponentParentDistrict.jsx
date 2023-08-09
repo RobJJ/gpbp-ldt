@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import MapGeoJsonComponent from "./MapGeoJsonComponent";
+import MapGeoJsonComponent from "./MapGeoJsonComponentProvince";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
@@ -19,7 +19,7 @@ const defaultPositions = {
   uzbekistan: [41.377491, 64.585262],
 };
 
-export default function MapComponentParent({
+export default function MapComponentParentDistrict({
   country,
   provinceGeoData,
   districtGeoData,
