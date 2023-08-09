@@ -49,6 +49,8 @@ export default function MapComponentParentAlpha({
           <MapGeoJsonComponentProvince
             provinceGeoData={provinceGeoData}
             districtGeoData={districtGeoData}
+            gedDataProvince={gedDataProvince}
+            gedDataDistrict={gedDataDistrict}
           />
         )}
         {scatterType === "districts" && (

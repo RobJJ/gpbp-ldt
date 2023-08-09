@@ -54,10 +54,10 @@ export default function ProvincePageVisualChildVisual({
   selectedTab,
   provinceData,
 }) {
-  console.log(
-    "We are in the visual: chartData is::",
-    sortData(provinceData, selectedTab)
-  );
+  // console.log(
+  //   "We are in the visual: chartData is::",
+  //   sortData(provinceData, selectedTab)
+  // );
   const chartRef = useRef();
 
   let chart;

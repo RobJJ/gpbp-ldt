@@ -1,13 +1,16 @@
 "use client";
 import { scatterViewType } from "@/lib/atoms";
+import { getProvinceId } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
 
 export default function MapGeoJsonComponentProvince({
   provinceGeoData,
   districtGeoData,
+  gedDataProvince,
+  gedDataDistrict,
 }) {
   //
   const [currentGeoLayers, setCurrentGeoLayers] = useState(provinceGeoData);
@@ -18,38 +21,138 @@ export default function MapGeoJsonComponentProvince({
   const params = useParams();
   const searchParams = useSearchParams();
   //
-  let provinceSelected = decodeURIComponent(params.province);
-  let districtSelected = decodeURIComponent(params.district);
+  let provinceSelected = params.province;
+  let districtSelected = params.district;
+  //
+
+  //
+  // console.log("params?", params);
   // everytime the params change, this component will rerender and re-paint the layers
   //
+  // listening for when route has/updates province route
+  useEffect(() => {
+    // if there is not province selected:: spread default data
+    if (!provinceSelected) setCurrentGeoLayers(provinceGeoData);
+    //
+    if (provinceSelected) {
+      const newData = JSON.parse(JSON.stringify(provinceGeoData));
+      // remove the selected province feature from the array to add to back
+
+      const province_id = getProvinceId(gedDataProvince, provinceSelected);
+
+      const indexOfProvince = newData[0].features.findIndex(
+        (feature) => feature.properties.GID_1 === province_id
+      );
+      const provinceFeature = newData[0].features.splice(indexOfProvince, 1);
+      // const newDataWithoutSelectedProvince = newData[0].features.filter(
+      //   (feature) => {
+      //     if (feature.properties.GID_1 !== province_id) return feature;
+      //   }
+      // );
+      console.log("my newDAta at end ::", newData);
+      console.log("provinceFeature ::", provinceFeature);
+      //
+      // console.log("province_id ::", province_id);
+      const geoDistrictsInSelectedProvince = districtGeoData[0].features.filter(
+        (feature) => {
+          if (feature.properties.GID_1 === province_id) {
+            return feature;
+          }
+        }
+      );
+
+      // create a new object that contains all props of default but under features, you spread the new district layers in.
+      // ** NB **
+      // the order here is very important. Let province layer be just before the selected districts
+      // this helps organise the layers for clicks and style them correctly
+      const updatedNewData = {
+        ...newData[0],
+        features: [
+          ...newData[0].features,
+          provinceFeature[0],
+          ...geoDistrictsInSelectedProvince,
+        ],
+      };
+      // console.log("updatedNewData :: ", updatedNewData);
+
+      setCurrentGeoLayers(updatedNewData);
+      return;
+    }
+    // if there is a province selected:: first spread default into an array, then continue with below
+    //  1) find province_id 2) filter matched districts that belong to this province_id 3) spread these districts into the geoData array
+  }, [provinceSelected]);
   //
   const style = (feature) => {
-    // console.log("feature from style is : ", feature);
-    // if provinceSelected matches the feature.properties.NAME_1 then you must apply unique stlying
     if (
-      provinceSelected === feature.properties.NAME_1 &&
-      !feature.properties.NAME_2
+      provinceSelected &&
+      !districtSelected &&
+      decodeURIComponent(provinceSelected) === feature.properties.NAME_1 &&
+      !feature.properties.GID_2
     ) {
       return {
-        // need add a color matching function and pass in the score of the feature E8E8E8
-        fillColor: "#DFDFDF",
+        dashArray: "0",
+        color: "#F00",
         weight: 4,
         opacity: 1,
-        color: "#F00",
-        dashArray: "1",
+        // ++ this is where layer score fill will come in with searchParams
         fillOpacity: 0.7,
+        fillColor: "#DFDFDF",
+      };
+    }
+    if (provinceSelected && !districtSelected && feature.properties.GID_2) {
+      return {
+        dashArray: "0",
+        color: "#000",
+        weight: 1,
+        opacity: 0.3,
+        // ++ this is where layer score fill will come in with searchParams
+        fillOpacity: 0.7,
+        fillColor: "#DFDFDF",
       };
     } else {
       return {
-        // need add a color matching function and pass in the score of the feature E8E8E8
-        fillColor: "#DFDFDF",
-        weight: 1,
-        opacity: 1,
+        dashArray: "0",
         color: "#666",
-        dashArray: "3",
+        weight: 1,
+        opacity: 0.3,
+        // ++ this is where layer score fill will come in with searchParams
         fillOpacity: 0.7,
+        fillColor: "#DFDFDF",
       };
     }
+
+    // console.log("feature from style is : ", feature);
+    // if provinceSelected matches the feature.properties.NAME_1 then you must apply unique stlying
+    // if (
+    //   decodeURIComponent(provinceSelected) === feature.properties.NAME_1 &&
+    //   !districtSelected
+    // ) {
+    //   // console.log(
+    //   //   "feature made it pass,, lets see what districts look like::",
+    //   //   feature
+    //   // );
+    //   // check if feature is a
+
+    //   return {
+    //     dashArray: "0",
+    //     color: "#F00",
+    //     weight: 4,
+    //     opacity: 1,
+    //     // ++ this is where layer score fill will come in with searchParams
+    //     fillOpacity: 0.7,
+    //     fillColor: "#DFDFDF",
+    //   };
+    // } else {
+    //   return {
+    //     dashArray: "0",
+    //     color: "#666",
+    //     weight: 1,
+    //     opacity: 0.5,
+    //     // ++ this is where layer score fill will come in with searchParams
+    //     fillOpacity: 0.7,
+    //     fillColor: "#DFDFDF",
+    //   };
+    // }
   };
   const handleLayerClick = (e) => {
     // GID_1 is province ID
