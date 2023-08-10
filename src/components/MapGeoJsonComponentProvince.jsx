@@ -76,6 +76,7 @@ export default function MapGeoJsonComponentProvince({
   }, [provinceSelected]);
   //
   const style = (feature) => {
+    // 1) User clicks province. No district is selected. (there are district features, so exclude them)
     if (
       provinceSelected &&
       !districtSelected &&
@@ -92,27 +93,45 @@ export default function MapGeoJsonComponentProvince({
         fillColor: "#DFDFDF",
       };
     }
+    // 2) User clicks province. No district is selected. But you want to style the included districts in the province
     if (provinceSelected && !districtSelected && feature.properties.GID_2) {
+      // ** note :: remove this blue styling of included districts in province
       return {
         dashArray: "0",
-        color: "#000",
-        weight: 1,
-        opacity: 0.3,
-        // ++ this is where layer score fill will come in with searchParams
-        fillOpacity: 0.7,
-        fillColor: "#DFDFDF",
-      };
-    } else {
-      return {
-        dashArray: "0",
-        color: "#666",
-        weight: 1,
+        color: "#0000FF",
+        weight: 2,
         opacity: 0.3,
         // ++ this is where layer score fill will come in with searchParams
         fillOpacity: 0.7,
         fillColor: "#DFDFDF",
       };
     }
+    // 3) User clicks district. Province is true, district is true. Match district to feature
+    if (
+      provinceSelected &&
+      districtSelected &&
+      decodeURIComponent(districtSelected) === feature.properties.NAME_2
+    ) {
+      return {
+        dashArray: "0",
+        color: "#F00",
+        weight: 4,
+        opacity: 1,
+        // ++ this is where layer score fill will come in with searchParams
+        fillOpacity: 0.7,
+        fillColor: "#DFDFDF",
+      };
+    }
+    // 4) Catch all the other province features and give default styling
+    return {
+      dashArray: "0",
+      color: "#666",
+      weight: 1,
+      opacity: 0.3,
+      // ++ this is where layer score fill will come in with searchParams
+      fillOpacity: 0.7,
+      fillColor: "#DFDFDF",
+    };
   };
   const handleLayerClick = (e) => {
     // GID_1 is province ID
@@ -126,17 +145,18 @@ export default function MapGeoJsonComponentProvince({
     const score_one = searchParams.get("score_one");
     const score_two = searchParams.get("score_two");
 
-    // // GID_2 is not true means this layerClick is a province
+    // 1) User clicks a province feature
     if (!e.target.feature.properties.GID_2) {
       router.push(
         `/dashboard/${country}/${province}?year=${year}&score_one=${score_one}&score_two=${score_two}`
       );
     }
-    // } else {
-    //   router.push(
-    //     `/dashboard/${country}/${province}/${district}?year=${year}&score_one=${score_one}&score_two=${score_two}`
-    //   );
-    // }
+    // 2) User clicks a district
+    if (e.target.feature.properties.GID_2) {
+      router.push(
+        `/dashboard/${country}/${province}/${district}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+      );
+    }
   };
   function onEachFeature(feature, layer) {
     layer.on({

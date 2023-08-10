@@ -69,6 +69,9 @@ export default function ProvincePageVisualChildVisual({
           chart = this;
         },
       },
+      accessibility: {
+        enabled: false,
+      },
     },
     credits: {
       enabled: false,

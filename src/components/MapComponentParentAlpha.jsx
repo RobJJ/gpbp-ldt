@@ -46,6 +46,7 @@ export default function MapComponentParentAlpha({
         // key={hashkey}
       >
         <TileLayer url={mapbox_url} />
+        {/* Handle change of scatterType here */}
         {scatterType === "provinces" && (
           <MapGeoJsonComponentProvince
             provinceGeoData={provinceGeoData}
