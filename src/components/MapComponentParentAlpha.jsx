@@ -59,6 +59,8 @@ export default function MapComponentParentAlpha({
           <MapGeoJsonComponentDistrict
             provinceGeoData={provinceGeoData}
             districtGeoData={districtGeoData}
+            gedDataProvince={gedDataProvince}
+            gedDataDistrict={gedDataDistrict}
           />
         )}
       </MapContainer>
