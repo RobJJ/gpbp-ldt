@@ -201,37 +201,19 @@ export default function MapGeoJsonComponentProvince({
         fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
-    // 2.1) User clicks province. No district selected but you want to style the province feature underneath
-    // if (
-    //   provinceSelected &&
-    //   !districtSelected &&
-    //   decodeURIComponent(provinceSelected) === feature.properties.NAME_1
-    // ) {
-    //   console.log("this should log only once");
-    //   // let idOfProvince = feature.properties.GID_1;
-    //   // let provinceDataForYear = gedDataProvince.find(
-    //   //   (province) =>
-    //   //     province.PROVINCE_ID.toString() === idOfProvince.toString() &&
-    //   //     Number(province.YEAR) === Number(year)
-    //   // );
-    //   // let score_value = provinceDataForYear[urlToScoreMatching[score_one]];
-    //   return {
-    //     dashArray: "0",
-    //     color: "#F00",
-    //     weight: 4,
-    //     opacity: 1,
-    //     // ++ this is where layer score fill will come in with searchParams
-    //     fillOpacity: 0,
-    //     fillColor: "#DFDFDF",
-    //   };
-    // }
-    //
+    // 3) User clicks district. Province is true, district is true. Match district to feature
     if (
       provinceSelected &&
       districtSelected &&
       decodeURIComponent(districtSelected) === feature.properties.NAME_2
     ) {
-      // 3) User clicks district. Province is true, district is true. Match district to feature
+      let idOfDistrict = feature.properties.GID_2;
+      let districtDataForYear = gedDataDistrict.find(
+        (district) =>
+          district.DISTRICT_ID.toString() === idOfDistrict.toString() &&
+          Number(district.YEAR) === Number(year)
+      );
+      let score_value = districtDataForYear[urlToScoreMatching[score_one]];
       return {
         dashArray: "0",
         color: "#F00",
@@ -239,10 +221,35 @@ export default function MapGeoJsonComponentProvince({
         opacity: 1,
         // ++ this is where layer score fill will come in with searchParams
         fillOpacity: 0.7,
-        fillColor: "#DFDFDF",
+        fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
-
+    // 3.1) User clicks district. Province is true, district is true. Style the other districts in province
+    if (
+      provinceSelected &&
+      districtSelected &&
+      decodeURIComponent(provinceSelected) === feature.properties.NAME_1 &&
+      feature.properties.GID_2
+    ) {
+      let idOfDistrict = feature.properties.GID_2;
+      let districtDataForYear = gedDataDistrict.find(
+        (district) =>
+          district.DISTRICT_ID.toString() === idOfDistrict.toString() &&
+          Number(district.YEAR) === Number(year)
+      );
+      let score_value = districtDataForYear[urlToScoreMatching[score_one]];
+      return {
+        dashArray: "3",
+        color: "#000",
+        weight: 2,
+        opacity: 0.3,
+        //
+        fillOpacity: 1,
+        // fill color depends on : 1) current score_one 2) features score_one value
+        // fillColor: "#DFDFDF",
+        fillColor: getFeatureFillColor(score_one, score_value),
+      };
+    }
     // 4) Catch all the other province features and give default styling
     let idOfProvince = feature.properties.GID_1;
     let provinceDataForYear = gedDataProvince.find(
