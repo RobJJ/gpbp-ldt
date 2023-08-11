@@ -85,7 +85,7 @@ function getFeatureFillColor(scoreType, scoreValue) {
 
   // This should never be reached if scoreValue is between 0 and 100,
   // but we include it for safety.
-  return "#FFFFFF";
+  return "#000";
 }
 
 export default function MapGeoJsonComponentProvince({
@@ -264,7 +264,7 @@ export default function MapGeoJsonComponentProvince({
       weight: 1,
       opacity: 0.3,
       // ++ this is where layer score fill will come in with searchParams
-      fillOpacity: 0.7,
+      fillOpacity: 1,
       fillColor: getFeatureFillColor(score_one, score_value),
     };
   };
