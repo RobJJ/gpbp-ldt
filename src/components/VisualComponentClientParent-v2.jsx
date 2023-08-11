@@ -42,7 +42,7 @@ export default function VisualComponentClientParentV2({
   country,
   mapbox_url,
 }) {
-  console.log("[VisualComponentClientParent] : rendered");
+  // console.log("[VisualComponentClientParent] : rendered");
   //   const params = useParams();
   //   const searchParams = useSearchParams();
   const [visualType] = useAtom(visualTypeSelected);
