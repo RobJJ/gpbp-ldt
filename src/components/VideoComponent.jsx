@@ -21,5 +21,3 @@ export default function VideoComponent() {
     </>
   );
 }
-
-// <div className="h-64 w-[500px] bg-slate-300 flex justify-center items-center"></div>;
