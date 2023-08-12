@@ -379,19 +379,33 @@ export default function ScatterComponentParentDistricts({
 
   // listening to province or district change
   useEffect(() => {
-    const currentSeries = chartRef.current.chart.series[0].data;
     // 1) User navigating between provinces - list
     if (provinceSelected && !districtSelected) {
       console.log("Province change fired :: ");
+      const currentSeries = chartRef.current.chart.series[0].data;
       // 1.1) Fade dots that are not in selected province
       const districtsNotInSelectedProvince = currentSeries.filter(
-        (districtDot) => districtDot.PROVINCE !== provinceSelected
+        (districtDot) =>
+          decodeURIComponent(districtDot.PROVINCE) !==
+          decodeURIComponent(provinceSelected)
       );
       // 1.2) fade these dots
       //1st : update districtsNotInProvince
       districtsNotInSelectedProvince.forEach((district) =>
         district.update({ color: "#D3D3D3", marker: { radius: 3 } })
       );
+    }
+    // 2) User navigates from province selected to country
+    if (!provinceSelected && !districtSelected) {
+      // 2.1) if dot has color of :#D3D3D3 then change it back to black
+      const currentSeries = chartRef.current.chart.series[0].data;
+      currentSeries.forEach((districtDot) => {
+        if (districtDot.color === "#D3D3D3") {
+          districtDot.update({ color: "#000" });
+        } else {
+          return districtDot;
+        }
+      });
     }
   }, [provinceSelected, districtSelected]);
 
