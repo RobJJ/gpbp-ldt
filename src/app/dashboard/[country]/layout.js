@@ -5,7 +5,6 @@ import FilterNavbarExp from "@/components/FilterNavbarExp";
 import { Suspense } from "react";
 import Spinner from "../../../components/Spinner-normal-size.svg";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 
 export const metadata = {
   title: "GED: Dashboard",

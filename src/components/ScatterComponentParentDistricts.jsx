@@ -273,23 +273,28 @@ export default function ScatterComponentParentDistricts({
         point: {
           events: {
             click: (dot) => {
-              // checking if the dot you clicked is a district dot
-              if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
-                console.log(
-                  "hey you clicked the dot.. this dots props are:",
-                  dot.point
-                );
+              if (dot.point.DISTRICT_ID) {
+                console.log("You clicked a dot ::", dot.point);
                 // 1st: just navigate to the path
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
               }
+              // removing this additional check on the dot click if it is already selected.. make user click the province breadcrumb
+              // checking if the dot you clicked is a district dot
+              // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
+              //   // 1st: just navigate to the path
+              //   router.push(
+              //     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+              //   );
+              // }
+              // ** removing this condition - ie clicking on a already selected dot. Rather make the user click the province
               // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
-              if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
-                router.push(
-                  `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                );
-              }
+              // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
+              //   router.push(
+              //     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+              //   );
+              // }
             },
           },
         },
@@ -342,23 +347,28 @@ export default function ScatterComponentParentDistricts({
           point: {
             events: {
               click: (dot) => {
-                // checking if the dot you clicked is a district dot
-                if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
-                  console.log(
-                    "hey you clicked the dot.. this dots props are:",
-                    dot.point
-                  );
+                if (dot.point.DISTRICT_ID) {
+                  console.log("hey you clicked a dot ::", dot.point);
                   // 1st: just navigate to the path
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                 }
-                // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
-                if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
-                  router.push(
-                    `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                  );
-                }
+                // removing both checks below for simplier approach
+                // checking if the dot you clicked is a district dot
+                // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
+
+                //   // 1st: just navigate to the path
+                //   router.push(
+                //     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                //   );
+                // }
+                // // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
+                // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
+                //   router.push(
+                //     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                //   );
+                // }
               },
             },
           },
@@ -367,109 +377,127 @@ export default function ScatterComponentParentDistricts({
     });
   }, [year, score_one, score_two]);
 
-  // listen for changes to the district.. this will always fire with any navigation
+  // listening to province or district change
   useEffect(() => {
-    // 1st: district view
-    if (provinceSelected && districtSelected) {
-      const province_id = getProvinceId(gedDataProvince, provinceSelected);
-      const district_id = getDistrictId(gedDataDistrict, districtSelected);
-      const selectedDistrict = chartRef.current.chart.series[0].data.filter(
-        (district) => district.DISTRICT_ID === district_id
+    const currentSeries = chartRef.current.chart.series[0].data;
+    // 1) User navigating between provinces - list
+    if (provinceSelected && !districtSelected) {
+      console.log("Province change fired :: ");
+      // 1.1) Fade dots that are not in selected province
+      const districtsNotInSelectedProvince = currentSeries.filter(
+        (districtDot) => districtDot.PROVINCE !== provinceSelected
       );
-      // maybe try optimise this? cut the main data chartRef data into two pieces instead of filtering?
-      //  1 ** might not need to do this ? they are already black
-      const districtsInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID === province_id
-        );
-      const districtsNotInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID !== province_id
-        );
+      // 1.2) fade these dots
       //1st : update districtsNotInProvince
       districtsNotInSelectedProvince.forEach((district) =>
         district.update({ color: "#D3D3D3", marker: { radius: 3 } })
       );
-      //2nd: update districtsInProvince
-      // 1 ** might not need to do this ? they are already black
-      districtsInSelectedProvince.forEach((district) =>
-        district.update({
-          color: "#000000",
-          marker: { radius: 3 },
-        })
-      );
-      //3nd: update chosen district
-      selectedDistrict.forEach((district) =>
-        district.update({
-          color: "#ff0000",
-          marker: { radius: 5 },
-        })
-      );
     }
+  }, [provinceSelected, districtSelected]);
 
-    //2nd: province view
-    if (provinceSelected && !districtSelected) {
-      const province_id = getProvinceId(gedDataProvince, provinceSelected);
-      const districtsInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID === province_id
-        );
-      const districtsNotInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID !== province_id
-        );
-      //1st: update districtsNotInSelectedProvince
-      districtsNotInSelectedProvince.forEach((district) =>
-        district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-      );
-      //2nd: update districtsInSelectedProvince
-      districtsInSelectedProvince.forEach((district) =>
-        district.update({
-          color: "#000000",
-          marker: { radius: 3 },
-        })
-      );
-    }
-  }, [districtSelected]);
+  // listen for changes to the district.. this will always fire with any navigation
+  // useEffect(() => {
+  //   // 1st: district view
+  //   if (provinceSelected && districtSelected) {
+  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
+  //     const district_id = getDistrictId(gedDataDistrict, districtSelected);
+  //     const selectedDistrict = chartRef.current.chart.series[0].data.filter(
+  //       (district) => district.DISTRICT_ID === district_id
+  //     );
+  //     // maybe try optimise this? cut the main data chartRef data into two pieces instead of filtering?
+  //     //  1 ** might not need to do this ? they are already black
+  //     const districtsInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID === province_id
+  //       );
+  //     const districtsNotInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID !== province_id
+  //       );
+  //     //1st : update districtsNotInProvince
+  //     districtsNotInSelectedProvince.forEach((district) =>
+  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
+  //     );
+  //     //2nd: update districtsInProvince
+  //     // 1 ** might not need to do this ? they are already black
+  //     districtsInSelectedProvince.forEach((district) =>
+  //       district.update({
+  //         color: "#000000",
+  //         marker: { radius: 3 },
+  //       })
+  //     );
+  //     //3nd: update chosen district
+  //     selectedDistrict.forEach((district) =>
+  //       district.update({
+  //         color: "#ff0000",
+  //         marker: { radius: 5 },
+  //       })
+  //     );
+  //   }
 
-  // listen for when user is at province view, and navigates to country from breadcrumbs.. the districtSelected will not trigger a new event because its not selected
-  useEffect(() => {
-    if (districtSelected) return;
-    //1st: set dots back to default
-    if (!districtSelected && !provinceSelected) {
-      const allDotsAvailableOnChart = chartRef.current.chart.series[0].data;
-      //1st: update all dots back to default
-      allDotsAvailableOnChart.forEach((district) =>
-        district.update({
-          color: "#000000",
-          marker: { radius: 3 },
-        })
-      );
-    }
-    //2nd: for user navigates to province from breadcrumbs
-    if (!districtSelected && provinceSelected) {
-      const province_id = getProvinceId(gedDataProvince, provinceSelected);
-      const districtsInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID === province_id
-        );
-      const districtsNotInSelectedProvince =
-        chartRef.current.chart.series[0].data.filter(
-          (district) => district.PROVINCE_ID !== province_id
-        );
-      districtsNotInSelectedProvince.forEach((district) =>
-        district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-      );
-      //2nd: update districtsInSelectedProvince
-      districtsInSelectedProvince.forEach((district) =>
-        district.update({
-          color: "#000000",
-          marker: { radius: 3 },
-        })
-      );
-    }
-    setChartOptions({ ...chartOptions });
-  }, [provinceSelected]);
+  //   //2nd: province view
+  //   if (provinceSelected && !districtSelected) {
+  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
+  //     const districtsInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID === province_id
+  //       );
+  //     const districtsNotInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID !== province_id
+  //       );
+  //     //1st: update districtsNotInSelectedProvince
+  //     districtsNotInSelectedProvince.forEach((district) =>
+  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
+  //     );
+  //     //2nd: update districtsInSelectedProvince
+  //     districtsInSelectedProvince.forEach((district) =>
+  //       district.update({
+  //         color: "#000000",
+  //         marker: { radius: 3 },
+  //       })
+  //     );
+  //   }
+  // }, [districtSelected]);
+
+  // // listen for when user is at province view, and navigates to country from breadcrumbs.. the districtSelected will not trigger a new event because its not selected
+  // useEffect(() => {
+  //   if (districtSelected) return;
+  //   //1st: set dots back to default
+  //   if (!districtSelected && !provinceSelected) {
+  //     const allDotsAvailableOnChart = chartRef.current.chart.series[0].data;
+  //     //1st: update all dots back to default
+  //     allDotsAvailableOnChart.forEach((district) =>
+  //       district.update({
+  //         color: "#000000",
+  //         marker: { radius: 3 },
+  //       })
+  //     );
+  //   }
+  //   //2nd: for user navigates to province from breadcrumbs
+  //   if (!districtSelected && provinceSelected) {
+  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
+  //     const districtsInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID === province_id
+  //       );
+  //     const districtsNotInSelectedProvince =
+  //       chartRef.current.chart.series[0].data.filter(
+  //         (district) => district.PROVINCE_ID !== province_id
+  //       );
+  //     districtsNotInSelectedProvince.forEach((district) =>
+  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
+  //     );
+  //     //2nd: update districtsInSelectedProvince
+  //     districtsInSelectedProvince.forEach((district) =>
+  //       district.update({
+  //         color: "#000000",
+  //         marker: { radius: 3 },
+  //       })
+  //     );
+  //   }
+  //   setChartOptions({ ...chartOptions });
+  // }, [provinceSelected]);
 
   return (
     <div className="h-full w-full flex flex-col ">
