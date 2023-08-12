@@ -1,5 +1,7 @@
 "use client";
 
+// ** NOTE ** This is the backup file of the working scatter - albiet slow version
+//
 import React, { useState, useEffect, useRef } from "react";
 
 import Highcharts from "highcharts";
@@ -164,7 +166,7 @@ function drawQuadrants(chart, update) {
 // let focusedPoint;
 // potentially move alot of this state to the child of scatter that actually renders the scatter
 
-export default function ScatterComponentParentDistricts({
+export default function ScatterComponentParentDistrictsSlow({
   gedDataProvince,
   gedDataDistrict,
   country,
