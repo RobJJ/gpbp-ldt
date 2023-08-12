@@ -60,7 +60,41 @@ const urlToTooltipMatching = {
 //     });
 // }
 // the data type will be the collection of GED-districts
-function dataMappingTwo(dataType, year, score_one, score_two) {
+function setColor(point, provinceSelected, districtSelected) {
+  if (
+    districtSelected &&
+    decodeURIComponent(point.DISTRICT) === decodeURIComponent(districtSelected)
+  ) {
+    // if point is the current selected district -> RED
+    return "#F00";
+  } else if (
+    !districtSelected &&
+    provinceSelected &&
+    decodeURIComponent(point.PROVINCE) === decodeURIComponent(provinceSelected)
+  ) {
+    // if point is part of current province selection -> BLACK
+    return "#000";
+  } else if (
+    !districtSelected &&
+    provinceSelected &&
+    decodeURIComponent(point.PROVINCE) !== decodeURIComponent(provinceSelected)
+  ) {
+    // if point is not part of current province selection but province is selected -> GRAY
+    return "#D3D3D3";
+  } else if (!districtSelected && !provinceSelected) {
+    // if there is no province selected or district then all dots should be black
+    return "#000";
+  }
+}
+
+function dataMappingTwo(
+  dataType,
+  year,
+  score_one,
+  score_two,
+  provinceSelected,
+  districtSelected
+) {
   console.log("the data Mapping has started .....");
   // match url scores to actual data values
   const xAxisScore = urlToScoreMatching[score_one];
@@ -72,6 +106,7 @@ function dataMappingTwo(dataType, year, score_one, score_two) {
     .map(function (point) {
       return {
         ...point,
+        color: setColor(point, provinceSelected, districtSelected),
         id: point.DISTRICT_ID,
         x: Math.round(Number(point[xAxisScore])),
         y: Math.round(Number(point[yAxisScore])),
@@ -303,7 +338,14 @@ export default function ScatterComponentParentDistricts({
 
     series: [
       {
-        data: dataMappingTwo(gedDataDistrict, year, score_one, score_two),
+        data: dataMappingTwo(
+          gedDataDistrict,
+          year,
+          score_one,
+          score_two,
+          provinceSelected,
+          districtSelected
+        ),
         marker: {
           radius: 3,
         },
@@ -382,29 +424,69 @@ export default function ScatterComponentParentDistricts({
     // 1) User navigating between provinces - list
     if (provinceSelected && !districtSelected) {
       console.log("Province change fired :: ");
-      const currentSeries = chartRef.current.chart.series[0].data;
-      // 1.1) Fade dots that are not in selected province
-      const districtsNotInSelectedProvince = currentSeries.filter(
-        (districtDot) =>
-          decodeURIComponent(districtDot.PROVINCE) !==
-          decodeURIComponent(provinceSelected)
-      );
-      // 1.2) fade these dots
-      //1st : update districtsNotInProvince
-      districtsNotInSelectedProvince.forEach((district) =>
-        district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-      );
+      // const currentSeries = chartRef.current.chart.series[0].data;
+      // // 1.1) Fade dots that are not in selected province
+      // const districtsNotInSelectedProvince = currentSeries.filter(
+      //   (districtDot) =>
+      //     decodeURIComponent(districtDot.PROVINCE) !==
+      //     decodeURIComponent(provinceSelected)
+      // );
+      // // 1.2) fade these dots
+      // //1st : update districtsNotInProvince
+      // districtsNotInSelectedProvince.forEach((district) =>
+      //   district.update({ color: "#D3D3D3", marker: { radius: 3 } })
+      // );
+      // lets see if we can just set chart options ??
+      setChartOptions({
+        ...chartOptions,
+        series: [
+          {
+            data: dataMappingTwo(
+              gedDataDistrict,
+              year,
+              score_one,
+              score_two,
+              provinceSelected,
+              districtSelected
+            ),
+            marker: {
+              radius: 3,
+            },
+            cursor: "pointer",
+          },
+        ],
+      });
     }
     // 2) User navigates from province selected to country
     if (!provinceSelected && !districtSelected) {
       // 2.1) if dot has color of :#D3D3D3 then change it back to black
-      const currentSeries = chartRef.current.chart.series[0].data;
-      currentSeries.forEach((districtDot) => {
-        if (districtDot.color === "#D3D3D3") {
-          districtDot.update({ color: "#000" });
-        } else {
-          return districtDot;
-        }
+      // const currentSeries = chartRef.current.chart.series[0].data;
+      // currentSeries.forEach((districtDot) => {
+      //   if (districtDot.color === "#D3D3D3") {
+      //     districtDot.update({ color: "#000" });
+      //   } else {
+      //     return districtDot;
+      //   }
+      // });
+      // ** try just reseting the dots instead of updating?
+      setChartOptions({
+        ...chartOptions,
+        series: [
+          {
+            data: dataMappingTwo(
+              gedDataDistrict,
+              year,
+              score_one,
+              score_two,
+              provinceSelected,
+              districtSelected
+            ),
+            marker: {
+              radius: 3,
+            },
+            cursor: "pointer",
+          },
+        ],
       });
     }
   }, [provinceSelected, districtSelected]);
