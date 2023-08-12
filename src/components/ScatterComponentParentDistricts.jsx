@@ -63,10 +63,29 @@ const urlToTooltipMatching = {
 function setColor(point, provinceSelected, districtSelected) {
   if (
     districtSelected &&
+    provinceSelected &&
     decodeURIComponent(point.DISTRICT) === decodeURIComponent(districtSelected)
   ) {
     // if point is the current selected district -> RED
     return "#F00";
+  } else if (
+    districtSelected &&
+    provinceSelected &&
+    decodeURIComponent(point.DISTRICT) !==
+      decodeURIComponent(districtSelected) &&
+    decodeURIComponent(point.PROVINCE) === decodeURIComponent(provinceSelected)
+  ) {
+    // if province and district are selected.. but the point is not the district selected but is part of the province -> BLACK
+    return "#000";
+  } else if (
+    districtSelected &&
+    provinceSelected &&
+    decodeURIComponent(point.DISTRICT) !==
+      decodeURIComponent(districtSelected) &&
+    decodeURIComponent(point.PROVINCE) !== decodeURIComponent(provinceSelected)
+  ) {
+    // province and district selected.. this point is not the district and not part of province -> GRAY
+    return "#D3D3D3";
   } else if (
     !districtSelected &&
     provinceSelected &&
@@ -424,19 +443,6 @@ export default function ScatterComponentParentDistricts({
     // 1) User navigating between provinces - list
     if (provinceSelected && !districtSelected) {
       console.log("Province change fired :: ");
-      // const currentSeries = chartRef.current.chart.series[0].data;
-      // // 1.1) Fade dots that are not in selected province
-      // const districtsNotInSelectedProvince = currentSeries.filter(
-      //   (districtDot) =>
-      //     decodeURIComponent(districtDot.PROVINCE) !==
-      //     decodeURIComponent(provinceSelected)
-      // );
-      // // 1.2) fade these dots
-      // //1st : update districtsNotInProvince
-      // districtsNotInSelectedProvince.forEach((district) =>
-      //   district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-      // );
-      // lets see if we can just set chart options ??
       setChartOptions({
         ...chartOptions,
         series: [
@@ -459,16 +465,28 @@ export default function ScatterComponentParentDistricts({
     }
     // 2) User navigates from province selected to country
     if (!provinceSelected && !districtSelected) {
-      // 2.1) if dot has color of :#D3D3D3 then change it back to black
-      // const currentSeries = chartRef.current.chart.series[0].data;
-      // currentSeries.forEach((districtDot) => {
-      //   if (districtDot.color === "#D3D3D3") {
-      //     districtDot.update({ color: "#000" });
-      //   } else {
-      //     return districtDot;
-      //   }
-      // });
-      // ** try just reseting the dots instead of updating?
+      setChartOptions({
+        ...chartOptions,
+        series: [
+          {
+            data: dataMappingTwo(
+              gedDataDistrict,
+              year,
+              score_one,
+              score_two,
+              provinceSelected,
+              districtSelected
+            ),
+            marker: {
+              radius: 3,
+            },
+            cursor: "pointer",
+          },
+        ],
+      });
+    }
+    // 3) User navigates straight to district
+    if (provinceSelected && districtSelected) {
       setChartOptions({
         ...chartOptions,
         series: [
@@ -490,110 +508,6 @@ export default function ScatterComponentParentDistricts({
       });
     }
   }, [provinceSelected, districtSelected]);
-
-  // listen for changes to the district.. this will always fire with any navigation
-  // useEffect(() => {
-  //   // 1st: district view
-  //   if (provinceSelected && districtSelected) {
-  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
-  //     const district_id = getDistrictId(gedDataDistrict, districtSelected);
-  //     const selectedDistrict = chartRef.current.chart.series[0].data.filter(
-  //       (district) => district.DISTRICT_ID === district_id
-  //     );
-  //     // maybe try optimise this? cut the main data chartRef data into two pieces instead of filtering?
-  //     //  1 ** might not need to do this ? they are already black
-  //     const districtsInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID === province_id
-  //       );
-  //     const districtsNotInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID !== province_id
-  //       );
-  //     //1st : update districtsNotInProvince
-  //     districtsNotInSelectedProvince.forEach((district) =>
-  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-  //     );
-  //     //2nd: update districtsInProvince
-  //     // 1 ** might not need to do this ? they are already black
-  //     districtsInSelectedProvince.forEach((district) =>
-  //       district.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       })
-  //     );
-  //     //3nd: update chosen district
-  //     selectedDistrict.forEach((district) =>
-  //       district.update({
-  //         color: "#ff0000",
-  //         marker: { radius: 5 },
-  //       })
-  //     );
-  //   }
-
-  //   //2nd: province view
-  //   if (provinceSelected && !districtSelected) {
-  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
-  //     const districtsInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID === province_id
-  //       );
-  //     const districtsNotInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID !== province_id
-  //       );
-  //     //1st: update districtsNotInSelectedProvince
-  //     districtsNotInSelectedProvince.forEach((district) =>
-  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-  //     );
-  //     //2nd: update districtsInSelectedProvince
-  //     districtsInSelectedProvince.forEach((district) =>
-  //       district.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       })
-  //     );
-  //   }
-  // }, [districtSelected]);
-
-  // // listen for when user is at province view, and navigates to country from breadcrumbs.. the districtSelected will not trigger a new event because its not selected
-  // useEffect(() => {
-  //   if (districtSelected) return;
-  //   //1st: set dots back to default
-  //   if (!districtSelected && !provinceSelected) {
-  //     const allDotsAvailableOnChart = chartRef.current.chart.series[0].data;
-  //     //1st: update all dots back to default
-  //     allDotsAvailableOnChart.forEach((district) =>
-  //       district.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       })
-  //     );
-  //   }
-  //   //2nd: for user navigates to province from breadcrumbs
-  //   if (!districtSelected && provinceSelected) {
-  //     const province_id = getProvinceId(gedDataProvince, provinceSelected);
-  //     const districtsInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID === province_id
-  //       );
-  //     const districtsNotInSelectedProvince =
-  //       chartRef.current.chart.series[0].data.filter(
-  //         (district) => district.PROVINCE_ID !== province_id
-  //       );
-  //     districtsNotInSelectedProvince.forEach((district) =>
-  //       district.update({ color: "#D3D3D3", marker: { radius: 3 } })
-  //     );
-  //     //2nd: update districtsInSelectedProvince
-  //     districtsInSelectedProvince.forEach((district) =>
-  //       district.update({
-  //         color: "#000000",
-  //         marker: { radius: 3 },
-  //       })
-  //     );
-  //   }
-  //   setChartOptions({ ...chartOptions });
-  // }, [provinceSelected]);
 
   return (
     <div className="h-full w-full flex flex-col ">
