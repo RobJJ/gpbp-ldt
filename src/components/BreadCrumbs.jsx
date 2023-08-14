@@ -4,13 +4,17 @@ import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import icon from "../../public/map-pin-range-line.png";
 
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 export default function BreadCrumbs() {
   const params = useParams();
   const searchParams = useSearchParams();
 
   // console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full bg-slate-500 flex gap-5 p-1">
+    <div className="w-full bg-slate-500 flex gap-2 p-1">
       <Image src={icon} alt="Logo" className="text-blue-500" />
       {params.country && (
         <Link
@@ -24,9 +28,10 @@ export default function BreadCrumbs() {
           }}
           className="bg-white"
         >
-          {params.country}/
+          {capitalizeFirstLetter(params.country)}
         </Link>
       )}
+      {params.province && "/"}
       {params.province && (
         <Link
           href={{
@@ -42,6 +47,7 @@ export default function BreadCrumbs() {
           {decodeURIComponent(params.province)}
         </Link>
       )}
+      {params.district && "/"}
       {params.district && (
         <Link
           href={{
