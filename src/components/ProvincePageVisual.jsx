@@ -15,12 +15,12 @@ export default async function ProvincePageVisual({
   province,
   searchParams,
 }) {
-  // 1. Fetch data for selected province -> cached on server
+  // 1. Fetch data for selected province -> cached on server : for all years
   const provinceData = await getSelectedProvinceData(
     country,
     decodeURIComponent(province)
   );
-  console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
+  // console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
 
   return (
     <div className="w-full h-full bg-white flex overflow-auto">

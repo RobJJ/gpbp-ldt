@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -59,6 +59,15 @@ export default function ProvincePageVisualChildVisual({
   //   sortData(provinceData, selectedTab)
   // );
   const chartRef = useRef();
+
+  // listening for change of Component type to view (selected Tab : "Overview", "Economic" ,etc)
+  useEffect(() => {
+    setChartOptions({
+      ...chartOptions,
+      // might need to also repush the tooltip data
+      series: sortData(provinceData, selectedTab),
+    });
+  }, [selectedTab]);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
