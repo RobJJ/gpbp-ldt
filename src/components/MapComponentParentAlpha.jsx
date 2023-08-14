@@ -22,6 +22,12 @@ const defaultPositions = {
   uzbekistan: [41.377491, 64.585262],
 };
 
+const countryZoomSetting = {
+  kosovo: 8,
+  uzbekistan: 5,
+  serbia: 7,
+};
+
 export default function MapComponentParentAlpha({
   country,
   provinceGeoData,
@@ -38,7 +44,7 @@ export default function MapComponentParentAlpha({
         attributionControl={false}
         center={defaultPositions[country]}
         // create a custom zoom value for each country.
-        zoom={7}
+        zoom={countryZoomSetting[country]}
         scrollWheelZoom={true}
         className="h-full w-full"
         // ref={nodeRef}

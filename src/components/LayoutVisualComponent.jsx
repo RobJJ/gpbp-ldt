@@ -8,6 +8,10 @@ import VisualComponentClientParent from "./VisualComponentClientParent";
 import { getDistricts } from "@/lib/districtdata";
 import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
+const countryZoomSetting = {
+  // kosovo:
+};
+
 // fetch GEO data and the ged data here... figure out how to make it faster by promise.all to allow concurrent calls
 
 export default async function LayoutVisualComponent({ country }) {
