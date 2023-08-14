@@ -250,15 +250,20 @@ export default function ScatterComponentParentDistricts({
     tooltip: {
       // enabled: false,
       borderRadius: 5,
+      backgroundColor: "#475569",
+      style: {
+        color: "#fff",
+        // cursor: "default",
+        // fontSize: "0.8em",
+      },
       borderWidth: 1,
       shadow: true,
       useHTML: true,
       headerFormat: "<table>",
       pointFormat:
-        `<tr><th colspan="2"><h3><u>{point.DISTRICT}</u></h3></th></tr>` +
-        `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
-        `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>` +
-        `<tr><th>year:${year}`,
+        `<tr><td colspan="2"><b>District</b>: {point.DISTRICT}</td></tr>` +
+        `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
+        `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
       followPointer: true,
       hideDelay: 0,
     },
