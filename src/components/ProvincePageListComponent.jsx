@@ -24,6 +24,7 @@ export default async function ProvincePageListComponent({
     province_id,
     searchParams.year
   );
+  // console.log("your province data :: ", districtData);
 
   return (
     <div className="w-full h-full flex flex-col">

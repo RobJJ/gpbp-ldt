@@ -9,6 +9,7 @@ import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
   const countryInfo = await getCountryInfo(params.country);
+  // console.log("country info :: ", countryInfo);
 
   return (
     <div className="w-full h-full bg-purple-300 flex flex-col p-2 pb-0 gap-2 overflow-auto">
@@ -31,11 +32,11 @@ export default async function CountryPage({ params, searchParams }) {
         />
         <CountryPageInfoCard
           label={"GDP PPP (constant 2017 int dollars)"}
-          fact={countryInfo[0].gpd_ppp}
+          fact={countryInfo[0].gdp_ppp}
         />
         <CountryPageInfoCard
           label={"GDP per capita PPP (constant 2017 int dollars)"}
-          fact={countryInfo[0].gpd_per_capita_ppp}
+          fact={countryInfo[0].gdp_per_capita_ppp}
         />
       </section>
       {/* this should be a click component as it needs to do NAV!*/}
