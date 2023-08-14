@@ -3,6 +3,7 @@
 import LoadingSpinner from "@/components/LoadingComponent";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
 import ProvincePageVisual from "@/components/ProvincePageVisual";
+import Link from "next/link";
 
 import { Suspense } from "react";
 
@@ -20,8 +21,12 @@ export default async function ProvincePage({ params, searchParams }) {
           <span className="font-bold text-xl">
             {decodeURIComponent(params.province)} Performance
           </span>
-          <span className="text-blue-500 underline">
-            Download Data | Methodology
+          <span className="text-blue-500 flex gap-1">
+            <span className="underline">Download Data</span>
+            <span className="text-black">|</span>
+            <Link className="underline" href={"/methodology"} target="_blank">
+              Methodology
+            </Link>
           </span>
         </div>
         {/* main */}

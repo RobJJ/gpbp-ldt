@@ -30,11 +30,11 @@ export default async function CountryPage({ params, searchParams }) {
           fact={countryInfo[0].total_area_size}
         />
         <CountryPageInfoCard
-          label={"GDP PPP (constant 2017 international dollars)"}
+          label={"GDP PPP (constant 2017 int dollars)"}
           fact={countryInfo[0].gpd_ppp}
         />
         <CountryPageInfoCard
-          label={"GDP per capita PPP (constant 2017 international dollars)"}
+          label={"GDP per capita PPP (constant 2017 int dollars)"}
           fact={countryInfo[0].gpd_per_capita_ppp}
         />
       </section>

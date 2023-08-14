@@ -6,7 +6,6 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { getDistrictId, getProvinceId } from "@/lib/utils";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
@@ -38,27 +37,6 @@ const urlToTooltipMatching = {
   temp: "Temp Score",
 };
 
-// function dataMapping(data, year, x_score, y_score, provinceSelected) {
-//   const xAxisScore = urlToScoreMatching[x_score];
-//   const yAxisScore = urlToScoreMatching[y_score];
-//   //
-//   return data
-//     .filter((obj) => Number(obj.YEAR) === Number(year))
-//     .map(function (point) {
-//       return {
-//         ...point,
-//         id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
-//         x: Math.round(Number(point[xAxisScore])),
-//         y: Math.round(Number(point[yAxisScore])),
-//         // marker: {
-//         //   radius: 10,
-//         // },
-//         // radius: 6,
-//         // color: colorPanel[point.REGION],
-//         // color: "#666666",
-//       };
-//     });
-// }
 // the data type will be the collection of GED-districts
 function setColor(point, provinceSelected, districtSelected) {
   if (
@@ -334,21 +312,6 @@ export default function ScatterComponentParentDistricts({
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
               }
-              // removing this additional check on the dot click if it is already selected.. make user click the province breadcrumb
-              // checking if the dot you clicked is a district dot
-              // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
-              //   // 1st: just navigate to the path
-              //   router.push(
-              //     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-              //   );
-              // }
-              // ** removing this condition - ie clicking on a already selected dot. Rather make the user click the province
-              // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
-              // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
-              //   router.push(
-              //     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-              //   );
-              // }
             },
           },
         },
@@ -440,73 +403,93 @@ export default function ScatterComponentParentDistricts({
 
   // listening to province or district change
   useEffect(() => {
+    // RESET DATA AND ALLOW IT TO MAKE THE DECISION ON STLYING
+    setChartOptions({
+      ...chartOptions,
+      series: [
+        {
+          data: dataMappingTwo(
+            gedDataDistrict,
+            year,
+            score_one,
+            score_two,
+            provinceSelected,
+            districtSelected
+          ),
+          marker: {
+            radius: 3,
+          },
+          cursor: "pointer",
+        },
+      ],
+    });
     // 1) User navigating between provinces - list
-    if (provinceSelected && !districtSelected) {
-      console.log("Province change fired :: ");
-      setChartOptions({
-        ...chartOptions,
-        series: [
-          {
-            data: dataMappingTwo(
-              gedDataDistrict,
-              year,
-              score_one,
-              score_two,
-              provinceSelected,
-              districtSelected
-            ),
-            marker: {
-              radius: 3,
-            },
-            cursor: "pointer",
-          },
-        ],
-      });
-    }
-    // 2) User navigates from province selected to country
-    if (!provinceSelected && !districtSelected) {
-      setChartOptions({
-        ...chartOptions,
-        series: [
-          {
-            data: dataMappingTwo(
-              gedDataDistrict,
-              year,
-              score_one,
-              score_two,
-              provinceSelected,
-              districtSelected
-            ),
-            marker: {
-              radius: 3,
-            },
-            cursor: "pointer",
-          },
-        ],
-      });
-    }
-    // 3) User navigates straight to district
-    if (provinceSelected && districtSelected) {
-      setChartOptions({
-        ...chartOptions,
-        series: [
-          {
-            data: dataMappingTwo(
-              gedDataDistrict,
-              year,
-              score_one,
-              score_two,
-              provinceSelected,
-              districtSelected
-            ),
-            marker: {
-              radius: 3,
-            },
-            cursor: "pointer",
-          },
-        ],
-      });
-    }
+    // if (provinceSelected && !districtSelected) {
+    //   console.log("Province change fired :: ");
+    //   setChartOptions({
+    //     ...chartOptions,
+    //     series: [
+    //       {
+    //         data: dataMappingTwo(
+    //           gedDataDistrict,
+    //           year,
+    //           score_one,
+    //           score_two,
+    //           provinceSelected,
+    //           districtSelected
+    //         ),
+    //         marker: {
+    //           radius: 3,
+    //         },
+    //         cursor: "pointer",
+    //       },
+    //     ],
+    //   });
+    // }
+    // // 2) User navigates from province selected to country
+    // if (!provinceSelected && !districtSelected) {
+    //   setChartOptions({
+    //     ...chartOptions,
+    //     series: [
+    //       {
+    //         data: dataMappingTwo(
+    //           gedDataDistrict,
+    //           year,
+    //           score_one,
+    //           score_two,
+    //           provinceSelected,
+    //           districtSelected
+    //         ),
+    //         marker: {
+    //           radius: 3,
+    //         },
+    //         cursor: "pointer",
+    //       },
+    //     ],
+    //   });
+    // }
+    // // 3) User navigates straight to district
+    // if (provinceSelected && districtSelected) {
+    //   setChartOptions({
+    //     ...chartOptions,
+    //     series: [
+    //       {
+    //         data: dataMappingTwo(
+    //           gedDataDistrict,
+    //           year,
+    //           score_one,
+    //           score_two,
+    //           provinceSelected,
+    //           districtSelected
+    //         ),
+    //         marker: {
+    //           radius: 3,
+    //         },
+    //         cursor: "pointer",
+    //       },
+    //     ],
+    //   });
+    // }
   }, [provinceSelected, districtSelected]);
 
   return (
