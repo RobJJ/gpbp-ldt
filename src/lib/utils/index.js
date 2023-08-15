@@ -24,3 +24,7 @@ export const getDistrictId = cache((data, district_name) => {
   );
   return districtObject ? districtObject.DISTRICT_ID : null;
 });
+
+export function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}

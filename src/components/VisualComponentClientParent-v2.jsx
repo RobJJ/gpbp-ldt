@@ -12,18 +12,6 @@ import LoadingSpinner from "./LoadingComponent";
 import ScatterComponentParentV2 from "./ScatterComponentParentV2";
 import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 
-// const MapComponentParentProvince = dynamic(
-//   () => import("./MapComponentParentProvince"),
-//   {
-//     ssr: false,
-//   }
-// );
-// const MapComponentParentDistrict = dynamic(
-//   () => import("./MapComponentParentDistrict"),
-//   {
-//     ssr: false,
-//   }
-// );
 const MapComponentParentAlpha = dynamic(
   () => import("./MapComponentParentAlpha"),
   {

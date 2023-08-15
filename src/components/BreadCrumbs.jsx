@@ -3,10 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import icon from "../../public/map-pin-range-line.png";
-
-function capitalizeFirstLetter(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default function BreadCrumbs() {
   const params = useParams();
@@ -14,7 +11,7 @@ export default function BreadCrumbs() {
 
   // console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full bg-slate-500 flex gap-2 p-1">
+    <div className="w-full bg-slate-300 flex gap-2 p-1">
       <Image src={icon} alt="Logo" className="text-blue-500" />
       {params.country && (
         <Link

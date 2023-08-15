@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 // add available countries here :: potentially move this to the server options
 const currentAvailableCountries = [
@@ -54,11 +55,11 @@ export default function SelectCountryButton() {
                   <span
                     onClick={handleCountrySelect}
                     data-tag={country.name}
-                    className="font-bold text-center block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+                    className="font-bold text-center block rounded-b-md px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                     role="menuitem"
                     key={country.id}
                   >
-                    {country.name}
+                    {capitalizeFirstLetter(country.name)}
                   </span>
                 );
               })}
