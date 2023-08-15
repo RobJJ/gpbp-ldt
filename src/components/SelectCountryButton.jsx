@@ -68,17 +68,21 @@ export default function SelectCountryButton() {
       )}
       {/* potentially handle any additional logic at this step */}
       <div
-        className={` p-2 rounded ${country ? "bg-green-300" : "bg-slate-300"}`}
+        className={` py-2 px-4 text-white font-bold rounded ${
+          country ? "bg-green-300" : "bg-[#5467C0]"
+        }`}
       >
-        <Link
-          // href={`/dashboard/${country}?year=2022&score_one=eco&score_two=envr`}
-          href={{
-            pathname: `/dashboard/${country}`,
-            query: { year: "2022", score_one: "econ", score_two: "envr" },
-          }}
-        >
-          Explore
-        </Link>
+        {country && (
+          <Link
+            href={{
+              pathname: `/dashboard/${country}`,
+              query: { year: "2022", score_one: "econ", score_two: "envr" },
+            }}
+          >
+            Explore
+          </Link>
+        )}
+        {!country && <span className=" cursor-pointer">Explore</span>}
       </div>
     </div>
   );

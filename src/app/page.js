@@ -1,4 +1,5 @@
-import VideoComponent from "@/components/VideoComponent";
+import dynamic from "next/dynamic";
+// import VideoComponent from "@/components/VideoComponent";
 import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
@@ -8,16 +9,20 @@ import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";
 import LandingPageCardComponent from "@/components/LandingPageCardComponent";
 
+const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
+  ssr: false,
+});
+
 export default function Home({ searchParams }) {
   // console.log("[HOME] : searchParams : ", searchParams);
   return (
     <div className="w-full h-full bg-pink-200 flex gap-1 overflow-auto">
       {/* LEFT PANEL */}
-      <section className="h-full w-7/12 bg-white flex flex-col gap-1">
-        <h1 className="w-full font-bold text-3xl bg-slate-300">
+      <section className="h-full w-7/12 bg-white flex flex-col justify-center pl-10">
+        <h1 className="w-full font-bold text-3xl bg-slate-300 mb-5">
           Green Economy Diagnostic Tool
         </h1>
-        <div className="w-full flex flex-col bg-slate-300">
+        <div className="w-full flex flex-col gap-1 bg-slate-300">
           <h3>
             <b>Get started</b> by selecting your country below
           </h3>
@@ -34,7 +39,7 @@ export default function Home({ searchParams }) {
           snapshot of the economic well-being of districts and help to paint a
           picture of their level of development.
         </div>
-        <div className="w-full flex justify-center ">
+        <div className="w-full flex">
           <VideoComponent />
         </div>
         {/*cards*/}
