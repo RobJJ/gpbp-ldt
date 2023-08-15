@@ -8,8 +8,8 @@ export default function VideoComponent() {
   return (
     <>
       <ReactPlayer
-        height={256}
-        width={500}
+        height="100%"
+        width="100%"
         //   width="70%"
         //   height="auto"
         url="https://youtu.be/cgeh0Reo3tI"

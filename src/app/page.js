@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-// import VideoComponent from "@/components/VideoComponent";
+
 import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
@@ -43,7 +43,7 @@ export default function Home({ searchParams }) {
             Learn more
           </Link>
         </div>
-        <div className="w-full flex mb-5">
+        <div className="w-[460px] flex mb-5 h-[240px] bg-slate-200 rounded-lg">
           <VideoComponent />
         </div>
         {/*cards*/}

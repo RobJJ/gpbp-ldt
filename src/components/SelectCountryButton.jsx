@@ -33,9 +33,9 @@ export default function SelectCountryButton() {
           <button
             onClick={toggleDropdown}
             type="button"
-            className="inline-flex justify-center items-center w-72 h-10 rounded-md border border-gray-400 px-4 py-1 bg-white text-md leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+            className="flex items-center justify-between w-72 h-10 rounded-md border border-gray-400 px-4 py-1 bg-white text-md  font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-            {country ? country : "Select Country"}
+            {country ? country : "Please select country"}
             <FaAngleDown className="text-base ml-1" />
           </button>
         </span>
@@ -68,9 +68,9 @@ export default function SelectCountryButton() {
       )}
       {/* potentially handle any additional logic at this step */}
       <div
-        className={` py-2 px-4 text-white font-bold rounded ${
-          country ? "bg-green-300" : "bg-[#5467C0]"
-        }`}
+        className={` py-2 px-4 text-white font-semibold rounded 
+          bg-[#5467C0]
+        `}
       >
         {country && (
           <Link
@@ -79,10 +79,10 @@ export default function SelectCountryButton() {
               query: { year: "2022", score_one: "econ", score_two: "envr" },
             }}
           >
-            Explore
+            Show Data
           </Link>
         )}
-        {!country && <span className=" cursor-pointer">Explore</span>}
+        {!country && <span className=" cursor-pointer">Show Data</span>}
       </div>
     </div>
   );
