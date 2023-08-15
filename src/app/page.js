@@ -8,6 +8,7 @@ import bdoIcon from "../../public/bdo.png";
 import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";
 import LandingPageCardComponent from "@/components/LandingPageCardComponent";
+import Link from "next/link";
 
 const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
   ssr: false,
@@ -19,32 +20,35 @@ export default function Home({ searchParams }) {
     <div className="w-full h-full bg-pink-200 flex gap-1 overflow-auto">
       {/* LEFT PANEL */}
       <section className="h-full w-7/12 bg-white flex flex-col justify-center pl-10">
-        <h1 className="w-full font-bold text-3xl bg-slate-300 mb-5">
+        <h1 className="w-full font-bold text-3xl bg-slate-300 mb-5 mt-5">
           Green Economy Diagnostic Tool
         </h1>
-        <div className="w-full flex flex-col gap-1 bg-slate-300">
+        <div className="w-full flex flex-col gap-1 bg-slate-300 mb-5">
           <h3>
             <b>Get started</b> by selecting your country below
           </h3>
           <SelectCountryButton />
         </div>
-        <div className="w-full bg-slate-300 overflow-auto">
+        <div className="w-full bg-slate-300 overflow-auto mb-5">
           The Green Economy Diagnostic (GED) is a tool that maps the economic
           and environmental performance of sub-national regions within a
           country. It is designed to provide a comprehensive picture of the
           performance of districts in terms of both economic and environmental
-          factors. To measure the economic performance of districts, the GED
-          considers two key indicators: (i) luminosity per capita growth rates
-          and (ii) luminosity per capita levels. These indicators provide a
-          snapshot of the economic well-being of districts and help to paint a
-          picture of their level of development.
+          factors. <br />
+          <Link
+            className="underline font-bold text-blue-500"
+            href={"/methodology"}
+            target="_blank"
+          >
+            Learn more
+          </Link>
         </div>
-        <div className="w-full flex">
+        <div className="w-full flex mb-5">
           <VideoComponent />
         </div>
         {/*cards*/}
-        <div className="w-full bg-slate-300">
-          <h3 className="font-bold text-xl">Part of the PIMxPAM Suite:</h3>
+        <div className="w-full flex flex-col gap-2 bg-slate-300">
+          <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
             <LandingPageCardComponent
               header={"PIM x PAM"}
