@@ -17,7 +17,7 @@ export default async function CountryPageLayout({ children, params }) {
   console.log("[CountryPageLayout] : rendered : server: PARAMS???", params);
 
   return (
-    <div className="w-full h-full flex flex-col overflow-auto">
+    <div className="w-full h-full flex flex-col overflow-auto relative">
       <FilterNavbarExp />
       <main className="w-full h-full bg-white flex gap-2 p-1 overflow-auto">
         <section className="w-1/2 h-full">

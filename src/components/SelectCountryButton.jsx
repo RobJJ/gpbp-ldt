@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import arrowDown from "../../public/arrow-down-s-line.png";
+
 import { capitalizeFirstLetter } from "@/lib/utils";
+import Image from "next/image";
 
 // add available countries here :: potentially move this to the server options
 const currentAvailableCountries = [
@@ -28,7 +30,7 @@ export default function SelectCountryButton() {
   };
 
   return (
-    <div className=" flex gap-2 ">
+    <div className="relative flex gap-2 ">
       <div>
         <span className="rounded-md shadow-sm">
           <button
@@ -37,12 +39,12 @@ export default function SelectCountryButton() {
             className="flex items-center justify-between w-72 h-10 rounded-md border border-gray-400 px-4 py-1 bg-white text-md  font-semibold text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out "
           >
             {country ? capitalizeFirstLetter(country) : "Please select country"}
-            <FaAngleDown className="text-base ml-1" />
+            <Image src={arrowDown} alt="Logo" className="text-black" />
           </button>
         </span>
       </div>
       {isOpen && (
-        <div className=" absolute mt-12 w-72 h-9 rounded-md shadow-lg">
+        <div className=" absolute mt-12 w-72 h-9 rounded-md shadow-lg z-50">
           <div className="rounded-md bg-white shadow-xs">
             <div
               className="py-1"

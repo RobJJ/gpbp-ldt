@@ -30,25 +30,27 @@ function SwitchComponent() {
   };
 
   return (
-    <div className="relative w-32 h-8 bg-white rounded-full">
-      <animated.div className="absolute h-full rounded-full" style={props}>
-        <div className="h-full w-16 flex items-center justify-center"></div>
-      </animated.div>
-      <div className="absolute inset-0 flex items-center justify-between">
-        <button
-          data-tag="scatter"
-          className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none ${scatterButtonStyle}`}
-          onClick={handleToggle}
-        >
-          {"Scatter"}
-        </button>
-        <button
-          data-tag="map"
-          className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent  focus:outline-none ${mapButtonStyle}`}
-          onClick={handleToggle}
-        >
-          {"Map"}
-        </button>
+    <div className="p-1 bg-white rounded-md">
+      <div className="relative w-40 h-7 bg-white ">
+        <animated.div className="absolute w-20 h-7 rounded-md" style={props}>
+          <div className="h-full w-full flex items-center justify-center"></div>
+        </animated.div>
+        <div className="absolute inset-0 flex items-center justify-between">
+          <button
+            data-tag="scatter"
+            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none ${scatterButtonStyle}`}
+            onClick={handleToggle}
+          >
+            {"Scatter"}
+          </button>
+          <button
+            data-tag="map"
+            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent  focus:outline-none ${mapButtonStyle}`}
+            onClick={handleToggle}
+          >
+            {"Map"}
+          </button>
+        </div>
       </div>
     </div>
   );

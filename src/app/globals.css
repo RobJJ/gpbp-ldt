@@ -38,3 +38,14 @@
   border-radius: 10px; /* This rounds the corners of the scrollbar track */
   background-color: white; /* This changes the color of the track where the thumb moves */
 }
+
+.leaflet-control {
+  z-index: 0 !important;
+}
+.leaflet-pane {
+  z-index: 0 !important;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 0 !important;
+}
