@@ -23,13 +23,13 @@ export default function Home({ searchParams }) {
         <h1 className="w-full font-bold text-3xl bg-slate-300 mb-5 mt-5">
           Green Economy Diagnostic Tool
         </h1>
-        <div className="w-full flex flex-col gap-1 bg-slate-300 mb-5">
+        <div className="w-full flex flex-col gap-2 bg-slate-300 mb-5">
           <h3>
             <b>Get started</b> by selecting your country below
           </h3>
           <SelectCountryButton />
         </div>
-        <div className="w-full bg-slate-300 overflow-auto mb-5">
+        <div className="w-full max-w-[900px] bg-slate-300 overflow-auto mb-5">
           The Green Economy Diagnostic (GED) is a tool that maps the economic
           and environmental performance of sub-national regions within a
           country. It is designed to provide a comprehensive picture of the
