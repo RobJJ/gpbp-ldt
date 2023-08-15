@@ -1,10 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
-import arrowDown from "../../public/arrow-down-s-line.png";
-import Image from "next/image";
 
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -14,12 +10,6 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-// const availableYears = [
-//   { id: 1, year: "2022" },
-//   { id: 2, year: "2021" },
-//   { id: 3, year: "2020" },
-//   { id: 4, year: "2019" },
-// ];
 export default function FilterButtonYear() {
   const router = useRouter();
   const pathname = usePathname();
@@ -27,12 +17,6 @@ export default function FilterButtonYear() {
   let yearParam = searchParams.get("year");
   let scoreOne = searchParams.get("score_one");
   let scoreTwo = searchParams.get("score_two");
-
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggleDropdown = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   const handleYearChange = (e) => {
     const choice = e.target.dataset.tag;
@@ -45,10 +29,10 @@ export default function FilterButtonYear() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           {yearParam}
           <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
+            className="-mr-1 h-5 w-5 text-black"
             aria-hidden="true"
           />
         </Menu.Button>
