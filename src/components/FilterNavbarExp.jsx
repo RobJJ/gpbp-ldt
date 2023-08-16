@@ -7,6 +7,9 @@ import ScatterTypeToggle from "./ScatterTypeToggle";
 import FilterButtonYear from "./FilterButtonYear";
 import FilterButtonScoreOne from "./FilterButtonScoreOne";
 import FilterButtonScoreTwo from "./FilterButtonScoreTwo";
+import LayerToggle from "./LayerToggle";
+import refreshIcon from "../../public/refresh-line.png";
+import Image from "next/image";
 
 export default function FilterNavbarExp({}) {
   const searchParams = useSearchParams();
@@ -17,14 +20,19 @@ export default function FilterNavbarExp({}) {
 
   return (
     <div className="w-full bg-pink-500 flex gap-5 items-center p-2">
-      <SwitchComponent />
-
-      {/* adding this for changing toggle for scatter type */}
-      <ScatterTypeToggle />
-
-      <FilterButtonYear />
-      <FilterButtonScoreOne />
-      <FilterButtonScoreTwo />
+      <div className="flex-none ">
+        <SwitchComponent />
+      </div>
+      <div className="flex-1 flex gap-4  justify-center">
+        <FilterButtonYear />
+        <FilterButtonScoreOne />
+        <FilterButtonScoreTwo />
+        <LayerToggle />
+      </div>
+      <div className="text-[#4345AA] flex-none  px-4 flex gap-2">
+        <Image src={refreshIcon} alt="refresh-icon" />
+        <span className="font-bold">Reset Filters</span>
+      </div>
     </div>
   );
 }
@@ -38,3 +46,9 @@ export default function FilterNavbarExp({}) {
 //   scoreOneParam={searchParams.get("score_one")}
 //   scoreTwoParam={searchParams.get("score_two")}
 // />;
+
+// OLD province-districts toggle
+//  {
+//    /* adding this for changing toggle for scatter type */
+//  }
+//  <ScatterTypeToggle />;

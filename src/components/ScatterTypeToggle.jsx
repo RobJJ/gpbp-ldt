@@ -4,6 +4,10 @@ import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
 export default function ScatterTypeToggle() {
   const [scatterType, setScatterType] = useAtom(scatterViewType);
   const router = useRouter();
@@ -19,7 +23,7 @@ export default function ScatterTypeToggle() {
 
     setScatterType(choice);
     router.push(
-      `/dashboard/${params.country}?year=${year}&score_one=${score_one}&score_two=${score_two}`
+      `${pathname}?year=${year}&score_one=${score_one}&score_two=${score_two}`
     );
     return;
   };
