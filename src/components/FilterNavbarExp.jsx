@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import FilterNavbarExpChild from "./FilterNavbarExp-child";
+// import FilterNavbarExpChild from "./FilterNavbarExp-child";
 import SwitchComponent from "./MapScatterToggle";
 import ScatterTypeToggle from "./ScatterTypeToggle";
 import FilterButtonYear from "./FilterButtonYear";
@@ -21,15 +21,20 @@ export default function FilterNavbarExp({}) {
 
       {/* adding this for changing toggle for scatter type */}
       <ScatterTypeToggle />
-      {/* maybe move the params etc to the actual component? */}
-      <FilterNavbarExpChild
-        yearParam={yearParam}
-        scoreOneParam={searchParams.get("score_one")}
-        scoreTwoParam={searchParams.get("score_two")}
-      />
+
       <FilterButtonYear />
       <FilterButtonScoreOne />
       <FilterButtonScoreTwo />
     </div>
   );
 }
+
+// OLD child control of toggles
+// {
+//   /* maybe move the params etc to the actual component? */
+// }
+// <FilterNavbarExpChild
+//   yearParam={yearParam}
+//   scoreOneParam={searchParams.get("score_one")}
+//   scoreTwoParam={searchParams.get("score_two")}
+// />;

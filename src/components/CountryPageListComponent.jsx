@@ -5,6 +5,7 @@ import {
 } from "@/lib/provinceData";
 import Link from "next/link";
 import TableRow from "./TableRow";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 // getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
 export default async function CountryPageListComponent({
@@ -27,7 +28,8 @@ export default async function CountryPageListComponent({
       {/* header */}
       <section className="w-full flex justify-between bg-orange-200 px-2 py-1 items-center ">
         <span className="text-lg bg-white">
-          Provinces in <b>{country}</b> in <b>{searchParams.year}</b>
+          Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
+          <b>{searchParams.year}</b>
         </span>
         <span className="text-sm text-blue-600 bg-white">Compare Data</span>
       </section>

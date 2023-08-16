@@ -77,7 +77,7 @@ export default function SelectCountryButton() {
       >
         {country && (
           <Link
-            className="hover:underline"
+            className="underline"
             href={{
               pathname: `/dashboard/${country}`,
               query: { year: "2022", score_one: "econ", score_two: "envr" },
