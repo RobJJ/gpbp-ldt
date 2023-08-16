@@ -1,21 +1,58 @@
 import Link from "next/link";
 
-const interpolateColor = (score) => {
-  // change value of red and all occureneces to a higher color for brighter and lower for darker
-  let red = 220,
-    green = 0,
-    blue = 0;
+const barColors = [
+  { range: 95, color: "#2B8539" },
+  { range: 90, color: "#419534" },
+  { range: 85, color: "#5AA72D" },
+  { range: 80, color: "#73B927" },
+  { range: 75, color: "#8DC921" },
+  { range: 70, color: "#A1D51D" },
+  { range: 65, color: "#B5DE19" },
+  { range: 60, color: "#C6E018" },
+  { range: 55, color: "#D4D918" },
+  { range: 50, color: "#E2D018" },
+  { range: 45, color: "#EEC418" },
+  { range: 40, color: "#F8B71C" },
+  { range: 35, color: "#FDA71F" },
+  { range: 30, color: "#FF961F" },
+  { range: 25, color: "#FA801D" },
+  { range: 20, color: "#F16819" },
+  { range: 15, color: "#E54B15" },
+  { range: 10, color: "#D72F11" },
+  { range: 5, color: "#CA170D" },
+  { range: 0, color: "#BF000A" },
+];
 
-  if (score <= 50) {
-    red = 220;
-    green = Math.floor(220 * (score / 50));
-  } else {
-    red = Math.floor(220 * ((100 - score) / 50));
-    green = 220;
+function getFeatureFillColor(scoreValue) {
+  for (let item of barColors) {
+    if (scoreValue >= item.range) {
+      return item.color;
+    }
   }
 
-  return `rgb(${red}, ${green}, ${blue})`;
-};
+  // This should never be reached if scoreValue is between 0 and 100,
+  // but we include it for safety.
+  return "#000";
+}
+
+// ** Old approach**
+//
+// const interpolateColor = (score) => {
+//   // change value of red and all occureneces to a higher color for brighter and lower for darker
+//   let red = 220,
+//     green = 0,
+//     blue = 0;
+
+//   if (score <= 50) {
+//     red = 220;
+//     green = Math.floor(220 * (score / 50));
+//   } else {
+//     red = Math.floor(220 * ((100 - score) / 50));
+//     green = 220;
+//   }
+
+//   return `rgb(${red}, ${green}, ${blue})`;
+// };
 
 export default function TableRow({
   number,
@@ -48,7 +85,7 @@ export default function TableRow({
           <div
             className="h-full w-full"
             style={{
-              backgroundColor: interpolateColor(envr),
+              backgroundColor: getFeatureFillColor(envr),
               width: `${envr}%`,
               // might be better to remove this easing effect as the color change is not leka
               transition: "width 0.5s ease-in-out",
@@ -72,7 +109,7 @@ export default function TableRow({
           <div
             className="h-full w-full"
             style={{
-              backgroundColor: interpolateColor(econ),
+              backgroundColor: getFeatureFillColor(econ),
               width: `${econ}%`,
               // might be better to remove this easing effect as the color change is not leka
               transition: "width 0.5s ease-in-out",
