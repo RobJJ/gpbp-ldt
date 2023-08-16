@@ -5,6 +5,8 @@ import FilterNavbarExpChild from "./FilterNavbarExp-child";
 import SwitchComponent from "./MapScatterToggle";
 import ScatterTypeToggle from "./ScatterTypeToggle";
 import FilterButtonYear from "./FilterButtonYear";
+import FilterButtonScoreOne from "./FilterButtonScoreOne";
+import FilterButtonScoreTwo from "./FilterButtonScoreTwo";
 
 export default function FilterNavbarExp({}) {
   const searchParams = useSearchParams();
@@ -26,6 +28,8 @@ export default function FilterNavbarExp({}) {
         scoreTwoParam={searchParams.get("score_two")}
       />
       <FilterButtonYear />
+      <FilterButtonScoreOne />
+      <FilterButtonScoreTwo />
     </div>
   );
 }

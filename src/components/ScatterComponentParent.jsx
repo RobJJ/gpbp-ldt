@@ -13,6 +13,7 @@ if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
+// ** note :: move all to lib/name-matching folder
 // ** note:: be sure of what score from url is sitting on xAxis and which is on yAxis..
 // currently score_one will be x, and score_two will be y
 const urlToScoreMatching = {
