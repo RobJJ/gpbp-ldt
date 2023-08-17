@@ -11,10 +11,33 @@ import highchartsMore from "highcharts/highcharts-more";
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
-// testing the matching
+
+// For each Tab selected -> what are the required data fields to show
 const tabToScoreType = {
   Overview: ["ECON_SCORE", "ENVR_SCORE"],
   Environmental: ["AIR_SCORE", "FOREST_SCORE", "TEMP_SCORE"],
+  Economic: [
+    "ECON_LPC_STD",
+    "ECON_LPC_PCT_CHANGE_STD",
+    "ECON_BUILT_PCT_STD",
+    "ECON_BUILT_COVER_GROWTH_STD",
+  ],
+  AirQuality: [
+    "AIR_PM25_SUBINDEX_STD",
+    "AIR_NO2_SUBINDEX_STD",
+    "AIR_CO_SUBINDEX_STD",
+    "AIR_SO2_SUBINDEX_STD",
+    "AIR_O3_SUBINDEX_STD",
+  ],
+  ExtremeWeather: [
+    "TEMP_EXTREMELY_HOT_STD",
+    "TEMP_EXTREMELY_COLD_STD",
+    "TEMP_MAX_TEMP_STD",
+    "TEMP_PRECIPITATION_MAX_STD",
+    "TEMP_EXTREMELY_WET_STD",
+    "TEMP_EXTREMELY_DRY_STD",
+  ],
+  GreenSpace: ["FOREST_GREEN_PCT_STD", "FOREST_GREEN_COVER_GROWTH_STD"],
 };
 
 const scoreTypeToName = {

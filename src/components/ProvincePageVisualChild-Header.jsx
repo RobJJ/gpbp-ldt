@@ -40,27 +40,27 @@ export default function ProvincePageVisualChildHeader({
         Environmental
       </button>
       <button
-        data-tab="Air Quality"
+        data-tab="AirQuality"
         className={`border-y-1 px-2  border-y border-gray-500 ${
-          selectedTab === "Air Quality" ? "bg-pink-300" : "bg-slate-200"
+          selectedTab === "AirQuality" ? "bg-pink-300" : "bg-slate-200"
         }`}
         onClick={handleTabClick}
       >
         Air Quality
       </button>
       <button
-        data-tab="Extreme Weather"
+        data-tab="ExtremeWeather"
         className={`border-y-1 px-2  border-y border-l border-gray-500 ${
-          selectedTab === "Extreme Weather" ? "bg-pink-300" : "bg-slate-200"
+          selectedTab === "ExtremeWeather" ? "bg-pink-300" : "bg-slate-200"
         }`}
         onClick={handleTabClick}
       >
         Extreme Weather
       </button>
       <button
-        data-tab="Green Space"
+        data-tab="GreenSpace"
         className={`border-y-1 px-2  rounded-r border border-gray-500 ${
-          selectedTab === "Green Space" ? "bg-pink-300" : "bg-slate-200"
+          selectedTab === "GreenSpace" ? "bg-pink-300" : "bg-slate-200"
         }`}
         onClick={handleTabClick}
       >

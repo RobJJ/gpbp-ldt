@@ -4,10 +4,10 @@ import { useState } from "react";
 import ProvincePageVisualChildHeader from "./ProvincePageVisualChild-Header";
 import ProvincePageVisualChildVisual from "./ProvincePageVisualChild-Visual";
 
-// GOAL: client component - receives province data,, keeps state of selected data
+// Receives province data for all years
 export default function ProvincePageVisualParent({ provinceData }) {
   const [selectedTab, setSelectedTab] = useState("Overview");
-  // console.log("[PARENT] : tab is:", selectedTab);
+
   return (
     <div className="w-full h-full flex flex-col gap-4 overflow-auto">
       {/* header controls tab selection */}
