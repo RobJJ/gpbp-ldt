@@ -1,7 +1,7 @@
 // ** dynamic
 
 export default function DistrictPage({ params, searchParams }) {
-  console.log("[DistrictPage] : rendered");
+  // console.log("[DistrictPage] : rendered");
   // fetch data here for the chosen district!!
   return (
     <div className="bg-blue-200 w-full h-full flex flex-col gap-2 p-2">

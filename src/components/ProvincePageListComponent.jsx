@@ -19,7 +19,7 @@ export default async function ProvincePageListComponent({
   // call this cached function,,
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const province_id = await getProvinceId(gedDataProvince, province);
-  console.log("province_id", province_id);
+  // console.log("[ProvincePageListComponent] :: province_id", province_id);
   const districtData = await getAllDistrictsInSelectedProvinceByYear(
     country,
     province_id,

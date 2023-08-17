@@ -6,9 +6,7 @@ import { NextResponse } from "next/server";
 // lets try grab all geo first
 // then lets try grab only geodata that has a province_id of whats being passed in
 export async function GET(request, { params }) {
-  console.log(
-    "are you hitting this endpoint on change of params or searchparams"
-  );
+  console.log("[GEO-ENDPOINT] : hit ");
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
   const data = await db
