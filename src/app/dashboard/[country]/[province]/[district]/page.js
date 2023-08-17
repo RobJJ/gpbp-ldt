@@ -38,7 +38,6 @@ export default function DistrictPage({ params, searchParams }) {
         <Suspense fallback={<LoadingSpinner />}>
           <DistrictPageVisual
             country={params.country}
-            province={params.province}
             district={params.district}
           />
         </Suspense>

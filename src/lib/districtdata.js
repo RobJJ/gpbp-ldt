@@ -71,13 +71,5 @@ export const getSelectedDistrictData = cache(async (country, district_name) => {
     throw new Error("Distict not found");
   }
 
-  // const province_id = province.PROVINCE_ID;
-
-  // Now you can fetch province data by province_id
-  // const provinceData = await db
-  //   .collection(`${country}-province-data`)
-  //   .find({ PROVINCE_ID: province_id }, { projection: { _id: 0 } })
-  //   .toArray();
-
   return districts;
 });
