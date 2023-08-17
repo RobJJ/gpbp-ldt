@@ -6,6 +6,7 @@ import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
 import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
 import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
+import MapColorLegend from "./MapColorLegend";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
@@ -69,6 +70,7 @@ export default function MapComponentParentAlpha({
             gedDataDistrict={gedDataDistrict}
           />
         )}
+        <MapColorLegend />
       </MapContainer>
     </section>
   );
