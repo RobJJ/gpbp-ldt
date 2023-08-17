@@ -39,7 +39,7 @@ export default function DistrictPage({ params, searchParams }) {
           <DistrictPageVisual
             country={params.country}
             province={params.province}
-            searchParams={searchParams}
+            district={params.district}
           />
         </Suspense>
       </section>

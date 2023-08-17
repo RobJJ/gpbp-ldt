@@ -46,7 +46,6 @@ export default async function ProvincePage({ params, searchParams }) {
           <ProvincePageVisual
             country={params.country}
             province={params.province}
-            searchParams={searchParams}
           />
         </Suspense>
       </section>

@@ -10,11 +10,7 @@ import ProvincePageVisualParent from "./ProvincePageVisualParent";
 
 // ** SERVER COMPONENT TO HANDLE FETCH ON SERVER
 // fetch here so we can wrap it in suspense
-export default async function ProvincePageVisual({
-  country,
-  province,
-  searchParams,
-}) {
+export default async function ProvincePageVisual({ country, province }) {
   // 1. Fetch data for selected province -> cached on server : for all years
   const provinceData = await getSelectedProvinceData(
     country,

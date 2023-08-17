@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "GED: Methodology",
+  description: "Green Economy Diagnostic Tool",
+};
+
 export default function MethodologyPage() {
   return (
     <div className="flex px-16 pt-12 bg-slate-300 w-full h-full overflow-auto">
