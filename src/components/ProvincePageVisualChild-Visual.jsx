@@ -40,12 +40,30 @@ const tabToScoreType = {
   GreenSpace: ["FOREST_GREEN_PCT_STD", "FOREST_GREEN_COVER_GROWTH_STD"],
 };
 
+// Match data property from GED-DATA --> lable name
 const scoreTypeToName = {
   ECON_SCORE: "Economic ",
   ENVR_SCORE: "Environmental ",
   AIR_SCORE: "Air Quality",
   FOREST_SCORE: "Deforestation",
   TEMP_SCORE: "Extreme Temp",
+  ECON_LPC_STD: "ECON_LPC_STD",
+  ECON_LPC_PCT_CHANGE_STD: "LPC_PCT_CHANGE_STD",
+  ECON_BUILT_PCT_STD: "BUILT_PCT_STD",
+  ECON_BUILT_COVER_GROWTH_STD: "BUILT_COVER_GROWTH_STD",
+  AIR_PM25_SUBINDEX_STD: "PM25_SUBINDEX_STD",
+  AIR_NO2_SUBINDEX_STD: "NO2_SUBINDEX_STD",
+  AIR_CO_SUBINDEX_STD: "CO_SUBINDEX_STD",
+  AIR_SO2_SUBINDEX_STD: "SO2_SUBINDEX_STD",
+  AIR_O3_SUBINDEX_STD: "O3_SUBINDEX_STD",
+  TEMP_EXTREMELY_HOT_STD: "EXTREMELY_HOT_STD",
+  TEMP_EXTREMELY_COLD_STD: "EXTREMELY_COLD_STD",
+  TEMP_MAX_TEMP_STD: "MAX_TEMP_STD",
+  TEMP_PRECIPITATION_MAX_STD: "PRECIPITATION_MAX_STD",
+  TEMP_EXTREMELY_WET_STD: "EXTREMELY_WET_STD",
+  TEMP_EXTREMELY_DRY_STD: "EXTREMELY_DRY_STD",
+  FOREST_GREEN_PCT_STD: "GREEN_PCT_STD",
+  FOREST_GREEN_COVER_GROWTH_STD: "GREEN_COVER_GROWTH_STD",
 };
 
 // this function needs to return an array of objects that are shaped in the following format
@@ -58,6 +76,8 @@ const scoreTypeToName = {
 function sortData(data, tab) {
   // get array of properties for creating individual lines
   const chartLinesArr = tabToScoreType[tab];
+  console.log("chartlinesArr:", chartLinesArr);
+
   // organise provinceData passed in by year
   const sortedProvinceDataByYear = data.sort((a, b) => a.YEAR - b.YEAR);
   // for each property create an object that contains an array of data and some other props
@@ -89,6 +109,18 @@ export default function ProvincePageVisualChildVisual({
       ...chartOptions,
       // might need to also repush the tooltip data
       series: sortData(provinceData, selectedTab),
+      yAxis: {
+        ...chartOptions.yAxis,
+        // min changes depending on if : score [0-100] : STD [-10, 10]
+        min:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? 0
+            : null,
+        max:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? 100
+            : null,
+      },
     });
   }, [selectedTab]);
 
@@ -144,8 +176,15 @@ export default function ProvincePageVisualChildVisual({
         // text: "<b>Scores</b>",
         text: undefined,
       },
-      min: 0,
-      max: 100,
+      // min changes depending on if : score [0-100] : STD [-10, 10]
+      min:
+        selectedTab === "Overview" || selectedTab === "Environmental"
+          ? 0
+          : null,
+      max:
+        selectedTab === "Overview" || selectedTab === "Environmental"
+          ? 100
+          : null,
     },
     series: sortData(provinceData, selectedTab),
     plotOptions: {
