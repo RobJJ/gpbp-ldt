@@ -14,20 +14,13 @@ export default async function ProvincePageListComponent({
   province,
   searchParams,
 }) {
-  // console.log("[CountryPageListComponent] rendered: server");
-
-  // REPLACE THIS FUNCTION WITH SOMETHING THAT DOESNT NEED TO CALL THE EXTRA PROVINCE_ID FUNCTION
-  // USE SOMETHING SIMILAR TO WHAT WE DID FOR THE VISUAL COMPONENT
-  // call this cached function,,
-  const gedDataProvince = await getAllProvincesInSelectedCountry(country);
-  const province_id = await getProvinceId(gedDataProvince, province);
-  // console.log("[ProvincePageListComponent] :: province_id", province_id);
+  // Fetch all districts in selected Province by year
   const districtData = await getAllDistrictsInSelectedProvinceByYear(
     country,
-    province_id,
-    searchParams.year
+    decodeURIComponent(province),
+    Number(searchParams.year)
   );
-  // console.log("your province data :: ", districtData);
+  console.log("your districtData data :: ", districtData);
 
   return (
     <div className="w-full h-full flex flex-col">
