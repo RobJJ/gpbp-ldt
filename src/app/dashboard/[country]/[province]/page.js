@@ -3,6 +3,7 @@
 import LoadingSpinner from "@/components/LoadingComponent";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
 import ProvincePageVisual from "@/components/ProvincePageVisual";
+
 import Link from "next/link";
 
 import { Suspense } from "react";
@@ -18,15 +19,26 @@ export default async function ProvincePage({ params, searchParams }) {
       <section className="w-full h-3/5 flex flex-col bg-orange-100 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center bg-orange-300">
-          <span className="font-bold text-xl">
+          <span className="font-bold text-xl pl-1">
             {decodeURIComponent(params.province)} Performance
           </span>
-          <span className="text-blue-500 flex gap-1">
-            <span className="underline">Download Data</span>
-            <span className="text-black">|</span>
+          <span className="text-[#5467C0] flex gap-1">
             <Link className="underline" href={"/methodology"} target="_blank">
               Methodology
             </Link>
+            <span className="text-slate-500 px-1">|</span>
+
+            <span
+              className="relative group
+              "
+            >
+              <span className="underline cursor-pointer">Download Data</span>
+              <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  text-sm rounded py-2 px-2 ">
+                <div className="font-semibold text-blue-400">
+                  Upcoming feature
+                </div>
+              </div>
+            </span>
           </span>
         </div>
         {/* main */}

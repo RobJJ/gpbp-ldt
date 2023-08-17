@@ -14,8 +14,8 @@ export default function ProvincePageVisualChildHeader({
     <section className="w-full flex p-1 text-sm bg-blue-200">
       <button
         data-tab="Overview"
-        className={`border-y-1 px-2  rounded-l border border-gray-500 ${
-          selectedTab === "Overview" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  rounded-l border border-slate-400 ${
+          selectedTab === "Overview" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >
@@ -23,8 +23,8 @@ export default function ProvincePageVisualChildHeader({
       </button>
       <button
         data-tab="Economic"
-        className={`border-y-1 px-2  border-y border-gray-500 ${
-          selectedTab === "Economic" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  border-y border-slate-400 ${
+          selectedTab === "Economic" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >
@@ -32,8 +32,8 @@ export default function ProvincePageVisualChildHeader({
       </button>
       <button
         data-tab="Environmental"
-        className={`border-y-1 px-2  border border-gray-500 ${
-          selectedTab === "Environmental" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  border border-slate-400 ${
+          selectedTab === "Environmental" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >
@@ -41,8 +41,8 @@ export default function ProvincePageVisualChildHeader({
       </button>
       <button
         data-tab="AirQuality"
-        className={`border-y-1 px-2  border-y border-gray-500 ${
-          selectedTab === "AirQuality" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  border-y border-slate-400 ${
+          selectedTab === "AirQuality" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >
@@ -50,8 +50,8 @@ export default function ProvincePageVisualChildHeader({
       </button>
       <button
         data-tab="ExtremeWeather"
-        className={`border-y-1 px-2  border-y border-l border-gray-500 ${
-          selectedTab === "ExtremeWeather" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  border-y border-l border-slate-400 ${
+          selectedTab === "ExtremeWeather" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >
@@ -59,8 +59,8 @@ export default function ProvincePageVisualChildHeader({
       </button>
       <button
         data-tab="GreenSpace"
-        className={`border-y-1 px-2  rounded-r border border-gray-500 ${
-          selectedTab === "GreenSpace" ? "bg-pink-300" : "bg-slate-200"
+        className={`border-y-1 px-2 py-1  rounded-r border border-slate-400 ${
+          selectedTab === "GreenSpace" ? "bg-black text-white" : "bg-white"
         }`}
         onClick={handleTabClick}
       >

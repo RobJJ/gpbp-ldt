@@ -84,8 +84,8 @@ function sortData(data, tab) {
   const chartData = chartLinesArr.map((prop) => {
     return {
       name: scoreTypeToName[prop],
-      data: sortedProvinceDataByYear.map((provinceYear) =>
-        Math.round(provinceYear[prop])
+      data: sortedProvinceDataByYear.map(
+        (provinceYear) => Math.round(provinceYear[prop] * 100) / 100
       ),
     };
   });
@@ -120,6 +120,14 @@ export default function ProvincePageVisualChildVisual({
           selectedTab === "Overview" || selectedTab === "Environmental"
             ? 100
             : null,
+        softMin:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? null
+            : -3,
+        softMax:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? null
+            : 3,
       },
     });
   }, [selectedTab]);
@@ -185,6 +193,14 @@ export default function ProvincePageVisualChildVisual({
         selectedTab === "Overview" || selectedTab === "Environmental"
           ? 100
           : null,
+      softMax:
+        selectedTab === "Overview" || selectedTab === "Environmental"
+          ? null
+          : 3,
+      softMinx:
+        selectedTab === "Overview" || selectedTab === "Environmental"
+          ? null
+          : -3,
     },
     series: sortData(provinceData, selectedTab),
     plotOptions: {

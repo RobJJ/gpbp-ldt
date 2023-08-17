@@ -76,7 +76,7 @@ export default function TableRow({
           // can spread the searchParams!!!! *******
           query: { ...searchParams },
         }}
-        className="bg-white flex items-center justify-center w-6/12 h-full border-x-2 border-slate-300 border-b-2  p-2 font-semibold hover:text-blue-300"
+        className="bg-white flex items-center justify-center w-6/12 h-full border-x-2 border-slate-300 border-b-2 p-2 text-sm font-semibold hover:text-blue-300"
       >
         {regionName}
       </Link>
