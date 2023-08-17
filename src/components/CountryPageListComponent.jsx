@@ -26,7 +26,7 @@ export default async function CountryPageListComponent({
   return (
     <div className="w-full h-full flex flex-col">
       {/* header */}
-      <section className="w-full flex justify-between bg-orange-200 px-2 py-1 items-center ">
+      <section className="w-full flex justify-between bg-white px-2 py-1 items-center ">
         <span className="text-lg bg-white">
           Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
           <b>{searchParams.year}</b>
@@ -35,11 +35,11 @@ export default async function CountryPageListComponent({
       </section>
       {/* body */}
       <section className="w-full bg-white font-bold flex text-center ">
-        <span className="bg-red-100 w-1/12 border-2 border-black">No</span>
-        <span className="bg-red-200 border-r-2 border-y-2 border-black w-5/12">
+        {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
+        <span className="bg-red-100 border-2 border-black w-6/12">
           Province
         </span>
-        <span className="bg-red-300 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
+        <span className="bg-red-100 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
           <span>Environment</span>
           <span
             className="relative group
@@ -74,7 +74,7 @@ export default async function CountryPageListComponent({
             </svg>
           </span>
         </span>
-        <span className="bg-red-300 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
+        <span className="bg-red-100 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
           <span>Economic</span>
           <span
             className="relative group
