@@ -51,13 +51,13 @@ const MAP_COLORS = {
   ],
   envr: [
     { color: "#003300", range: 80 },
-    { color: "#006600", range: 70 },
-    { color: "#009900", range: 60 },
-    { color: "#00CC00", range: 50 },
-    { color: "#33FF33", range: 40 },
-    { color: "#66FF66", range: 30 },
-    { color: "#99FF99", range: 20 },
-    { color: "#CCFFCC", range: 0 },
+    { color: "#006644", range: 70 },
+    { color: "#00875A", range: 60 },
+    { color: "#36B37E", range: 50 },
+    { color: "#57D9A3", range: 40 },
+    { color: "#79F2C0", range: 30 },
+    { color: "#ABF5D1", range: 20 },
+    { color: "#E3FCEF", range: 0 },
   ],
 };
 
