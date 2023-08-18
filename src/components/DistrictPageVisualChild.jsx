@@ -95,10 +95,12 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       title: {
         text: undefined,
       },
-      // tickPosition: "outside",
-      // tickmarkPlacement: "between",
-      // startOnTick: false,
-      // maxPadding: 0.2,
+      // ** we have categories set : the way min and max work now change.
+      // min : from left 20% of single tick
+      min: -0.2,
+      // categories.length - reverse or remaining of 0.2. 20% -- 80%
+      max: 4 - 0.8,
+
       categories: [2019, 2020, 2021, 2022],
       tickInterval: 1,
       accessibility: {
@@ -110,7 +112,6 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         text: tabToLabel[selectedTab],
       },
       maxPadding: 0.5,
-      // minPadding: 2,
       // min changes depending on if : score [0-100] : STD [-10, 10]
       min:
         selectedTab === "Overview" || selectedTab === "Environmental"
@@ -136,7 +137,7 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       },
       series: {
         stickyTracking: false,
-        // pointPlacement: "on",
+        pointPlacement: "on",
       },
     },
   });
@@ -170,6 +171,14 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         //   selectedTab === "Overview" || selectedTab === "Environmental"
         //     ? null
         //     : 3,
+      },
+      xAxis: {
+        ...chartOptions.xAxis,
+        // ** we have categories set : the way min and max work now change.
+        // min : from left 20% of single tick
+        min: -0.2,
+        // categories.length - reverse or remaining of 0.2. 20% -- 80%
+        max: 4 - 0.8,
       },
     });
   }, [selectedTab]);
