@@ -6,44 +6,13 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 
-import {
-  tabToLabel,
-  scoreTypeToName,
-  tabToScoreType,
-} from "../lib/name-matching/index.js";
+import { tabToLabel } from "../lib/name-matching/index.js";
+import { sortData } from "@/lib/linechart/index.js";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
-}
-
-// Match data property from GED-DATA --> lable name
-
-// this function needs to return an array of objects that are shaped in the following format
-// {
-//         name: "Deforestation",
-//         data: sortData(districtData, "FOREST_SCORE"),
-//         color: "#FFAB00",
-//       },
-
-function sortData(data, tab) {
-  // get array of properties for creating individual lines
-  const chartLinesArr = tabToScoreType[tab];
-  console.log("chartlinesArr:", chartLinesArr);
-
-  // organise provinceData passed in by year
-  const sortedProvinceDataByYear = data.sort((a, b) => a.YEAR - b.YEAR);
-  // for each property create an object that contains an array of data and some other props
-  const chartData = chartLinesArr.map((prop) => {
-    return {
-      name: scoreTypeToName[prop],
-      data: sortedProvinceDataByYear.map(
-        (provinceYear) => Math.round(provinceYear[prop] * 100) / 100
-      ),
-    };
-  });
-  return chartData;
 }
 
 // GOAL: Chart component: Receives ProvinceData : Tab selection -> listen for this change
@@ -171,14 +140,6 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         //   selectedTab === "Overview" || selectedTab === "Environmental"
         //     ? null
         //     : 3,
-      },
-      xAxis: {
-        ...chartOptions.xAxis,
-        // ** we have categories set : the way min and max work now change.
-        // min : from left 20% of single tick
-        min: -0.2,
-        // categories.length - reverse or remaining of 0.2. 20% -- 80%
-        max: 4 - 0.8,
       },
     });
   }, [selectedTab]);
