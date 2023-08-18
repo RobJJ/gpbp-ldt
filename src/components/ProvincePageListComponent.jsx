@@ -20,7 +20,7 @@ export default async function ProvincePageListComponent({
     decodeURIComponent(province),
     Number(searchParams.year)
   );
-  console.log("your districtData data :: ", districtData);
+  // console.log("your districtData data :: ", districtData);
 
   return (
     <div className="w-full h-full flex flex-col">

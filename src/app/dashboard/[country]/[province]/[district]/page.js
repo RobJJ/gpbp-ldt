@@ -1,12 +1,13 @@
 // ** dynamic
 
+import DistrictPageInsightsComponent from "@/components/DistrictPageInsightsComponent";
 import DistrictPageVisual from "@/components/DistrictPageVisual";
 import LoadingSpinner from "@/components/LoadingComponent";
 import Link from "next/link";
 import { Suspense } from "react";
 
 export default function DistrictPage({ params, searchParams }) {
-  console.log("[DistrictPage] : params : searchParams", params, searchParams);
+  // console.log("[DistrictPage] : params : searchParams", params, searchParams);
   return (
     <div className="bg-blue-200 w-full h-full flex flex-col gap-2 p-2">
       <section className="w-full h-3/5 flex flex-col bg-orange-100 rounded">
@@ -42,12 +43,16 @@ export default function DistrictPage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <span className="bg-blue-100 w-full h-1/2 text-2xl font-bold">
-        [DISTRICT LEVEL] : SHOW insights HERE <br />
-        ** fetch data in this{" "}
-        <span className="text-red-500">async server component</span> based on
-        district selected - feed data to the highcharts component **
-      </span>
+      <section className="w-full h-2/5 bg-purple-100 overflow-auto scrollbar-none">
+        {/* this component is fetching data inside */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <DistrictPageInsightsComponent
+          // country={params.country}
+          // province={params.province}
+          // searchParams={searchParams}
+          />
+        </Suspense>
+      </section>
     </div>
   );
 }
