@@ -42,8 +42,8 @@ const tabToScoreType = {
 
 // Match data property from GED-DATA --> lable name
 const scoreTypeToName = {
-  ECON_SCORE: "Economic ",
-  ENVR_SCORE: "Environmental ",
+  ECON_SCORE: "Economic",
+  ENVR_SCORE: "Environmental",
   AIR_SCORE: "Air Quality",
   FOREST_SCORE: "Deforestation",
   TEMP_SCORE: "Extreme Temp",
@@ -64,6 +64,15 @@ const scoreTypeToName = {
   TEMP_EXTREMELY_DRY_STD: "Extreme dry",
   FOREST_GREEN_PCT_STD: "PCT",
   FOREST_GREEN_COVER_GROWTH_STD: "Cover growth",
+};
+
+const tabToLabel = {
+  Overview: "Scores",
+  Environmental: "Scores",
+  Economic: "Std deviations from yearly average",
+  AirQuality: "Std deviations from yearly average",
+  ExtremeWeather: "Std deviations from yearly average",
+  GreenSpace: "Std deviations from yearly average",
 };
 
 // this function needs to return an array of objects that are shaped in the following format
@@ -99,35 +108,6 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
   //   sortData(provinceData, selectedTab)
   // );
   const chartRef = useRef();
-
-  // listening for change of Component type to view (selected Tab : "Overview", "Economic" ,etc)
-  useEffect(() => {
-    setChartOptions({
-      ...chartOptions,
-      // might need to also repush the tooltip data
-      series: sortData(districtData, selectedTab),
-      yAxis: {
-        ...chartOptions.yAxis,
-        // min changes depending on if : score [0-100] : STD [-10, 10]
-        min:
-          selectedTab === "Overview" || selectedTab === "Environmental"
-            ? 0
-            : null,
-        max:
-          selectedTab === "Overview" || selectedTab === "Environmental"
-            ? 100
-            : null,
-        softMin:
-          selectedTab === "Overview" || selectedTab === "Environmental"
-            ? null
-            : -3,
-        softMax:
-          selectedTab === "Overview" || selectedTab === "Environmental"
-            ? null
-            : 3,
-      },
-    });
-  }, [selectedTab]);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -178,8 +158,7 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
     },
     yAxis: {
       title: {
-        // text: "<b>Scores</b>",
-        text: undefined,
+        text: tabToLabel[selectedTab],
       },
       // min changes depending on if : score [0-100] : STD [-10, 10]
       min:
@@ -190,14 +169,14 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         selectedTab === "Overview" || selectedTab === "Environmental"
           ? 100
           : null,
-      softMax:
-        selectedTab === "Overview" || selectedTab === "Environmental"
-          ? null
-          : 3,
-      softMinx:
-        selectedTab === "Overview" || selectedTab === "Environmental"
-          ? null
-          : -3,
+      // softMax:
+      //   selectedTab === "Overview" || selectedTab === "Environmental"
+      //     ? null
+      //     : 3,
+      // softMinx:
+      //   selectedTab === "Overview" || selectedTab === "Environmental"
+      //     ? null
+      //     : -3,
     },
     series: sortData(districtData, selectedTab),
     plotOptions: {
@@ -209,6 +188,39 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       },
     },
   });
+
+  // listening for change of Component type to view (selected Tab : "Overview", "Economic" ,etc)
+  useEffect(() => {
+    setChartOptions({
+      ...chartOptions,
+      // might need to also repush the tooltip data
+      series: sortData(districtData, selectedTab),
+      yAxis: {
+        ...chartOptions.yAxis,
+        title: {
+          // text: "<b>Scores</b>",
+          text: tabToLabel[selectedTab],
+        },
+        // min changes depending on if : score [0-100] : STD [-10, 10]
+        min:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? 0
+            : null,
+        max:
+          selectedTab === "Overview" || selectedTab === "Environmental"
+            ? 100
+            : null,
+        // softMin:
+        //   selectedTab === "Overview" || selectedTab === "Environmental"
+        //     ? null
+        //     : -3,
+        // softMax:
+        //   selectedTab === "Overview" || selectedTab === "Environmental"
+        //     ? null
+        //     : 3,
+      },
+    });
+  }, [selectedTab]);
 
   return (
     <div className="h-full w-full flex overflow-auto">

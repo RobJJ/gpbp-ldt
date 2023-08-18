@@ -176,7 +176,7 @@ export default function MapGeoJsonComponentDistrict({
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "1",
         color: "#F00",
-        weight: 4,
+        weight: 3,
         opacity: 1,
         fillOpacity: 1,
         fillColor: getFeatureFillColor(score_one, score_value),
