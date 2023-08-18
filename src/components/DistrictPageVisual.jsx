@@ -7,7 +7,7 @@ export default async function DistrictPageVisual({ country, district }) {
     country,
     decodeURIComponent(district)
   );
-  // console.log("[DistrictVisual] : data :", districtData);
+  console.log("[DistrictVisual] : data :", districtData);
   return (
     <div className="w-full h-full bg-white flex overflow-auto">
       {/* this is the client parent that will handle the state */}

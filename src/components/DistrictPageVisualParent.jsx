@@ -17,10 +17,10 @@ export default function DistrictPageVisualParent({ districtData }) {
       />
       {/* the scatter component that will render content based on selectedTab */}
 
-      {/*<DistrictPageVisualChild
+      <DistrictPageVisualChild
         selectedTab={selectedTab}
         districtData={districtData}
-  />*/}
+      />
     </div>
   );
 }
