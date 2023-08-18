@@ -44,12 +44,15 @@ export default function DistrictPage({ params, searchParams }) {
         </Suspense>
       </section>
       <section className="w-full h-2/5 bg-purple-100 overflow-auto scrollbar-none">
-        {/* this component is fetching data inside */}
+        {/* header */}
+        <div className="w-full flex justify-between items-center bg-orange-300">
+          <span className="font-bold text-xl pl-1">Regional Insights</span>
+        </div>
+        {/* main */}
         <Suspense fallback={<LoadingSpinner />}>
           <DistrictPageInsightsComponent
-          // country={params.country}
-          // province={params.province}
-          // searchParams={searchParams}
+            country={params.country}
+            district={params.district}
           />
         </Suspense>
       </section>

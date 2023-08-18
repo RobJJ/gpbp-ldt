@@ -1,5 +1,8 @@
-import React from "react";
+import { getDistrictInsights } from "@/lib/district-insights";
 
-export default function DistrictPageInsightsComponent() {
+// Fetch Insights data for that country
+export default function DistrictPageInsightsComponent({ country, district }) {
+  const insights = getDistrictInsights(country);
+  console.log("Insights ::", insights);
   return <div>DistrictPageInsightsComponent</div>;
 }
