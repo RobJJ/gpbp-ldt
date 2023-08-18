@@ -9,5 +9,7 @@ export const getDistrictInsights = cache(async (country, district) => {
     .collection(`${country}-district-insight`)
     .find({ DISTRICT_NAME: district }, { projection: { _id: 0 } })
     .toArray();
+
+  if (!allInsights) return false;
   return allInsights;
 });
