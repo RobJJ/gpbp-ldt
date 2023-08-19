@@ -37,6 +37,15 @@ const urlToTooltipMatching = {
   temp: "Temp Score",
 };
 
+// function setRaduis(point, provinceSelected,districtSelected) {
+//   if (
+//     districtSelected &&
+//     provinceSelected &&
+//     decodeURIComponent(point.DISTRICT) === decodeURIComponent(districtSelected)
+//   ) {
+//     // if point is the current selected district -> RED
+//     return 5;
+// }
 // the data type will be the collection of GED-districts
 function setColor(point, provinceSelected, districtSelected) {
   if (
@@ -107,6 +116,13 @@ function dataMappingTwo(
         id: point.DISTRICT_ID,
         x: Math.round(Number(point[xAxisScore])),
         y: Math.round(Number(point[yAxisScore])),
+        marker: {
+          radius:
+            decodeURIComponent(point.DISTRICT) ===
+            decodeURIComponent(districtSelected)
+              ? 5
+              : 3,
+        },
       };
     });
 }
@@ -329,9 +345,6 @@ export default function ScatterComponentParentDistricts({
           provinceSelected,
           districtSelected
         ),
-        marker: {
-          radius: 3,
-        },
         cursor: "pointer",
       },
     ],
@@ -417,80 +430,10 @@ export default function ScatterComponentParentDistricts({
             provinceSelected,
             districtSelected
           ),
-          marker: {
-            radius: 3,
-          },
           cursor: "pointer",
         },
       ],
     });
-    // 1) User navigating between provinces - list
-    // if (provinceSelected && !districtSelected) {
-    //   console.log("Province change fired :: ");
-    //   setChartOptions({
-    //     ...chartOptions,
-    //     series: [
-    //       {
-    //         data: dataMappingTwo(
-    //           gedDataDistrict,
-    //           year,
-    //           score_one,
-    //           score_two,
-    //           provinceSelected,
-    //           districtSelected
-    //         ),
-    //         marker: {
-    //           radius: 3,
-    //         },
-    //         cursor: "pointer",
-    //       },
-    //     ],
-    //   });
-    // }
-    // // 2) User navigates from province selected to country
-    // if (!provinceSelected && !districtSelected) {
-    //   setChartOptions({
-    //     ...chartOptions,
-    //     series: [
-    //       {
-    //         data: dataMappingTwo(
-    //           gedDataDistrict,
-    //           year,
-    //           score_one,
-    //           score_two,
-    //           provinceSelected,
-    //           districtSelected
-    //         ),
-    //         marker: {
-    //           radius: 3,
-    //         },
-    //         cursor: "pointer",
-    //       },
-    //     ],
-    //   });
-    // }
-    // // 3) User navigates straight to district
-    // if (provinceSelected && districtSelected) {
-    //   setChartOptions({
-    //     ...chartOptions,
-    //     series: [
-    //       {
-    //         data: dataMappingTwo(
-    //           gedDataDistrict,
-    //           year,
-    //           score_one,
-    //           score_two,
-    //           provinceSelected,
-    //           districtSelected
-    //         ),
-    //         marker: {
-    //           radius: 3,
-    //         },
-    //         cursor: "pointer",
-    //       },
-    //     ],
-    //   });
-    // }
   }, [provinceSelected, districtSelected]);
 
   return (

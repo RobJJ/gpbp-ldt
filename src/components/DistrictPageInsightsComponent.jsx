@@ -16,7 +16,7 @@ export default async function DistrictPageInsightsComponent({
       {/* this is the client parent that will handle the state */}
       <DistrictPageInsightsParent
         insightsData={insights[0]}
-        district={district}
+        district={decodeURIComponent(district)}
       />
     </div>
   );
