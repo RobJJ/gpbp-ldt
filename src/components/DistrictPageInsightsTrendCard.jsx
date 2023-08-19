@@ -27,11 +27,11 @@ export default function DistrictPageInsightsTrendCard({
           </span>
         </div>
       </section>
-      <section className=" w-full h-full ">
-        <span>{JSON.stringify(insightsData.TRENDS.ECON_SCORE)}</span>
-        <span>{JSON.stringify(insightsData.TRENDS.ENVR_SCORE)}</span>
-        <span>{JSON.stringify(insightsData.TRENDS.AIR_SCORE)}</span>
-        <span>{JSON.stringify(insightsData.TRENDS.TEMP_SCORE)}</span>
+      <section className="w-full h-full overflow-auto">
+        <span>{insightsData.TRENDS.ECON_SCORE}</span>
+        <span>{insightsData.TRENDS.ENVR_SCORE}</span>
+        <span>{insightsData.TRENDS.AIR_SCORE}</span>
+        <span>{insightsData.TRENDS.TEMP_SCORE}</span>
       </section>
     </div>
   );

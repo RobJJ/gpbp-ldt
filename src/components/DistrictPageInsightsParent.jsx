@@ -35,8 +35,15 @@ export default function DistrictPageInsightsParent({ insightsData, district }) {
           insightsData={insightsData}
         />
       )}
-      {selectedTab === "Recommendations" && <DistrictPageInsightsRecomCard />}
-      {selectedTab === "AssestLevelRisks" && <DistrictPageInsightsRisksCard />}
+      {selectedTab === "Recommendations" && (
+        <DistrictPageInsightsRecomCard
+          district={district}
+          insightsData={insightsData}
+        />
+      )}
+      {selectedTab === "AssestLevelRisks" && (
+        <DistrictPageInsightsRisksCard district={district} />
+      )}
     </div>
   );
 }
