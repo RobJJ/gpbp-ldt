@@ -9,10 +9,10 @@ import { Suspense } from "react";
 export default function DistrictPage({ params, searchParams }) {
   // console.log("[DistrictPage] : params : searchParams", params, searchParams);
   return (
-    <div className="bg-blue-200 w-full h-full flex flex-col gap-2 p-2 overflow-auto">
-      <section className="w-full h-3/5 flex flex-col bg-orange-100 rounded">
+    <div className=" w-full h-full flex flex-col gap-1 overflow-auto ">
+      <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
-        <div className="w-full flex justify-between items-center bg-orange-300">
+        <div className="w-full flex justify-between items-center ">
           <span className="font-bold text-xl pl-1">
             {decodeURIComponent(params.district)} Performance
           </span>
@@ -45,7 +45,7 @@ export default function DistrictPage({ params, searchParams }) {
       </section>
       <section className="w-full h-2/5 flex flex-col gap-1 overflow-auto">
         {/* header */}
-        <div className="w-full flex justify-between items-center bg-orange-300">
+        <div className="w-full flex justify-between items-center ">
           <span className="font-bold text-xl pl-1">Regional Insights</span>
         </div>
         {/* main */}

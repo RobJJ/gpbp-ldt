@@ -15,10 +15,10 @@ export default async function ProvincePage({ params, searchParams }) {
   //1. Need data based on [country] and [province_name]
 
   return (
-    <div className="w-full h-full bg-orange-200 flex flex-col p-2 gap-2 overflow-auto">
-      <section className="w-full h-3/5 flex flex-col bg-orange-100 rounded">
+    <div className="w-full h-full  flex flex-col gap-2  overflow-auto">
+      <section className="w-full h-3/5 flex flex-col  rounded">
         {/* header */}
-        <div className="w-full flex justify-between items-center bg-orange-300">
+        <div className="w-full flex justify-between items-center ">
           <span className="font-bold text-xl pl-1">
             {decodeURIComponent(params.province)} Performance
           </span>
@@ -49,7 +49,7 @@ export default async function ProvincePage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <section className="w-full h-2/5 bg-purple-100 overflow-auto scrollbar-none ">
+      <section className="w-full h-2/5  overflow-auto scrollbar-none ">
         {/* this component is fetching data inside */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProvincePageListComponent

@@ -25,7 +25,7 @@ export default async function ProvincePageListComponent({
   return (
     <div className="w-full h-full flex flex-col">
       {/* header */}
-      <section className="w-full flex justify-between bg-orange-200 px-2 py-1 items-center ">
+      <section className="w-full flex justify-between px-2 py-1 items-center ">
         <span className="text-lg bg-white">
           Districts in <b>{decodeURIComponent(province)}</b> in{" "}
           <b>{searchParams.year}</b>

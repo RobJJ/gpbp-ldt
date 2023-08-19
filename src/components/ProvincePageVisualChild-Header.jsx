@@ -11,7 +11,7 @@ export default function ProvincePageVisualChildHeader({
   };
 
   return (
-    <section className="w-full flex p-1 text-sm bg-blue-200">
+    <section className="w-full flex text-sm ">
       <button
         data-tab="Overview"
         className={`border-y-1 px-2 py-1  rounded-l border border-slate-400 ${

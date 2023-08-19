@@ -11,7 +11,7 @@ export default function BreadCrumbs() {
 
   // console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full bg-slate-300 flex gap-2 p-1">
+    <div className="w-full  flex gap-2 p-1 border-b border-b-[#E7E7E7]">
       <Image src={icon} alt="Logo" className="text-blue-500" />
       {params.country && (
         <Link
@@ -23,12 +23,14 @@ export default function BreadCrumbs() {
               score_two: searchParams.get("score_two"),
             },
           }}
-          className="bg-white"
+          className={`${
+            params.province ? "text-black" : "text-red-600 font-semibold"
+          }`}
         >
           {capitalizeFirstLetter(params.country)}
         </Link>
       )}
-      {params.province && "/"}
+      {params.province && <span className="text-slate-400">/</span>}
       {params.province && (
         <Link
           href={{
@@ -39,12 +41,14 @@ export default function BreadCrumbs() {
               score_two: searchParams.get("score_two"),
             },
           }}
-          className="bg-white"
+          className={`${
+            params.district ? "text-black" : "text-red-600 font-semibold"
+          }`}
         >
           {decodeURIComponent(params.province)}
         </Link>
       )}
-      {params.district && "/"}
+      {params.district && <span className="text-slate-400">/</span>}
       {params.district && (
         <Link
           href={{
@@ -55,7 +59,7 @@ export default function BreadCrumbs() {
               score_two: searchParams.get("score_two"),
             },
           }}
-          className="bg-white"
+          className={`text-red-600 font-semibold`}
         >
           {decodeURIComponent(params.district)}
         </Link>

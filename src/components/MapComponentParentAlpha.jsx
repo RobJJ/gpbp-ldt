@@ -40,7 +40,7 @@ export default function MapComponentParentAlpha({
   const [scatterType] = useAtom(scatterViewType);
 
   return (
-    <section className="w-full h-full bg-yellow-300 flex flex-col text-lg gap-2 ">
+    <section className="w-full h-full flex flex-col text-lg">
       <MapContainer
         attributionControl={false}
         center={defaultPositions[country]}

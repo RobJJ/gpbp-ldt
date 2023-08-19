@@ -5,7 +5,7 @@ import Spinner from "./Spinner-normal-size.svg";
 
 export default function LoadingSpinner() {
   return (
-    <div className="flex justify-center items-center w-full h-full bg-slate-200 rounded">
+    <div className="flex justify-center items-center w-full h-full bg-slate-100 rounded">
       <Image priority src={Spinner} alt="loading spinner" />
     </div>
   );
