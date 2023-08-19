@@ -177,7 +177,7 @@ function drawQuadrants(chart, update) {
 let focusedPoint;
 // potentially move alot of this state to the child of scatter that actually renders the scatter
 
-export default function ScatterComponentParentV2({
+export default function ScatterComponentParentProvinces({
   gedDataProvince,
   gedDataDistrict,
   country,
@@ -264,10 +264,7 @@ export default function ScatterComponentParentV2({
       gridLineWidth: 0,
       min: 0,
       max: 100,
-      startOnTick: false,
-      endOnTick: true,
-      // maxPadding: 0.2,
-      // tickLength: 0,
+      tickAmount: 6,
     },
     yAxis: {
       title: {
@@ -275,10 +272,11 @@ export default function ScatterComponentParentV2({
       },
       min: 0,
       max: 100,
-      startOnTick: false,
-      endOnTick: false,
-      maxPadding: 0.2,
+      tickAmount: 6,
       gridLineWidth: 0,
+      startOnTick: false,
+      // tickWidth: 1,
+      // tickLength: 10,
     },
     plotOptions: {
       // general options for all series

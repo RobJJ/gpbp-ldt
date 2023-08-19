@@ -1,6 +1,11 @@
 import versioningImage from "../../../public/versioning.png";
 import Image from "next/image";
 
+export const metadata = {
+  title: "GED: Release Notes",
+  description: "Green Economy Diagnostic Tool",
+};
+
 export default function ReleaseNotes() {
   return (
     <section className=" w-full h-full flex smlr:flex-col gap-1 overflow-auto bg-[#F5F8FB]">

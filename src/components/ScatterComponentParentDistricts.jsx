@@ -279,10 +279,7 @@ export default function ScatterComponentParentDistricts({
       gridLineWidth: 0,
       min: 0,
       max: 100,
-      startOnTick: false,
-      endOnTick: true,
-      // maxPadding: 0.2,
-      // tickLength: 0,
+      tickAmount: 6,
     },
     yAxis: {
       title: {
@@ -290,10 +287,9 @@ export default function ScatterComponentParentDistricts({
       },
       min: 0,
       max: 100,
-      startOnTick: false,
-      endOnTick: false,
-      maxPadding: 0.2,
+      tickAmount: 6,
       gridLineWidth: 0,
+      startOnTick: false,
     },
     plotOptions: {
       // general options for all series

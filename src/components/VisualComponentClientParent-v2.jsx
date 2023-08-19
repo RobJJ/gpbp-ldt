@@ -9,7 +9,7 @@ import { getProvinceId } from "@/lib/utils";
 import { cache, useEffect, useState } from "react";
 import { useGedData } from "@/lib/hooks/getGedDataQuery";
 import LoadingSpinner from "./LoadingComponent";
-import ScatterComponentParentV2 from "./ScatterComponentParentV2";
+import ScatterComponentParentProvinces from "./ScatterComponentParentProvinces";
 import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 
 const MapComponentParentAlpha = dynamic(
@@ -49,7 +49,7 @@ export default function VisualComponentClientParentV2({
         />
       )}
       {visualType === "scatter" && scatterType === "provinces" && (
-        <ScatterComponentParentV2
+        <ScatterComponentParentProvinces
           gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           country={country}
