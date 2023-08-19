@@ -43,7 +43,7 @@ export default function DistrictPage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <section className="w-full h-2/5 bg-purple-100 flex flex-col overflow-auto">
+      <section className="w-full h-2/5 flex flex-col gap-1 overflow-auto">
         {/* header */}
         <div className="w-full flex justify-between items-center bg-orange-300">
           <span className="font-bold text-xl pl-1">Regional Insights</span>

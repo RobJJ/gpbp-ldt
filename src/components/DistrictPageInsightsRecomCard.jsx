@@ -7,13 +7,13 @@ export default function DistrictPageInsightsRecomCard({
   insightsData,
 }) {
   return (
-    <div className="w-full h-full bg-purple-300 p-1 flex flex-col gap-2 overflow-auto">
-      <section className="w-full flex justify-between bg-pink-100 items-center ">
+    <div className="w-full h-full  p-1 flex flex-col gap-2 overflow-auto">
+      <section className="w-full flex justify-between  items-center ">
         <div className="flex gap-2 items-center">
           <span className="">
             <b>Recommendations</b> for {district}
           </span>
-          <span className="text-[#36B37E] border-2 border-[#36B37E] rounded px-1 cursor-pointer">
+          <span className="text-[#36B37E] font-semibold border-2 border-[#36B37E] rounded px-1 cursor-pointer">
             BETA
           </span>
         </div>

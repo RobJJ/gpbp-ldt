@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ccsIcon from "../../public/CCS-ICON.png";
+import Link from "next/link";
 
 export default function DistrictPageInsightsRisksCard({ district }) {
   return (
@@ -14,9 +15,13 @@ export default function DistrictPageInsightsRisksCard({ district }) {
           within countries.
         </span>
         <span>
-          <button className=" bg-[#4345AA] text-white text-lg rounded-lg px-2 py-1 hover:shadow-xl hover:underline">
+          <Link
+            href={"https://pim-pam.net/web-applications/#ccs"}
+            target="_blank"
+            className=" bg-[#4345AA] text-white text-lg rounded-lg px-2 py-1 hover:shadow-xl hover:underline"
+          >
             View Tool
-          </button>
+          </Link>
         </span>
       </section>
       <section className="w-1/3 bg-white flex justify-center pt-2">
