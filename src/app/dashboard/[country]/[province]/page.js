@@ -15,8 +15,8 @@ export default async function ProvincePage({ params, searchParams }) {
   //1. Need data based on [country] and [province_name]
 
   return (
-    <div className="w-full h-full  flex flex-col gap-2  overflow-auto">
-      <section className="w-full h-3/5 flex flex-col  rounded">
+    <div className="w-full h-full  flex flex-col gap-1 overflow-auto">
+      <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center ">
           <span className="font-bold text-xl pl-1">
