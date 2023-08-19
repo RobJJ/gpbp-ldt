@@ -12,6 +12,69 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
+            {/* UPDATE : v 0.6 - MAJOR - new API and DB  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  Aug 22th 2023 | Version 0.6 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  Enhanced API Layer and Multinational DB Cluster
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#FFE6E7] text-[#BF0009] px-4 p-1">
+                  Major
+                </span>
+                <span
+                  className="rounded-full bg-[#E6EBFF] text-[#4344aA]
+] px-4 p-1"
+                >
+                  Operational pre-release
+                </span>
+              </div>
+              <span className="">
+                {"We've"} introduced a Next.js API layer to speed up requests by
+                handling them server-side, reducing load times for users.
+                Additionally, our updated database cluster now consolidates
+                country cubes in a mono repo, making it easier to scale and add
+                new countries.
+              </span>
+            </div>
+            {/* UPDATE : v 0.5 - NEXT JS  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  July 29th 2023 | Version 0.5 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  Transition to Next.JS and a refined UI Design
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#FFE6E7] text-[#BF0009] px-4 p-1">
+                  Major
+                </span>
+                <span
+                  className="rounded-full bg-[#E6EBFF] text-[#4344aA]
+] px-4 p-1"
+                >
+                  Operational pre-release
+                </span>
+                <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
+                  Minor
+                </span>
+              </div>
+              <span className="">
+                This strategic move was initiated to harness the power of
+                Server-Side Rendering (SSR) provided by Next.js, which will
+                significantly boost our {"application's"} performance.
+                Additionally, this transition paves the way for easier
+                scalability, especially as we expand to support new country
+                cubes. Lastly, a new simplified UI/UX design helps users
+                interact more intuitively with our application
+              </span>
+            </div>
             {/* UPDATE : v 0.3.3 - PATCH - Serbia  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
