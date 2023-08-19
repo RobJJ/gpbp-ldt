@@ -9,7 +9,7 @@ import { Suspense } from "react";
 export default function DistrictPage({ params, searchParams }) {
   // console.log("[DistrictPage] : params : searchParams", params, searchParams);
   return (
-    <div className="bg-blue-200 w-full h-full flex flex-col gap-2 p-2">
+    <div className="bg-blue-200 w-full h-full flex flex-col gap-2 p-2 overflow-auto">
       <section className="w-full h-3/5 flex flex-col bg-orange-100 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center bg-orange-300">
@@ -43,18 +43,20 @@ export default function DistrictPage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <section className="w-full h-2/5 bg-purple-100 overflow-auto scrollbar-none">
+      <section className="w-full h-2/5 bg-purple-100 flex flex-col overflow-auto">
         {/* header */}
         <div className="w-full flex justify-between items-center bg-orange-300">
           <span className="font-bold text-xl pl-1">Regional Insights</span>
         </div>
         {/* main */}
-        <Suspense fallback={<LoadingSpinner />}>
-          <DistrictPageInsightsComponent
-            country={params.country}
-            district={params.district}
-          />
-        </Suspense>
+        <div className="w-full h-full overflow-auto">
+          <Suspense fallback={<LoadingSpinner />}>
+            <DistrictPageInsightsComponent
+              country={params.country}
+              district={params.district}
+            />
+          </Suspense>
+        </div>
       </section>
     </div>
   );

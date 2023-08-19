@@ -23,13 +23,18 @@ export default function DistrictPageInsightsParent({ insightsData, district }) {
   const [selectedTab, setSelectedTab] = useState("Trends");
   //
   return (
-    <div className="w-full h-full flex flex-col gap-2 overflow-auto">
+    <div className="w-full h-full flex flex-col gap-2 ">
       {/* header controls tab selection */}
       <DistrictPageInsightsChildHeader
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-      {selectedTab === "Trends" && <DistrictPageInsightsTrendCard />}
+      {selectedTab === "Trends" && (
+        <DistrictPageInsightsTrendCard
+          district={district}
+          insightsData={insightsData}
+        />
+      )}
       {selectedTab === "Recommendations" && <DistrictPageInsightsRecomCard />}
       {selectedTab === "AssestLevelRisks" && <DistrictPageInsightsRisksCard />}
     </div>
@@ -58,9 +63,6 @@ export default function DistrictPageInsightsParent({ insightsData, district }) {
 //       <span className="text-lg">Future Climate Change Risks To Assets</span>
 //     )}
 
-//     <span className="text-[#36B37E] border-2 border-[#36B37E] rounded px-1 cursor-pointer">
-//       BETA
-//     </span>
 //   </div>
 //   {/* RIGHT */}
 //   <div className="flex gap-1 items-center">
