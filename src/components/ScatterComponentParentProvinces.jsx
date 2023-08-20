@@ -6,37 +6,14 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { getProvinceId } from "@/lib/utils";
+import { urlToLableMatching, urlToScoreMatching } from "@/lib/name-matching";
+import { drawQuadrants } from "@/lib/linechart";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
-
-// ** note:: be sure of what score from url is sitting on xAxis and which is on yAxis..
-// currently score_one will be x, and score_two will be y
-const urlToScoreMatching = {
-  econ: "ECON_SCORE",
-  envr: "ENVR_SCORE",
-  air: "AIR_SCORE",
-  forest: "FOREST_SCORE",
-  temp: "TEMP_SCORE",
-};
-const urlToLableMatching = {
-  econ: "Economic Score",
-  envr: "Environmental Score",
-  air: "Air Quality Score",
-  forest: "Deforestation Score",
-  temp: "Extreme Temperature Score",
-};
-const urlToTooltipMatching = {
-  econ: "Econ Score",
-  envr: "Env Score",
-  air: "Air Score",
-  forest: "Deforest Score",
-  temp: "Temp Score",
-};
 
 // function dataMapping(data, year, x_score, y_score, provinceSelected) {
 //   const xAxisScore = urlToScoreMatching[x_score];
@@ -61,121 +38,66 @@ const urlToTooltipMatching = {
 // }
 // this is attempt at new function,, the data passed in is already the correct year..
 // reads scores and return the right array for the series.data
-function dataMappingTwo(
-  dataType,
+function dataMappingProvinceType(
+  districtData,
+  provinceData,
   year,
   score_one,
   score_two,
-  province,
-  provinceData
+  provinceSelected,
+  districtSelected
 ) {
+  // console.log("dataMapping in Provinces :: begun");
   // match url scores to actual data values
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
   //
-  const provinceID = province ? getProvinceId(provinceData, province) : false;
+  // if a province has been selected -> show its districts as small dots
+  if (provinceSelected) {
+    const provinceDistricts = districtData.filter(
+      (district) =>
+        decodeURIComponent(district.PROVINCE) ===
+        decodeURIComponent(provinceSelected)
+    );
 
-  //
-  const filteredData = provinceID
-    ? dataType.filter((district) => district.PROVINCE_ID === provinceID)
-    : dataType;
-
-  return filteredData
-    .filter((obj) => Number(obj.YEAR) === Number(year))
-    .map(function (point) {
-      return {
-        ...point,
-        id: point.DISTRICT_ID ? point.DISTRICT_ID : point.PROVINCE_ID,
-        x: Math.round(Number(point[xAxisScore])),
-        y: Math.round(Number(point[yAxisScore])),
-      };
-    });
-}
-
-function drawQuadrants(chart, update) {
-  const xAxis = chart.xAxis[0],
-    yAxis = chart.yAxis[0],
-    x0 = Math.round(
-      Math.min(
-        Math.max(xAxis.toPixels(50), xAxis.left),
-        xAxis.left + xAxis.width
-      )
-    ),
-    y0 = Math.round(
-      Math.min(
-        Math.max(yAxis.toPixels(50), yAxis.top),
-        yAxis.top + yAxis.height
-      )
-    ),
-    rightTo0 = Math.max(yAxis.width - x0 + yAxis.left, 0),
-    leftTo0 = Math.max(x0 - yAxis.left, 0),
-    topTo0 = Math.max(y0 - yAxis.top, 0),
-    bottomTo0 = Math.max(yAxis.height - y0 + yAxis.top, 0);
-
-  if (!chart.quadrants) {
-    chart.quadrants = {
-      I: chart.renderer
-        .rect()
-        .attr({
-          fill: "#D1EAD3",
-        })
-        .add(),
-      II: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFFFEB",
-        })
-        .add(),
-      III: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFE4E1",
-        })
-        .add(),
-      IV: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFFFEB",
-        })
-        .add(),
-    };
+    return provinceDistricts
+      .filter((obj) => Number(obj.YEAR) === Number(year))
+      .map(function (point) {
+        return {
+          ...point,
+          color:
+            decodeURIComponent(point.DISTRICT) ===
+            decodeURIComponent(districtSelected)
+              ? "#F00"
+              : "#000",
+          marker: {
+            radius:
+              decodeURIComponent(point.DISTRICT) ===
+              decodeURIComponent(districtSelected)
+                ? 5
+                : 3,
+          },
+          id: point.DISTRICT_ID,
+          x: Math.round(Number(point[xAxisScore])),
+          y: Math.round(Number(point[yAxisScore])),
+        };
+      });
   }
-  chart.quadrants.I[update]({
-    // x: x0 - 2,
-    x: x0,
-    y: xAxis.top,
-    // width: rightTo0 + 2,
-    width: rightTo0,
-    // height: topTo0 + 2
-    height: topTo0,
-  });
-
-  chart.quadrants.II[update]({
-    x: xAxis.left,
-    y: xAxis.top,
-    width: leftTo0,
-    // height: topTo0 + 2
-    height: topTo0,
-  });
-
-  chart.quadrants.III[update]({
-    x: xAxis.left,
-    y: y0,
-    // width: leftTo0 + 2,
-    width: leftTo0,
-    height: bottomTo0,
-  });
-
-  chart.quadrants.IV[update]({
-    x: x0,
-    y: y0,
-    width: rightTo0,
-    height: bottomTo0,
-  });
+  //
+  if (!provinceSelected) {
+    return provinceData
+      .filter((obj) => Number(obj.YEAR) === Number(year))
+      .map(function (point) {
+        return {
+          ...point,
+          id: point.DISTRICT_ID ? point.DISTRICT_ID : point.PROVINCE_ID,
+          x: Math.round(Number(point[xAxisScore])),
+          y: Math.round(Number(point[yAxisScore])),
+          marker: { radius: 5 },
+        };
+      });
+  }
 }
-//
-let focusedPoint;
-// potentially move alot of this state to the child of scatter that actually renders the scatter
 
 export default function ScatterComponentParentProvinces({
   gedDataProvince,
@@ -296,69 +218,16 @@ export default function ScatterComponentParentProvinces({
               // when a province dot is clicked, we want to load that province in params
 
               if (!dot.point.DISTRICT_ID) {
-                // console.log(
-                //   "you clicked a province dot.. lets see what this is::",
-                //   dot.point.YEAR
-                // );
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
                 return;
               }
               if (dot.point.DISTRICT_ID) {
-                // if user clicks a district dot,, we want to highlite it
-                // console.log(
-
-                //   "you clicked a district dot bruv... lets have a look shall we...",
-                //   dot.point
-                // );
-                if (dot.point === focusedPoint) {
-                  // reset its styling because its active.. go back to province view
-
-                  // console.log("clicked dot,, focusedPoint??", focusedPoint);
-                  dot.point.update({
-                    color: "#000000",
-                    marker: { radius: 3 },
-                  });
-
-                  // set to null before navigating,, so that breadcumb nav can have true when district useEffect triggers
-                  focusedPoint = null;
-
-                  router.push(
-                    `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                  );
-                  return;
-                } else if (dot.point !== focusedPoint && focusedPoint) {
-                  // there is already a active dot, update it, set new active dot
-                  focusedPoint.update({
-                    color: "#000000",
-                    marker: { radius: 3 },
-                  });
-                  dot.point.update({
-                    color: "#ff0000",
-                    marker: { radius: 5 },
-                  });
-                  focusedPoint = dot.point;
-
-                  router.push(
-                    `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                  );
-                  // console.log("focused point bro...", focusedPoint);
-                  return;
-                } else {
-                  // there is no active dot
-                  dot.point.update({
-                    color: "#ff0000",
-                    marker: { radius: 5 },
-                  });
-                  focusedPoint = dot.point;
-
-                  router.push(
-                    `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                  );
-
-                  return;
-                }
+                router.push(
+                  `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
+                );
+                return;
               }
             },
           },
@@ -368,25 +237,43 @@ export default function ScatterComponentParentProvinces({
 
     series: [
       {
-        data: dataMappingTwo(
-          provinceSelected ? gedDataDistrict : gedDataProvince,
+        data: dataMappingProvinceType(
+          gedDataDistrict,
+          gedDataProvince,
           year,
           score_one,
           score_two,
           provinceSelected,
-          gedDataProvince
+          districtSelected
         ),
-        marker: {
-          radius: provinceSelected ? 3 : 5,
-        },
         cursor: "pointer",
       },
     ],
   });
 
   useEffect(() => {
-    // console.log("your useEffect has fired!! the year values is::", year);
+    // RESET DATA AND ALLOW IT TO MAKE THE DECISION ON STLYING
+    setChartOptions({
+      ...chartOptions,
+      series: [
+        {
+          data: dataMappingProvinceType(
+            gedDataDistrict,
+            gedDataProvince,
+            year,
+            score_one,
+            score_two,
+            provinceSelected,
+            districtSelected
+          ),
+          cursor: "pointer",
+        },
+      ],
+    });
+  }, [provinceSelected, districtSelected]);
 
+  useEffect(() => {
+    // RESET DATA AND ALLOW IT TO MAKE THE DECISION ON STLYING
     setChartOptions({
       ...chartOptions,
       xAxis: {
@@ -401,83 +288,22 @@ export default function ScatterComponentParentProvinces({
           text: `<b>${urlToLableMatching[score_two]}</b>`,
         },
       },
-      tooltip: {
-        ...chartOptions.tooltip,
-        pointFormat:
-          `<tr><td colspan="2">${
-            provinceSelected
-              ? `<b>District</b>: {point.DISTRICT}`
-              : `<b>Province</b>: {point.PROVINCE}`
-          }</td></tr>` +
-          `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
-          `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
-      },
-      series: {
-        ...chartOptions.series,
-        marker: {
-          radius: provinceSelected ? 3 : 5,
+      series: [
+        {
+          data: dataMappingProvinceType(
+            gedDataDistrict,
+            gedDataProvince,
+            year,
+            score_one,
+            score_two,
+            provinceSelected,
+            districtSelected
+          ),
+          cursor: "pointer",
         },
-        data: dataMappingTwo(
-          provinceSelected ? gedDataDistrict : gedDataProvince,
-          year,
-          score_one,
-          score_two,
-          provinceSelected,
-          gedDataProvince
-        ),
-      },
+      ],
     });
-  }, [year, provinceSelected, score_one, score_two]);
-  // to handle the district being unselected by the breadcrumbs
-  useEffect(() => {
-    // console.log("did the use effect fire? focused poiint??", focusedPoint);
-    // if user navigates from a district -> country breadcrumb nav
-    if (!provinceSelected && focusedPoint) {
-      focusedPoint.update({
-        color: "#000000",
-        marker: { radius: 5 },
-      });
-      focusedPoint = null;
-      return;
-    }
-
-    // when a user navigates to the district from the district list instead of dot on scatter
-    if (!focusedPoint && districtSelected) {
-      // console.log(
-      //   "Navigated to district from the list :: your chart Ref?",
-      //   chartRef.current.chart.series[0].data
-      // );
-
-      // find dot in chart array that matches in name in URL
-      const pointToHighlite = chartRef.current.chart.series[0].data.find(
-        (point) =>
-          decodeURIComponent(point.DISTRICT) ===
-          decodeURIComponent(districtSelected)
-      );
-      pointToHighlite.update({
-        color: "#ff0000",
-        marker: { radius: 5 },
-      });
-      focusedPoint = pointToHighlite;
-    }
-
-    // if there is an active dot, but you have navigated back to province view
-    if (focusedPoint && !districtSelected) {
-      // console.log("your focused point::", focusedPoint);
-      focusedPoint.update({
-        color: "#000000",
-        marker: { radius: 3 },
-      });
-      focusedPoint = null;
-
-      return;
-    }
-    // why is this needed?
-    setChartOptions({
-      ...chartOptions,
-    });
-    return;
-  }, [districtSelected]);
+  }, [year, score_one, score_two]);
 
   return (
     <div className="h-full w-full flex flex-col ">

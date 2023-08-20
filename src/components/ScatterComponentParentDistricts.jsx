@@ -6,6 +6,8 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { drawQuadrants } from "@/lib/linechart";
+import { urlToLableMatching, urlToScoreMatching } from "@/lib/name-matching";
 
 // highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
@@ -13,39 +15,6 @@ if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
-// ** note:: be sure of what score from url is sitting on xAxis and which is on yAxis..
-// currently score_one will be x, and score_two will be y
-const urlToScoreMatching = {
-  econ: "ECON_SCORE",
-  envr: "ENVR_SCORE",
-  air: "AIR_SCORE",
-  forest: "FOREST_SCORE",
-  temp: "TEMP_SCORE",
-};
-const urlToLableMatching = {
-  econ: "Economic Score",
-  envr: "Environmental Score",
-  air: "Air Quality Score",
-  forest: "Deforestation Score",
-  temp: "Extreme Temperature Score",
-};
-const urlToTooltipMatching = {
-  econ: "Econ Score",
-  envr: "Env Score",
-  air: "Air Score",
-  forest: "Deforest Score",
-  temp: "Temp Score",
-};
-
-// function setRaduis(point, provinceSelected,districtSelected) {
-//   if (
-//     districtSelected &&
-//     provinceSelected &&
-//     decodeURIComponent(point.DISTRICT) === decodeURIComponent(districtSelected)
-//   ) {
-//     // if point is the current selected district -> RED
-//     return 5;
-// }
 // the data type will be the collection of GED-districts
 function setColor(point, provinceSelected, districtSelected) {
   if (
@@ -93,7 +62,7 @@ function setColor(point, provinceSelected, districtSelected) {
   }
 }
 
-function dataMappingTwo(
+function dataMapping(
   dataType,
   year,
   score_one,
@@ -126,91 +95,6 @@ function dataMappingTwo(
       };
     });
 }
-
-function drawQuadrants(chart, update) {
-  const xAxis = chart.xAxis[0],
-    yAxis = chart.yAxis[0],
-    x0 = Math.round(
-      Math.min(
-        Math.max(xAxis.toPixels(50), xAxis.left),
-        xAxis.left + xAxis.width
-      )
-    ),
-    y0 = Math.round(
-      Math.min(
-        Math.max(yAxis.toPixels(50), yAxis.top),
-        yAxis.top + yAxis.height
-      )
-    ),
-    rightTo0 = Math.max(yAxis.width - x0 + yAxis.left, 0),
-    leftTo0 = Math.max(x0 - yAxis.left, 0),
-    topTo0 = Math.max(y0 - yAxis.top, 0),
-    bottomTo0 = Math.max(yAxis.height - y0 + yAxis.top, 0);
-
-  if (!chart.quadrants) {
-    chart.quadrants = {
-      I: chart.renderer
-        .rect()
-        .attr({
-          fill: "#D1EAD3",
-        })
-        .add(),
-      II: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFFFEB",
-        })
-        .add(),
-      III: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFE4E1",
-        })
-        .add(),
-      IV: chart.renderer
-        .rect()
-        .attr({
-          fill: "#FFFFEB",
-        })
-        .add(),
-    };
-  }
-  chart.quadrants.I[update]({
-    // x: x0 - 2,
-    x: x0,
-    y: xAxis.top,
-    // width: rightTo0 + 2,
-    width: rightTo0,
-    // height: topTo0 + 2
-    height: topTo0,
-  });
-
-  chart.quadrants.II[update]({
-    x: xAxis.left,
-    y: xAxis.top,
-    width: leftTo0,
-    // height: topTo0 + 2
-    height: topTo0,
-  });
-
-  chart.quadrants.III[update]({
-    x: xAxis.left,
-    y: y0,
-    // width: leftTo0 + 2,
-    width: leftTo0,
-    height: bottomTo0,
-  });
-
-  chart.quadrants.IV[update]({
-    x: x0,
-    y: y0,
-    width: rightTo0,
-    height: bottomTo0,
-  });
-}
-//
-// let focusedPoint;
-// potentially move alot of this state to the child of scatter that actually renders the scatter
 
 export default function ScatterComponentParentDistricts({
   gedDataProvince,
@@ -337,7 +221,7 @@ export default function ScatterComponentParentDistricts({
 
     series: [
       {
-        data: dataMappingTwo(
+        data: dataMapping(
           gedDataDistrict,
           year,
           score_one,
@@ -370,13 +254,19 @@ export default function ScatterComponentParentDistricts({
         ...chartOptions.tooltip,
         pointFormat:
           `<tr><th colspan="2"><h3><u>{point.DISTRICT}</u></h3></th></tr>` +
-          `<tr><th>${urlToTooltipMatching[score_one]}: </th><td>{point.x}</td></tr>` +
-          `<tr><th>${urlToTooltipMatching[score_two]}: </th><td>{point.y}</td></tr>` +
-          `<tr><th>year:${year}`,
+          `<tr><th>${urlToLableMatching[score_one]}: </th><td>{point.x}</td></tr>` +
+          `<tr><th>${urlToLableMatching[score_two]}: </th><td>{point.y}</td></tr>`,
       },
       series: {
         ...chartOptions.series,
-        data: dataMappingTwo(gedDataDistrict, year, score_one, score_two),
+        data: dataMapping(
+          gedDataDistrict,
+          year,
+          score_one,
+          score_two,
+          provinceSelected,
+          districtSelected
+        ),
       },
       plotOptions: {
         ...chartOptions.plotOptions,
@@ -392,21 +282,6 @@ export default function ScatterComponentParentDistricts({
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                 }
-                // removing both checks below for simplier approach
-                // checking if the dot you clicked is a district dot
-                // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 3) {
-
-                //   // 1st: just navigate to the path
-                //   router.push(
-                //     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                //   );
-                // }
-                // // condition: if the dot clicked is already selected and we are on the district page -> navigate back to the province
-                // if (dot.point.DISTRICT_ID && dot.point.marker.radius === 5) {
-                //   router.push(
-                //     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
-                //   );
-                // }
               },
             },
           },
@@ -422,7 +297,7 @@ export default function ScatterComponentParentDistricts({
       ...chartOptions,
       series: [
         {
-          data: dataMappingTwo(
+          data: dataMapping(
             gedDataDistrict,
             year,
             score_one,

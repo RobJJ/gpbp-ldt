@@ -68,3 +68,13 @@ export const tabToScoreType = {
   ],
   GreenSpace: ["FOREST_GREEN_PCT_STD", "FOREST_GREEN_COVER_GROWTH_STD"],
 };
+
+//
+//
+export const urlToScoreMatching = {
+  econ: "ECON_SCORE",
+  envr: "ENVR_SCORE",
+  air: "AIR_SCORE",
+  forest: "FOREST_SCORE",
+  temp: "TEMP_SCORE",
+};
