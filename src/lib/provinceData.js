@@ -40,29 +40,20 @@ export const getAllProvincesInSelectedCountry = cache(async (country) => {
 //   return provinceData;
 // });
 //
+
+// USED FOR PROVINCE PAGE - PROVINCE DATA
 export const getSelectedProvinceData = cache(async (country, province_name) => {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
 
-  // Find province_id by province_name
-  const province = await db
-    .collection(`${country}-province-data`)
-    .findOne(
-      { PROVINCE: province_name },
-      { projection: { _id: 0, PROVINCE_ID: 1 } }
-    );
-
-  if (!province) {
-    throw new Error("Province not found");
-  }
-
-  const province_id = province.PROVINCE_ID;
-
-  // Now you can fetch province data by province_id
   const provinceData = await db
     .collection(`${country}-province-data`)
-    .find({ PROVINCE_ID: province_id }, { projection: { _id: 0 } })
+    .find({ PROVINCE: province_name }, { projection: { _id: 0 } })
     .toArray();
+
+  if (!provinceData) {
+    throw new Error("Province not found or theres an issue with province name");
+  }
 
   return provinceData;
 });

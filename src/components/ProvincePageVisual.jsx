@@ -16,7 +16,7 @@ export default async function ProvincePageVisual({ country, province }) {
     country,
     decodeURIComponent(province)
   );
-  // console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
+  console.log("[ProvincePageVisualParent] loaded in: data :", provinceData);
 
   return (
     <div className="w-full h-full bg-white flex overflow-auto">
