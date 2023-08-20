@@ -1,5 +1,6 @@
 import JotaiProvider from "@/providers/jotai-provider";
-import QueryProvider from "@/providers/query-provider";
+// import QueryProvider from "@/providers/query-provider";
+// removed QueryProvider (react-query) from application. Wrap child in this in future if needed
 
 import "./globals.css";
 
@@ -18,9 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <main className="flex flex-col w-screen h-screen">
           <NavBar />
-          <QueryProvider>
-            <JotaiProvider>{children}</JotaiProvider>
-          </QueryProvider>
+          <JotaiProvider>{children}</JotaiProvider>
         </main>
       </body>
     </html>

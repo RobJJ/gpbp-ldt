@@ -1,35 +1,39 @@
-import { useQuery } from "react-query";
-import { getProvinceId } from "../utils";
-import { cache } from "react";
+// import { useQuery } from "react-query";
+// import { getProvinceId } from "../utils";
+// import { cache } from "react";
 
 // if this hook is fired with a provinceSelected based on params.. it will fetch the ged districts that are connected to that province!
 
-export const useGedData = (
-  countrySelected,
-  provinceSelected,
-  gedDataProvince
-) => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["ged-data", countrySelected, provinceSelected],
-    queryFn: cache(async ({ queryKey }) => {
-      const [_key, countrySelected, provinceSelected] = queryKey;
-      const provinceId = getProvinceId(gedDataProvince, provinceSelected);
+// THIS HOOK HAS BEEN REMOVED
+// Will keep this for learning purposes for future builds with react query
+// If you want to use this, make sure to install react-query. It has been removed from the APP
 
-      let res;
-      // maybe true conditional here instead of on server
-      if (provinceSelected) {
-        res = await fetch(
-          `/api/provinces?country=${countrySelected}&province=${provinceSelected}&province_id=${provinceId}`
-        );
-      } else {
-        res = await fetch(`/api/country?country=${countrySelected}`);
-      }
+// export const useGedData = (
+//   countrySelected,
+//   provinceSelected,
+//   gedDataProvince
+// ) => {
+//   const { data, isLoading } = useQuery({
+//     queryKey: ["ged-data", countrySelected, provinceSelected],
+//     queryFn: cache(async ({ queryKey }) => {
+//       const [_key, countrySelected, provinceSelected] = queryKey;
+//       const provinceId = getProvinceId(gedDataProvince, provinceSelected);
 
-      return await res.json();
-    }),
-  });
-  return {
-    data,
-    isLoading,
-  };
-};
+//       let res;
+//       // maybe true conditional here instead of on server
+//       if (provinceSelected) {
+//         res = await fetch(
+//           `/api/provinces?country=${countrySelected}&province=${provinceSelected}&province_id=${provinceId}`
+//         );
+//       } else {
+//         res = await fetch(`/api/country?country=${countrySelected}`);
+//       }
+
+//       return await res.json();
+//     }),
+//   });
+//   return {
+//     data,
+//     isLoading,
+//   };
+// };

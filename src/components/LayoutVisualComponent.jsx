@@ -4,7 +4,6 @@ import {
   getAllGeojsonData,
 } from "@/lib/geojsonData";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
-import VisualComponentClientParent from "./VisualComponentClientParent";
 import { getDistricts } from "@/lib/districtdata";
 import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
@@ -21,8 +20,6 @@ export default async function LayoutVisualComponent({ country }) {
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
 
-  // grab country positions here for now
-  // const countryCenterPosition = process.env[`${country}`]
   const mapbox_url = process.env.MAPBOX_URL;
 
   return (

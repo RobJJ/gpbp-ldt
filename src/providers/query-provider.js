@@ -1,13 +1,15 @@
-"use client";
-import { QueryClient, QueryClientProvider } from "react-query";
+// REACT-QUERY HAS BEEN REMOVED... KEEPING THIS FOR LEARNING PURPOSES : FUTURE
 
-const queryClient = new QueryClient();
+// "use client";
+// import { QueryClient, QueryClientProvider } from "react-query";
 
-export default function QueryProvider({ children }) {
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-}
+// const queryClient = new QueryClient();
+
+// export default function QueryProvider({ children }) {
+//   return (
+//     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+//   );
+// }
 
 // create a client provider here to wrap the children in root
 // does it need to be a client comp?

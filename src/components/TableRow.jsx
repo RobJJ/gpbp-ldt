@@ -35,25 +35,6 @@ function getFeatureFillColor(scoreValue) {
   return "#000";
 }
 
-// ** Old approach**
-//
-// const interpolateColor = (score) => {
-//   // change value of red and all occureneces to a higher color for brighter and lower for darker
-//   let red = 220,
-//     green = 0,
-//     blue = 0;
-
-//   if (score <= 50) {
-//     red = 220;
-//     green = Math.floor(220 * (score / 50));
-//   } else {
-//     red = Math.floor(220 * ((100 - score) / 50));
-//     green = 220;
-//   }
-
-//   return `rgb(${red}, ${green}, ${blue})`;
-// };
-
 export default function TableRow({
   number,
   regionName,

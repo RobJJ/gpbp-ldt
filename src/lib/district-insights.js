@@ -1,6 +1,8 @@
 import { cache } from "react";
 import clientPromise from "./mongodb";
 
+// USED
+// USED AT DISTRICT PAGE to grab the insights about the district selected
 // This function would work better if we had and used the ID. Changing insights data to include name which we will use to match from
 export const getDistrictInsights = cache(async (country, district) => {
   const client = await clientPromise;
@@ -10,6 +12,8 @@ export const getDistrictInsights = cache(async (country, district) => {
     .find({ DISTRICT_NAME: district }, { projection: { _id: 0 } })
     .toArray();
 
-  if (!allInsights) return false;
+  if (!allInsights) {
+    throw new Error("No insights found for the district selected");
+  }
   return allInsights;
 });

@@ -1,13 +1,8 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useParams, useSearchParams } from "next/navigation";
-import ScatterComponentParent from "./ScatterComponentParent";
+
 import { useAtom } from "jotai";
 import { scatterViewType, visualTypeSelected } from "@/lib/atoms";
-import { useQuery } from "react-query";
-import { getProvinceId } from "@/lib/utils";
-import { cache, useEffect, useState } from "react";
-import { useGedData } from "@/lib/hooks/getGedDataQuery";
 import LoadingSpinner from "./LoadingComponent";
 import ScatterComponentParentProvinces from "./ScatterComponentParentProvinces";
 import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";

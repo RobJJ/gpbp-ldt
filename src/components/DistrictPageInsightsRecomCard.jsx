@@ -6,6 +6,14 @@ export default function DistrictPageInsightsRecomCard({
   district,
   insightsData,
 }) {
+  // Gaurd against no data
+  if (!insightsData) {
+    return (
+      <div className="w-full h-full flex justify-center items-center font-bold text-lg underline">
+        No data for selected district
+      </div>
+    );
+  }
   return (
     <div className="w-full h-full  p-1 flex flex-col gap-2 overflow-auto">
       <section className="w-full flex justify-between  items-center ">

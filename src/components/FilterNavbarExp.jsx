@@ -1,7 +1,3 @@
-"use client";
-
-// import { useSearchParams } from "next/navigation";
-// import FilterNavbarExpChild from "./FilterNavbarExp-child";
 import SwitchComponent from "./MapScatterToggle";
 // import ScatterTypeToggle from "./ScatterTypeToggle";
 import FilterButtonYear from "./FilterButtonYear";
@@ -12,12 +8,6 @@ import LayerToggle from "./LayerToggle";
 import ResetFiltersButton from "./ResetFiltersButton";
 
 export default function FilterNavbarExp({}) {
-  // const searchParams = useSearchParams();
-
-  // let yearParam = searchParams.get("year");
-
-  //   console.log("[FilterNavbarExp] : searchParams passed through?", searchParams);
-
   return (
     <div className="w-full bg-[#ECECEC] flex gap-5 items-center p-2">
       <div className="flex-none ">

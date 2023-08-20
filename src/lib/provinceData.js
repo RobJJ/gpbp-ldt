@@ -41,6 +41,7 @@ export const getAllProvincesInSelectedCountry = cache(async (country) => {
 // });
 //
 
+// USED
 // USED FOR PROVINCE PAGE - PROVINCE DATA
 export const getSelectedProvinceData = cache(async (country, province_name) => {
   const client = await clientPromise;
