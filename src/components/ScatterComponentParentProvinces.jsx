@@ -269,6 +269,19 @@ export default function ScatterComponentParentProvinces({
           cursor: "pointer",
         },
       ],
+      tooltip: {
+        ...chartOptions.tooltip,
+        useHTML: true,
+        headerFormat: "<table>",
+        pointFormat:
+          `<tr><td colspan="2">${
+            provinceSelected
+              ? `<b>District</b>: {point.DISTRICT}`
+              : `<b>Province</b>: {point.PROVINCE}`
+          }</td></tr>` +
+          `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
+          `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
+      },
     });
   }, [provinceSelected, districtSelected]);
 

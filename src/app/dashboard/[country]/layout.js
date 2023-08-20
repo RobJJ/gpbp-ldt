@@ -23,7 +23,7 @@ export default async function CountryPageLayout({ children, params }) {
         <section className="w-1/2 h-full">
           <Suspense
             fallback={
-              <div className="bg-purple-200 flex justify-center items-center w-full h-full">
+              <div className="bg-slate-100 flex justify-center items-center w-full h-full">
                 <Image priority src={Spinner} alt="loading spinner" />
               </div>
             }
