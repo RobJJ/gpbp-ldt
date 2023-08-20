@@ -1,53 +1,67 @@
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
 import bdoIcon from "../../public/bdo.png";
+import videoIcon from "../../public/play-video-icon.png";
 
 import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";
 import LandingPageCardComponent from "@/components/LandingPageCardComponent";
 import Link from "next/link";
 
-const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
-  ssr: false,
-});
+// const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
+//   ssr: false,
+// });
 
 export default function Home({ searchParams }) {
   // console.log("[HOME] : searchParams : ", searchParams);
   return (
-    <div className="w-full h-full bg-pink-200 flex gap-1 overflow-auto">
+    <div className="w-full h-full  flex  overflow-auto">
       {/* LEFT PANEL */}
       <section className="h-full w-7/12 bg-white flex flex-col justify-center pl-10">
-        <h1 className="w-full font-bold text-3xl bg-slate-300 mb-5 mt-5">
+        <h2 className="text-[#6D778A] text-xl">
+          Geospatial Planning and Budgeting Platform
+        </h2>
+        <h1 className="w-full font-bold text-4xl  mb-5 mt-2">
           Green Economy Diagnostic Tool
         </h1>
-        <div className="w-full flex flex-col gap-2 bg-slate-300 mb-5">
+
+        <div className="w-full max-w-[900px]  pr-5 overflow-auto mb-5">
+          The Green Economy Diagnostic (GED) is a tool that maps the economic
+          and environmental performance of sub-national regions within a
+          country. It is designed to provide a comprehensive picture of the
+          performance of districts in terms of both economic and environmental
+          factors. To measure the economic performance of districts, the GED
+          considers two key indicators: (i) luminosity per capita growth rates
+          and (ii) luminosity per capita levels. These indicators provide a
+          snapshot of the economic well-being of districts and help to paint a
+          picture of their level of development.
+        </div>
+        {/* Video :: add link to youtube when completed */}
+        <div className="flex gap-3  mb-5">
+          <Image src={videoIcon} alt="play-video-icon" />
+          <Link
+            className=" font-bold text-[#4345AA] hover:underline"
+            href={"https://youtu.be/cgeh0Reo3tI"}
+            target="_blank"
+          >
+            View Introduction Video
+          </Link>
+        </div>
+        <div className="w-full flex flex-col gap-2  my-5">
           <h3>
             <b>Get started</b> by selecting your country below
           </h3>
           <SelectCountryButton />
         </div>
-        <div className="w-full max-w-[900px] bg-slate-300 overflow-auto mb-5">
-          The Green Economy Diagnostic (GED) is a tool that maps the economic
-          and environmental performance of sub-national regions within a
-          country. It is designed to provide a comprehensive picture of the
-          performance of districts in terms of both economic and environmental
-          factors. <br />
-          <Link
-            className="underline font-bold text-blue-500"
-            href={"/methodology"}
-            target="_blank"
-          >
-            Learn more
-          </Link>
-        </div>
-        <div className="w-[460px] flex mb-5 h-[240px] bg-slate-200 rounded-lg">
+        {/* removed video component :: reinstall react-player if needed */}
+        {/* <div className="w-[460px] flex mb-5 h-[240px] bg-slate-200 rounded-lg">
           <VideoComponent />
-        </div>
+  </div> */}
         {/*cards*/}
-        <div className="w-full flex flex-col gap-2 bg-slate-300">
+        <div className="w-full flex flex-col gap-2  mt-5">
           <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
             <LandingPageCardComponent

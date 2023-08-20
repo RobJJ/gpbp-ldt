@@ -32,7 +32,7 @@ export default function SelectCountryButton() {
   return (
     <div className="relative flex gap-2 ">
       <div>
-        <span className="rounded-md shadow-sm">
+        <span className="rounded-md shadow-sm ">
           <button
             onClick={toggleDropdown}
             type="button"
@@ -47,7 +47,7 @@ export default function SelectCountryButton() {
         <div className=" absolute mt-12 w-72 h-9 rounded-md shadow-lg z-50">
           <div className="rounded-md bg-white shadow-xs">
             <div
-              className="py-1"
+              className=""
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="options-menu"
@@ -57,7 +57,7 @@ export default function SelectCountryButton() {
                   <span
                     onClick={handleCountrySelect}
                     data-tag={country.name}
-                    className="font-bold text-center block rounded-b-md px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+                    className="font-bold text-center block px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                     role="menuitem"
                     key={country.id}
                   >
