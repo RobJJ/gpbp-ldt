@@ -38,27 +38,27 @@ const urlToTooltipMatching = {
   temp: "Temp Score",
 };
 
-function dataMapping(data, year, x_score, y_score, provinceSelected) {
-  const xAxisScore = urlToScoreMatching[x_score];
-  const yAxisScore = urlToScoreMatching[y_score];
-  //
-  return data
-    .filter((obj) => Number(obj.YEAR) === Number(year))
-    .map(function (point) {
-      return {
-        ...point,
-        id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
-        x: Math.round(Number(point[xAxisScore])),
-        y: Math.round(Number(point[yAxisScore])),
-        // marker: {
-        //   radius: 10,
-        // },
-        // radius: 6,
-        // color: colorPanel[point.REGION],
-        // color: "#666666",
-      };
-    });
-}
+// function dataMapping(data, year, x_score, y_score, provinceSelected) {
+//   const xAxisScore = urlToScoreMatching[x_score];
+//   const yAxisScore = urlToScoreMatching[y_score];
+//   //
+//   return data
+//     .filter((obj) => Number(obj.YEAR) === Number(year))
+//     .map(function (point) {
+//       return {
+//         ...point,
+//         id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
+//         x: Math.round(Number(point[xAxisScore])),
+//         y: Math.round(Number(point[yAxisScore])),
+//         // marker: {
+//         //   radius: 10,
+//         // },
+//         // radius: 6,
+//         // color: colorPanel[point.REGION],
+//         // color: "#666666",
+//       };
+//     });
+// }
 // this is attempt at new function,, the data passed in is already the correct year..
 // reads scores and return the right array for the series.data
 function dataMappingTwo(
