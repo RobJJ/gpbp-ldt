@@ -175,6 +175,7 @@ export default function ScatterComponentParentDistricts({
     xAxis: {
       title: {
         text: `<b>${urlToLableMatching[score_one]}</b>`,
+        style: { color: "#000", fontWeight: 400 },
       },
       gridLineWidth: 0,
       min: 0,
@@ -184,6 +185,7 @@ export default function ScatterComponentParentDistricts({
     yAxis: {
       title: {
         text: `<b>${urlToLableMatching[score_two]}</b>`,
+        style: { color: "#000", fontWeight: 400 },
       },
       min: 0,
       max: 100,

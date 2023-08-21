@@ -180,9 +180,14 @@ export default function ScatterComponentParentProvinces({
       // text: `Experimental build - HighCharts - Scatter chart`,
     },
     xAxis: {
+      // labels: { style: { color: "#F00" } },
       title: {
-        text: `<b>${urlToLableMatching[score_one]}</b>`,
+        useHTML: true,
+        enabled: true,
+        text: `<p>${urlToLableMatching[score_one]}</p>`,
+        style: { color: "#000", fontWeight: 400 },
       },
+
       gridLineWidth: 0,
       min: 0,
       max: 100,
@@ -190,7 +195,10 @@ export default function ScatterComponentParentProvinces({
     },
     yAxis: {
       title: {
-        text: `<b>${urlToLableMatching[score_two]}</b>`,
+        useHTML: true,
+        enabled: true,
+        text: `<p style='color:blue'>${urlToLableMatching[score_two]}</p>`,
+        style: { color: "#000", fontWeight: 400 },
       },
       min: 0,
       max: 100,
@@ -205,7 +213,7 @@ export default function ScatterComponentParentProvinces({
       series: {
         animation: {
           // controls animation of paint of points
-          duration: 1500,
+          duration: 1000,
         },
         // removes lingering tooltip
         stickyTracking: false,

@@ -86,7 +86,7 @@ export default function Home({ searchParams }) {
         </div>
       </section>
       {/* RIGHT PANEL */}
-      <section className="h-full w-5/12 bg-white flex">
+      <section className="h-full w-5/12  flex ">
         <Image
           src={landingImage}
           alt="Image showing GED"

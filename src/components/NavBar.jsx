@@ -16,18 +16,18 @@ export default function NavBar() {
         height={40}
         className="ml-2"
       />
-      <Link className="  text-slate-300 mr-5 font-semibold" href={"/"}>
+      <Link className="  text-slate-300 mr-5" href={"/"}>
         Home
       </Link>
       <Link
-        className="  text-slate-300 mr-5 font-semibold"
+        className="  text-slate-300 mr-5"
         href={"/releaseNotes"}
         target="_blank"
       >
         Release Notes
       </Link>
       <Link
-        className="  text-slate-300 mr-5 font-semibold"
+        className="  text-slate-300 mr-5"
         href={"/methodology"}
         target="_blank"
       >
@@ -35,7 +35,7 @@ export default function NavBar() {
       </Link>
 
       <Link
-        className="  text-slate-300 font-semibold"
+        className="  text-slate-300"
         href={"https://pim-pam.net/"}
         target="_blank"
       >
