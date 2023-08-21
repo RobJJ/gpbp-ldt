@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, Rectangle, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
@@ -8,26 +8,42 @@ import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
 import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
 import MapColorLegend from "./MapColorLegend";
 
-// ** this is the actual map component
-// ** setdefault state to province,, and then hold state here...
-// ** if params changes, this component will be rerendered by its parent and it will receive new params to search by
-// GEO
-// ** if (provinceSelected) becomes true is true, then it needs to grab geodata districts that match province_id
-// GED
-// ** this data changes based on year, and score_one..
-// this property must be pulled in based on the {country} selected
-// names must match the country name passed in from landing page or url
-const defaultPositions = {
-  kosovo: [42.5, 20.6456],
-  serbia: [44.3, 20.5],
-  uzbekistan: [41.377491, 64.585262],
+// Settings for Map and Rectangle
+const countryMapSettings = {
+  kosovo: {
+    zoom: 8.6,
+    minZoom: 7,
+    maxZoom: 9,
+    defaultPos: [42.5, 20.6456],
+    innerBounds: [
+      [37.5, 13.5],
+      [47.5, 31.5],
+    ],
+  },
+  serbia: {
+    zoom: 7,
+    minZoom: 6.2,
+    maxZoom: 8.4,
+    defaultPos: [44.3, 20.5],
+    innerBounds: [
+      [36.5, 5.5],
+      [50.5, 37.5],
+    ],
+  },
+  uzbekistan: {
+    zoom: 5.4,
+    minZoom: 4.5,
+    maxZoom: 7,
+    defaultPos: [41.377491, 64.585262],
+    innerBounds: [
+      [27.5, 39.5],
+      [52.5, 92.5],
+    ],
+  },
 };
 
-const countryZoomSetting = {
-  kosovo: 8,
-  uzbekistan: 5,
-  serbia: 7,
-};
+// const redColor = { fill: false, color: "red", dashArray: "3" };
+// top right [43.429566, 23.857964],,, bottom left [41.890765, 19.426956]
 
 export default function MapComponentParentAlpha({
   country,
@@ -43,9 +59,21 @@ export default function MapComponentParentAlpha({
     <section className="w-full h-full flex flex-col text-lg">
       <MapContainer
         attributionControl={false}
-        center={defaultPositions[country]}
+        center={countryMapSettings[country].defaultPos}
         // create a custom zoom value for each country.
-        zoom={countryZoomSetting[country]}
+        zoom={countryMapSettings[country].zoom}
+        // zoomed out max
+        minZoom={countryMapSettings[country].minZoom}
+        // zoomed in max
+        maxZoom={countryMapSettings[country].maxZoom}
+        maxBounds={countryMapSettings[country].innerBounds}
+        zoomControl={false}
+        doubleClickZoom={false}
+        wheelPxPerZoomLevel={30}
+        zoomSnap={0.5}
+        // zoomDelta={0.5}
+        // min and max zooms to control API
+
         scrollWheelZoom={true}
         className="h-full w-full"
         // ref={nodeRef}
@@ -53,6 +81,10 @@ export default function MapComponentParentAlpha({
         // key={hashkey}
       >
         <TileLayer url={mapbox_url} />
+        <Rectangle
+          bounds={countryMapSettings[country].innerBounds}
+          pathOptions={{ fill: false, color: "red", dashArray: "3" }}
+        />
         {/* Handle change of scatterType here */}
         {scatterType === "provinces" && (
           <MapGeoJsonComponentProvince
