@@ -1,3 +1,5 @@
+import airQualityImage from "../../../public/air_quality_breakdown.png";
+
 export const metadata = {
   title: "GED: Methodology",
   description: "Green Economy Diagnostic Tool",
@@ -14,7 +16,7 @@ export default function MethodologyPage() {
           <h3 className="text-lg font-bold flex gap-2">
             <span>1.</span> Economic Score Overview
           </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-5">
+          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
             <span>1.1 Luminosity Per Capita Calculation</span>
             <span>1.2 Luminosity Growth Rate Calculation</span>
             <span>1.3 Calculating overall Economic Score</span>
@@ -25,7 +27,7 @@ export default function MethodologyPage() {
           <h3 className="text-lg font-bold flex gap-2">
             <span>2.</span> Environmental Score Overview
           </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-5">
+          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
             <span>2.1 Air Quality Index</span>
             <span>2.2 Extreme Weather Score</span>
             <span>2.3 Forest Score</span>
@@ -37,7 +39,7 @@ export default function MethodologyPage() {
           <h3 className="text-lg font-bold flex gap-2">
             <span>3.</span> Schema
           </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-5">
+          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
             <span>3.1 Luminosity Per Capita Calculation</span>
             <span>3.2 Luminosity Growth Rate Calculation</span>
             <span>3.3 Calculating overall Economic Score</span>
@@ -45,7 +47,9 @@ export default function MethodologyPage() {
         </div>
       </section>
       {/* Content section : Left */}
-      <section className="bg-white w-3/4 h-full">RIGHT</section>
+      <section className="bg-white w-3/4 h-full flex px-14 pt-14">
+        <div className="bg-blue-200 w-full h-full">INNER</div>
+      </section>
     </div>
   );
 }
