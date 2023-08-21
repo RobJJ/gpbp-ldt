@@ -170,7 +170,8 @@ export default function ScatterComponentParentProvinces({
             : `<b>Province</b>: {point.PROVINCE}`
         }</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
-        `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
+        `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
+        `<tr><td style='color:lightblue'>Click to view</td></tr>`,
       followPointer: true,
       hideDelay: 0,
     },
@@ -288,7 +289,8 @@ export default function ScatterComponentParentProvinces({
               : `<b>Province</b>: {point.PROVINCE}`
           }</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
-          `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
+          `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
+          `<tr><td style='color:lightblue'>Click to view</td></tr>`,
       },
     });
   }, [provinceSelected, districtSelected]);

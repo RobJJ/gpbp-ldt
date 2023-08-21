@@ -80,11 +80,8 @@ export default function ProvincePageVisualChildVisual({
     },
     yAxis: {
       title: {
-        // text: "<b>Scores</b>",
-        text: undefined,
-      },
-      title: {
         text: tabToLabel[selectedTab],
+        style: { color: "#000", fontWeight: 400 },
       },
       // min changes depending on if : score [0-100] : STD [-10, 10]
       min:

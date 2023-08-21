@@ -79,6 +79,7 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
     yAxis: {
       title: {
         text: tabToLabel[selectedTab],
+        style: { color: "#000", fontWeight: 400 },
       },
       maxPadding: 0.5,
       // min changes depending on if : score [0-100] : STD [-10, 10]

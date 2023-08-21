@@ -163,7 +163,8 @@ export default function ScatterComponentParentDistricts({
       pointFormat:
         `<tr><td colspan="2"><b>District</b>: {point.DISTRICT}</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
-        `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>`,
+        `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
+        `<tr><td style='color:lightblue'>Click to view</td></tr>`,
       followPointer: true,
       hideDelay: 0,
     },
@@ -174,7 +175,7 @@ export default function ScatterComponentParentDistricts({
     },
     xAxis: {
       title: {
-        text: `<b>${urlToLableMatching[score_one]}</b>`,
+        text: `${urlToLableMatching[score_one]}`,
         style: { color: "#000", fontWeight: 400 },
       },
       gridLineWidth: 0,
@@ -257,7 +258,8 @@ export default function ScatterComponentParentDistricts({
         pointFormat:
           `<tr><th colspan="2"><h3><u>{point.DISTRICT}</u></h3></th></tr>` +
           `<tr><th>${urlToLableMatching[score_one]}: </th><td>{point.x}</td></tr>` +
-          `<tr><th>${urlToLableMatching[score_two]}: </th><td>{point.y}</td></tr>`,
+          `<tr><th>${urlToLableMatching[score_two]}: </th><td>{point.y}</td></tr>` +
+          `<tr><td style='color:lightblue'>Click to view</td></tr>`,
       },
       series: {
         ...chartOptions.series,
