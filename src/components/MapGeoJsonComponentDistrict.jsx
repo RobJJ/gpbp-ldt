@@ -1,70 +1,10 @@
 "use client";
-import { scatterViewType } from "@/lib/atoms";
+
+import { MAP_COLORS, urlToScoreMatching } from "@/lib/map";
 import { getProvinceId } from "@/lib/utils";
-import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
-
-const MAP_COLORS = {
-  air: [
-    { range: 80, color: "#015B6B" },
-    { range: 70, color: "#008DA6" },
-    { range: 60, color: "#00A3BF" },
-    { range: 50, color: "#00B8D9" },
-    { range: 40, color: "#00C7E6" },
-    { range: 30, color: "#33D1EC" },
-    { range: 20, color: "#66DBF2" },
-    { range: 0, color: "#99E5F8" },
-  ],
-  temp: [
-    { range: 80, color: "#980108" },
-    { range: 70, color: "#BF000A" },
-    { range: 60, color: "#DE0B16" },
-    { range: 50, color: "#FF303A" },
-    { range: 40, color: "#FF525B" },
-    { range: 30, color: "#FF737A" },
-    { range: 20, color: "#FFADB1" },
-    { range: 0, color: "#FFE6E7" },
-  ],
-  forest: [
-    { range: 80, color: "#D97600" },
-    { range: 70, color: "#FF8B00" },
-    { range: 60, color: "#FF991F" },
-    { range: 50, color: "#FFAB00" },
-    { range: 40, color: "#FFC400" },
-    { range: 30, color: "#FFD260" },
-    { range: 20, color: "#FFE0A0" },
-    { range: 0, color: "#FFF0E0" },
-  ],
-  econ: [
-    { color: "#2C245E", range: 80 },
-    { color: "#403294", range: 70 },
-    { color: "#5243AA", range: 60 },
-    { color: "#6554C0", range: 50 },
-    { color: "#8777D9", range: 40 },
-    { color: "#998DD9", range: 30 },
-    { color: "#C0B6F2", range: 20 },
-    { color: "#EAE6FF", range: 0 },
-  ],
-  envr: [
-    { color: "#003300", range: 80 },
-    { color: "#006600", range: 70 },
-    { color: "#009900", range: 60 },
-    { color: "#00CC00", range: 50 },
-    { color: "#33FF33", range: 40 },
-    { color: "#66FF66", range: 30 },
-    { color: "#99FF99", range: 20 },
-    { color: "#CCFFCC", range: 0 },
-  ],
-};
-const urlToScoreMatching = {
-  econ: "ECON_SCORE",
-  envr: "ENVR_SCORE",
-  air: "AIR_SCORE",
-  forest: "FOREST_SCORE",
-  temp: "TEMP_SCORE",
-};
 
 function getFeatureFillColor(scoreType, scoreValue) {
   const mapColors = MAP_COLORS[scoreType];
