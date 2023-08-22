@@ -1,4 +1,6 @@
+import MethodologyNavigation from "@/components/methodology/navigation";
 import airQualityImage from "../../../public/air_quality_breakdown.png";
+import ContentEconomic from "@/components/methodology/content-econ";
 
 export const metadata = {
   title: "GED: Methodology",
@@ -7,48 +9,23 @@ export const metadata = {
 
 export default function MethodologyPage() {
   return (
-    <div className="w-full h-full bg-slate-500 flex gap-2 ">
+    <div className="w-full h-full bg-slate-500 flex gap-2 overflow-auto">
       {/* Navigation section : Right */}
       <section className="bg-[#ECECEC] w-1/4 h-full flex flex-col gap-5 pt-14 pl-5 pr-3">
-        <h2 className="text-3xl bg-pink-200 font-bold">Methodology</h2>
-        {/* 1. */}
-        <div className="bg-pink-200 flex flex-col gap-1">
-          <h3 className="text-lg font-bold flex gap-2">
-            <span>1.</span> Economic Score Overview
-          </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
-            <span>1.1 Luminosity Per Capita Calculation</span>
-            <span>1.2 Luminosity Growth Rate Calculation</span>
-            <span>1.3 Calculating overall Economic Score</span>
-          </div>
-        </div>
-        {/* 2. */}
-        <div className="bg-pink-200 flex flex-col gap-1">
-          <h3 className="text-lg font-bold flex gap-2">
-            <span>2.</span> Environmental Score Overview
-          </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
-            <span>2.1 Air Quality Index</span>
-            <span>2.2 Extreme Weather Score</span>
-            <span>2.3 Forest Score</span>
-            <span>2.4 Calculating overall Environmental Score</span>
-          </div>
-        </div>
-        {/* 3. */}
-        <div className="bg-pink-200 flex flex-col gap-1">
-          <h3 className="text-lg font-bold flex gap-2">
-            <span>3.</span> Schema
-          </h3>
-          <div className="flex flex-col gap-1 bg-pink-300 pl-6">
-            <span>3.1 Luminosity Per Capita Calculation</span>
-            <span>3.2 Luminosity Growth Rate Calculation</span>
-            <span>3.3 Calculating overall Economic Score</span>
-          </div>
-        </div>
+        <MethodologyNavigation />
       </section>
       {/* Content section : Left */}
-      <section className="bg-white w-3/4 h-full flex px-14 pt-14">
-        <div className="bg-blue-200 w-full h-full">INNER</div>
+      <section className="bg-white w-3/4 h-full px-14 pt-14 overflow-auto">
+        <main className="bg-blue-300 p-1 w-full h-full flex flex-col gap-5 font-inter">
+          {/* Content section : 1 : ECON */}
+          <div className="bg-blue-200 w-full flex flex-col gap-4">
+            <ContentEconomic />
+          </div>
+          {/* Content section : 2 : ENVR */}
+          <div className="bg-blue-200 w-full flex flex-col">2</div>
+          {/* Content section : 3 : SCHEMA */}
+          <div className="bg-blue-200 w-full flex flex-col">3</div>
+        </main>
       </section>
     </div>
   );
