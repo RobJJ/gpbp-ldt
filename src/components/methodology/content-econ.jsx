@@ -34,7 +34,7 @@ export default function ContentEconomic() {
         or decreasing over time. The presence of man-made structures is a good
         indicator of economic activity{" "}
       </p>
-      <p>
+      <p className="pt-5">
         Once we have this data, we combine the two components into a single
         economic score. But because these factors are all different and affect
         the environment in different ways, we {"can't"} just add them up.
@@ -48,7 +48,7 @@ export default function ContentEconomic() {
         luminosity or a slower growth rate will lower the score. Similar logic
         could be applied to the built area coverage.
       </p>
-      <h3 className="text-xl text-[#4345AA] font-bold">Detailed steps:</h3>
+      <h3 className="text-xl text-[#4345AA] font-bold pt-5">Detailed steps:</h3>
       <div className="flex flex-col gap-2 w-full" id="econ.1">
         <h4 className="text-xl font-semibold">
           1.1 Luminosity Per Capita calculations
@@ -58,7 +58,7 @@ export default function ContentEconomic() {
           luminosity of a region by its population. This measure provides a
           rough estimate of economic activity per person.
         </p>
-        <span>
+        <span className="pt-3">
           1. Total Luminosity Calculation: The total luminosity data is gathered
           from the NASA Black Marble VIIRS dataset. It measures the intensity of
           nighttime lights for pixels of ~500mX500m. We sum up these values to
@@ -73,7 +73,7 @@ export default function ContentEconomic() {
           luminosity by the population to get the luminosity per capita.
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-full" id="econ.2">
+      <div className="flex flex-col gap-2 w-full pt-5" id="econ.2">
         <h4 className="text-xl font-semibold">
           1.2 Luminosity Growth Rate calculations
         </h4>
@@ -82,7 +82,7 @@ export default function ContentEconomic() {
           luminosity per capita. It is a measure of how the economic activity of
           a region has changed from the previous year.
         </p>
-        <span>
+        <span className="pt-3">
           1. Previous Year Luminosity Per Capita: We store the luminosity per
           capita for each region for every year.
         </span>
@@ -96,7 +96,7 @@ export default function ContentEconomic() {
           Luminosity Per Capita) / Previous Year Luminosity Per Capita * 100%.
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full pt-5">
         <h4 className="text-xl font-semibold">
           1.3 Built Area Percentage calculations
         </h4>
@@ -104,7 +104,7 @@ export default function ContentEconomic() {
           The Built Area Percentage Change represents the annual percentage
           change in the selected locality’s built area percentage.
         </p>
-        <span>
+        <span className="pt-3">
           1. Previous Year Built Area Coverage: We store the percentage of area
           covered by man-made structures for the previous year
         </span>
@@ -118,7 +118,7 @@ export default function ContentEconomic() {
           Area Coverage) / Previous Year Built Area Coverage * 100%.
         </span>
       </div>
-      <h3 id="econ.3" className="text-xl text-[#4345AA] font-bold">
+      <h3 id="econ.3" className="text-xl text-[#4345AA] font-bold pt-5 ">
         Calculating the overall economic score
       </h3>
       <div className="w-full flex flex-col gap-2">

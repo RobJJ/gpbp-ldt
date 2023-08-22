@@ -21,7 +21,7 @@ export default function ContentEnvironment() {
       <h3 className="text-xl text-[#4345AA] font-bold">
         Here are the crucial components:
       </h3>
-      <p>
+      <p className="pt-3">
         <b>Air Quality:</b> This is measured by looking at five different types
         of pollutants in the air. Each pollutant is scored on a scale of 0-500
         (with higher scores indicating worse air quality). Then, the score for
@@ -45,7 +45,7 @@ export default function ContentEnvironment() {
         change in the region’s built environment when there’s a decrease in
         green space.
       </p>
-      <p>
+      <p className="pt-3">
         After we have all this data, we need to combine it into a single
         environmental score. But because these factors are all different and
         affect the environment in different ways, we {"can't"} just combine them
@@ -62,7 +62,7 @@ export default function ContentEnvironment() {
         extreme temperatures, decrease the score, although the relationship is
         not always linear.
       </p>
-      <h3 className="text-xl text-[#4345AA] font-bold">Detailed steps:</h3>
+      <h3 className="text-xl text-[#4345AA] font-bold pt-5">Detailed steps:</h3>
       {/* 2.1 */}
       <div id="envr.1" className="flex flex-col gap-3 w-full">
         <h4 className="text-xl font-semibold">2.1 Air quality index</h4>
@@ -190,7 +190,7 @@ export default function ContentEnvironment() {
         </p>
       </div>
       {/* 2.2 */}
-      <div id="envr.2" className="flex flex-col gap-3 w-full">
+      <div id="envr.2" className="flex flex-col gap-3 w-full pt-5">
         <h4 className="text-xl font-semibold">2.2 Extreme Weather Scores</h4>
         <h5 className="text-md font-semibold">Extreme Temperatures:</h5>
         <p>
@@ -242,7 +242,7 @@ export default function ContentEnvironment() {
         </p>
       </div>
       {/* 2.3 */}
-      <div id="envr.3" className="flex flex-col gap-3 w-full">
+      <div id="envr.3" className="flex flex-col gap-3 w-full pt-5">
         <h4 className="text-xl font-semibold">2.3 Forest Score</h4>
 
         <p>
@@ -258,7 +258,7 @@ export default function ContentEnvironment() {
           percentage change in both coverages yield 0 impact to the forest
           score.
         </p>
-        <h3 id="envr.4" className="text-xl text-[#4345AA] font-bold">
+        <h3 id="envr.4" className="text-xl text-[#4345AA] font-bold pt-5">
           Calculating the overall environmental score
         </h3>
         <p>
@@ -275,7 +275,7 @@ export default function ContentEnvironment() {
         <div className="w-full mt-4">
           <EnvrTable />
         </div>
-        <p>
+        <p className="pt-5">
           These indicators are first standardized to have a mean of 0 and
           standard deviation of 1, and then principal component analysis (PCA)
           is used to combine them into their respective component scores. This

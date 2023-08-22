@@ -34,7 +34,7 @@ export default function MethodologyPage() {
             <ContentSchema />
           </div>
           {/* Feedback section */}
-          <div className=" w-full flex  pb-20">
+          <div className=" w-full flex pb-20 ">
             <ContentFeedback />
           </div>
         </main>
