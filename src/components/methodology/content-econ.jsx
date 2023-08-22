@@ -1,7 +1,7 @@
 export default function ContentEconomic() {
   return (
     <>
-      <div className="w-full flex">
+      <div id="methodology" className="w-full flex">
         <span className="text-2xl flex justify-center items-center w-[33px] h-[33px] bg-[#4345AA] text-white font-bold">
           1
         </span>
@@ -96,7 +96,7 @@ export default function ContentEconomic() {
           Luminosity Per Capita) / Previous Year Luminosity Per Capita * 100%.
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-full" id="econ.3">
+      <div className="flex flex-col gap-2 w-full">
         <h4 className="text-xl font-semibold">
           1.3 Built Area Percentage calculations
         </h4>
@@ -118,7 +118,7 @@ export default function ContentEconomic() {
           Area Coverage) / Previous Year Built Area Coverage * 100%.
         </span>
       </div>
-      <h3 className="text-xl text-[#4345AA] font-bold">
+      <h3 id="econ.3" className="text-xl text-[#4345AA] font-bold">
         Calculating the overall economic score
       </h3>
       <div className="w-full flex flex-col gap-2">

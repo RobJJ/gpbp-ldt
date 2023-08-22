@@ -13,9 +13,9 @@ export const metadata = {
 
 export default function MethodologyPage() {
   return (
-    <div className="w-full h-full bg-slate-500 flex gap-2 overflow-auto">
+    <div className="w-full h-full flex overflow-auto">
       {/* Navigation section : Right */}
-      <section className="bg-[#ECECEC] w-1/4 h-full flex flex-col gap-5 pt-14 pl-5 pr-3">
+      <section className="bg-[#F5F8FB] w-1/4 h-full flex flex-col gap-5 pt-14 pl-5 pr-3">
         <MethodologyNavigation />
       </section>
       {/* Content section : Left */}
@@ -30,7 +30,7 @@ export default function MethodologyPage() {
             <ContentEnvironment />
           </div>
           {/* Content section : 3 : SCHEMA */}
-          <div className=" w-full flex flex-col gap-4">
+          <div id="schema" className=" w-full flex flex-col gap-4">
             <ContentSchema />
           </div>
           {/* Feedback section */}
