@@ -77,7 +77,11 @@ export default function ContentEnvironment() {
           The methodology for the calculation follow those defined by the United
           States Environmental Protection Agency (EPA).
         </p>
-        <Image src={airQualityImage} alt="Air Quality Calculation Breadown" />
+        <Image
+          src={airQualityImage}
+          alt="Air Quality Calculation Breadown"
+          className="my-5"
+        />
         <span>
           1. <b>PM2.5 Sub-Index Calculation:</b> The PM2.5 values are measured
           in µg/m³. These are then re-scaled to create a value between 0-500
@@ -137,7 +141,7 @@ export default function ContentEnvironment() {
           sub-indices. This means that the AQI reflects the level of the most
           problematic pollutant at that time.
         </p>
-        <div className="w-full bg-[#DEEDFF] flex justify-center items-center py-7 px-10 my-5">
+        <div className="w-full bg-[#DEEDFF] flex justify-center items-center py-7 px-10 my-5 rounded">
           <p className="italic">
             For example, if the NO2 level is higher than the other pollutants,
             the NO2 sub-index will be the final AQI score. This is done because
