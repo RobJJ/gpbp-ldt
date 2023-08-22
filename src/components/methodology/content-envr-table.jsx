@@ -234,26 +234,3 @@ export default function EnvrTable() {
     </>
   );
 }
-
-// {
-//   envrHeaders.map((header, index) => <th key={index}>{header}</th>);
-// }
-
-// <th key={1} className="border-r border-black w-1/6">
-//               Indicator
-//             </th>
-//             <th key={2} className="w-1/6 border-r border-black">
-//               Component
-//             </th>
-//             <th key={3} className="w-1/6 border-r border-black">
-//               Description
-//             </th>
-//             <th key={4} className="w-1/6 border-r border-black">
-//               Effect on Env Score
-//             </th>
-//             <th key={5} className="w-1/6 border-r border-black">
-//               Data Type
-//             </th>
-//             <th key={6} className="w-1/6">
-//               Range of Values
-//             </th>
