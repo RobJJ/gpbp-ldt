@@ -15,10 +15,10 @@ export default function MethodologyPage() {
         <MethodologyNavigation />
       </section>
       {/* Content section : Left */}
-      <section className="bg-white w-3/4 h-full px-14 pt-14 overflow-auto">
-        <main className="bg-blue-300 p-1 w-full h-full flex flex-col gap-5 font-inter">
+      <section className="bg-white w-3/4 h-full px-14 pt-14 overflow-auto scroll-smooth">
+        <main className="bg-blue-300 p-1 w-full h-full flex flex-col gap-5  font-inter">
           {/* Content section : 1 : ECON */}
-          <div className="bg-blue-200 w-full flex flex-col gap-4">
+          <div id="econ" className="bg-blue-200 w-full flex flex-col gap-4">
             <ContentEconomic />
           </div>
           {/* Content section : 2 : ENVR */}
