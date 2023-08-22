@@ -2,7 +2,7 @@ export default function ContentEconomic() {
   return (
     <>
       <div className="w-full flex">
-        <span className="text-2xl text-center w-[33px] h-[33px] bg-[#4345AA] text-white font-bold">
+        <span className="text-2xl flex justify-center items-center w-[33px] h-[33px] bg-[#4345AA] text-white font-bold">
           1
         </span>
       </div>
@@ -49,7 +49,7 @@ export default function ContentEconomic() {
         could be applied to the built area coverage.
       </p>
       <h3 className="text-xl text-[#4345AA] font-bold">Detailed steps:</h3>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full" id="econ.1">
         <h4 className="text-xl font-semibold">
           1.1 Luminosity Per Capita calculations
         </h4>
@@ -73,7 +73,7 @@ export default function ContentEconomic() {
           luminosity by the population to get the luminosity per capita.
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full" id="econ.2">
         <h4 className="text-xl font-semibold">
           1.2 Luminosity Growth Rate calculations
         </h4>
@@ -96,7 +96,7 @@ export default function ContentEconomic() {
           Luminosity Per Capita) / Previous Year Luminosity Per Capita * 100%.
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full" id="econ.3">
         <h4 className="text-xl font-semibold">
           1.3 Built Area Percentage calculations
         </h4>
