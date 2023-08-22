@@ -2,6 +2,7 @@ import MethodologyNavigation from "@/components/methodology/navigation";
 import airQualityImage from "../../../public/air_quality_breakdown.png";
 import ContentEconomic from "@/components/methodology/content-econ";
 import Image from "next/image";
+import EnvrTable from "@/components/methodology/content-envr-table";
 
 export const metadata = {
   title: "GED: Methodology",
@@ -307,6 +308,9 @@ export default function MethodologyPage() {
                 We calculate the overall environmental score by conducting PCA
                 on the following variables:
               </p>
+              <div className="w-full mt-4">
+                <EnvrTable />
+              </div>
             </div>
           </div>
           {/* Content section : 3 : SCHEMA */}
