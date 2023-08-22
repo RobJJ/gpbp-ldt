@@ -14,6 +14,7 @@ export default async function LayoutVisualComponent({ country }) {
   // const geojsonDataProvince = await getProvinceGeojson(country);
   // const geojsonDataDistrict = await getDistrictGeojson(country);
   // this approach allows you to handle concurrent calls to the server?
+  // ** note ** is it possible to load this in lazy?
   const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
   //
   // consider combining these two functions in a promise.all() function to handle concurrently

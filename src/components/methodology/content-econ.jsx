@@ -15,7 +15,7 @@ export default function ContentEconomic() {
         luminosity per capita and the growth rate of luminosity per capita,
         giving an insight into the economic performance of a particular region.
       </p>
-      <h3 className="text-xl text-[#4345AA] font-bold">
+      <h3 className="text-xl text-[#4345AA] font-bold pt-3">
         Here are the crucial components:
       </h3>
       <p>

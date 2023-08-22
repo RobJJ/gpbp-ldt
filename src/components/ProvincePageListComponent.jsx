@@ -37,8 +37,8 @@ export default async function ProvincePageListComponent({
           <span className="underline cursor-pointer text-sm text-[#5467C0]">
             Compare Data
           </span>
-          <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-sm rounded py-2 px-2 ">
-            <div className="font-semibold text-blue-300">Upcoming feature</div>
+          <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  rounded py-2 px-2 ">
+            <div className=" text-white text-xs">Upcoming feature</div>
           </div>
         </span>
       </section>

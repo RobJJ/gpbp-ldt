@@ -5,6 +5,7 @@ import Link from "next/link";
 
 // import gedIcon from "../../public/GED-logo-nobg.png";
 import gedIcon from "../../public/GED-logo.png";
+import HomeButton from "./Navbar-HomeButton";
 
 export default function NavBar() {
   return (
@@ -16,18 +17,20 @@ export default function NavBar() {
         height={40}
         className="ml-2"
       />
-      <Link className="  text-slate-300 mr-5" href={"/"}>
+      <Link className="  text-[#D9D9D9] mr-5" href={"/"}>
         Home
       </Link>
+      {/* reseting atoms not working in here */}
+      {/*<HomeButton />*/}
       <Link
-        className="  text-slate-300 mr-5"
+        className="  text-[#D9D9D9] mr-5"
         href={"/releaseNotes"}
         target="_blank"
       >
         Release Notes
       </Link>
       <Link
-        className="  text-slate-300 mr-5"
+        className="  text-[#D9D9D9] mr-5"
         href={"/methodology"}
         target="_blank"
       >
@@ -35,7 +38,7 @@ export default function NavBar() {
       </Link>
 
       <Link
-        className="  text-slate-300"
+        className="  text-[#D9D9D9]"
         href={"https://pim-pam.net/"}
         target="_blank"
       >
