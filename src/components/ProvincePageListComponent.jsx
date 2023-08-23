@@ -45,10 +45,8 @@ export default async function ProvincePageListComponent({
       {/* body */}
       <section className="w-full bg-white font-bold flex text-center ">
         {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
-        <span className="bg-slate-200 border-2 border-black w-6/12">
-          District
-        </span>
-        <span className="bg-slate-200 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
+        <span className="bg-white border border-black w-6/12">District</span>
+        <span className="bg-white w-3/12 border-r border-y border-black flex justify-center items-center gap-2 ">
           <span>Environment</span>
           <span
             className="relative group
@@ -68,7 +66,7 @@ export default async function ProvincePageListComponent({
             />
           </span>
         </span>
-        <span className="bg-slate-200 w-3/12 border-r-2 border-y-2 border-black flex justify-center items-center gap-2 ">
+        <span className="bg-white w-3/12 border-r border-y border-black flex justify-center items-center gap-2 ">
           <span>Economic</span>
           <span
             className="relative group
