@@ -1,30 +1,15 @@
 "use client";
-import React, { useState } from "react";
+
 import { animated, useSpring, config } from "react-spring";
 import { visualTypeSelected } from "@/lib/atoms";
 import { useAtom } from "jotai";
-import useSWR from "swr";
-
-// const fetcher = async (url, token) => {
-//   const [tag, country] = url;
-//   //   console.log("tag : country", tag, country);
-//   const data = await fetch("/app/api/geo");
-//   // console.log("the data should be a ping", data);
-// };
-// const fetchWithToken = async (url, token) => {
-//   // console.log("hit : ", url, token);
-//   const data = await fetch(url);
-// };
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import MapToggleButton from "./Map-Toggle-Button";
+// import useSWR from "swr";
 
 function SwitchComponent({ country }) {
   // visual atom: defaults to "map",, can be "map" or "scatter"
   const [visualType, setVisualType] = useAtom(visualTypeSelected);
   // console.log("[SwitchComponent] : param :", country);
-  const { data, error, isLoading } = useSWR(
-    `/api/geo?country=${country}`,
-    fetcher
-  );
 
   const props = useSpring({
     left: visualType === "scatter" ? "0%" : "50%",
@@ -33,8 +18,9 @@ function SwitchComponent({ country }) {
   });
 
   const scatterButtonStyle =
-    visualType === "scatter" ? "text-white" : "text-black";
-  const mapButtonStyle = visualType === "scatter" ? "text-black" : "text-white";
+    visualType === "scatter" ? "text-white" : "text-[#4345AA]";
+  const mapButtonStyle =
+    visualType === "scatter" ? "text-[#4345AA]" : "text-white";
 
   const handleToggle = (e) => {
     const choice = e.target.getAttribute("data-tag");
@@ -47,9 +33,6 @@ function SwitchComponent({ country }) {
     return;
   };
 
-  if (isLoading) return <div>Loading</div>;
-  console.log("Your data sir ::", data);
-
   return (
     <div className="p-1 bg-white rounded-md">
       <div className="relative w-40 h-7 bg-white ">
@@ -59,18 +42,23 @@ function SwitchComponent({ country }) {
         <div className="absolute inset-0 flex items-center justify-between">
           <button
             data-tag="scatter"
-            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none ${scatterButtonStyle}`}
+            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none font-semibold ${scatterButtonStyle}`}
             onClick={handleToggle}
           >
             {"Scatter"}
           </button>
-          <button
+          {/*<button
             data-tag="map"
             className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent  focus:outline-none ${mapButtonStyle}`}
             onClick={handleToggle}
           >
             {"Map"}
-          </button>
+  </button>*/}
+          <MapToggleButton
+            country={country}
+            mapButtonStyle={mapButtonStyle}
+            handleToggle={handleToggle}
+          />
         </div>
       </div>
     </div>

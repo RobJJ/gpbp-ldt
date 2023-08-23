@@ -15,19 +15,26 @@ export default async function LayoutVisualComponent({ country }) {
   // const geojsonDataDistrict = await getDistrictGeojson(country);
   // this approach allows you to handle concurrent calls to the server?
   // ** note ** is it possible to load this in lazy?
-  const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
+  // ** ok, instead of calling this here.. call the cached version with SWR at the component
+  // const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
   //
   // consider combining these two functions in a promise.all() function to handle concurrently
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
+
+  // console.log(
+  //   "province and district geo data from layout : ",
+  //   provinceGeoData,
+  //   districtGeoData
+  // );
 
   const mapbox_url = process.env.MAPBOX_URL;
 
   return (
     <div className="w-full h-full flex">
       <VisualComponentClientParentV2
-        provinceGeoData={provinceGeoData}
-        districtGeoData={districtGeoData}
+        // provinceGeoData={provinceGeoData}
+        // districtGeoData={districtGeoData}
         country={country}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}

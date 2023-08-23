@@ -2,11 +2,17 @@
 
 import { MapContainer, Rectangle, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import useSWR from "swr";
 import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
 import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
 import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
 import MapColorLegend from "./MapColorLegend";
+import Image from "next/image";
+import Spinner from "../../public/Spinner-normal-size.svg";
+
+// SWR
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 // Settings for Map and Rectangle
 const countryMapSettings = {
@@ -47,13 +53,33 @@ const countryMapSettings = {
 
 export default function MapComponentParentAlpha({
   country,
-  provinceGeoData,
-  districtGeoData,
+  // provinceGeoData,
+  // districtGeoData,
   gedDataProvince,
   gedDataDistrict,
   mapbox_url,
 }) {
+  // lets try call the cached data here first :: this should always be cached from initial call
+  const { data, error, isLoading } = useSWR(
+    `/api/geo?country=${country}`,
+    fetcher
+  );
+
   const [scatterType] = useAtom(scatterViewType);
+
+  // this should never happen -- we need to make sure that if user clicks HOME that we reset the scatterViewType... but for now, guard against it
+  if (isLoading)
+    return (
+      <div className="bg-slate-100 flex justify-center items-center w-full h-full">
+        <Image priority src={Spinner} alt="loading spinner" />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="bg-slate-100 flex justify-center items-center w-full h-full">
+        There was a problem loading GeoData
+      </div>
+    );
 
   return (
     <section className="w-full h-full flex flex-col text-lg">
@@ -88,16 +114,20 @@ export default function MapComponentParentAlpha({
         {/* Handle change of scatterType here */}
         {scatterType === "provinces" && (
           <MapGeoJsonComponentProvince
-            provinceGeoData={provinceGeoData}
-            districtGeoData={districtGeoData}
+            provinceGeoData={data.provinceGeoData}
+            districtGeoData={data.districtGeoData}
+            // provinceGeoData={provinceGeoData}
+            // districtGeoData={districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
           />
         )}
         {scatterType === "districts" && (
           <MapGeoJsonComponentDistrict
-            provinceGeoData={provinceGeoData}
-            districtGeoData={districtGeoData}
+            provinceGeoData={data.provinceGeoData}
+            districtGeoData={data.districtGeoData}
+            // provinceGeoData={provinceGeoData}
+            // districtGeoData={districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
           />

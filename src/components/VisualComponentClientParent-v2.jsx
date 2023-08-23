@@ -18,8 +18,8 @@ const MapComponentParentAlpha = dynamic(
 // it also determines which visual to show, map or scatter based on the visualType from atom
 
 export default function VisualComponentClientParentV2({
-  provinceGeoData,
-  districtGeoData,
+  // provinceGeoData,
+  // districtGeoData,
   gedDataDistrict,
   gedDataProvince,
   country,
@@ -36,8 +36,8 @@ export default function VisualComponentClientParentV2({
       {visualType === "map" && (
         <MapComponentParentAlpha
           country={country}
-          provinceGeoData={provinceGeoData}
-          districtGeoData={districtGeoData}
+          // provinceGeoData={provinceGeoData}
+          // districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           mapbox_url={mapbox_url}
