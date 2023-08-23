@@ -10,7 +10,7 @@ export default function ContentFeedback() {
         </p>
         <div className=" w-full flex justify-center">
           <Link
-            href={"https://pim-pam.net/"}
+            href={"https://pim-pam.net/feedback/?feedback=ged"}
             target="_blank"
             className="bg-[#5467C0] px-4 py-2 text-white font-bold text-sm rounded"
           >

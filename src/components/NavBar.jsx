@@ -39,7 +39,7 @@ export default function NavBar() {
 
       <Link
         className="  text-[#D9D9D9]"
-        href={"https://pim-pam.net/"}
+        href={"https://pim-pam.net/feedback/?feedback=ged"}
         target="_blank"
       >
         Give feedback
