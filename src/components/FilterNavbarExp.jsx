@@ -7,11 +7,11 @@ import LayerToggle from "./LayerToggle";
 
 import ResetFiltersButton from "./ResetFiltersButton";
 
-export default function FilterNavbarExp({}) {
+export default function FilterNavbarExp({ country }) {
   return (
     <div className="w-full bg-[#ECECEC] flex gap-5 items-center p-2">
       <div className="flex-none ">
-        <SwitchComponent />
+        <SwitchComponent country={country} />
       </div>
       <div className="flex-1 flex gap-4  justify-center">
         <FilterButtonYear />

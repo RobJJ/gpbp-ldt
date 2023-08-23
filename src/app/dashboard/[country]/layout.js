@@ -18,7 +18,7 @@ export default async function CountryPageLayout({ children, params }) {
 
   return (
     <div className="w-full h-full flex flex-col overflow-auto relative">
-      <FilterNavbarExp />
+      <FilterNavbarExp country={params.country} />
       <main className="w-full h-full bg-white flex gap-2  overflow-auto">
         <section className="w-1/2 h-full">
           <Suspense

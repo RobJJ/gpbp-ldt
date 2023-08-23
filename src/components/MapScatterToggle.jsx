@@ -3,11 +3,29 @@ import React, { useState } from "react";
 import { animated, useSpring, config } from "react-spring";
 import { visualTypeSelected } from "@/lib/atoms";
 import { useAtom } from "jotai";
+import useSWR from "swr";
 
-function SwitchComponent() {
+// const fetcher = async (url, token) => {
+//   const [tag, country] = url;
+//   //   console.log("tag : country", tag, country);
+//   const data = await fetch("/app/api/geo");
+//   // console.log("the data should be a ping", data);
+// };
+// const fetchWithToken = async (url, token) => {
+//   // console.log("hit : ", url, token);
+//   const data = await fetch(url);
+// };
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+function SwitchComponent({ country }) {
   // visual atom: defaults to "map",, can be "map" or "scatter"
   const [visualType, setVisualType] = useAtom(visualTypeSelected);
-  // console.log("[SwitchComponent] : visualType :", visualType);
+  // console.log("[SwitchComponent] : param :", country);
+  const { data, error, isLoading } = useSWR(
+    `/api/geo?country=${country}`,
+    fetcher
+  );
+
   const props = useSpring({
     left: visualType === "scatter" ? "0%" : "50%",
     backgroundColor: "#4345AA",
@@ -28,6 +46,9 @@ function SwitchComponent() {
     }
     return;
   };
+
+  if (isLoading) return <div>Loading</div>;
+  console.log("Your data sir ::", data);
 
   return (
     <div className="p-1 bg-white rounded-md">
