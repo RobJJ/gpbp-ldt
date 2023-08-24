@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 // lets try get all districts at the api/route
 export async function GET(request) {
-  console.log("[ENDPOINT HIT] : ", request.url);
+  // console.log("[ENDPOINT HIT] : ", request.url);
   //
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);

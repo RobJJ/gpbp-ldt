@@ -148,7 +148,7 @@ export default function MapGeoJsonComponentDistrict({
       decodeURIComponent(provinceSelected) === feature.properties.NAME_1 &&
       !feature.properties.GID_2
     ) {
-      console.log("condition triggered!");
+      // console.log("condition triggered!");
       return {
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "1",
@@ -223,7 +223,7 @@ export default function MapGeoJsonComponentDistrict({
   const handleLayerClick = (e) => {
     // GID_1 is province ID
     // GID_2 is district ID
-    console.log("***handleLayerClick*** : event :", e);
+    // console.log("***handleLayerClick*** : event :", e);
     const country = e.target.feature.properties.COUNTRY.toLowerCase();
     const province = e.target.feature.properties.NAME_1;
     const district = e.target.feature.properties.NAME_2;

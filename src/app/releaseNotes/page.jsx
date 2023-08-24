@@ -39,13 +39,12 @@ export default function ReleaseNotes() {
                 </span>
               </div>
               <span className="">
-                Optimized the performance of key visual components by better
-                leveraging the {"library's"} API. Results in reduced client-side
-                latency, and a more fluid and responsive user experience.
-                Moreover, {"we've"} introduced new interactions for both
-                province and district views, granting users the flexibility to
-                toggle between their preferred viewing methods. These
-                enhancements offer a richer visual presentation.
+                Optimized the performance of key visual components - reduced
+                client-side latency, and a more fluid and responsive user
+                experience. Moreover, {"we've"} introduced new interactions for
+                both province and district views, granting users the flexibility
+                to toggle between their preferred viewing methods. These
+                enhancements offer an improved user experience.
               </span>
             </div>
             {/* UPDATE : v 0.6 - MAJOR - new API and DB  */}
@@ -70,11 +69,10 @@ export default function ReleaseNotes() {
                 </span>
               </div>
               <span className="">
-                {"We've"} introduced a Next.js API layer to speed up requests by
-                handling them server-side, reducing load times for users.
-                Additionally, our updated database cluster now consolidates
-                country cubes in a mono repo, making it easier to scale and add
-                new countries.
+                {"We've"} introduced a Next.js API layer to simplify client
+                requests and reduce load times for users. Additionally, our
+                updated database cluster now consolidates country cubes in a
+                mono repo, making it easier to scale and add new countries.
               </span>
             </div>
             {/* UPDATE : v 0.5 - NEXT JS  */}

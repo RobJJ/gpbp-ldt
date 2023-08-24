@@ -20,7 +20,7 @@ export default function FilterButtonYear() {
 
   const handleYearChange = (e) => {
     const choice = e.target.dataset.tag;
-    console.log("choice :: ", choice);
+    // console.log("choice :: ", choice);
     router.push(
       `${pathname}?year=${choice}&score_one=${scoreOne}&score_two=${scoreTwo}`
     );

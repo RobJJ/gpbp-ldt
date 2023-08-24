@@ -210,7 +210,7 @@ export default function ScatterComponentParentDistricts({
           events: {
             click: (dot) => {
               if (dot.point.DISTRICT_ID) {
-                console.log("You clicked a dot ::", dot.point);
+                // console.log("You clicked a dot ::", dot.point);
                 // 1st: just navigate to the path
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
@@ -280,7 +280,7 @@ export default function ScatterComponentParentDistricts({
             events: {
               click: (dot) => {
                 if (dot.point.DISTRICT_ID) {
-                  console.log("hey you clicked a dot ::", dot.point);
+                  // console.log("hey you clicked a dot ::", dot.point);
                   // 1st: just navigate to the path
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`

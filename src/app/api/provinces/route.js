@@ -9,9 +9,9 @@ export async function GET(request) {
   const province = searchParams.get("province");
   const province_id = searchParams.get("province_id");
 
-  console.log(
-    "[ENDPOINT HIT] : grabbing district info about a selected province"
-  );
+  // console.log(
+  //   "[ENDPOINT HIT] : grabbing district info about a selected province"
+  // );
 
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
