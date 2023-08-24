@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function DistrictPageInsightsRisksCard({ district }) {
   return (
-    <div className="w-full h-full bg-white flex">
-      <section className="w-2/3 flex flex-col justify-between py-1 pl-3">
+    <div className="w-full h-full bg-white flex font-inter">
+      <section className="w-2/3 flex flex-col justify-between py-1 pl-1">
         <span className="font-bold text-lg">
           Future Climate Change Risks To Assets
         </span>

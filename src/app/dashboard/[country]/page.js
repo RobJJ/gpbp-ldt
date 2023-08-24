@@ -14,7 +14,7 @@ export default async function CountryPage({ params, searchParams }) {
   return (
     <div className="w-full h-full  flex flex-col pt-2 pb-0 gap-5 overflow-auto">
       {/* CARDS */}
-      <section className="w-full max-h-1/2  flex items-start flex-wrap gap-4 pb-4 px-2">
+      <section className="w-full max-h-1/2  flex items-start flex-wrap gap-4 pb-4 px-2 ">
         <CountryPageInfoCard
           label={"Admin 1 Regions"}
           fact={countryInfo[0].regions_admin_1}

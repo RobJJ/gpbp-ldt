@@ -23,9 +23,9 @@ export default async function ProvincePageListComponent({
   // console.log("your districtData data :: ", districtData);
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full flex flex-col ">
       {/* header */}
-      <section className="w-full flex justify-between px-2 py-1 items-center ">
+      <section className="w-full flex justify-between pr-2 py-1 items-center font-inter">
         <span className="text-lg bg-white">
           Districts in <b>{decodeURIComponent(province)}</b> in{" "}
           <b>{searchParams.year}</b>
@@ -43,7 +43,7 @@ export default async function ProvincePageListComponent({
         </span>
       </section>
       {/* body */}
-      <section className="w-full bg-white font-bold flex text-center ">
+      <section className="w-full bg-white font-bold flex text-center font-inter">
         {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
         <span className="bg-white border border-black w-6/12">District</span>
         <span className="bg-white w-3/12 border-r border-y border-black flex justify-center items-center gap-2 ">

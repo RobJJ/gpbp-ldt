@@ -26,7 +26,7 @@ export default async function CountryPageListComponent({
   return (
     <div className="w-full h-full flex flex-col">
       {/* header */}
-      <section className="w-full flex justify-between bg-white  py-1 items-center ">
+      <section className="w-full flex justify-between bg-white  py-1 items-center font-inter">
         <span className="text-lg bg-white">
           Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
           <b>{searchParams.year}</b>
@@ -44,7 +44,7 @@ export default async function CountryPageListComponent({
         </span>
       </section>
       {/* body */}
-      <section className="w-full bg-white font-bold flex text-center ">
+      <section className="w-full bg-white font-bold flex text-center font-inter">
         {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
         <span className="bg-white border border-black w-6/12">Province</span>
         <span className="bg-white w-3/12 border-r border-y border-black flex justify-center items-center gap-2 ">

@@ -9,13 +9,13 @@ export default function DistrictPageInsightsRecomCard({
   // Gaurd against no data
   if (!insightsData) {
     return (
-      <div className="w-full h-full flex justify-center items-center font-bold text-lg underline">
+      <div className="w-full h-full flex justify-center items-center font-bold text-lg underline font-inter">
         No data for selected district
       </div>
     );
   }
   return (
-    <div className="w-full h-full  p-1 flex flex-col gap-2 overflow-auto">
+    <div className="w-full h-full  p-1 flex flex-col gap-2 overflow-auto font-inter">
       <section className="w-full flex justify-between  items-center ">
         <div className="flex gap-2 items-center">
           <span className="">
