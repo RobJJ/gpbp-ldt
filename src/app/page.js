@@ -21,14 +21,14 @@ export default function Home({ searchParams }) {
     <div className="w-full h-full  flex  overflow-auto">
       {/* LEFT PANEL */}
       <section className="h-full w-7/12 bg-white flex flex-col justify-center pl-10">
-        <h2 className="text-[#6D778A] text-xl">
+        <h2 className="text-[#6D778A] text-xl font-inter">
           Geospatial Planning and Budgeting Platform
         </h2>
-        <h1 className="w-full font-bold text-4xl  mb-5 mt-2">
+        <h1 className="w-full font-bold text-4xl mb-5 mt-2 font-poppins">
           Green Economy Diagnostic Tool
         </h1>
 
-        <div className="w-full max-w-[900px]  pr-5 overflow-auto mb-5">
+        <div className="w-full max-w-[900px]  pr-5 overflow-auto mb-5 font-inter">
           The Green Economy Diagnostic (GED) is a tool that maps the economic
           and environmental performance of sub-national regions within a
           country. It is designed to provide a comprehensive picture of the
@@ -43,14 +43,14 @@ export default function Home({ searchParams }) {
         <div className="flex gap-3  mb-5">
           <Image src={videoIcon} alt="play-video-icon" />
           <Link
-            className=" font-bold text-[#4345AA] hover:underline"
+            className=" font-bold text-[#4345AA] hover:underline font-poppins"
             href={"https://youtu.be/cgeh0Reo3tI"}
             target="_blank"
           >
             View Introduction Video
           </Link>
         </div>
-        <div className="w-full flex flex-col gap-2  my-5">
+        <div className="w-full flex flex-col gap-2  my-5 font-poppins">
           <h3>
             <b>Get started</b> by selecting your country below
           </h3>
@@ -61,7 +61,7 @@ export default function Home({ searchParams }) {
           <VideoComponent />
   </div> */}
         {/*cards*/}
-        <div className="w-full flex flex-col gap-2  mt-5">
+        <div className="w-full flex flex-col gap-2  mt-5 font-poppins">
           <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
             <LandingPageCardComponent

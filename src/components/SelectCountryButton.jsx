@@ -36,7 +36,7 @@ export default function SelectCountryButton() {
           <button
             onClick={toggleDropdown}
             type="button"
-            className="flex items-center justify-between w-72 h-10 border border-gray-400 px-4 py-1 bg-white text-md  font-semibold text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out "
+            className="flex font-poppins items-center justify-between w-72 h-10 border border-gray-400 px-4 py-1 bg-white text-md  font-semibold text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out "
           >
             {country ? capitalizeFirstLetter(country) : "Please select country"}
             <Image src={arrowDown} alt="Logo" className="text-black" />
@@ -57,7 +57,7 @@ export default function SelectCountryButton() {
                   <span
                     onClick={handleCountrySelect}
                     data-tag={country.name}
-                    className="font-bold text-center block px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+                    className="font-bold font-poppins text-center block px-4 py-2 text-sm leading-5 text-gray-700 bg-slate-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                     role="menuitem"
                     key={country.id}
                   >
@@ -77,7 +77,7 @@ export default function SelectCountryButton() {
       >
         {country && (
           <Link
-            className="underline"
+            className="underline font-poppins"
             href={{
               pathname: `/dashboard/${country}`,
               query: { year: "2022", score_one: "econ", score_two: "envr" },
