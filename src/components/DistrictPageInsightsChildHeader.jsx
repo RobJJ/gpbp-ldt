@@ -39,7 +39,7 @@ export default function DistrictPageInsightsChildHeader({
         }`}
         onClick={handleTabClick}
       >
-        Assest Level Risks
+        Asset Level Risks
       </button>
     </section>
   );
