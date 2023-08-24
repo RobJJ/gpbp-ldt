@@ -57,7 +57,13 @@ export default async function ProvincePageListComponent({
                 Learn more about how to calculate environmental scores
               </div>
               {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
-              <div className="text-blue-400">Learn more</div>
+              <Link
+                href="/methodology#envr"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Learn more
+              </Link>
             </div>
             <Image
               src={questionMarkIconFill}
@@ -80,7 +86,7 @@ export default async function ProvincePageListComponent({
               }
               {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
               <Link
-                href="/methodology"
+                href="/methodology#econ"
                 target="_blank"
                 className="text-blue-400"
               >

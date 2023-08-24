@@ -61,7 +61,7 @@ export default async function CountryPageListComponent({
               }
               {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
               <Link
-                href="/methodology#section5"
+                href="/methodology#envr"
                 target="_blank"
                 className="text-blue-400"
               >
@@ -96,7 +96,7 @@ export default async function CountryPageListComponent({
               }
               {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
               <Link
-                href="/methodology#section5"
+                href="/methodology#econ"
                 target="_blank"
                 className="text-blue-400"
               >
