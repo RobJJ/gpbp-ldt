@@ -11,7 +11,7 @@ export default function ReleaseNotes() {
     <section className=" w-full h-full flex smlr:flex-col gap-1 overflow-auto bg-[#F5F8FB]">
       {/* LEFT PANEL */}
       <div className=" w-4/6 h-full p-8 flex flex-col gap-5 bg-[#F5F8FB]">
-        <div className="text-4xl font-poppins">
+        <div className="text-3xl font-poppins">
           <b>Green Economy Development:</b> Release Notes
         </div>
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">

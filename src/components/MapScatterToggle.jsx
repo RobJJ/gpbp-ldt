@@ -34,7 +34,7 @@ function SwitchComponent({ country }) {
   };
 
   return (
-    <div className="p-1 bg-white rounded-md">
+    <div className="p-1 bg-white rounded-md font-inter">
       <div className="relative w-40 h-7 bg-white ">
         <animated.div className="absolute w-20 h-7 rounded-md" style={props}>
           <div className="h-full w-full flex items-center justify-center"></div>
@@ -42,7 +42,7 @@ function SwitchComponent({ country }) {
         <div className="absolute inset-0 flex items-center justify-between">
           <button
             data-tag="scatter"
-            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none font-semibold ${scatterButtonStyle}`}
+            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none  ${scatterButtonStyle}`}
             onClick={handleToggle}
           >
             {"Scatter"}

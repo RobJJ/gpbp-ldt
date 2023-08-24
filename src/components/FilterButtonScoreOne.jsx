@@ -28,7 +28,7 @@ export default function FilterButtonScoreOne() {
   };
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left font-inter">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           {urlToLableMatching[scoreOne]}
