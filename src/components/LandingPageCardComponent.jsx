@@ -8,13 +8,14 @@ export default function LandingPageCardComponent({ header, text, link, icon }) {
           <Image src={icon} alt={header} width={50} height={50} />
         </div>
         <div className="h-full w-9/12 ">
-          <h5 className="font-bold">{header}</h5>
+          <h4 className="font-bold">{header}</h4>
           <div className=" text-sm">{text}</div>
           <a
             href={link}
             target="_blank"
             rel="noreferrer"
-            className="text-orange-400 hover:text-blue-600 font-bold text-sm"
+            className="text-[#FF502D] hover:text-blue-600 font-bold text-sm"
+            alt={`link to ${header} site`}
           >
             More Info
           </a>
