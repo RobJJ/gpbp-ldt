@@ -47,35 +47,3 @@ export default function DistrictPageInsightsParent({ insightsData, district }) {
     </div>
   );
 }
-
-// <div className="w-full flex justify-between items-center ">
-//   {/* TRENDS */}
-//   <div className="flex gap-3  items-center">
-//     <span className="text-lg">
-//       <b>{tabsToTitle[selectedTab]}</b> for {decodeURIComponent(district)}
-//     </span>
-//     <span className="text-[#36B37E] border-2 border-[#36B37E] rounded px-1 cursor-pointer">
-//       BETA
-//     </span>
-//   </div>
-//   {/* LEFT */}
-//   <div className="flex gap-3  items-center">
-//     {selectedTab === "Trends" ||
-//       (selectedTab === "Recommendations" && (
-//         <span className="text-lg">
-//           <b>{tabsToTitle[selectedTab]}</b> for {decodeURIComponent(district)}{" "}
-//         </span>
-//       ))}
-//     {selectedTab === "AssestLevelRisks" && (
-//       <span className="text-lg">Future Climate Change Risks To Assets</span>
-//     )}
-
-//   </div>
-//   {/* RIGHT */}
-//   <div className="flex gap-1 items-center">
-//     <Image src={openaiIcon} alt="openAI Icon" width={28} />
-//     <span className="text-sm font-semibold">Powered by Open AI - </span>
-//     {/* Add onHover and link to methodology page : upcoming feature for now */}
-//     <span className="text-sm font-semibold text-[#4345AA]">Learn more</span>
-//   </div>
-// </div>;

@@ -44,7 +44,9 @@ export default function Home({ searchParams }) {
           <Image src={videoIcon} alt="play-video-icon" />
           <Link
             className=" font-bold text-[#4345AA] hover:underline font-poppins"
-            href={"https://youtu.be/cgeh0Reo3tI"}
+            href={
+              "https://www.loom.com/share/87319021b63f4e9a90d206b0eb57a487?sid=25c7f405-2dc8-41a0-8d82-c0512edfc091"
+            }
             target="_blank"
           >
             View Introduction Video

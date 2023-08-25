@@ -28,9 +28,7 @@ export default function DistrictPage({ params, searchParams }) {
             >
               <span className="underline cursor-pointer">Download Data</span>
               <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  text-sm rounded py-2 px-2 ">
-                <div className="font-semibold text-blue-400">
-                  Upcoming feature
-                </div>
+                <div className="text-xs text-white">Upcoming feature</div>
               </div>
             </span>
           </span>

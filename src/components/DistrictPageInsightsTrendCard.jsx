@@ -29,9 +29,16 @@ export default function DistrictPageInsightsTrendCard({
         <div className="flex gap-1 items-center">
           <Image src={openaiIcon} alt="openAI Icon" width={28} />
           <span className="text-sm">Powered by OpenAI - </span>
-          <span className="text-[#4345AA] text-sm font-semibold underline">
-            {" "}
-            Learn more
+          <span
+            className="relative group
+              "
+          >
+            <span className="text-[#4345AA] text-sm underline cursor-pointer font-semibold">
+              Learn more
+            </span>
+            <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  text-sm rounded py-2 px-2 ">
+              <div className="text-xs text-white">Upcoming feature</div>
+            </div>
           </span>
         </div>
       </section>
