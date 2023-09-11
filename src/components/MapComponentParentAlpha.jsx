@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, Rectangle, TileLayer } from "react-leaflet";
+import { MapContainer, Rectangle, TileLayer, ZoomControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import useSWR from "swr";
 import { scatterViewType } from "@/lib/atoms";
@@ -106,6 +106,7 @@ export default function MapComponentParentAlpha({
         // adding hashkey here rerenders another entire map. ie resets pos etc
         // key={hashkey}
       >
+        <ZoomControl position={"bottomleft"} />
         <TileLayer url={mapbox_url} />
         <Rectangle
           bounds={countryMapSettings[country].innerBounds}

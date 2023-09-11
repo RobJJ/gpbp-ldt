@@ -42,7 +42,7 @@ function SwitchComponent({ country }) {
         <div className="absolute inset-0 flex items-center justify-between">
           <button
             data-tag="scatter"
-            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none  ${scatterButtonStyle}`}
+            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none text-sm ${scatterButtonStyle}`}
             onClick={handleToggle}
           >
             {"Scatter"}

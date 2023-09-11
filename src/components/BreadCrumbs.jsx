@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
-import icon from "../../public/map-pin-range-line.png";
+import icon from "../../public/map-pin-range-line.svg";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default function BreadCrumbs() {
@@ -11,7 +11,7 @@ export default function BreadCrumbs() {
 
   // console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full  flex gap-2 p-1 border-b border-b-[#E7E7E7] font-inter">
+    <div className="w-full  flex gap-2 p-1 border-b border-b-[#E7E7E7] font-inter items-center">
       <Image src={icon} alt="Logo" className="text-blue-500" />
       {params.country && (
         <Link
@@ -24,8 +24,8 @@ export default function BreadCrumbs() {
             },
           }}
           className={`${
-            params.province ? "text-black" : "text-red-600  font-medium"
-          }`}
+            params.province ? "text-[#4345AA]" : "text-black "
+          }  font-medium text-sm`}
         >
           {capitalizeFirstLetter(params.country)}
         </Link>
@@ -42,8 +42,8 @@ export default function BreadCrumbs() {
             },
           }}
           className={`${
-            params.district ? "text-black" : "text-red-600 font-medium"
-          }`}
+            params.district ? "text-[#4345AA]" : "text-black "
+          } font-medium text-sm`}
         >
           {decodeURIComponent(params.province)}
         </Link>
@@ -59,7 +59,7 @@ export default function BreadCrumbs() {
               score_two: searchParams.get("score_two"),
             },
           }}
-          className={`text-red-600 font-medium`}
+          className={`text-black font-medium text-sm`}
         >
           {decodeURIComponent(params.district)}
         </Link>

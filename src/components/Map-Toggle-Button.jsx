@@ -29,7 +29,7 @@ export default function MapToggleButton({
       {data && (
         <button
           data-tag="map"
-          className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none  ${mapButtonStyle}`}
+          className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent focus:outline-none text-sm ${mapButtonStyle}`}
           onClick={handleToggle}
         >
           {"Map"}

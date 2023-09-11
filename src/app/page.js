@@ -4,7 +4,7 @@ import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
 import bdoIcon from "../../public/bdo.png";
-import videoIcon from "../../public/play-video-icon.png";
+import videoIcon from "../../public/play-video-icon.svg";
 
 import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";

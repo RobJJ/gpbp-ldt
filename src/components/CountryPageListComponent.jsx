@@ -31,7 +31,7 @@ export default async function CountryPageListComponent({
           Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
           <b>{searchParams.year}</b>
         </span>
-        <span
+        {/*<span
           className="relative group flex items-center
               "
         >
@@ -41,7 +41,7 @@ export default async function CountryPageListComponent({
           <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-sm rounded py-2 px-2 ">
             <div className="font-semibold text-blue-300">Upcoming feature</div>
           </div>
-        </span>
+  </span>*/}
       </section>
       {/* body */}
       <section className="w-full bg-white font-bold flex text-center font-inter">

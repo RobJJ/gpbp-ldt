@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import openaiIcon from "../../public/openai-fill.png";
+import openaiIcon from "../../public/openai-fill.svg";
 
 export default function DistrictPageInsightsTrendCard({
   district,

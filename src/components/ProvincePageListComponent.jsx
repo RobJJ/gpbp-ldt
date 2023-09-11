@@ -30,7 +30,7 @@ export default async function ProvincePageListComponent({
           Districts in <b>{decodeURIComponent(province)}</b> in{" "}
           <b>{searchParams.year}</b>
         </span>
-        <span
+        {/*<span
           className="relative group flex items-center
               "
         >
@@ -40,7 +40,7 @@ export default async function ProvincePageListComponent({
           <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  rounded py-2 px-2 ">
             <div className=" text-white text-xs">Upcoming feature</div>
           </div>
-        </span>
+  </span>*/}
       </section>
       {/* body */}
       <section className="w-full bg-white font-bold flex text-center font-inter">

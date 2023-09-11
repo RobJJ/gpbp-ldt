@@ -12,11 +12,11 @@ export default function DistrictPage({ params, searchParams }) {
     <div className=" w-full h-full flex flex-col gap-1 overflow-auto ">
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
-        <div className="w-full flex justify-between items-center font-inter">
+        <div className="w-full flex justify-between items-center font-inter pr-2">
           <span className="font-bold text-xl pl-1">
             {decodeURIComponent(params.district)} Performance
           </span>
-          <span className="text-[#5467C0] flex gap-1">
+          <span className="text-[#5467C0] flex gap-1 text-sm items-center">
             <Link className="underline" href={"/methodology"} target="_blank">
               Methodology
             </Link>
