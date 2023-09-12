@@ -57,11 +57,11 @@ export default function TableRow({
           // can spread the searchParams!!!! *******
           query: { ...searchParams },
         }}
-        className="bg-white flex items-center justify-center w-6/12 h-full border-x-2 border-slate-300 border-b-2 p-2 text-sm font-semibold text-[#4345AA] hover:text-[#5F61B7]"
+        className="bg-white flex items-center w-1/3 h-full border-x border-slate-300 border-b p-2 text-sm font-semibold text-[#4345AA] hover:text-[#5F61B7]"
       >
         {regionName}
       </Link>
-      <span className=" w-3/12 h-full p-2 border-r-2 border-b-2 border-slate-300 flex items-center bg-white">
+      <span className=" w-1/3 h-full p-2 border-r border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
             className="h-full w-full"
@@ -85,7 +85,7 @@ export default function TableRow({
         </div>
       </span>
       {/* new way.. you have to create 10 blocks per province or district.. conciderably more divs but does it effect server side performance? */}
-      <span className=" w-3/12 h-full border-r-2 p-2 border-b-2 border-slate-300 flex items-center bg-white">
+      <span className=" w-1/3 h-full border-r p-2 border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
             className="h-full w-full"
