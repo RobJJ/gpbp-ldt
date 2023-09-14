@@ -19,7 +19,7 @@ export default async function ProvincePage({ params, searchParams }) {
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center font-inter pr-2">
-          <span className="font-bold text-xl pl-1">
+          <span className="font-bold text-xl">
             {decodeURIComponent(params.province)} Performance
           </span>
           <span className="text-[#5467C0] flex gap-1 items-center text-sm">

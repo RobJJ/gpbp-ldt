@@ -47,7 +47,7 @@ export default function FilterButtonYear() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-1 w-18 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute w-full left-0 z-10 mt-1 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -56,7 +56,7 @@ export default function FilterButtonYear() {
                   onClick={handleYearChange}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm w-full"
+                    "block text-left px-3 py-2 text-sm w-full"
                   )}
                 >
                   2022
@@ -70,7 +70,7 @@ export default function FilterButtonYear() {
                   onClick={handleYearChange}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm w-full"
+                    "block text-left px-3 py-2 text-sm w-full"
                   )}
                 >
                   2021
@@ -84,7 +84,7 @@ export default function FilterButtonYear() {
                   onClick={handleYearChange}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm w-full"
+                    "block text-left px-3 py-2 text-sm w-full"
                   )}
                 >
                   2020
@@ -98,7 +98,7 @@ export default function FilterButtonYear() {
                   onClick={handleYearChange}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm w-full"
+                    "block text-left px-3 py-2 text-sm w-full"
                   )}
                 >
                   2019

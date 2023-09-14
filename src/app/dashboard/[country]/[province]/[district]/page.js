@@ -13,7 +13,7 @@ export default function DistrictPage({ params, searchParams }) {
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center font-inter pr-2">
-          <span className="font-bold text-xl pl-1">
+          <span className="font-bold text-xl ">
             {decodeURIComponent(params.district)} Performance
           </span>
           <span className="text-[#5467C0] flex gap-1 text-sm items-center">
@@ -44,7 +44,7 @@ export default function DistrictPage({ params, searchParams }) {
       <section className="w-full h-2/5 flex flex-col gap-1 overflow-auto">
         {/* header */}
         <div className="w-full flex justify-between items-center font-inter">
-          <span className="font-bold text-xl pl-1">Regional Insights</span>
+          <span className="font-bold text-xl ">Regional Insights</span>
         </div>
         {/* main */}
         <div className="w-full h-full overflow-auto">

@@ -61,3 +61,13 @@ export const urlToScoreMatching = {
   forest: "FOREST_SCORE",
   temp: "TEMP_SCORE",
 };
+
+export function createPopupContent(properties) {
+  // order is important here the way the conditionals work at the moment
+  if (properties.NAME_2) {
+    return `<font size="3"><b>District</b></font></br>${properties.NAME_2}<br>`;
+  }
+  if (properties.NAME_1) {
+    return `<font size="3"><b>Province</b></font></br>${properties.NAME_1}<br>`;
+  }
+}

@@ -11,7 +11,7 @@ export default function DistrictPageInsightsChildHeader({
   };
 
   return (
-    <section className="w-full flex  text-sm font-inter">
+    <section className="w-full flex text-xs font-inter">
       <button
         data-tab="Trends"
         className={`border-y-1 px-2 py-1  rounded-l border border-slate-400 ${

@@ -11,7 +11,7 @@ export default function BreadCrumbs() {
 
   // console.log("[BreadCrumbs] : rendered ");
   return (
-    <div className="w-full  flex gap-2 p-1 border-b border-b-[#E7E7E7] font-inter items-center">
+    <div className="w-full  flex gap-2 py-1 border-b border-b-[#E7E7E7] font-inter items-center">
       <Image src={icon} alt="Logo" className="text-blue-500" />
       {params.country && (
         <Link

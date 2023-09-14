@@ -1,6 +1,6 @@
 "use client";
 import { scatterViewType } from "@/lib/atoms";
-import { MAP_COLORS, urlToScoreMatching } from "@/lib/map";
+import { MAP_COLORS, urlToScoreMatching, createPopupContent } from "@/lib/map";
 import { getProvinceId } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -231,10 +231,70 @@ export default function MapGeoJsonComponentProvince({
       );
     }
   };
+
+  const handleHoverOver = (e) => {
+    // console.log("Hovered over feature :: ", e.target.feature.properties.NAME_1);
+
+    // identify layer
+    const layer = e.target;
+    // layer.bringToFront();
+
+    // POPUP
+    // customise the popup
+    let options = {
+      // docs:https://leafletjs.com/reference.html#tooltip
+      offset: L.point(10, 0),
+      // className: "",
+      sticky: true,
+    };
+
+    let content = createPopupContent(layer.feature.properties);
+
+    // unbind any previous popup (important for multiple features)
+    // layer.unbindPopup();
+    // layer.unbindTooltip();
+
+    // removed for now
+    // // create the popup
+    // let popup = L.popup(options).setContent(content);
+
+    // // bind popup : removed for now
+    // layer.bindPopup(popup).openPopup();
+    // create and bind the popup : new way
+    // layer.bindPopup(content, options).openPopup();
+
+    // STYLES FOR onMouseOver - highlighting effect
+    // ** note ** this can causes issues between province layer and district layer underneath
+    // layer.setStyle({
+    //   dashArray: "0",
+    //   color: "#FFF",
+    //   weight: 3,
+    //   opacity: 1,
+    // });
+    layer.bindTooltip(content, options).openTooltip();
+  };
+
+  // const handleMouseMove = (e) => {
+  //   const layer = e.target;
+  //   layer.getPopup().setLatLng(e.latlng).openOn(layer._map);
+  // };
+
+  const handleMouseOut = (e) => {
+    const layer = e.target;
+    // layer.closePopup(); // closes the popup when mouse is out of the feature
+    // layer.setStyle({
+    //   dashArray: "0",
+    //   color: "#666",
+    //   weight: 1,
+    //   opacity: 0.3,
+    // });
+  };
+
   function onEachFeature(feature, layer) {
     layer.on({
-      // mouseover: highlightFeature,
-      // mouseout: resetHighlight,
+      mouseover: handleHoverOver,
+      // mousemove: handleMouseMove,
+      // mouseout: handleMouseOut,
       click: handleLayerClick,
     });
   }
