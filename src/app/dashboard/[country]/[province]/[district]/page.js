@@ -41,13 +41,13 @@ export default function DistrictPage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <section className="w-full h-2/5 flex flex-col gap-1 overflow-auto">
+      <section className="w-full h-2/5 flex flex-col gap-1 ">
         {/* header */}
         <div className="w-full flex justify-between items-center font-inter">
           <span className="font-bold text-xl ">Regional Insights</span>
         </div>
         {/* main */}
-        <div className="w-full h-full overflow-auto">
+        <div className="w-full h-full ">
           <Suspense fallback={<LoadingSpinner />}>
             <DistrictPageInsightsComponent
               country={params.country}

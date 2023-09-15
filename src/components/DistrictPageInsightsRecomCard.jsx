@@ -15,7 +15,7 @@ export default function DistrictPageInsightsRecomCard({
     );
   }
   return (
-    <div className="w-full h-full  p-1 flex flex-col gap-2 overflow-auto font-inter">
+    <div className="w-full h-full  p-1 flex flex-col gap-2 font-inter">
       <section className="w-full flex justify-between  items-center ">
         <div className="flex gap-2 items-center">
           <span className="">
@@ -41,7 +41,7 @@ export default function DistrictPageInsightsRecomCard({
           </span>
         </div>
       </section>
-      <section className="w-full h-full overflow-auto">
+      <section className="w-full h-full">
         <span>{insightsData.RECOMMENDATIONS.ECON_SCORE}</span>
         <span>{insightsData.RECOMMENDATIONS.ENVR_SCORE}</span>
         <span>{insightsData.RECOMMENDATIONS.AIR_SCORE}</span>

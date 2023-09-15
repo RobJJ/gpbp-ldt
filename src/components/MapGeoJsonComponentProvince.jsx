@@ -128,10 +128,10 @@ export default function MapGeoJsonComponentProvince({
       let score_value = districtDataForYear[urlToScoreMatching[score_one]];
 
       return {
-        dashArray: "3",
-        color: "#000",
+        dashArray: "0",
+        color: "#FFF",
         weight: 2,
-        opacity: 0.3,
+        opacity: 0.5,
         //
         fillOpacity: 1,
         // fill color depends on : 1) current score_one 2) features score_one value
@@ -162,7 +162,7 @@ export default function MapGeoJsonComponentProvince({
         fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
-    // 3.1) User clicks district. Province is true, district is true. Style the other districts in province
+    // 3.1) User clicks district. Province is true, district is true. **Style the other districts in province**
     if (
       provinceSelected &&
       districtSelected &&
@@ -177,10 +177,10 @@ export default function MapGeoJsonComponentProvince({
       );
       let score_value = districtDataForYear[urlToScoreMatching[score_one]];
       return {
-        dashArray: "3",
-        color: "#000",
+        dashArray: "0",
+        color: "#FFF",
         weight: 2,
-        opacity: 0.3,
+        opacity: 0.5,
         //
         fillOpacity: 1,
         // fill color depends on : 1) current score_one 2) features score_one value
@@ -198,14 +198,17 @@ export default function MapGeoJsonComponentProvince({
     let score_value = provinceDataForYear[urlToScoreMatching[score_one]];
     return {
       dashArray: "0",
-      color: "#666",
+      color: "#FFF",
       weight: 1,
-      opacity: 0.3,
+      opacity: 0.5,
       // ++ this is where layer score fill will come in with searchParams
       fillOpacity: 1,
       fillColor: getFeatureFillColor(score_one, score_value),
     };
   };
+
+  //
+  //
   const handleLayerClick = (e) => {
     // GID_1 is province ID
     // GID_2 is district ID
@@ -231,7 +234,8 @@ export default function MapGeoJsonComponentProvince({
       );
     }
   };
-
+  //
+  //
   const handleHoverOver = (e) => {
     // console.log("Hovered over feature :: ", e.target.feature.properties.NAME_1);
 
@@ -244,7 +248,6 @@ export default function MapGeoJsonComponentProvince({
     let options = {
       // docs:https://leafletjs.com/reference.html#tooltip
       offset: L.point(10, 0),
-      // className: "",
       sticky: true,
     };
 

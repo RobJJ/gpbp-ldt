@@ -15,7 +15,7 @@ export default async function ProvincePage({ params, searchParams }) {
   //1. Need data based on [country] and [province_name]
 
   return (
-    <div className="w-full h-full  flex flex-col gap-1 overflow-auto">
+    <div className="w-full h-full flex flex-col gap-1 overflow-auto">
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
         {/* header */}
         <div className="w-full flex justify-between items-center font-inter pr-2">
@@ -47,7 +47,7 @@ export default async function ProvincePage({ params, searchParams }) {
           />
         </Suspense>
       </section>
-      <section className="w-full h-2/5  overflow-auto scrollbar-none ">
+      <section className="w-full h-2/5">
         {/* this component is fetching data inside */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProvincePageListComponent

@@ -12,7 +12,7 @@ export default async function CountryPage({ params, searchParams }) {
   // console.log("country info :: ", countryInfo);
 
   return (
-    <div className="w-full h-full  flex flex-col pt-2 pb-0 gap-5 overflow-auto">
+    <div className="w-full h-full  flex flex-col pt-2 gap-5 overflow-auto">
       {/* CARDS */}
       <section className="w-full max-h-1/2  flex items-start flex-wrap gap-4 pb-4 px-2 ">
         <CountryPageInfoCard
@@ -41,7 +41,7 @@ export default async function CountryPage({ params, searchParams }) {
         />
       </section>
       {/* LIST*/}
-      <section className="w-full h-full  overflow-auto scrollbar-none ">
+      <section className="w-full h-full">
         <Suspense fallback={<LoadingSpinner />}>
           <CountryPageListComponent
             country={params.country}

@@ -104,9 +104,7 @@ export default async function ProvincePageListComponent({
         </span>
       </section>
       {/* rows */}
-      <section
-        className={`w-full h-full flex flex-col  overflow-auto scrollbar-none `}
-      >
+      <section className={`w-full h-full flex flex-col `}>
         {districtData
           .sort((a, b) => {
             if (a.DISTRICT < b.DISTRICT) return -1;

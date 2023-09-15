@@ -1,6 +1,6 @@
 "use client";
 
-import { MAP_COLORS, urlToScoreMatching } from "@/lib/map";
+import { MAP_COLORS, urlToScoreMatching, createPopupContent } from "@/lib/map";
 import { getProvinceId } from "@/lib/utils";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -193,8 +193,8 @@ export default function MapGeoJsonComponentDistrict({
       return {
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "0",
-        color: "#000",
-        opacity: 0.5,
+        color: "#FFF",
+        opacity: 1,
         weight: 0.7,
         fillOpacity: "1",
         fillColor: getFeatureFillColor(score_one, score_value),
@@ -212,8 +212,8 @@ export default function MapGeoJsonComponentDistrict({
       return {
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "0",
-        color: "#000",
-        opacity: 0.5,
+        color: "#FFF",
+        opacity: 1,
         weight: 0.7,
         fillOpacity: "1",
         fillColor: getFeatureFillColor(score_one, score_value),
@@ -248,9 +248,28 @@ export default function MapGeoJsonComponentDistrict({
 
     // }
   };
+  //
+  //
+  const handleHoverOver = (e) => {
+    // identify layer
+    const layer = e.target;
+    // POPUP
+    // customise the popup
+    let options = {
+      // docs:https://leafletjs.com/reference.html#tooltip
+      offset: L.point(10, 0),
+      sticky: true,
+    };
+
+    let content = createPopupContent(layer.feature.properties);
+
+    layer.bindTooltip(content, options).openTooltip();
+  };
+  //
+  //
   function onEachFeature(feature, layer) {
     layer.on({
-      // mouseover: highlightFeature,
+      mouseover: handleHoverOver,
       // mouseout: resetHighlight,
       click: handleLayerClick,
     });

@@ -60,3 +60,12 @@
 .leaflet-bottom {
   z-index: 0 !important;
 }
+
+/* Map tooltip custom class override */
+g:focus {
+  outline: none;
+}
+
+path:focus {
+  outline: none;
+}

@@ -31,7 +31,7 @@ export default async function CountryPageLayout({ children, params }) {
             <LayoutVisualComponent country={params.country} />
           </Suspense>
         </section>
-        <section className="w-1/2 h-full flex flex-col gap-2 overflow-auto pt-2 pr-4 ">
+        <section className="w-1/2 h-full flex flex-col gap-2 overflow-auto pt-2 pr-4 pb-4">
           <BreadCrumbs />
           {children}
         </section>
