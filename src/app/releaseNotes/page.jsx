@@ -17,6 +17,27 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
+            {/* UPDATE : v 0.6.3 - MINOR - Updated UI from snaglist  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  Sep 15th 2023 | Version 0.6.3 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  UI / UX Refinements
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
+                  Minor
+                </span>
+              </div>
+              <span className="">
+                Visual tweaks / updates to various components through
+                application - closer alignment to Figma design and the user
+                feedback collected.
+              </span>
+            </div>
             {/* UPDATE : v 0.6.2 - MINOR - optimise visuals  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
