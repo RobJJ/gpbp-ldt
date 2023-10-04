@@ -1,5 +1,5 @@
 import SwitchComponent from "./MapScatterToggle";
-// import ScatterTypeToggle from "./ScatterTypeToggle";
+
 import FilterButtonYear from "./FilterButtonYear";
 import FilterButtonScoreOne from "./FilterButtonScoreOne";
 import FilterButtonScoreTwo from "./FilterButtonScoreTwo";
@@ -25,19 +25,3 @@ export default function FilterNavbarExp({ country }) {
     </div>
   );
 }
-
-// OLD child control of toggles
-// {
-//   /* maybe move the params etc to the actual component? */
-// }
-// <FilterNavbarExpChild
-//   yearParam={yearParam}
-//   scoreOneParam={searchParams.get("score_one")}
-//   scoreTwoParam={searchParams.get("score_two")}
-// />;
-
-// OLD province-districts toggle
-//  {
-//    /* adding this for changing toggle for scatter type */
-//  }
-//  <ScatterTypeToggle />;
