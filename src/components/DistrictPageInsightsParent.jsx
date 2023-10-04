@@ -2,8 +2,8 @@
 import { useState } from "react";
 import DistrictPageInsightsChildHeader from "./DistrictPageInsightsChildHeader";
 
-import openaiIcon from "../../public/openai-fill.png";
-import Image from "next/image";
+// import openaiIcon from "../../public/openai-fill.png";
+// import Image from "next/image";
 import DistrictPageInsightsTrendCard from "./DistrictPageInsightsTrendCard";
 import DistrictPageInsightsRecomCard from "./DistrictPageInsightsRecomCard";
 import DistrictPageInsightsRisksCard from "./DistrictPageInsightsRisksCard";
