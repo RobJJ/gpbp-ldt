@@ -43,7 +43,7 @@ export default async function CountryPageListComponent({
           </div>
   </span>*/}
       </section>
-      {/* body */}
+      {/* body - header */}
       <section className="w-full bg-white font-semibold flex font-inter">
         {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
         <span className="bg-white border border-black w-1/3 px-2 py-1">
@@ -55,9 +55,9 @@ export default async function CountryPageListComponent({
             className="relative group
               "
           >
-            <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4 ">
+            <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-3 px-4 text-center">
               {
-                <div className=" font-normal">
+                <div className=" font-normal ">
                   Learn more about how to calculate environmental scores
                 </div>
               }
@@ -90,7 +90,7 @@ export default async function CountryPageListComponent({
             className="relative group
               "
           >
-            <div className="w-52 tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-full translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4 ">
+            <div className=" w-48 tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-3 px-4 text-center">
               {
                 <div className=" font-normal">
                   Learn more about how to calculate economic scores

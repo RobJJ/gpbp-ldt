@@ -22,7 +22,7 @@ export default function DistrictPageInsightsTrendCard({
           <span className="">
             <b>Trends</b> for {district}
           </span>
-          <span className="text-[#36B37E] font-semibold border-2 border-[#36B37E] rounded px-1 cursor-pointer">
+          <span className="text-[#36B37E] font-semibold border-2 border-[#36B37E] rounded px-1 cursor-pointer flex items-center">
             BETA
           </span>
         </div>

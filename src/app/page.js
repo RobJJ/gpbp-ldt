@@ -10,6 +10,7 @@ import SelectCountryButton from "@/components/SelectCountryButton";
 import Image from "next/image";
 import LandingPageCardComponent from "@/components/LandingPageCardComponent";
 import Link from "next/link";
+import RightSection from "@/components/LandingPage-Right-Section";
 
 // const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
 //   ssr: false,
@@ -17,8 +18,9 @@ import Link from "next/link";
 
 export default function Home({ searchParams }) {
   // console.log("[HOME] : searchParams : ", searchParams);
+
   return (
-    <div className="w-full h-full  flex  overflow-auto">
+    <div className="w-full h-full  flex overflow-hidden">
       {/* LEFT PANEL */}
       <section className="h-full w-7/12 bg-white flex flex-col justify-center pl-10">
         <h2 className="text-[#6D778A] text-xl font-inter">
@@ -63,7 +65,7 @@ export default function Home({ searchParams }) {
           <VideoComponent />
   </div> */}
         {/*cards*/}
-        <div className="w-full flex flex-col gap-2  mt-5 font-poppins">
+        <div className="w-full flex flex-col gap-3  mt-5 font-poppins">
           <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
             <LandingPageCardComponent
@@ -88,14 +90,17 @@ export default function Home({ searchParams }) {
         </div>
       </section>
       {/* RIGHT PANEL */}
-      <section className="h-full w-5/12  flex ">
+      <RightSection />
+      {/*<section
+        className={`h-full w-5/12 flex translate-x-36 slideIn slideInFromRight`}
+      >
         <Image
           src={landingImage}
           alt="Image showing GED"
 
           // style={{ overflow: "auto" }}
         />
-      </section>
+</section>*/}
     </div>
   );
 }
