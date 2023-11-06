@@ -1,15 +1,22 @@
 // ** note ** this is a dynamic server comp. Can fetch params and data here
 
 import LoadingSpinner from "@/components/LoadingComponent";
+import DownloadButton from "@/components/ProvincePage-DownloadButton";
 import ProvincePageListComponent from "@/components/ProvincePageListComponent";
 import ProvincePageVisual from "@/components/ProvincePageVisual";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 import { Suspense } from "react";
 
 // ok we have access to the params and searchParams because this is page.js and dynamic
 export default async function ProvincePage({ params, searchParams }) {
+  console.log(
+    "province page loaded : lets check params and searchParams ::",
+    params,
+    searchParams
+  );
   // fetch data here for the chosen Province!! This comp gets new params passed through
   // Goal:: show the province data
   //1. Need data based on [country] and [province_name]
@@ -32,7 +39,13 @@ export default async function ProvincePage({ params, searchParams }) {
               className="relative group flex items-center
               "
             >
-              <span className="underline cursor-pointer ">Download Data</span>
+              <DownloadButton params={params} searchParams={searchParams} />
+              {/*<span
+                className="underline cursor-pointer "
+                onClick={() => console.log("the data button was clicked")}
+              >
+                Download Data
+  </span>*/}
               <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-sm rounded py-2 px-2 ">
                 <div className="text-xs text-white">Upcoming feature</div>
               </div>

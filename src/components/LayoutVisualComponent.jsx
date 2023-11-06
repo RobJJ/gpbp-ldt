@@ -20,6 +20,7 @@ export default async function LayoutVisualComponent({ country }) {
   //
   // consider combining these two functions in a promise.all() function to handle concurrently
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
+  // console.log("the province data :", gedDataProvince);
   const gedDataDistrict = await getDistricts(country);
 
   // console.log(

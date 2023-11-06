@@ -15,6 +15,38 @@ if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
+// FIX : CACHED EVENT CLICK ON HIGHCHARTS OPTIONS -> OVERWRITE PROTO
+const { merge, objectEach, isFunction, addEvent, removeEvent } = Highcharts;
+
+Highcharts.Point.prototype.importEvents = function () {
+  const point = this,
+    options = merge(point.series.options.point, point.options),
+    events = options.events;
+
+  point.events = events;
+  objectEach(events, function (event, eventType) {
+    // remove the previous event if it exists
+    if (point.addedEvents) {
+      const outdatedEvent = point.addedEvents.find(
+        (e) => e.eventType == eventType
+      );
+      removeEvent(point, outdatedEvent.eventType, outdatedEvent.event);
+    }
+
+    // add the new event function
+    if (isFunction(event)) {
+      addEvent(point, eventType, event);
+      if (!point.addedEvents) {
+        point.addedEvents = [];
+      }
+      point.addedEvents.push({
+        eventType,
+        event,
+      });
+    }
+  });
+};
+
 // the data type will be the collection of GED-districts
 function setColor(point, provinceSelected, districtSelected) {
   if (

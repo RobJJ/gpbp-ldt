@@ -15,6 +15,38 @@ if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
+// FIX : CACHED EVENT CLICK ON HIGHCHARTS OPTIONS -> OVERWRITE PROTO
+const { merge, objectEach, isFunction, addEvent, removeEvent } = Highcharts;
+
+Highcharts.Point.prototype.importEvents = function () {
+  const point = this,
+    options = merge(point.series.options.point, point.options),
+    events = options.events;
+
+  point.events = events;
+  objectEach(events, function (event, eventType) {
+    // remove the previous event if it exists
+    if (point.addedEvents) {
+      const outdatedEvent = point.addedEvents.find(
+        (e) => e.eventType == eventType
+      );
+      removeEvent(point, outdatedEvent.eventType, outdatedEvent.event);
+    }
+
+    // add the new event function
+    if (isFunction(event)) {
+      addEvent(point, eventType, event);
+      if (!point.addedEvents) {
+        point.addedEvents = [];
+      }
+      point.addedEvents.push({
+        eventType,
+        event,
+      });
+    }
+  });
+};
+
 // function dataMapping(data, year, x_score, y_score, provinceSelected) {
 //   const xAxisScore = urlToScoreMatching[x_score];
 //   const yAxisScore = urlToScoreMatching[y_score];
@@ -114,7 +146,7 @@ export default function ScatterComponentParentProvinces({
   let year = searchParams.get("year");
   let score_one = searchParams.get("score_one");
   let score_two = searchParams.get("score_two");
-  console.log("[component rendered] -- scores ::", score_one, score_two);
+  // console.log("[component rendered] -- scores ::", score_one, score_two);
   let provinceSelected = params.province;
   let districtSelected = params.district;
 
@@ -346,14 +378,14 @@ export default function ScatterComponentParentProvinces({
               click: (dot) => {
                 // when a province dot is clicked, we want to load that province in params
                 if (!dot.point.DISTRICT_ID) {
-                  console.log("dot clicked : scores ::", score_one, score_two);
+                  // console.log("dot clicked : scores ::", score_one, score_two);
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   return;
                 }
                 if (dot.point.DISTRICT_ID) {
-                  console.log("dot clicked : scores ::", score_one, score_two);
+                  // console.log("dot clicked : scores ::", score_one, score_two);
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
