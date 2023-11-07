@@ -39,7 +39,16 @@ export default function SelectCountryButton() {
             className="flex font-poppins items-center justify-between w-72 h-10 border border-gray-400 px-4 py-1 bg-white text-md  font-semibold text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out "
           >
             {country ? capitalizeFirstLetter(country) : "Please select country"}
-            <Image src={arrowDown} alt="Logo" className="text-black" />
+            <Image
+              src={arrowDown}
+              alt="Logo"
+              // rememember for this affect to include the empty space
+              className={
+                "text-black " +
+                `${country ? "-rotate-90 duration-300" : ""}` +
+                ` ${isOpen ? "rotate-0 duration-300" : ""}`
+              }
+            />
           </button>
         </span>
       </div>

@@ -42,16 +42,22 @@ export default function Home({ searchParams }) {
           picture of their level of development.
         </div>
         {/* Video :: add link to youtube when completed */}
-        <div className="flex gap-3  mb-5">
-          <Image src={videoIcon} alt="play-video-icon" />
+        <div className="flex  mb-5 ">
           <Link
-            className=" font-bold text-[#4345AA] hover:underline font-poppins"
+            className="group flex gap-3 "
             href={
               "https://www.loom.com/share/87319021b63f4e9a90d206b0eb57a487?sid=25c7f405-2dc8-41a0-8d82-c0512edfc091"
             }
             target="_blank"
           >
-            View Introduction Video
+            <Image
+              src={videoIcon}
+              alt="play-video-icon"
+              className="group-hover:scale-150 duration-300"
+            />
+            <span className=" font-bold text-[#4345AA]  font-poppins">
+              View Introduction Video
+            </span>
           </Link>
         </div>
         <div className="w-full flex flex-col gap-2  my-5 font-poppins">
