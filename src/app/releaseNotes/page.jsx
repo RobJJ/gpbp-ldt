@@ -17,6 +17,27 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
+            {/* UPDATE : v 0.6.4 - MINOR - Updated UI from snaglist  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  Nov 6th 2023 | Version 0.6.4 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  Visual component patch
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#E3FCEF] text-[#044630] px-4 p-1">
+                  Patch
+                </span>
+              </div>
+              <span className="">
+                Addressed an event caching issue with the charting library that
+                caused unusual navigation through administrative levels. In
+                addition to this, added some new UI/UX improvements.
+              </span>
+            </div>
             {/* UPDATE : v 0.6.3 - MINOR - Updated UI from snaglist  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
@@ -52,10 +73,7 @@ export default function ReleaseNotes() {
                 <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
                   Minor
                 </span>
-                <span
-                  className="rounded-full bg-[#E3FCEF] text-[#044630]
-] px-4 p-1"
-                >
+                <span className="rounded-full bg-[#E3FCEF] text-[#044630] px-4 p-1">
                   Patch
                 </span>
               </div>
@@ -144,16 +162,10 @@ export default function ReleaseNotes() {
                 <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
                   Minor
                 </span>
-                <span
-                  className="rounded-full bg-[#E3FCEF] text-[#044630]
-] px-4 p-1"
-                >
+                <span className="rounded-full bg-[#E3FCEF] text-[#044630] px-4 p-1">
                   Patch
                 </span>
-                <span
-                  className="rounded-full bg-[#E6EBFF] text-[#4344aA]
-] px-4 p-1"
-                >
+                <span className="rounded-full bg-[#E6EBFF] text-[#4344aA] px-4 p-1">
                   Operational pre-release
                 </span>
               </div>

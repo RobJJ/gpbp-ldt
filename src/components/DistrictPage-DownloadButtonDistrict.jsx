@@ -3,12 +3,12 @@ import React from "react";
 import { jsonToCSV, useCSVDownloader } from "react-papaparse";
 
 // -> receive province data in JSON format
-export default function DownloadButton({ provinceData, province }) {
+export default function DownloadButtonDistrict({ districtData, district }) {
   //
   const { CSVDownloader, Type } = useCSVDownloader();
-  const provinceName = decodeURIComponent(province);
+  const districtName = decodeURIComponent(district);
   // 1. Parse JSON -> CSV
-  const CSVData = jsonToCSV(provinceData, {
+  const CSVData = jsonToCSV(districtData, {
     header: true,
     delimiter: ",",
   });
@@ -17,7 +17,7 @@ export default function DownloadButton({ provinceData, province }) {
       <CSVDownloader
         type={Type.Button}
         bom={true}
-        filename={`province_data_${provinceName}`}
+        filename={`district_data_${districtName}`}
         delimiter={";"}
         data={CSVData}
         className="underline"
