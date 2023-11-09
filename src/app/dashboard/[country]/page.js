@@ -3,6 +3,7 @@
 import CountryPageInfoCard from "@/components/CountryPageInfoCard";
 import CountryPageListComponent from "@/components/CountryPageListComponent";
 import LoadingSpinner from "@/components/LoadingComponent";
+import LoadingListSkeleton from "@/components/LoadingListSkeleton";
 import { getCountryInfo } from "@/lib/countryInfo";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";

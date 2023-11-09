@@ -21,15 +21,15 @@ export default function ReleaseNotes() {
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
                 <span className=" text-slate-400">
-                  Nov 7th 2023 | Version 0.6.5 beta
+                  Nov 7th 2023 | Version 0.7 beta
                 </span>
                 <span className="font-semibold text-xl">
                   Download CSV component & Site Analytics added
                 </span>
               </div>
               <div className=" flex gap-5">
-                <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
-                  Minor
+                <span className="rounded-full bg-[#E6EBFF] text-[#4344aA] px-4 p-1">
+                  Operational pre-release
                 </span>
                 <span className="rounded-full bg-[#FFE6E7] text-[#BF0009] px-4 p-1">
                   Major
