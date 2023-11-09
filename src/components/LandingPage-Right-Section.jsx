@@ -10,6 +10,7 @@ export default function RightSection() {
         src={landingImage}
         alt="Image showing GED"
         className={`animate-slide-in`}
+        priority
       />
     </section>
   );

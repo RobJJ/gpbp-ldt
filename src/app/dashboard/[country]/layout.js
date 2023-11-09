@@ -4,6 +4,7 @@ import LayoutVisualComponent from "@/components/LayoutVisualComponent";
 import FilterNavbarExp from "@/components/FilterNavbarExp";
 import { Suspense } from "react";
 import Spinner from "../../../../public/Spinner-normal-size.svg";
+
 import Image from "next/image";
 
 export const metadata = {

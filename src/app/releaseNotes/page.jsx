@@ -452,7 +452,11 @@ export default function ReleaseNotes() {
           collaborate with others on the database.
         </div>
         <div className="h-full w-full">
-          <Image src={versioningImage} alt="Versioning Info" />
+          <Image
+            src={versioningImage}
+            placeholder="blur"
+            alt="Versioning Info"
+          />
         </div>
       </div>
     </section>
