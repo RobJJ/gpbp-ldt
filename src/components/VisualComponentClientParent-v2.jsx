@@ -1,9 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
-
 import { useAtom } from "jotai";
 import { scatterViewType, visualTypeSelected } from "@/lib/atoms";
-import LoadingSpinner from "./LoadingComponent";
 import ScatterComponentParentProvinces from "./ScatterComponentParentProvinces";
 import ScatterComponentParentDistricts from "./ScatterComponentParentDistricts";
 
@@ -14,20 +12,15 @@ const MapComponentParentAlpha = dynamic(
   }
 );
 
-// this component receives initial data from server (geoprovince, and gedprovince data)
-// it also determines which visual to show, map or scatter based on the visualType from atom
+// Receives data .. determines which visual to show
 
 export default function VisualComponentClientParentV2({
-  // provinceGeoData,
-  // districtGeoData,
   gedDataDistrict,
   gedDataProvince,
   country,
   mapbox_url,
 }) {
-  // console.log("[VisualComponentClientParent] : rendered");
-  //   const params = useParams();
-  //   const searchParams = useSearchParams();
+  //
   const [visualType] = useAtom(visualTypeSelected);
   const [scatterType] = useAtom(scatterViewType);
 
@@ -36,13 +29,12 @@ export default function VisualComponentClientParentV2({
       {visualType === "map" && (
         <MapComponentParentAlpha
           country={country}
-          // provinceGeoData={provinceGeoData}
-          // districtGeoData={districtGeoData}
           gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           mapbox_url={mapbox_url}
         />
       )}
+      {/* this is the province only component -> shows all districts at country level */}
       {visualType === "scatter" && scatterType === "provinces" && (
         <ScatterComponentParentProvinces
           gedDataProvince={gedDataProvince}
@@ -53,7 +45,7 @@ export default function VisualComponentClientParentV2({
       {/* this is the districts only component -> shows all districts at country level */}
       {visualType === "scatter" && scatterType === "districts" && (
         <ScatterComponentParentDistricts
-          gedDataProvince={gedDataProvince}
+          // gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           country={country}
         />
@@ -62,35 +54,5 @@ export default function VisualComponentClientParentV2({
   );
 }
 
-// ** note :: if we need a scatterplot that renders all districts.. maybe we just create a new instance of the current one and edit it to have only district functionality... 'districts' vs 'provinces' selection
-// all districts in countr -> click -> highlites and shows district view
-// route.push() will include its province name... updating url and then breadcrumbs responds
-// from breadcrumbs.. if you click the province, it will toggle the 'provinces' selection and take you to that province, showing its districts... meaning it will trigger then other scatter version, and then it should update based on the params set...
-//
-
-// ** note:double map approach based on visual type. Causing map to flash when changing instances.
-//         Could also increase API hits..
-// {
-//   visualType === "map" && scatterType === "provinces" && (
-//     <MapComponentParentProvince
-//       country={country}
-//       provinceGeoData={provinceGeoData}
-//       districtGeoData={districtGeoData}
-//       gedDataProvince={gedDataProvince}
-//       gedDataDistrict={gedDataDistrict}
-//       mapbox_url={mapbox_url}
-//     />
-//   );
-// }
-// {
-//   visualType === "map" && scatterType === "districts" && (
-//     <MapComponentParentDistrict
-//       country={country}
-//       provinceGeoData={provinceGeoData}
-//       districtGeoData={districtGeoData}
-//       gedDataProvince={gedDataProvince}
-//       gedDataDistrict={gedDataDistrict}
-//       mapbox_url={mapbox_url}
-//     />
-//   );
-// }
+// Took approach of splitting the ScatterPlot into two versions - Province & District
+// This approach allowed the chart to initialise correctly and handle data switching a lot better

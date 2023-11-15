@@ -14,7 +14,8 @@ import { urlToLableMatching, urlToScoreMatching } from "@/lib/name-matching";
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
-
+//
+//
 // FIX : CACHED EVENT CLICK ON HIGHCHARTS OPTIONS -> OVERWRITE PROTO
 const { merge, objectEach, isFunction, addEvent, removeEvent } = Highcharts;
 
@@ -46,8 +47,9 @@ Highcharts.Point.prototype.importEvents = function () {
     }
   });
 };
-
-// the data type will be the collection of GED-districts
+//
+//
+// custom func to decide point color is RED / BLACK / GRAY
 function setColor(point, provinceSelected, districtSelected) {
   if (
     districtSelected &&
@@ -103,7 +105,7 @@ function dataMapping(
   districtSelected
 ) {
   // console.log("the data Mapping has started .....");
-  // match url scores to actual data values
+  // match url scores to actual GED property names
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
 
@@ -129,17 +131,14 @@ function dataMapping(
 }
 
 export default function ScatterComponentParentDistricts({
-  gedDataProvince,
+  // gedDataProvince,
   gedDataDistrict,
   country,
 }) {
-  // this comp will be triggered again by province selection being passed in
-
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // let countrySelected = params.country;
   let year = searchParams.get("year");
   let score_one = searchParams.get("score_one");
   let score_two = searchParams.get("score_two");
@@ -147,8 +146,6 @@ export default function ScatterComponentParentDistricts({
   let districtSelected = params.district;
 
   const chartRef = useRef();
-
-  // console.log("scatter has been rendered,, the focused year is : ", year);
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
@@ -243,7 +240,7 @@ export default function ScatterComponentParentDistricts({
             click: (dot) => {
               if (dot.point.DISTRICT_ID) {
                 // console.log("You clicked a dot ::", dot.point);
-                // 1st: just navigate to the path
+                // 1st: just navigate to the path : ie the district you clicked
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );

@@ -80,7 +80,7 @@ function dataMappingProvinceType(
   districtSelected
 ) {
   // console.log("dataMapping in Provinces :: begun");
-  // match url scores to actual data values
+  // match url scores to actual GED property names
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
   //
@@ -126,6 +126,7 @@ function dataMappingProvinceType(
           x: Math.round(Number(point[xAxisScore])),
           y: Math.round(Number(point[yAxisScore])),
           marker: { radius: 5 },
+          color: "#000",
         };
       });
   }
@@ -316,8 +317,8 @@ export default function ScatterComponentParentProvinces({
         pointFormat:
           `<tr><td colspan="2">${
             provinceSelected
-              ? `<b>District</b>: {point.DISTRICT}`
-              : `<b>Province</b>: {point.PROVINCE}`
+              ? `<b><u>District</u></b>: {point.DISTRICT}`
+              : `<b><u>Province</u></b>: {point.PROVINCE}`
           }</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
@@ -342,20 +343,30 @@ export default function ScatterComponentParentProvinces({
           text: `<b>${urlToLableMatching[score_two]}</b>`,
         },
       },
-      series: [
-        {
-          data: dataMappingProvinceType(
-            gedDataDistrict,
-            gedDataProvince,
-            year,
-            score_one,
-            score_two,
-            provinceSelected,
-            districtSelected
-          ),
-          cursor: "pointer",
-        },
-      ],
+      series: {
+        // {
+        //   data: dataMappingProvinceType(
+        //     gedDataDistrict,
+        //     gedDataProvince,
+        //     year,
+        //     score_one,
+        //     score_two,
+        //     provinceSelected,
+        //     districtSelected
+        //   ),
+        //   cursor: "pointer",
+        // },
+        ...chartOptions.series,
+        data: dataMappingProvinceType(
+          gedDataDistrict,
+          gedDataProvince,
+          year,
+          score_one,
+          score_two,
+          provinceSelected,
+          districtSelected
+        ),
+      },
       tooltip: {
         ...chartOptions.tooltip,
         pointFormat:

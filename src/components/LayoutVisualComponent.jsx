@@ -7,35 +7,18 @@ import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { getDistricts } from "@/lib/districtdata";
 import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
-// fetch GEO data and the ged data here... figure out how to make it faster by promise.all to allow concurrent calls
+// fetch GED data here : Geo fetched in map component - rdy to be consumed when toggled
 
 export default async function LayoutVisualComponent({ country }) {
-  // think what needs to be awaited and what doesnt here... you dont need to await everything
-  // const geojsonDataProvince = await getProvinceGeojson(country);
-  // const geojsonDataDistrict = await getDistrictGeojson(country);
-  // this approach allows you to handle concurrent calls to the server?
-  // ** note ** is it possible to load this in lazy?
-  // ** ok, instead of calling this here.. call the cached version with SWR at the component
-  // const { provinceGeoData, districtGeoData } = await getAllGeojsonData(country);
-  //
-  // consider combining these two functions in a promise.all() function to handle concurrently
+  // consider combining these two functions in a promise.all() function to handle concurrently on server ?
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
-  // console.log("the province data :", gedDataProvince);
   const gedDataDistrict = await getDistricts(country);
-
-  // console.log(
-  //   "province and district geo data from layout : ",
-  //   provinceGeoData,
-  //   districtGeoData
-  // );
-
+  //
   const mapbox_url = process.env.MAPBOX_URL;
 
   return (
     <div className="w-full h-full flex">
       <VisualComponentClientParentV2
-        // provinceGeoData={provinceGeoData}
-        // districtGeoData={districtGeoData}
         country={country}
         gedDataDistrict={gedDataDistrict}
         gedDataProvince={gedDataProvince}
