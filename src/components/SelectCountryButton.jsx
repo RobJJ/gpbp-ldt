@@ -81,14 +81,10 @@ export default function SelectCountryButton() {
         </div>
       )}
       {/* potentially handle any additional logic at this step */}
-      <div
-        className={` py-2 px-4 text-white font-semibold   
-          bg-[#5467C0]
-        `}
-      >
+      <>
         {country && (
           <Link
-            className="underline font-poppins"
+            className="text-white px-2 flex justify-center items-center font-semibold font-poppins bg-[#5467C0]"
             href={{
               pathname: `/dashboard/${country}`,
               query: { year: "2022", score_one: "econ", score_two: "envr" },
@@ -97,8 +93,12 @@ export default function SelectCountryButton() {
             Show Data
           </Link>
         )}
-        {!country && <span className=" cursor-pointer">Show Data</span>}
-      </div>
+        {!country && (
+          <span className="text-white px-2 flex justify-center items-center font-semibold bg-[#8b8d96] opacity-40 cursor-not-allowed">
+            Show Data
+          </span>
+        )}
+      </>
     </div>
   );
 }

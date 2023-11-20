@@ -263,7 +263,6 @@ export default function MapGeoJsonComponentProvince({
       fillColor: getFeatureFillColor(score_one, score_value),
     };
   };
-
   //
   //
   const handleLayerClick = (e) => {

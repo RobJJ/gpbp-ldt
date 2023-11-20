@@ -11,7 +11,7 @@ export const getProvinceId = cache((data, province_name) => {
   );
   return provinceObject ? provinceObject.PROVINCE_ID : null;
 });
-
+//
 export const getDistrictId = cache((data, district_name) => {
   const districtObject = data.find(
     (feature) => feature.DISTRICT === decodeURIComponent(district_name)
