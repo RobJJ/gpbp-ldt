@@ -14,7 +14,7 @@ import Spinner from "../../public/Spinner-normal-size.svg";
 // SWR
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-// Settings for Map and Rectangle :: TODO -> Move to Server env
+// Settings for Map and Rectangle :: TODO -> Move to Lib .. keeping here for now for readability
 const countryMapSettings = {
   montenegro: {
     zoom: 6.2,
@@ -68,7 +68,6 @@ const countryMapSettings = {
   },
 };
 
-// const redColor = { fill: false, color: "red", dashArray: "3" };
 // top right [43.429566, 23.857964],,, bottom left [41.890765, 19.426956]
 
 export default function MapComponentParentAlpha({
@@ -111,7 +110,7 @@ export default function MapComponentParentAlpha({
         // zoomed out max
         minZoom={countryMapSettings[country].minZoom}
         // zoomed in max
-        maxZoom={countryMapSettings[country].maxZoom}
+        // maxZoom={countryMapSettings[country].maxZoom}
         maxBounds={countryMapSettings[country].innerBounds}
         zoomControl={false}
         doubleClickZoom={false}
@@ -132,13 +131,11 @@ export default function MapComponentParentAlpha({
           bounds={countryMapSettings[country].innerBounds}
           pathOptions={{ fill: false, color: "red", dashArray: "3" }}
         />
-        {/* Handle change of scatterType here */}
+        {/* Handle change of scatterType here :: scatterType def = provinces */}
         {scatterType === "provinces" && (
           <MapGeoJsonComponentProvince
             provinceGeoData={data.provinceGeoData}
             districtGeoData={data.districtGeoData}
-            // provinceGeoData={provinceGeoData}
-            // districtGeoData={districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
           />
@@ -147,8 +144,6 @@ export default function MapComponentParentAlpha({
           <MapGeoJsonComponentDistrict
             provinceGeoData={data.provinceGeoData}
             districtGeoData={data.districtGeoData}
-            // provinceGeoData={provinceGeoData}
-            // districtGeoData={districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
           />

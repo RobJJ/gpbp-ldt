@@ -5,6 +5,7 @@ import { getProvinceId } from "@/lib/utils";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
+import { v4 as uuidv4 } from "uuid";
 
 function getFeatureFillColor(scoreType, scoreValue) {
   const mapColors = MAP_COLORS[scoreType];
@@ -33,7 +34,8 @@ export default function MapGeoJsonComponentDistrict({
 }) {
   const [currentGeoLayers, setCurrentGeoLayers] = useState(districtGeoData);
   //
-  let hashkey = Math.random();
+  // let hashkey = Math.random();
+  let hashkey = uuidv4();
   //
   const router = useRouter();
   const params = useParams();
@@ -98,6 +100,7 @@ export default function MapGeoJsonComponentDistrict({
     }
   }, [provinceSelected]);
   //
+  // style each feature coming in as input
   const style = (feature) => {
     // 1) District selected. Feature matches selection
     if (
@@ -116,7 +119,7 @@ export default function MapGeoJsonComponentDistrict({
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "1",
         color: "#F00",
-        weight: 3,
+        weight: 6,
         opacity: 1,
         fillOpacity: 1,
         fillColor: getFeatureFillColor(score_one, score_value),
@@ -220,6 +223,8 @@ export default function MapGeoJsonComponentDistrict({
       };
     }
   };
+  //
+  //
   const handleLayerClick = (e) => {
     // GID_1 is province ID
     // GID_2 is district ID

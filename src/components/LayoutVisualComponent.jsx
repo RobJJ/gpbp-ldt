@@ -5,7 +5,7 @@ import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 // fetch GED data here : Geo fetched in map component - rdy to be consumed when toggled
 
 export default async function LayoutVisualComponent({ country }) {
-  // consider combining these two functions in a promise.all() function to handle concurrently on server ?
+  // consider combining these two functions in a promise.all() function to handle concurrently on server ? test time saving vs readablity
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
   //

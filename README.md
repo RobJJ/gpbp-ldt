@@ -8,13 +8,13 @@ factors.
 
 ## Tech Stack
 
-1. Next JS
-2. MongoDB
-3. SWR
-4. Leaflet
-5. HighCharts
-6. Jotai
-7. Tailwind
+- Next JS
+- MongoDB
+- SWR
+- Leaflet
+- HighCharts
+- Jotai
+- Tailwind
 
 ## ENV
 

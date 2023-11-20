@@ -1,7 +1,7 @@
 "use client";
 import { scatterViewType } from "@/lib/atoms";
 import { MAP_COLORS, urlToScoreMatching, createPopupContent } from "@/lib/map";
-import { getProvinceId } from "@/lib/utils";
+import { getDistrictId, getProvinceId } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -33,7 +33,7 @@ export default function MapGeoJsonComponentProvince({
   gedDataDistrict,
 }) {
   //
-  const [currentGeoLayers, setCurrentGeoLayers] = useState(provinceGeoData);
+  const [currentGeoLayers, setCurrentGeoLayers] = useState(provinceGeoData[0]);
   //
   let hashkey = Math.random();
   //
@@ -48,25 +48,35 @@ export default function MapGeoJsonComponentProvince({
   let score_one = searchParams.get("score_one");
 
   //
-  // console.log("params?", params);
-  // everytime the params change, this component will rerender and re-paint the layers
-  //
   // listening for when route has/updates province route
+  // ** note **
+  // this whole useEffect is essentially a tile order formatter. Helps with styling and UI.
   useEffect(() => {
-    // if there is not province selected:: spread default data
-    if (!provinceSelected) setCurrentGeoLayers(provinceGeoData);
+    console.log("use effect");
+    // user goes back to country view. set layers to provinces only
+    if (!provinceSelected) setCurrentGeoLayers(provinceGeoData[0]);
     //
-    if (provinceSelected) {
-      // 1) create new copy of province data
-      const newData = JSON.parse(JSON.stringify(provinceGeoData));
+    // a province or a district has changed. What layers are available... which are active
+    //
+    // shared values
+    // 1) create new copy of province data
+    const newData = JSON.parse(JSON.stringify(provinceGeoData));
+    // 2) store id of selected province
+    const province_id = getProvinceId(gedDataProvince, provinceSelected);
+    // 3) find index of selected province in array and remove it from the copy while storing it
+    const indexOfProvince = newData[0].features.findIndex(
+      (feature) => feature.properties.GID_1 === province_id
+    );
+    const provinceFeature = newData[0].features.slice(
+      indexOfProvince,
+      indexOfProvince + 1
+    );
+    //
+    //
+    if (provinceSelected && !districtSelected) {
+      // note :: this is deep clone approach
+      console.log("province is changing");
 
-      // 2) store id of selected province
-      const province_id = getProvinceId(gedDataProvince, provinceSelected);
-      // 3) find index of selected province in array and remove it from the copy while storing it
-      const indexOfProvince = newData[0].features.findIndex(
-        (feature) => feature.properties.GID_1 === province_id
-      );
-      const provinceFeature = newData[0].features.splice(indexOfProvince, 1);
       //
       // 4) collect all districts that belong in selected province
       const geoDistrictsInSelectedProvince = districtGeoData[0].features.filter(
@@ -76,7 +86,11 @@ export default function MapGeoJsonComponentProvince({
           }
         }
       );
-
+      console.log(
+        "geoDistrictsInSelectedProvince ::",
+        geoDistrictsInSelectedProvince
+      );
+      //
       // 5) create new object that contains all province data + districts in province
       // spread the features in a unique way to help with below mentioned
       // ** NB **
@@ -90,12 +104,57 @@ export default function MapGeoJsonComponentProvince({
           ...geoDistrictsInSelectedProvince,
         ],
       };
-      // 6) set State for GEOJSON component
 
       setCurrentGeoLayers(updatedNewData);
       return;
     }
-  }, [provinceSelected]);
+    //
+    // *******
+    //
+    if (provinceSelected && districtSelected) {
+      // splitting this from other useEffect just for readability
+      // 0) create new copy of province data
+      // const newData = JSON.parse(JSON.stringify(provinceGeoData));
+      // 1. Lets get the district ID that is selected. Put it ontop of stack
+      // const province_id = getProvinceId(gedDataProvince, provinceSelected);
+      const district_id = getDistrictId(gedDataDistrict, districtSelected);
+      // const indexOfDistrict = newData[0].features.findIndex(
+      //   (feature) => feature.properties.GID_2 === district_id
+      // );
+      const geoDistrictsInSelectedProvince = districtGeoData[0].features.filter(
+        (feature) => {
+          if (feature.properties.GID_1 === province_id) {
+            return feature;
+          }
+        }
+      );
+      const indexOfDistrict = geoDistrictsInSelectedProvince.findIndex(
+        (feature) => feature.properties.GID_2 === district_id
+      );
+      const districtFeature = geoDistrictsInSelectedProvince.splice(
+        indexOfDistrict,
+        1
+      );
+      //
+      // 3. Lets create a new object that spreads current state in the order we want
+      const updatedNewData = {
+        ...newData[0],
+        features: [
+          // provinces
+          ...newData[0].features,
+          // active province
+          provinceFeature[0],
+          // all remaining districts in province
+          ...geoDistrictsInSelectedProvince,
+          // active district
+          districtFeature[0],
+        ],
+      };
+      // 4. Set new component geo state
+      setCurrentGeoLayers(updatedNewData);
+      return;
+    }
+  }, [provinceSelected, districtSelected]);
   //
   const style = (feature) => {
     // 1) User clicks province. No district is selected. (there are district features, so exclude them) and stlye the selected province feature only
@@ -108,7 +167,7 @@ export default function MapGeoJsonComponentProvince({
       return {
         dashArray: "0",
         color: "#F00",
-        weight: 4,
+        weight: 6,
         opacity: 1,
         // this province feature does not need fill.. fillOpacity: 0
         fillOpacity: 0,
@@ -117,8 +176,6 @@ export default function MapGeoJsonComponentProvince({
     }
     // 2) User clicks province. No district is selected. But you want to style the included districts in the province
     if (provinceSelected && !districtSelected && feature.properties.GID_2) {
-      // ** note :: remove this blue styling of included districts in province
-
       let idOfDistrict = feature.properties.GID_2;
       let districtDataForYear = gedDataDistrict.find(
         (district) =>
@@ -155,7 +212,7 @@ export default function MapGeoJsonComponentProvince({
       return {
         dashArray: "0",
         color: "#F00",
-        weight: 4,
+        weight: 3,
         opacity: 1,
         // ++ this is where layer score fill will come in with searchParams
         fillOpacity: 0.7,
