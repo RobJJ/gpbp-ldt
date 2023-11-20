@@ -15,3 +15,11 @@ factors.
 5. HighCharts
 6. Jotai
 7. Tailwind
+
+## ENV
+
+#### Add the following variables
+
+- MONGODB_URI
+- MONGO_DB_NAME
+- MAPBOX_URL

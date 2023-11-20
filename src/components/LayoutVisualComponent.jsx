@@ -1,8 +1,3 @@
-import {
-  getDistrictGeojson,
-  getProvinceGeojson,
-  getAllGeojsonData,
-} from "@/lib/geojsonData";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { getDistricts } from "@/lib/districtdata";
 import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";

@@ -7,11 +7,13 @@ import arrowDown from "../../public/arrow-down-s-line.png";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import Image from "next/image";
 
-// add available countries here :: potentially move this to the server options
+// add available countries here :: TODO -> move this to the server options
 const currentAvailableCountries = [
   { name: "uzbekistan", id: 1 },
   { name: "kosovo", id: 2 },
   { name: "serbia", id: 3 },
+  { name: "albania", id: 4 },
+  { name: "montenegro", id: 5 },
 ];
 
 export default function SelectCountryButton() {

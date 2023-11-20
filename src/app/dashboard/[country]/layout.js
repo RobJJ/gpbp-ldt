@@ -15,8 +15,6 @@ export const metadata = {
 export default async function CountryPageLayout({ children, params }) {
   //
 
-  // console.log("[CountryPageLayout] : rendered : server: PARAMS???", params);
-
   return (
     <div className="w-full h-full flex flex-col overflow-auto relative">
       <FilterNavbarExp country={params.country} />

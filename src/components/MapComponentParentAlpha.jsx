@@ -14,8 +14,28 @@ import Spinner from "../../public/Spinner-normal-size.svg";
 // SWR
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-// Settings for Map and Rectangle
+// Settings for Map and Rectangle :: TODO -> Move to Server env
 const countryMapSettings = {
+  montenegro: {
+    zoom: 6.2,
+    minZoom: 7,
+    maxZoom: 9,
+    defaultPos: [42.8, 19.2],
+    innerBounds: [
+      [46.352086, 14.334987],
+      [38.669159, 25.015009],
+    ],
+  },
+  albania: {
+    zoom: 6.2,
+    minZoom: 7,
+    maxZoom: 9,
+    defaultPos: [41.3, 20.02],
+    innerBounds: [
+      [44.4, 14.9],
+      [37.2, 25.4],
+    ],
+  },
   kosovo: {
     zoom: 8.6,
     minZoom: 7,
