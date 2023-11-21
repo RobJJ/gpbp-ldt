@@ -71,3 +71,24 @@ export function createPopupContent(properties) {
     return `<font size="3"><b>Province</b></font></br>${properties.NAME_1}<br>`;
   }
 }
+//
+//
+//
+export function getFeatureFillColor(scoreType, scoreValue) {
+  const mapColors = MAP_COLORS[scoreType];
+
+  if (!mapColors) {
+    console.error("Invalid scoreType provided:", scoreType);
+    return "#FFFFFF"; // default color for invalid scoreType
+  }
+
+  for (let item of mapColors) {
+    if (scoreValue >= item.range) {
+      return item.color;
+    }
+  }
+
+  // This should never be reached if scoreValue is between 0 and 100,
+  // but we include it for safety.
+  return "#000";
+}

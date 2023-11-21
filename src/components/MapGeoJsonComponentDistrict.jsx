@@ -1,30 +1,16 @@
 "use client";
 
-import { MAP_COLORS, urlToScoreMatching, createPopupContent } from "@/lib/map";
-import { getProvinceId } from "@/lib/utils";
+import {
+  MAP_COLORS,
+  urlToScoreMatching,
+  createPopupContent,
+  getFeatureFillColor,
+} from "@/lib/map";
+import { getDistrictId, getProvinceId } from "@/lib/utils";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
 import { v4 as uuidv4 } from "uuid";
-
-function getFeatureFillColor(scoreType, scoreValue) {
-  const mapColors = MAP_COLORS[scoreType];
-
-  if (!mapColors) {
-    console.error("Invalid scoreType provided:", scoreType);
-    return "#FFFFFF"; // default color for invalid scoreType
-  }
-
-  for (let item of mapColors) {
-    if (scoreValue >= item.range) {
-      return item.color;
-    }
-  }
-
-  // This should never be reached if scoreValue is between 0 and 100,
-  // but we include it for safety.
-  return "#000";
-}
 
 export default function MapGeoJsonComponentDistrict({
   provinceGeoData,
@@ -46,16 +32,14 @@ export default function MapGeoJsonComponentDistrict({
   //
   let year = searchParams.get("year");
   let score_one = searchParams.get("score_one");
-  // ** note ** : for development this afternoon
-  // create a useEffect that respond to provinceSelected
-  // this useEffect should listen to what province is selected and add that feature to the features array... this will allow me to target the feature and style it. Our goal here is to highlite the province when only province is selected. The style function will process this on change and dynamically update accordingly
+
   //
   useEffect(() => {
     // if there is not province selected:: spread default data
     if (!provinceSelected) setCurrentGeoLayers(districtGeoData);
     //
     // if province changes at all - we want to add the supported province in the current layers
-    if (provinceSelected) {
+    if (provinceSelected && !districtSelected) {
       const newData = JSON.parse(JSON.stringify(provinceGeoData));
       const province_id = getProvinceId(gedDataProvince, provinceSelected);
       const indexOfProvince = newData[0].features.findIndex(
@@ -98,7 +82,32 @@ export default function MapGeoJsonComponentDistrict({
       setCurrentGeoLayers(updatedNewData);
       return;
     }
-  }, [provinceSelected]);
+    //
+    if (provinceSelected && districtSelected) {
+      //
+      const newCopyOfDistricts = JSON.parse(JSON.stringify(districtGeoData));
+      const district_id = getDistrictId(gedDataDistrict, districtSelected);
+      //
+      const indexOfDistrict = newCopyOfDistricts[0].features.findIndex(
+        (feature) => feature.properties.GID_2 === district_id
+      );
+      //
+      const districtFeature = newCopyOfDistricts[0].features.splice(
+        indexOfDistrict,
+        1
+      );
+      //
+      // Now set the new state with correct order of layers for leaflet to style
+      const updatedNewData = {
+        // spread the default values of this state :: might not need to do this,, can use prev state??
+        ...newCopyOfDistricts[0],
+        features: [...newCopyOfDistricts[0].features, districtFeature[0]],
+      };
+      // 6) set State for GEOJSON component
+      setCurrentGeoLayers(updatedNewData);
+      return;
+    }
+  }, [provinceSelected, districtSelected]);
   //
   // style each feature coming in as input
   const style = (feature) => {
@@ -119,31 +128,13 @@ export default function MapGeoJsonComponentDistrict({
         // need add a color matching function and pass in the score of the feature E8E8E8
         dashArray: "1",
         color: "#F00",
-        weight: 6,
+        weight: 3,
         opacity: 1,
         fillOpacity: 1,
         fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
-    // ** ** ** ** ** ** **
-    // 2) User navigates to Province view - give border to all districts in that province
-    // if (
-    //   provinceSelected &&
-    //   !districtSelected &&
-    //   decodeURIComponent(provinceSelected) === feature.properties.NAME_1
-    // ) {
-    //   return {
-    //     // need add a color matching function and pass in the score of the feature E8E8E8
-    //     dashArray: "1",
-    //     color: "#0000FF",
-    //     weight: 4,
-    //     opacity: 1,
-    //     fillColor: "#DFDFDF",
-    //     fillOpacity: 0.7,
-    //   };
-    // }
-    // ** ** ** ** ** ** **
-    // ** ** ** ** ** ** **
+    //
     // 2) User navigates to Province view - give the province feature the border
     if (
       provinceSelected &&

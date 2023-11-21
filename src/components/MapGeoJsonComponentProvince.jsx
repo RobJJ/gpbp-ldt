@@ -1,30 +1,34 @@
 "use client";
-import { scatterViewType } from "@/lib/atoms";
-import { MAP_COLORS, urlToScoreMatching, createPopupContent } from "@/lib/map";
+import {
+  MAP_COLORS,
+  urlToScoreMatching,
+  createPopupContent,
+  getFeatureFillColor,
+} from "@/lib/map";
 import { getDistrictId, getProvinceId } from "@/lib/utils";
-import { useAtom } from "jotai";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
+import { v4 as uuidv4 } from "uuid";
 
-function getFeatureFillColor(scoreType, scoreValue) {
-  const mapColors = MAP_COLORS[scoreType];
+// function getFeatureFillColor(scoreType, scoreValue) {
+//   const mapColors = MAP_COLORS[scoreType];
 
-  if (!mapColors) {
-    console.error("Invalid scoreType provided:", scoreType);
-    return "#FFFFFF"; // default color for invalid scoreType
-  }
+//   if (!mapColors) {
+//     console.error("Invalid scoreType provided:", scoreType);
+//     return "#FFFFFF"; // default color for invalid scoreType
+//   }
 
-  for (let item of mapColors) {
-    if (scoreValue >= item.range) {
-      return item.color;
-    }
-  }
+//   for (let item of mapColors) {
+//     if (scoreValue >= item.range) {
+//       return item.color;
+//     }
+//   }
 
-  // This should never be reached if scoreValue is between 0 and 100,
-  // but we include it for safety.
-  return "#000";
-}
+//   // This should never be reached if scoreValue is between 0 and 100,
+//   // but we include it for safety.
+//   return "#000";
+// }
 
 export default function MapGeoJsonComponentProvince({
   provinceGeoData,
@@ -35,7 +39,7 @@ export default function MapGeoJsonComponentProvince({
   //
   const [currentGeoLayers, setCurrentGeoLayers] = useState(provinceGeoData[0]);
   //
-  let hashkey = Math.random();
+  let hashkey = uuidv4();
   //
   const router = useRouter();
   const params = useParams();
@@ -118,6 +122,7 @@ export default function MapGeoJsonComponentProvince({
       // 1. Lets get the district ID that is selected. Put it ontop of stack
       // const province_id = getProvinceId(gedDataProvince, provinceSelected);
       const district_id = getDistrictId(gedDataDistrict, districtSelected);
+      console.log("id :: ", district_id);
       // const indexOfDistrict = newData[0].features.findIndex(
       //   (feature) => feature.properties.GID_2 === district_id
       // );
@@ -187,7 +192,7 @@ export default function MapGeoJsonComponentProvince({
       return {
         dashArray: "0",
         color: "#FFF",
-        weight: 2,
+        weight: 1,
         opacity: 1,
         //
         fillOpacity: 1,
@@ -196,7 +201,7 @@ export default function MapGeoJsonComponentProvince({
         fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
-    // 3) User clicks district. Province is true, district is true. Match district to feature
+    // 3) User clicks district. Province is true, district is true. Style this chosen district layer
     if (
       provinceSelected &&
       districtSelected &&
@@ -236,7 +241,7 @@ export default function MapGeoJsonComponentProvince({
       return {
         dashArray: "0",
         color: "#FFF",
-        weight: 2,
+        weight: 1,
         opacity: 1,
         //
         fillOpacity: 1,
