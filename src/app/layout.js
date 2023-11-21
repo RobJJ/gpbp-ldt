@@ -7,8 +7,6 @@ import "./globals.css";
 
 import NavBar from "@/components/NavBar";
 
-// const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "GPBP-GED",
   description: "Green Economy Diagnostic Tool",

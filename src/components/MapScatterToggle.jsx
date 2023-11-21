@@ -4,7 +4,6 @@ import { animated, useSpring, config } from "react-spring";
 import { visualTypeSelected } from "@/lib/atoms";
 import { useAtom } from "jotai";
 import MapToggleButton from "./Map-Toggle-Button";
-// import useSWR from "swr";
 
 function SwitchComponent({ country }) {
   // visual atom: defaults to "map",, can be "map" or "scatter"
@@ -47,13 +46,6 @@ function SwitchComponent({ country }) {
           >
             {"Scatter"}
           </button>
-          {/*<button
-            data-tag="map"
-            className={`w-32 h-full flex items-center justify-center rounded-full bg-transparent  focus:outline-none ${mapButtonStyle}`}
-            onClick={handleToggle}
-          >
-            {"Map"}
-  </button>*/}
           <MapToggleButton
             country={country}
             mapButtonStyle={mapButtonStyle}

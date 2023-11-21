@@ -9,7 +9,7 @@ import HomeButton from "./Navbar-HomeButton";
 
 export default function NavBar() {
   return (
-    <div className="w-full bg-black p-2 flex gap-5 items-center font-inter">
+    <div className="w-full bg-black p-2 flex gap-5 items-center font-inter tracking-wide">
       <Image
         src={gedIcon}
         alt="GED-LOGO"
