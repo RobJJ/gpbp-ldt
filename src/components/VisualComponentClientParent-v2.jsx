@@ -26,6 +26,7 @@ export default function VisualComponentClientParentV2({
 
   return (
     <div className="w-full h-full">
+      {/* could add a suspense here as this component fetches cached data */}
       {visualType === "map" && (
         <MapComponentParentAlpha
           country={country}

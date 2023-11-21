@@ -188,7 +188,7 @@ export default function MapGeoJsonComponentProvince({
         dashArray: "0",
         color: "#FFF",
         weight: 2,
-        opacity: 0.5,
+        opacity: 1,
         //
         fillOpacity: 1,
         // fill color depends on : 1) current score_one 2) features score_one value
@@ -215,7 +215,7 @@ export default function MapGeoJsonComponentProvince({
         weight: 3,
         opacity: 1,
         // ++ this is where layer score fill will come in with searchParams
-        fillOpacity: 0.7,
+        fillOpacity: 1,
         fillColor: getFeatureFillColor(score_one, score_value),
       };
     }
@@ -237,7 +237,7 @@ export default function MapGeoJsonComponentProvince({
         dashArray: "0",
         color: "#FFF",
         weight: 2,
-        opacity: 0.5,
+        opacity: 1,
         //
         fillOpacity: 1,
         // fill color depends on : 1) current score_one 2) features score_one value
