@@ -57,9 +57,11 @@ export default function TableRow({
           // can spread the searchParams!!!! *******
           query: { ...searchParams },
         }}
-        className="bg-white flex items-center w-1/3 h-full border-x border-slate-300 border-b p-2 text-sm font-normal	 text-[#4345AA] hover:text-[#5F61B7]"
+        className="bg-white flex items-center w-1/3 h-full border-x border-slate-300 border-b text-sm pl-2 font-normal text-[#4345AA] hover:text-[#5F61B7] "
       >
-        {regionName}
+        <span className="bg-blue-200 w-full text-left truncate">
+          {regionName}
+        </span>
       </Link>
       <span className=" w-1/3 h-full p-2 border-r border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
