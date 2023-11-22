@@ -59,9 +59,7 @@ export default function TableRow({
         }}
         className="bg-white flex items-center w-1/3 h-full border-x border-slate-300 border-b text-sm pl-2 font-normal text-[#4345AA] hover:text-[#5F61B7] "
       >
-        <span className="bg-blue-200 w-full text-left truncate">
-          {regionName}
-        </span>
+        <span className=" w-full text-left truncate">{regionName}</span>
       </Link>
       <span className=" w-1/3 h-full p-2 border-r border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
