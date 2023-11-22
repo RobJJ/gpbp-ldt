@@ -23,9 +23,9 @@ export default async function ProvincePageListComponent({
   // console.log("your districtData data :: ", districtData);
 
   return (
-    <div className="w-full h-full flex flex-col ">
+    <div className="w-full h-full flex flex-col">
       {/* header */}
-      <section className="w-full flex justify-between pr-2 py-1 items-center font-inter">
+      <section className="w-full flex justify-between pr-2 py-1 items-center font-inter ">
         <span className="text-lg bg-white">
           Districts in <b>{decodeURIComponent(province)}</b> in{" "}
           <b>{searchParams.year}</b>
@@ -42,8 +42,8 @@ export default async function ProvincePageListComponent({
           </div>
   </span>*/}
       </section>
-      {/* body */}
-      <section className="w-full bg-white font-bold flex  font-inter">
+      {/* body - header */}
+      <section className="w-full bg-white font-bold flex font-inter">
         {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
         <span className="bg-white border border-black w-1/3 px-2 py-1">
           District
@@ -103,8 +103,8 @@ export default async function ProvincePageListComponent({
           </span>
         </span>
       </section>
-      {/* rows */}
-      <section className={`w-full h-full flex flex-col `}>
+      {/* body - rows */}
+      <section className={`w-full flex flex-col `}>
         {districtData
           .sort((a, b) => {
             if (a.DISTRICT < b.DISTRICT) return -1;

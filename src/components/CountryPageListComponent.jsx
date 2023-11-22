@@ -121,7 +121,7 @@ export default async function CountryPageListComponent({
         </span>
       </section>
       {/* rows */}
-      <section className={`w-full h-full flex flex-col `}>
+      <section className={`w-full flex flex-col`}>
         {provinceDataTest
           .sort((a, b) => {
             if (a.PROVINCE < b.PROVINCE) return -1;
