@@ -80,7 +80,7 @@ export default function MapGeoJsonComponentProvince({
     //
     if (provinceSelected && !districtSelected) {
       // note :: this is deep clone approach
-      console.log("province is changing");
+      // console.log("province is changing");
 
       //
       // 4) collect all districts that belong in selected province
@@ -91,10 +91,10 @@ export default function MapGeoJsonComponentProvince({
           }
         }
       );
-      console.log(
-        "geoDistrictsInSelectedProvince ::",
-        geoDistrictsInSelectedProvince
-      );
+      // console.log(
+      //   "geoDistrictsInSelectedProvince ::",
+      //   geoDistrictsInSelectedProvince
+      // );
       //
       // 5) create new object that contains all province data + districts in province
       // spread the features in a unique way to help with below mentioned
@@ -123,7 +123,7 @@ export default function MapGeoJsonComponentProvince({
       // 1. Lets get the district ID that is selected. Put it ontop of stack
       // const province_id = getProvinceId(gedDataProvince, provinceSelected);
       const district_id = getDistrictId(gedDataDistrict, districtSelected);
-      console.log("id :: ", district_id);
+      // console.log("id :: ", district_id);
       // const indexOfDistrict = newData[0].features.findIndex(
       //   (feature) => feature.properties.GID_2 === district_id
       // );

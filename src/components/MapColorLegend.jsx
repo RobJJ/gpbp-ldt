@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import econ_legend from "../../public/econ_legend.png";
 import envr_legend from "../../public/envr_legend.png";
 import air_legend from "../../public/air_quality_legend.png";

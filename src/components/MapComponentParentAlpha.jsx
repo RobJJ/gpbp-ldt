@@ -7,7 +7,7 @@ import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
 import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
 import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
-import MapColorLegend from "./MapColorLegend";
+// import MapColorLegend from "./MapColorLegend";
 import Image from "next/image";
 import Spinner from "../../public/Spinner-normal-size.svg";
 
@@ -148,11 +148,9 @@ export default function MapComponentParentAlpha({
             gedDataDistrict={gedDataDistrict}
           />
         )}
-        {/* should this legend be used in each component instead? Move it and test performance -- at the moment there is a long delay   */}
-        {/* <MapColorLegend /> */}
+        {/* moved deeper down tree for performance testing */}
+        {/*<MapColorLegend />*/}
       </MapContainer>
     </section>
   );
 }
-
-// this component needs geo data and also GED data... the GED data starts off as province data, but when we click a province, we will fetch the geo districts inside that province and show it,, but we also need those districts information
