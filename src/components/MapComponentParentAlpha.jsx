@@ -148,7 +148,8 @@ export default function MapComponentParentAlpha({
             gedDataDistrict={gedDataDistrict}
           />
         )}
-        <MapColorLegend />
+        {/* should this legend be used in each component instead? Move it and test performance -- at the moment there is a long delay   */}
+        {/* <MapColorLegend /> */}
       </MapContainer>
     </section>
   );

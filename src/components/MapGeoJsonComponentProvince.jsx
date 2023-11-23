@@ -10,6 +10,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
 import { v4 as uuidv4 } from "uuid";
+import MapColorLegend from "./MapColorLegend";
 
 // function getFeatureFillColor(scoreType, scoreValue) {
 //   const mapColors = MAP_COLORS[scoreType];
@@ -363,12 +364,15 @@ export default function MapGeoJsonComponentProvince({
     });
   }
   return (
-    <GeoJSON
-      // adding hashkey here just instanciates another GeoJSON component, ie does not render another map
-      key={hashkey}
-      style={style}
-      data={currentGeoLayers}
-      onEachFeature={onEachFeature}
-    />
+    <>
+      <GeoJSON
+        // adding hashkey here just instanciates another GeoJSON component, ie does not render another map
+        key={hashkey}
+        style={style}
+        data={currentGeoLayers}
+        onEachFeature={onEachFeature}
+      />
+      <MapColorLegend />
+    </>
   );
 }
