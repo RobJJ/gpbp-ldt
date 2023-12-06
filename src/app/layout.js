@@ -1,8 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
 import JotaiProvider from "@/providers/jotai-provider";
-// import QueryProvider from "@/providers/query-provider";
-// removed QueryProvider (react-query) from application. Wrap child in this in future if needed
-
 import "./globals.css";
 
 import NavBar from "@/components/root/NavBar";

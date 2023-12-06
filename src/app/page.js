@@ -1,24 +1,15 @@
-// import dynamic from "next/dynamic";
-
-import landingImage from "../../public/landing.png";
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
 import bdoIcon from "../../public/bdo.png";
 import videoIcon from "../../public/play-video-icon.svg";
 
-import SelectCountryButton from "@/components/SelectCountryButton";
+import SelectCountryButton from "@/components/landing/SelectCountryButton";
 import Image from "next/image";
-import LandingPageCardComponent from "@/components/LandingPageCardComponent";
+import LandingPageCardComponent from "@/components/landing/LandingPageCardComponent";
 import Link from "next/link";
-import RightSection from "@/components/LandingPage-Right-Section";
-
-// const VideoComponent = dynamic(() => import("@/components/VideoComponent"), {
-//   ssr: false,
-// });
+import RightSection from "@/components/landing/LandingPage-Right-Section";
 
 export default function Home({ searchParams }) {
-  // console.log("[HOME] : searchParams : ", searchParams);
-
   return (
     <div className="w-full h-full  flex overflow-hidden">
       {/* LEFT PANEL */}
@@ -41,7 +32,7 @@ export default function Home({ searchParams }) {
           snapshot of the economic well-being of districts and help to paint a
           picture of their level of development.
         </div>
-        {/* Video :: add link to youtube when completed */}
+        {/* LEFT PANEL - VIDEO SECTION */}
         <div className="flex  mb-5 ">
           <Link
             className="group flex gap-3 "
@@ -70,7 +61,7 @@ export default function Home({ searchParams }) {
         {/* <div className="w-[460px] flex mb-5 h-[240px] bg-slate-200 rounded-lg">
           <VideoComponent />
   </div> */}
-        {/*cards*/}
+        {/* LEFT PANEL - CARDS */}
         <div className="w-full flex flex-col gap-3  mt-5 font-poppins">
           <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
@@ -97,16 +88,6 @@ export default function Home({ searchParams }) {
       </section>
       {/* RIGHT PANEL */}
       <RightSection />
-      {/*<section
-        className={`h-full w-5/12 flex translate-x-36 slideIn slideInFromRight`}
-      >
-        <Image
-          src={landingImage}
-          alt="Image showing GED"
-
-          // style={{ overflow: "auto" }}
-        />
-</section>*/}
     </div>
   );
 }

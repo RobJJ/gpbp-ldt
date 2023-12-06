@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import arrowDown from "../../public/arrow-down-s-line.png";
+import arrowDown from "../../../public/arrow-down-s-line.png";
 
 import { capitalizeFirstLetter } from "@/lib/utils";
 import Image from "next/image";
@@ -80,7 +80,7 @@ export default function SelectCountryButton() {
           </div>
         </div>
       )}
-      {/* potentially handle any additional logic at this step */}
+      {/* handle any additional logic at this step */}
       <>
         {country && (
           <Link

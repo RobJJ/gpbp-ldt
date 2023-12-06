@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import landingImage from "../../public/landing.png";
+import landingImage from "../../../public/landing.png";
 
 export default function RightSection() {
   return (
@@ -15,5 +15,3 @@ export default function RightSection() {
     </section>
   );
 }
-// Shorthand for custom animation: ref the keyframe
-// className={`animate-[slideInFromRight_2s_ease-out_normal]`}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import gedIcon from "../../public/GED-logo.png";
+import gedIcon from "../../../public/GED-logo.png";
 
 export default function NavBar() {
   return (
