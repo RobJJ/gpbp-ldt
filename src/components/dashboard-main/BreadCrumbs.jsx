@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
-import icon from "../../public/map-pin-range-line.svg";
+import icon from "../../../public/map-pin-range-line.svg";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default function BreadCrumbs() {

@@ -6,9 +6,7 @@ import { useAtom } from "jotai";
 import MapToggleButton from "./Map-Toggle-Button";
 
 function SwitchComponent({ country }) {
-  // visual atom: defaults to "map",, can be "map" or "scatter"
   const [visualType, setVisualType] = useAtom(visualTypeSelected);
-  // console.log("[SwitchComponent] : param :", country);
 
   const props = useSpring({
     left: visualType === "scatter" ? "0%" : "50%",

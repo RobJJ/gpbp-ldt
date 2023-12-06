@@ -1,7 +1,7 @@
-import BreadCrumbs from "@/components/BreadCrumbs";
-import LayoutVisualComponent from "@/components/LayoutVisualComponent";
+import BreadCrumbs from "@/components/dashboard-main/BreadCrumbs";
+import LayoutVisualComponent from "@/components/dashboard-main/LayoutVisualComponent";
 
-import FilterNavbarExp from "@/components/FilterNavbarExp";
+import FilterNavbarExp from "@/components/dashboard-main/FilterNavbarExp";
 import { Suspense } from "react";
 import Spinner from "../../../../public/Spinner-normal-size.svg";
 

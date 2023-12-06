@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
-import refreshIcon from "../../public/refresh-line.svg";
+import refreshIcon from "../../../public/refresh-line.svg";
 
 export default function ResetFiltersButton() {
   const router = useRouter();

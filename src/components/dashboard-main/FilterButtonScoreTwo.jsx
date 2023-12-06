@@ -28,7 +28,7 @@ export default function FilterButtonScoreTwo() {
 
   const handleScoreChange = (e) => {
     const choice = e.target.dataset.tag;
-    // console.log("choice :: ", choice);
+
     router.push(
       `${pathname}?year=${yearParam}&score_one=${scoreOne}&score_two=${choice}`
     );

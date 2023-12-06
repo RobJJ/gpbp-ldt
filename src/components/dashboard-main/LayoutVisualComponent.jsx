@@ -1,6 +1,6 @@
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { getDistricts } from "@/lib/districtdata";
-import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
+import VisualComponentClientParentV2 from "../VisualComponentClientParent-v2";
 
 // fetch GED data here : Geo fetched in map component - rdy to be consumed when toggled
 

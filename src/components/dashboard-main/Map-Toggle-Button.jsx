@@ -1,6 +1,6 @@
 "use client";
 import useSWR from "swr";
-import Spinner from "../../public/Infinity-1.1s-28px.svg";
+import Spinner from "../../../public/Infinity-1.1s-28px.svg";
 import Image from "next/image";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -10,8 +10,8 @@ export default function MapToggleButton({
   mapButtonStyle,
   handleToggle,
 }) {
-  // Initialise the fetch in here
-  // Fetch data here and cache this as this key :: `/api/geo?country=${country}`
+  // Initialise the fetch in here - cached ahead of use
+
   const { data, error, isLoading } = useSWR(
     `/api/geo?country=${country}`,
     fetcher
