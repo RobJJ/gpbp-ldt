@@ -9,7 +9,6 @@ export default function BreadCrumbs() {
   const params = useParams();
   const searchParams = useSearchParams();
 
-  // console.log("[BreadCrumbs] : rendered ");
   return (
     <div className="w-full  flex gap-2 py-1 border-b border-b-[#E7E7E7] font-inter items-center">
       <Image src={icon} alt="Logo" className="text-blue-500" />

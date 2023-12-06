@@ -26,7 +26,7 @@ export default function VisualComponentClientParentV2({
 
   return (
     <div className="w-full h-full">
-      {/* could add a suspense here as this component fetches cached data */}
+      {/* Map  */}
       {visualType === "map" && (
         <MapComponentParentAlpha
           country={country}
@@ -35,7 +35,7 @@ export default function VisualComponentClientParentV2({
           mapbox_url={mapbox_url}
         />
       )}
-      {/* this is the province only component -> shows all districts at country level */}
+      {/* Scatter : Province */}
       {visualType === "scatter" && scatterType === "provinces" && (
         <ScatterComponentParentProvinces
           gedDataProvince={gedDataProvince}
@@ -43,10 +43,9 @@ export default function VisualComponentClientParentV2({
           country={country}
         />
       )}
-      {/* this is the districts only component -> shows all districts at country level */}
+      {/* Scatter : District */}
       {visualType === "scatter" && scatterType === "districts" && (
         <ScatterComponentParentDistricts
-          // gedDataProvince={gedDataProvince}
           gedDataDistrict={gedDataDistrict}
           country={country}
         />
@@ -54,6 +53,3 @@ export default function VisualComponentClientParentV2({
     </div>
   );
 }
-
-// Took approach of splitting the ScatterPlot into two versions - Province & District
-// This approach allowed the chart to initialise correctly and handle data switching a lot better

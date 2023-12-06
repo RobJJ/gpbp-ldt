@@ -1,11 +1,8 @@
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { getDistricts } from "@/lib/districtdata";
-import VisualComponentClientParentV2 from "../VisualComponentClientParent-v2";
-
-// fetch GED data here : Geo fetched in map component - rdy to be consumed when toggled
+import VisualComponentClientParentV2 from "./VisualComponentClientParent-v2";
 
 export default async function LayoutVisualComponent({ country }) {
-  // consider combining these two functions in a promise.all() function to handle concurrently on server ? test time saving vs readablity
   const gedDataProvince = await getAllProvincesInSelectedCountry(country);
   const gedDataDistrict = await getDistricts(country);
   //
@@ -22,18 +19,3 @@ export default async function LayoutVisualComponent({ country }) {
     </div>
   );
 }
-
-// **
-// if this is a client component that functions very similar to how we have it setup now,, but the client Map and Scatter components can receive children ... we then pass that component here with the correct Map or Scatter component,, those components then are allowed to be server components and can render on the server with the data received as props??
-
-// <MapComponentParent>
-//   <MapChild country={params.country} year={searchParams.get("year")} />
-// </MapComponentParent>;
-
-// {/* 1st attempt - this is working but we will try optimise */}
-//       {/*<VisualComponentClientParent
-//         geojsonDataProvince={geojsonDataProvince}
-//         // geojsonDataDistrict={geojsonDataDistrict}
-//         gedDataDistrict={gedDataDistrict}
-//         gedDataProvince={gedDataProvince}
-//   />}

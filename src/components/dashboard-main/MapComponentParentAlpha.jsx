@@ -5,11 +5,10 @@ import "leaflet/dist/leaflet.css";
 import useSWR from "swr";
 import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
-import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
-import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
-// import MapColorLegend from "./MapColorLegend";
+import MapGeoJsonComponentProvince from "../MapGeoJsonComponentProvince";
+import MapGeoJsonComponentDistrict from "../MapGeoJsonComponentDistrict";
 import Image from "next/image";
-import Spinner from "../../public/Spinner-normal-size.svg";
+import Spinner from "../../../public/Spinner-normal-size.svg";
 
 // SWR
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -67,8 +66,6 @@ const countryMapSettings = {
     ],
   },
 };
-
-// top right [43.429566, 23.857964],,, bottom left [41.890765, 19.426956]
 
 export default function MapComponentParentAlpha({
   country,
