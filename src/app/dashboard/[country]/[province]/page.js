@@ -1,21 +1,14 @@
-// ** note ** this is a dynamic server comp. Can fetch params and data here
-
 import LoadingSpinner from "@/components/LoadingComponent";
-import DownloadButtonParent from "@/components/ProvincePage-DownloadButtonParent";
-import ProvincePageListComponent from "@/components/ProvincePageListComponent";
-import ProvincePageVisual from "@/components/ProvincePageVisual";
+import DownloadButtonParent from "@/components/dashboard-child/ProvincePage-DownloadButtonParent";
+import ProvincePageListComponent from "@/components/dashboard-child/ProvincePageListComponent";
+import ProvincePageVisual from "@/components/dashboard-child/ProvincePageVisual";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-
 import { Suspense } from "react";
 
-// ok we have access to the params and searchParams because this is page.js and dynamic
+//
+//
 export default async function ProvincePage({ params, searchParams }) {
-  // fetch data here for the chosen Province!! This comp gets new params passed through
-  // Goal:: show the province data
-  //1. Need data based on [country] and [province_name]
-
   return (
     <div className="w-full h-full flex flex-col gap-1 overflow-auto">
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
@@ -35,7 +28,6 @@ export default async function ProvincePage({ params, searchParams }) {
             />
           </span>
         </div>
-        {/* main */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProvincePageVisual
             country={params.country}
@@ -44,7 +36,6 @@ export default async function ProvincePage({ params, searchParams }) {
         </Suspense>
       </section>
       <section className="w-full h-2/5">
-        {/* this component is fetching data inside */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProvincePageListComponent
             country={params.country}
@@ -56,15 +47,3 @@ export default async function ProvincePage({ params, searchParams }) {
     </div>
   );
 }
-
-// Unused popup feature for navbar -> keep for later use if needed
-//
-//  <span
-//    className="relative group flex items-center
-//               "
-//  >
-//    {/*<span className="underline cursor-pointer ">Download Data</span>*/}
-//    <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-sm rounded py-2 px-2 ">
-//      <div className="text-xs text-white">Upcoming feature</div>
-//    </div>
-//  </span>;

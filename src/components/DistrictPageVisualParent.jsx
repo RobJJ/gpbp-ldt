@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ProvincePageVisualChildHeader from "./ProvincePageVisualChild-Header";
+import ProvincePageVisualChildHeader from "./dashboard-child/ProvincePageVisualChild-Header";
 import DistrictPageVisualChild from "./DistrictPageVisualChild";
 
 // Receives province data for all years

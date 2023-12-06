@@ -1,27 +1,16 @@
-// "use client";
-import {
-  getAllProvincesInSelectedCountry,
-  getAllProvincesInSelectedCountryByYear,
-} from "@/lib/provinceData";
+import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
 import Link from "next/link";
 import TableRow from "./TableRow";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
-// getting params and searchParams from the the countryPage which is child of layout... it will rendered when these properties change and thus this should be up to date
 export default async function CountryPageListComponent({
   country,
   searchParams,
 }) {
-  // console.log("[CountryPageListComponent] rendered: server");
-  // ***** working ****
-  // data based on [country] and year
   const provinceDataTest = await getAllProvincesInSelectedCountryByYear(
     country,
     searchParams.year
   );
-
-  // const provinceData = await getAllProvincesInSelectedCountry(country);
-  // console.log("[CountryPageListComponent] : data :", provinceDataTest);
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -31,21 +20,9 @@ export default async function CountryPageListComponent({
           Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
           <b>{searchParams.year}</b>
         </span>
-        {/*<span
-          className="relative group flex items-center
-              "
-        >
-          <span className="underline cursor-pointer text-sm text-[#5467C0]">
-            Compare Data
-          </span>
-          <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-sm rounded py-2 px-2 ">
-            <div className="font-semibold text-blue-300">Upcoming feature</div>
-          </div>
-  </span>*/}
       </section>
       {/* body - header */}
       <section className="w-full bg-white font-semibold flex font-inter">
-        {/*<span className="bg-red-100 w-1/12 border-2 border-black">No</span>*/}
         <span className="bg-white border border-black w-1/3 px-2 py-1">
           Province
         </span>
@@ -61,7 +38,6 @@ export default async function CountryPageListComponent({
                   Learn more about how to calculate environmental scores
                 </div>
               }
-              {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
               <Link
                 href="/methodology#envr"
                 target="_blank"
@@ -96,7 +72,7 @@ export default async function CountryPageListComponent({
                   Learn more about how to calculate economic scores
                 </div>
               }
-              {/* Link to methodology page in new tab, try include hash key to take user to a section on the page */}
+
               <Link
                 href="/methodology#econ"
                 target="_blank"

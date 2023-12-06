@@ -1,16 +1,14 @@
 // ** note ** this is a dynamic server comp. Can fetch params and data here
 
-import CountryPageInfoCard from "@/components/CountryPageInfoCard";
-import CountryPageListComponent from "@/components/CountryPageListComponent";
+import CountryPageInfoCard from "@/components/dashboard-child/CountryPageInfoCard";
+import CountryPageListComponent from "@/components/dashboard-child/CountryPageListComponent";
 import LoadingSpinner from "@/components/LoadingComponent";
-import LoadingListSkeleton from "@/components/LoadingListSkeleton";
 import { getCountryInfo } from "@/lib/countryInfo";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";
 
 export default async function CountryPage({ params, searchParams }) {
   const countryInfo = await getCountryInfo(params.country);
-  // console.log("country info :: ", countryInfo);
 
   return (
     <div className="w-full h-full  flex flex-col pt-2 gap-5 overflow-auto">

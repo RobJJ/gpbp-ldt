@@ -9,21 +9,15 @@ import highchartsMore from "highcharts/highcharts-more";
 import { tabToLabel } from "@/lib/name-matching";
 import { sortData } from "@/lib/linechart";
 
-// highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
-// GOAL: Chart component: Receives ProvinceData : Tab selection -> listen for this change
 export default function ProvincePageVisualChildVisual({
   selectedTab,
   provinceData,
 }) {
-  // console.log(
-  //   "We are in the visual: chartData is::",
-  //   sortData(provinceData, selectedTab)
-  // );
   const chartRef = useRef();
 
   let chart;
@@ -43,11 +37,9 @@ export default function ProvincePageVisualChildVisual({
       enabled: false,
     },
     title: {
-      // text: `${provinceData[0].PROVINCE} - Score over time`,
       text: undefined,
     },
     tooltip: {
-      // enabled: false,
       borderRadius: 5,
       borderWidth: 1,
       shadow: true,
@@ -64,13 +56,10 @@ export default function ProvincePageVisualChildVisual({
     },
     xAxis: {
       title: {
-        // text: "<b>Years</b>",
         text: undefined,
       },
-      // ** we have categories set : the way min and max work now change.
-      // min : from left 20% of single tick
+      // ** we have categories set : min / max can now be manipulated
       min: -0.2,
-      // categories.length - reverse or remaining of 0.2. 20% -- 80%
       max: 4 - 0.8,
       categories: [2019, 2020, 2021, 2022],
       tickInterval: 1,
@@ -83,7 +72,6 @@ export default function ProvincePageVisualChildVisual({
         text: tabToLabel[selectedTab],
         style: { color: "#000", fontWeight: 400 },
       },
-      // min changes depending on if : score [0-100] : STD [-10, 10]
       min:
         selectedTab === "Overview" || selectedTab === "Environmental"
           ? 0
@@ -92,14 +80,6 @@ export default function ProvincePageVisualChildVisual({
         selectedTab === "Overview" || selectedTab === "Environmental"
           ? 100
           : null,
-      // softMax:
-      //   selectedTab === "Overview" || selectedTab === "Environmental"
-      //     ? null
-      //     : 3,
-      // softMinx:
-      //   selectedTab === "Overview" || selectedTab === "Environmental"
-      //     ? null
-      //     : -3,
     },
     series: sortData(provinceData, selectedTab),
     plotOptions: {
@@ -113,11 +93,9 @@ export default function ProvincePageVisualChildVisual({
     },
   });
 
-  // listening for change of Component type to view (selected Tab : "Overview", "Economic" ,etc)
   useEffect(() => {
     setChartOptions({
       ...chartOptions,
-      // might need to also repush the tooltip data
       series: sortData(provinceData, selectedTab),
       yAxis: {
         ...chartOptions.yAxis,
@@ -133,14 +111,6 @@ export default function ProvincePageVisualChildVisual({
           selectedTab === "Overview" || selectedTab === "Environmental"
             ? 100
             : null,
-        // softMin:
-        //   selectedTab === "Overview" || selectedTab === "Environmental"
-        //     ? null
-        //     : -3,
-        // softMax:
-        //   selectedTab === "Overview" || selectedTab === "Environmental"
-        //     ? null
-        //     : 3,
       },
     });
   }, [selectedTab]);

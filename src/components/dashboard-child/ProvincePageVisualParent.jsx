@@ -4,7 +4,6 @@ import { useState } from "react";
 import ProvincePageVisualChildHeader from "./ProvincePageVisualChild-Header";
 import ProvincePageVisualChildVisual from "./ProvincePageVisualChild-Visual";
 
-// Receives province data for all years
 export default function ProvincePageVisualParent({ provinceData }) {
   const [selectedTab, setSelectedTab] = useState("Overview");
 
@@ -15,8 +14,7 @@ export default function ProvincePageVisualParent({ provinceData }) {
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-      {/* the scatter component that will render content based on selectedTab */}
-
+      {/* Render content based on selectedTab */}
       <ProvincePageVisualChildVisual
         selectedTab={selectedTab}
         provinceData={provinceData}

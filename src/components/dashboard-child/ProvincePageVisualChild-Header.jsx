@@ -5,7 +5,6 @@ export default function ProvincePageVisualChildHeader({
   setSelectedTab,
 }) {
   const handleTabClick = (event) => {
-    // console.log(event.target.getAttribute("data-tab"));
     const tabName = event.target.getAttribute("data-tab");
     setSelectedTab(tabName);
   };

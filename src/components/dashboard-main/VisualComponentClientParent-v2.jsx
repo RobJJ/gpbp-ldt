@@ -12,8 +12,6 @@ const MapComponentParentAlpha = dynamic(
   }
 );
 
-// Receives data .. determines which visual to show
-
 export default function VisualComponentClientParentV2({
   gedDataDistrict,
   gedDataProvince,

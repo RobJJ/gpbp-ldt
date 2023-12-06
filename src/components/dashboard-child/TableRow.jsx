@@ -30,13 +30,10 @@ function getFeatureFillColor(scoreValue) {
     }
   }
 
-  // This should never be reached if scoreValue is between 0 and 100,
-  // but we include it for safety.
   return "#000";
 }
 
 export default function TableRow({
-  number,
   regionName,
   econ,
   envr,
@@ -46,15 +43,11 @@ export default function TableRow({
 }) {
   return (
     <div className="w-full h-8 flex text-center ">
-      {/*<span className="bg-purple-100 w-1/12 h-full border-x-2 border-black p-2">
-        {number}
-  </span>*/}
       <Link
         href={{
           pathname: !province
             ? `/dashboard/${country}/${regionName}`
             : `/dashboard/${country}/${province}/${regionName}`,
-          // can spread the searchParams!!!! *******
           query: { ...searchParams },
         }}
         className=" flex items-center w-1/3 h-full border-x border-slate-300 border-b text-sm pl-2 font-normal text-[#4345AA] hover:text-[#5F61B7] "
@@ -68,7 +61,6 @@ export default function TableRow({
             style={{
               backgroundColor: getFeatureFillColor(envr),
               width: `${envr}%`,
-              // might be better to remove this easing effect as the color change is not leka
               transition: "width 0.5s ease-in-out",
             }}
           />
@@ -84,7 +76,7 @@ export default function TableRow({
           </div>
         </div>
       </span>
-      {/* new way.. you have to create 10 blocks per province or district.. conciderably more divs but does it effect server side performance? */}
+      {/* Blocks for unique row :: potential to optimise beyond cache */}
       <span className=" w-1/3 h-full border-r p-2 border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
@@ -92,7 +84,6 @@ export default function TableRow({
             style={{
               backgroundColor: getFeatureFillColor(econ),
               width: `${econ}%`,
-              // might be better to remove this easing effect as the color change is not leka
               transition: "width 0.5s ease-in-out",
             }}
           />
