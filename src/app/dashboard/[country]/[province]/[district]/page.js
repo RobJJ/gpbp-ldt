@@ -1,14 +1,12 @@
-// ** dynamic
-
-import DownloadButtonParentDistrict from "@/components/DistrictPage-DownloadButtonParent";
-import DistrictPageInsightsComponent from "@/components/DistrictPageInsightsComponent";
-import DistrictPageVisual from "@/components/DistrictPageVisual";
-import LoadingSpinner from "@/components/LoadingComponent";
-import Link from "next/link";
 import { Suspense } from "react";
+import Link from "next/link";
+
+import DownloadButtonParentDistrict from "@/components/dashboard-child/DistrictPage-DownloadButtonParent";
+import DistrictPageInsightsComponent from "@/components/dashboard-child/DistrictPageInsightsComponent";
+import DistrictPageVisual from "@/components/dashboard-child/DistrictPageVisual";
+import LoadingSpinner from "@/components/LoadingComponent";
 
 export default function DistrictPage({ params, searchParams }) {
-  // console.log("[DistrictPage] : params : searchParams", params, searchParams);
   return (
     <div className=" w-full h-full flex flex-col gap-1 overflow-auto ">
       <section className="w-full h-3/5 flex flex-col gap-1 rounded">
@@ -54,13 +52,3 @@ export default function DistrictPage({ params, searchParams }) {
     </div>
   );
 }
-
-// <span
-//   className="relative group
-//               "
-// >
-//   <span className="underline cursor-pointer">Download Data</span>
-//   <div className=" tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800  text-sm rounded py-2 px-2 ">
-//     <div className="text-xs text-white">Upcoming feature</div>
-//   </div>
-// </span>;

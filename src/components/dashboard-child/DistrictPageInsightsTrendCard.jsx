@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import openaiIcon from "../../public/openai-fill.svg";
+import openaiIcon from "../../../public/openai-fill.svg";
 
 export default function DistrictPageInsightsTrendCard({
   district,
   insightsData,
 }) {
-  // Gaurd against no data
+  // Gaurd
   if (!insightsData) {
     return (
       <div className="w-full h-full flex justify-center items-center font-bold text-lg underline font-inter">
@@ -14,7 +14,7 @@ export default function DistrictPageInsightsTrendCard({
       </div>
     );
   }
-  // console.log("insights trends :: ", insightsData.TRENDS);
+
   return (
     <div className="w-full h-full  p-1 flex flex-col gap-2 font-inter">
       <section className="w-full flex justify-between  items-center ">

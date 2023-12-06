@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import TableRow from "./TableRow";
 import { getAllDistrictsInSelectedProvinceByYear } from "@/lib/districtdata";
-import questionMarkIconFill from "../../public/question-fill.png";
+import questionMarkIconFill from "../../../public/question-fill.png";
 
 export default async function ProvincePageListComponent({
   country,

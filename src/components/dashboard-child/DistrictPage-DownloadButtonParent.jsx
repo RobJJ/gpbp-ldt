@@ -6,7 +6,6 @@ export default async function DownloadButtonParentDistrict({
   country,
   district,
 }) {
-  // 1. Fetch data for that selected province (array of JSON objects)
   const districtData = await getSelectedDistrictData(
     country,
     decodeURIComponent(district)

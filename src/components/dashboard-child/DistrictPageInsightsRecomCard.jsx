@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import openaiIcon from "../../public/openai-fill.svg";
+import openaiIcon from "../../../public/openai-fill.svg";
 
 export default function DistrictPageInsightsRecomCard({
   district,
   insightsData,
 }) {
-  // Gaurd against no data
+  // Gaurd
   if (!insightsData) {
     return (
       <div className="w-full h-full flex justify-center items-center font-bold text-lg underline font-inter">

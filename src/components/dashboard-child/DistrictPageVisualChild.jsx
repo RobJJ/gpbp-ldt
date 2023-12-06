@@ -6,28 +6,22 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMore from "highcharts/highcharts-more";
 
-import { tabToLabel } from "../lib/name-matching/index.js";
+import { tabToLabel } from "../../lib/name-matching/index.js";
 import { sortData } from "@/lib/linechart/index.js";
 
-// highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
 
-// GOAL: Chart component: Receives ProvinceData : Tab selection -> listen for this change
 export default function DistrictPageVisualChild({ selectedTab, districtData }) {
-  // console.log(
-  //   "We are in the visual: chartData is::",
-  //   sortData(provinceData, selectedTab)
-  // );
   const chartRef = useRef();
 
   let chart;
   const [chartOptions, setChartOptions] = useState({
     chart: {
       type: "line",
-      // plotBorderWidth: 0,
+
       events: {
         load: function () {
           chart = this;
@@ -41,11 +35,9 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       enabled: false,
     },
     title: {
-      // text: `${provinceData[0].PROVINCE} - Score over time`,
       text: undefined,
     },
     tooltip: {
-      // enabled: false,
       borderRadius: 5,
       borderWidth: 1,
       shadow: true,
@@ -91,14 +83,6 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         selectedTab === "Overview" || selectedTab === "Environmental"
           ? 100
           : null,
-      // softMax:
-      //   selectedTab === "Overview" || selectedTab === "Environmental"
-      //     ? null
-      //     : 3,
-      // softMinx:
-      //   selectedTab === "Overview" || selectedTab === "Environmental"
-      //     ? null
-      //     : -3,
     },
     series: sortData(districtData, selectedTab),
     plotOptions: {
@@ -112,19 +96,17 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
     },
   });
 
-  // listening for change of Component type to view (selected Tab : "Overview", "Economic" ,etc)
   useEffect(() => {
     setChartOptions({
       ...chartOptions,
-      // might need to also repush the tooltip data
+
       series: sortData(districtData, selectedTab),
       yAxis: {
         ...chartOptions.yAxis,
         title: {
-          // text: "<b>Scores</b>",
           text: tabToLabel[selectedTab],
         },
-        // min changes depending on if : score [0-100] : STD [-10, 10]
+
         min:
           selectedTab === "Overview" || selectedTab === "Environmental"
             ? 0
@@ -133,14 +115,6 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
           selectedTab === "Overview" || selectedTab === "Environmental"
             ? 100
             : null,
-        // softMin:
-        //   selectedTab === "Overview" || selectedTab === "Environmental"
-        //     ? null
-        //     : -3,
-        // softMax:
-        //   selectedTab === "Overview" || selectedTab === "Environmental"
-        //     ? null
-        //     : 3,
       },
     });
   }, [selectedTab]);
