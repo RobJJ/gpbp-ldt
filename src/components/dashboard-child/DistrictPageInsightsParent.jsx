@@ -4,7 +4,7 @@ import DistrictPageInsightsChildHeader from "./DistrictPageInsightsChildHeader";
 
 import DistrictPageInsightsTrendCard from "./DistrictPageInsightsTrendCard";
 import DistrictPageInsightsRecomCard from "./DistrictPageInsightsRecomCard";
-import DistrictPageInsightsRisksCard from "../DistrictPageInsightsRisksCard";
+import DistrictPageInsightsRisksCard from "./DistrictPageInsightsRisksCard";
 
 //
 

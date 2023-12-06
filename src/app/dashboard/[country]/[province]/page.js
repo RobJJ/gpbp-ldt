@@ -1,4 +1,4 @@
-import LoadingSpinner from "@/components/LoadingComponent";
+import LoadingSpinner from "@/components/dashboard-child/LoadingComponent";
 import DownloadButtonParent from "@/components/dashboard-child/ProvincePage-DownloadButtonParent";
 import ProvincePageListComponent from "@/components/dashboard-child/ProvincePageListComponent";
 import ProvincePageVisual from "@/components/dashboard-child/ProvincePageVisual";

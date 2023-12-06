@@ -4,7 +4,7 @@ import Link from "next/link";
 import DownloadButtonParentDistrict from "@/components/dashboard-child/DistrictPage-DownloadButtonParent";
 import DistrictPageInsightsComponent from "@/components/dashboard-child/DistrictPageInsightsComponent";
 import DistrictPageVisual from "@/components/dashboard-child/DistrictPageVisual";
-import LoadingSpinner from "@/components/LoadingComponent";
+import LoadingSpinner from "@/components/dashboard-child/LoadingComponent";
 
 export default function DistrictPage({ params, searchParams }) {
   return (

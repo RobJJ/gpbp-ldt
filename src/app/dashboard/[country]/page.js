@@ -2,7 +2,7 @@
 
 import CountryPageInfoCard from "@/components/dashboard-child/CountryPageInfoCard";
 import CountryPageListComponent from "@/components/dashboard-child/CountryPageListComponent";
-import LoadingSpinner from "@/components/LoadingComponent";
+import LoadingSpinner from "@/components/dashboard-child/LoadingComponent";
 import { getCountryInfo } from "@/lib/countryInfo";
 import { getAllProvincesInSelectedCountry } from "@/lib/provinceData";
 import { Suspense } from "react";

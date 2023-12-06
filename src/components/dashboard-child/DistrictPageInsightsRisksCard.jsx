@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ccsIcon from "../../public/CCS-ICON.png";
+import ccsIcon from "../../../public/CCS-ICON.png";
 import Link from "next/link";
 
 export default function DistrictPageInsightsRisksCard({ district }) {
