@@ -9,7 +9,6 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { urlToLableMatching, urlToScoreMatching } from "@/lib/name-matching";
 import { drawQuadrants } from "@/lib/linechart";
 
-// highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
@@ -47,29 +46,7 @@ Highcharts.Point.prototype.importEvents = function () {
   });
 };
 
-// function dataMapping(data, year, x_score, y_score, provinceSelected) {
-//   const xAxisScore = urlToScoreMatching[x_score];
-//   const yAxisScore = urlToScoreMatching[y_score];
-//   //
-//   return data
-//     .filter((obj) => Number(obj.YEAR) === Number(year))
-//     .map(function (point) {
-//       return {
-//         ...point,
-//         id: provinceSelected ? point.DISTRICT_ID : point.PROVINCE_ID,
-//         x: Math.round(Number(point[xAxisScore])),
-//         y: Math.round(Number(point[yAxisScore])),
-//         // marker: {
-//         //   radius: 10,
-//         // },
-//         // radius: 6,
-//         // color: colorPanel[point.REGION],
-//         // color: "#666666",
-//       };
-//     });
-// }
-// this is attempt at new function,, the data passed in is already the correct year..
-// reads scores and return the right array for the series.data
+// Handle logic for data mapping and styling of features : v2.0
 function dataMappingProvinceType(
   districtData,
   provinceData,
@@ -79,12 +56,11 @@ function dataMappingProvinceType(
   provinceSelected,
   districtSelected
 ) {
-  // console.log("dataMapping in Provinces :: begun");
   // match url scores to actual GED property names
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
   //
-  // if a province has been selected -> show its districts as small dots
+  // if a province has been selected -> style it's districts
   if (provinceSelected) {
     const provinceDistricts = districtData.filter(
       (district) =>
@@ -137,17 +113,13 @@ export default function ScatterComponentParentProvinces({
   gedDataDistrict,
   country,
 }) {
-  // this comp will be triggered again by province selection being passed in
-
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // let countrySelected = params.country;
   let year = searchParams.get("year");
   let score_one = searchParams.get("score_one");
   let score_two = searchParams.get("score_two");
-  // console.log("[component rendered] -- scores ::", score_one, score_two);
   let provinceSelected = params.province;
   let districtSelected = params.district;
 
@@ -159,9 +131,7 @@ export default function ScatterComponentParentProvinces({
       enabled: false,
     },
     chart: {
-      // customYearValue: year,
       backgroundColor: "#fff",
-      // plotBackgroundColor: "#F7F7F7",
       type: "scatter",
       zoomType: "xy",
       animation: true,
@@ -183,13 +153,10 @@ export default function ScatterComponentParentProvinces({
       enabled: false,
     },
     tooltip: {
-      // enabled: false,
       borderRadius: 5,
       backgroundColor: "#475569",
       style: {
         color: "#fff",
-        // cursor: "default",
-        // fontSize: "0.8em",
       },
       borderWidth: 1,
       shadow: true,
@@ -209,11 +176,8 @@ export default function ScatterComponentParentProvinces({
     },
     title: {
       text: null,
-      // text: _.startCase(`Experimal build: Highchart: ${type} chart`),
-      // text: `Experimental build - HighCharts - Scatter chart`,
     },
     xAxis: {
-      // labels: { style: { color: "#F00" } },
       title: {
         useHTML: true,
         enabled: true,
@@ -238,26 +202,17 @@ export default function ScatterComponentParentProvinces({
       tickAmount: 6,
       gridLineWidth: 0,
       startOnTick: false,
-      // tickWidth: 1,
-      // tickLength: 10,
     },
     plotOptions: {
-      // general options for all series
       series: {
         animation: {
-          // controls animation of paint of points
           duration: 1000,
         },
-        // removes lingering tooltip
         stickyTracking: false,
-        // Assign a unique color to each point in the series
-        // colorByPoint: true,
 
         point: {
           events: {
             click: (dot) => {
-              // when a province dot is clicked, we want to load that province in params
-
               if (!dot.point.DISTRICT_ID) {
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
@@ -344,18 +299,6 @@ export default function ScatterComponentParentProvinces({
         },
       },
       series: {
-        // {
-        //   data: dataMappingProvinceType(
-        //     gedDataDistrict,
-        //     gedDataProvince,
-        //     year,
-        //     score_one,
-        //     score_two,
-        //     provinceSelected,
-        //     districtSelected
-        //   ),
-        //   cursor: "pointer",
-        // },
         ...chartOptions.series,
         data: dataMappingProvinceType(
           gedDataDistrict,
@@ -387,16 +330,13 @@ export default function ScatterComponentParentProvinces({
           point: {
             events: {
               click: (dot) => {
-                // when a province dot is clicked, we want to load that province in params
                 if (!dot.point.DISTRICT_ID) {
-                  // console.log("dot clicked : scores ::", score_one, score_two);
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
                   return;
                 }
                 if (dot.point.DISTRICT_ID) {
-                  // console.log("dot clicked : scores ::", score_one, score_two);
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );

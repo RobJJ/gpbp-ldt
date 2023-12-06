@@ -9,12 +9,10 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { drawQuadrants } from "@/lib/linechart";
 import { urlToLableMatching, urlToScoreMatching } from "@/lib/name-matching";
 
-// highchartsMore(Highcharts);
 // **note :: this work around is for the SSR run of this client component and checks if function or object
 if (typeof Highcharts === "object") {
   highchartsMore(Highcharts);
 }
-//
 //
 // FIX : CACHED EVENT CLICK ON HIGHCHARTS OPTIONS -> OVERWRITE PROTO
 const { merge, objectEach, isFunction, addEvent, removeEvent } = Highcharts;
@@ -49,7 +47,7 @@ Highcharts.Point.prototype.importEvents = function () {
 };
 //
 //
-// custom func to decide point color is RED / BLACK / GRAY
+// Utility func : decide on feature RED / BLACK / GRAY
 function setColor(point, provinceSelected, districtSelected) {
   if (
     districtSelected &&
@@ -96,6 +94,7 @@ function setColor(point, provinceSelected, districtSelected) {
   }
 }
 
+// Handle logic for data mapping and styling of features
 function dataMapping(
   dataType,
   year,
@@ -104,12 +103,11 @@ function dataMapping(
   provinceSelected,
   districtSelected
 ) {
-  // console.log("the data Mapping has started .....");
   // match url scores to actual GED property names
   const xAxisScore = urlToScoreMatching[score_one];
   const yAxisScore = urlToScoreMatching[score_two];
 
-  // ** optimise :: potentially return less here? if you are going to do this map everytime,, maybe make the array that is returned slower
+  // ** optimise :: potentially return less (trim) here? ::
   return dataType
     .filter((obj) => Number(obj.YEAR) === Number(year))
     .map(function (point) {
@@ -131,7 +129,6 @@ function dataMapping(
 }
 
 export default function ScatterComponentParentDistricts({
-  // gedDataProvince,
   gedDataDistrict,
   country,
 }) {
@@ -153,9 +150,7 @@ export default function ScatterComponentParentDistricts({
       enabled: false,
     },
     chart: {
-      // customYearValue: year,
       backgroundColor: "#fff",
-      // plotBackgroundColor: "#F7F7F7",
       type: "scatter",
       zoomType: "xy",
       animation: true,
@@ -177,13 +172,10 @@ export default function ScatterComponentParentDistricts({
       enabled: false,
     },
     tooltip: {
-      // enabled: false,
       borderRadius: 5,
       backgroundColor: "#475569",
       style: {
         color: "#fff",
-        // cursor: "default",
-        // fontSize: "0.8em",
       },
       borderWidth: 1,
       shadow: true,
@@ -199,8 +191,6 @@ export default function ScatterComponentParentDistricts({
     },
     title: {
       text: null,
-      // text: _.startCase(`Experimal build: Highchart: ${type} chart`),
-      // text: `Experimental build - HighCharts - Scatter chart`,
     },
     xAxis: {
       title: {
@@ -227,20 +217,14 @@ export default function ScatterComponentParentDistricts({
       // general options for all series
       series: {
         animation: {
-          // controls animation of paint of points
           duration: 1500,
         },
-        // removes lingering tooltip
         stickyTracking: false,
-        // Assign a unique color to each point in the series
-        // colorByPoint: true,
 
         point: {
           events: {
             click: (dot) => {
               if (dot.point.DISTRICT_ID) {
-                // console.log("You clicked a dot ::", dot.point);
-                // 1st: just navigate to the path : ie the district you clicked
                 router.push(
                   `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                 );
@@ -266,7 +250,6 @@ export default function ScatterComponentParentDistricts({
     ],
   });
 
-  // rewrite anything that references these 3 parameters to pass in latest values
   useEffect(() => {
     setChartOptions({
       ...chartOptions,
@@ -309,8 +292,6 @@ export default function ScatterComponentParentDistricts({
             events: {
               click: (dot) => {
                 if (dot.point.DISTRICT_ID) {
-                  // console.log("hey you clicked a dot ::", dot.point);
-                  // 1st: just navigate to the path
                   router.push(
                     `/dashboard/${country}/${dot.point.PROVINCE}/${dot.point.DISTRICT}?year=${dot.point.YEAR}&score_one=${score_one}&score_two=${score_two}`
                   );
@@ -323,7 +304,6 @@ export default function ScatterComponentParentDistricts({
     });
   }, [year, score_one, score_two]);
 
-  // listening to province or district change
   useEffect(() => {
     // RESET DATA AND ALLOW IT TO MAKE THE DECISION ON STLYING
     setChartOptions({
