@@ -73,6 +73,7 @@ export function createPopupContent(properties) {
 }
 //
 //
+// Utility function written to handle map-fill-color logic
 //
 export function getFeatureFillColor(scoreType, scoreValue) {
   const mapColors = MAP_COLORS[scoreType];

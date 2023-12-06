@@ -5,8 +5,8 @@ import "leaflet/dist/leaflet.css";
 import useSWR from "swr";
 import { scatterViewType } from "@/lib/atoms";
 import { useAtom } from "jotai";
-import MapGeoJsonComponentProvince from "../MapGeoJsonComponentProvince";
-import MapGeoJsonComponentDistrict from "../MapGeoJsonComponentDistrict";
+import MapGeoJsonComponentProvince from "./MapGeoJsonComponentProvince";
+import MapGeoJsonComponentDistrict from "./MapGeoJsonComponentDistrict";
 import Image from "next/image";
 import Spinner from "../../../public/Spinner-normal-size.svg";
 
@@ -37,7 +37,7 @@ const countryMapSettings = {
   },
   kosovo: {
     zoom: 8.6,
-    minZoom: 7,
+    minZoom: 7.8,
     maxZoom: 9,
     defaultPos: [42.5, 20.6456],
     innerBounds: [
@@ -56,8 +56,8 @@ const countryMapSettings = {
     ],
   },
   uzbekistan: {
-    zoom: 5.4,
-    minZoom: 4.5,
+    zoom: 5.5,
+    minZoom: 5,
     maxZoom: 7,
     defaultPos: [41.377491, 64.585262],
     innerBounds: [
@@ -69,13 +69,11 @@ const countryMapSettings = {
 
 export default function MapComponentParentAlpha({
   country,
-  // provinceGeoData,
-  // districtGeoData,
   gedDataProvince,
   gedDataDistrict,
   mapbox_url,
 }) {
-  // lets try call the cached data here first :: this should always be cached from initial call
+  // Call from cached data
   const { data, error, isLoading } = useSWR(
     `/api/geo?country=${country}`,
     fetcher
@@ -83,7 +81,7 @@ export default function MapComponentParentAlpha({
 
   const [scatterType] = useAtom(scatterViewType);
 
-  // this should never happen -- we need to make sure that if user clicks HOME that we reset the scatterViewType... but for now, guard against it
+  // Gaurd clauses
   if (isLoading)
     return (
       <div className="bg-slate-100 flex justify-center items-center w-full h-full">
@@ -102,25 +100,17 @@ export default function MapComponentParentAlpha({
       <MapContainer
         attributionControl={false}
         center={countryMapSettings[country].defaultPos}
-        // create a custom zoom value for each country.
         zoom={countryMapSettings[country].zoom}
-        // zoomed out max
         minZoom={countryMapSettings[country].minZoom}
-        // zoomed in max
-        // maxZoom={countryMapSettings[country].maxZoom}
+        maxZoom={countryMapSettings[country].maxZoom}
         maxBounds={countryMapSettings[country].innerBounds}
         zoomControl={false}
         doubleClickZoom={false}
         wheelPxPerZoomLevel={30}
         zoomSnap={0.5}
         // zoomDelta={0.5}
-        // min and max zooms to control API
-
         scrollWheelZoom={true}
         className="h-full w-full"
-        // ref={nodeRef}
-        // adding hashkey here rerenders another entire map. ie resets pos etc
-        // key={hashkey}
       >
         <ZoomControl position={"bottomleft"} />
         <TileLayer url={mapbox_url} />
@@ -128,7 +118,7 @@ export default function MapComponentParentAlpha({
           bounds={countryMapSettings[country].innerBounds}
           pathOptions={{ fill: false, color: "red", dashArray: "3" }}
         />
-        {/* Handle change of scatterType here :: scatterType def = provinces */}
+        {/* Map - Province */}
         {scatterType === "provinces" && (
           <MapGeoJsonComponentProvince
             provinceGeoData={data.provinceGeoData}
@@ -137,6 +127,7 @@ export default function MapComponentParentAlpha({
             gedDataDistrict={gedDataDistrict}
           />
         )}
+        {/* Map - District */}
         {scatterType === "districts" && (
           <MapGeoJsonComponentDistrict
             provinceGeoData={data.provinceGeoData}
@@ -145,8 +136,6 @@ export default function MapComponentParentAlpha({
             gedDataDistrict={gedDataDistrict}
           />
         )}
-        {/* moved deeper down tree for performance testing */}
-        {/*<MapColorLegend />*/}
       </MapContainer>
     </section>
   );

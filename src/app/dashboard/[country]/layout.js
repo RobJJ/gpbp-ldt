@@ -38,5 +38,3 @@ export default async function CountryPageLayout({ children, params }) {
     </div>
   );
 }
-
-// maybe move the   <FilterButton /> to the dashboard layout.js page? (create one that is)

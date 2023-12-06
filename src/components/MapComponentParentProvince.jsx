@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import MapGeoJsonComponent from "./MapGeoJsonComponentProvince";
+import MapGeoJsonComponent from "./dashboard-main/MapGeoJsonComponentProvince";
 
 // ** this is the actual map component
 // ** setdefault state to province,, and then hold state here...
