@@ -5,7 +5,7 @@ import JotaiProvider from "@/providers/jotai-provider";
 
 import "./globals.css";
 
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/root/NavBar";
 
 export const metadata = {
   title: "GPBP-GED",
