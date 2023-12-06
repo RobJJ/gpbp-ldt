@@ -1,11 +1,7 @@
-// common navbar at top of screen
-
 import Image from "next/image";
 import Link from "next/link";
 
-// import gedIcon from "../../public/GED-logo-nobg.png";
 import gedIcon from "../../public/GED-logo.png";
-import HomeButton from "./Navbar-HomeButton";
 
 export default function NavBar() {
   return (
@@ -20,8 +16,6 @@ export default function NavBar() {
       <Link className="  text-[#D9D9D9] mr-5" href={"/"}>
         Home
       </Link>
-      {/* reseting atoms not working in here */}
-      {/*<HomeButton />*/}
       <Link
         className="  text-[#D9D9D9] mr-5"
         href={"/releaseNotes"}
@@ -36,7 +30,6 @@ export default function NavBar() {
       >
         Methodology
       </Link>
-
       <Link
         className="  text-[#D9D9D9]"
         href={"https://pim-pam.net/feedback/?feedback=ged"}
