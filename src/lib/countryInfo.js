@@ -10,6 +10,5 @@ export const getCountryInfo = cache(async (country) => {
     .collection(`${country}-country-info`)
     .find({}, { projection: { _id: 0 } })
     .toArray();
-  // return JSON.parse(JSON.stringify(allDistricts));
   return info;
 });

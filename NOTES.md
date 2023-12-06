@@ -1,7 +1,7 @@
-## Adding new Country
+## Adding new Country Cube
 
-#### Follow steps
+#### Steps
 
-- Add new datasets to Database
+- Add new datasets to Database (Mongo CLI for GeoJSON)
 - Update landing page selector
-- Update Map country setting
+- Update Map country settings

@@ -14,7 +14,7 @@ export const getAllProvincesInSelectedCountryByYear = cache(
   }
 );
 
-// ??
+// USED
 export const getAllProvincesInSelectedCountry = cache(async (country) => {
   const client = await clientPromise;
   const db = client.db(process.env.MONGO_DB_NAME);
