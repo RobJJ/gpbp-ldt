@@ -15,6 +15,7 @@ factors.
 - HighCharts
 - Jotai
 - Tailwind
+- Utilities
 
 ## ENV
 
@@ -23,3 +24,7 @@ factors.
 - MONGODB_URI
 - MONGO_DB_NAME
 - MAPBOX_URL
+
+#### Database
+
+- Reach out for guidance on DB setup and schema validation
