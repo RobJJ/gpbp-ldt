@@ -5,6 +5,7 @@ import openaiIcon from "../../../public/openai-fill.svg";
 export default function DistrictPageInsightsRecomCard({
   district,
   insightsData,
+  country,
 }) {
   // Gaurd
   if (!insightsData) {
@@ -41,12 +42,18 @@ export default function DistrictPageInsightsRecomCard({
           </span>
         </div>
       </section>
-      <section className="w-full h-full">
-        <span>{insightsData.RECOMMENDATIONS.ECON_SCORE}</span>
-        <span>{insightsData.RECOMMENDATIONS.ENVR_SCORE}</span>
-        <span>{insightsData.RECOMMENDATIONS.AIR_SCORE}</span>
-        <span>{insightsData.RECOMMENDATIONS.TEMP_SCORE}</span>
-      </section>
+      {country !== "serbia" ? (
+        <section className="w-full h-full">
+          <span>{insightsData.RECOMMENDATIONS.ECON_SCORE}</span>
+          <span>{insightsData.RECOMMENDATIONS.ENVR_SCORE}</span>
+          <span>{insightsData.RECOMMENDATIONS.AIR_SCORE}</span>
+          <span>{insightsData.RECOMMENDATIONS.TEMP_SCORE}</span>
+        </section>
+      ) : (
+        <section className="w-full h-full">
+          <span>{insightsData.RECOMMENDATIONS}</span>
+        </section>
+      )}
     </div>
   );
 }

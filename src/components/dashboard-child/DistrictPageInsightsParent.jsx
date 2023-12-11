@@ -8,7 +8,11 @@ import DistrictPageInsightsRisksCard from "./DistrictPageInsightsRisksCard";
 
 //
 
-export default function DistrictPageInsightsParent({ insightsData, district }) {
+export default function DistrictPageInsightsParent({
+  insightsData,
+  district,
+  country,
+}) {
   //
   const [selectedTab, setSelectedTab] = useState("Trends");
   //
@@ -20,12 +24,14 @@ export default function DistrictPageInsightsParent({ insightsData, district }) {
       />
       {selectedTab === "Trends" && (
         <DistrictPageInsightsTrendCard
+          country={country}
           district={district}
           insightsData={insightsData}
         />
       )}
       {selectedTab === "Recommendations" && (
         <DistrictPageInsightsRecomCard
+          country={country}
           district={district}
           insightsData={insightsData}
         />

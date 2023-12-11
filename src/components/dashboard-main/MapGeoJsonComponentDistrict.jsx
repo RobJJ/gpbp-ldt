@@ -10,6 +10,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { GeoJSON } from "react-leaflet";
 import { v4 as uuidv4 } from "uuid";
+import MapColorLegend from "./MapColorLegend";
 
 export default function MapGeoJsonComponentDistrict({
   provinceGeoData,
@@ -236,11 +237,14 @@ export default function MapGeoJsonComponentDistrict({
     });
   }
   return (
-    <GeoJSON
-      key={hashkey}
-      style={style}
-      data={currentGeoLayers}
-      onEachFeature={onEachFeature}
-    />
+    <>
+      <GeoJSON
+        key={hashkey}
+        style={style}
+        data={currentGeoLayers}
+        onEachFeature={onEachFeature}
+      />
+      <MapColorLegend />
+    </>
   );
 }

@@ -15,6 +15,7 @@ export default async function DistrictPageInsightsComponent({
       <DistrictPageInsightsParent
         insightsData={insights[0]}
         district={decodeURIComponent(district)}
+        country={country}
       />
     </div>
   );
