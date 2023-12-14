@@ -14,6 +14,7 @@ const currentAvailableCountries = [
   { name: "serbia", id: 3 },
   { name: "albania", id: 4 },
   { name: "montenegro", id: 5 },
+  { name: "austria", id: 6 },
 ];
 
 export default function SelectCountryButton() {
