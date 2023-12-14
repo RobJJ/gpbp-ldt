@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
       <body>
         <main className="flex flex-col w-screen h-screen">
           <NavBar />
+
           <JotaiProvider>
             {children} <Analytics />
           </JotaiProvider>

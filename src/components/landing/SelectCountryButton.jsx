@@ -56,7 +56,7 @@ export default function SelectCountryButton() {
         </span>
       </div>
       {isOpen && (
-        <div className=" absolute mt-12 w-72 h-9 shadow-lg z-50">
+        <div className=" absolute mt-12 w-72 h-36 shadow-lg z-50 overflow-auto">
           <div className="rounded-md bg-white shadow-xs">
             <div
               className=""
