@@ -20,3 +20,8 @@ export const getDistrictId = cache((data, district_name) => {
 export function capitalizeFirstLetter(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
+
+// mobile util func
+export const isMobileUserAgent = (userAgent) => {
+  return /iPhone|iPad|iPod|Android/i.test(userAgent);
+};

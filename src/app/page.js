@@ -11,24 +11,7 @@ import LandingPageCardComponent from "@/components/landing/LandingPageCardCompon
 import Link from "next/link";
 import RightSection from "@/components/landing/LandingPage-Right-Section";
 
-const isMobileUserAgent = (userAgent) => {
-  return /iPhone|iPad|iPod|Android/i.test(userAgent);
-};
-
 export default function Home({ searchParams }) {
-  const headersList = headers();
-  const referer = headersList.get("referer");
-  // console.log("list ::", headersList);
-  const isMobile = isMobileUserAgent(headersList.get("user-agent"));
-  // console.log("mobile? ::", isMobile);
-
-  if (isMobile) {
-    return (
-      <div className=" w-full h-full underline font-bold flex justify-center items-center">
-        Desktop Only Application
-      </div>
-    );
-  }
   return (
     <div className="w-full h-full  flex overflow-hidden">
       {/* LEFT PANEL */}
