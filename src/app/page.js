@@ -24,7 +24,7 @@ export default function Home({ searchParams }) {
 
   if (isMobile) {
     return (
-      <div className=" w-full h-full underline font-bold">
+      <div className=" w-full h-full underline font-bold flex justify-center items-center">
         Desktop Only Application
       </div>
     );
