@@ -3,7 +3,10 @@ import Link from "next/link";
 export default function MethodologyNavigation() {
   return (
     <>
-      <Link href={"#methodology"} className="text-3xl  font-bold font-poppins ">
+      <Link
+        href={"#methodology"}
+        className="text-3xl  font-bold font-poppins mb-3"
+      >
         <h2 className="hover:text-[#4345AA]">Methodology</h2>
       </Link>
       {/* 1. DISCLAIMER */}
@@ -11,6 +14,7 @@ export default function MethodologyNavigation() {
         <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
           <span>1.</span> <Link href={"#disclaimer"}>Disclaimer</Link>
         </h3>
+        {/* old setup */}
         {/* <div className="flex flex-col gap-2  pl-6 ">
           <Link href={"#econ.1"} className="hover:text-[#4345AA]">
             1.1 Luminosity Per Capita Calculation

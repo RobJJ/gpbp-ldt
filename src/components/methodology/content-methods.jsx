@@ -1,6 +1,7 @@
 import Image from "next/image";
 import airQualityImage from "../../../public/air_quality_breakdown.png";
 import EnvrTable from "./content-envr-table";
+import Link from "next/link";
 
 export default function ContentMethods() {
   return (
@@ -73,13 +74,13 @@ export default function ContentMethods() {
           Here are the crucial components:
         </p>
         <ul>
-          <li>
+          <li className="ml-2">
             1. Utility: Comprised of nighttime luminosity and luminosity annual
             growth. They are computed from data measured using satellite
             imagery, and they serve as a useful proxy for electricity
             consumption and economic activity.
           </li>
-          <li>
+          <li className="ml-2">
             2. Built Area: We use satellite images to see how much of a region
             is covered by man-made structures and whether this is increasing or
             decreasing over time. The presence of man-made structures is a good
@@ -97,14 +98,23 @@ export default function ContentMethods() {
           gives us an overall snapshot of the region's economic health and
           trajectory.
         </p>
-        <h4 className="text-lg font-semibold">
+        <h4 className="text-md font-semibold">
           2.3.1 Utility Score Calculations
         </h4>
-        <ul>
+        <ul className="ml-2">
           <li>
             1. Luminosity data processing: The raw luminosity data is gathered
             from the NASA Black Marble VIIRS dataset. It is, then, further
-            processed using 505Economics’ algorithm.
+            processed using{" "}
+            <Link
+              href="https://505economics.com/"
+              alt="505 Economics website"
+              className="underline hover:text-[#4345AA]"
+              target="_blank"
+            >
+              505Economics’
+            </Link>{" "}
+            algorithm.
           </li>
           <li>
             2. Zonal statistics: We take the sum of nighttime luminosity values
@@ -124,8 +134,8 @@ export default function ContentMethods() {
             and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-lg font-semibold">2.3.2 Built Area Calculations</h4>
-        <ul>
+        <h4 className="text-md font-semibold">2.3.2 Built Area Calculations</h4>
+        <ul className="ml-2">
           <li>
             1. Land cover data processing: The raw Dynamic World V1 land cover
             data is extracted using Google Earth Engine. The mode of the annual
@@ -149,7 +159,7 @@ export default function ContentMethods() {
             by year and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-lg font-semibold">
+        <h4 className="text-md font-semibold">
           2.3.3 Economic Score Calculations
         </h4>
         <p>
@@ -161,7 +171,9 @@ export default function ContentMethods() {
       </div>
       {/* 2.4 */}
       <div className="flex flex-col gap-4 ">
-        <h4 className="text-xl font-semibold">2.3 Economic Score Overview</h4>
+        <h4 className="text-xl font-semibold">
+          2.4 Environmental Score Overview
+        </h4>
         <p>
           This section explains how an environmental score for different regions
           is calculated. This score gives an idea of how the environment is
@@ -169,7 +181,7 @@ export default function ContentMethods() {
           quality, temperature, precipitation, and green spaces. <br />
           Here's are the most important components:
         </p>
-        <ul>
+        <ul className="ml-2">
           <li>
             1. Air Quality: This is measured by looking at five different types
             of pollutants in the air. Each pollutant is scored on a scale of
@@ -206,7 +218,7 @@ export default function ContentMethods() {
           temperatures, decrease the score, although the relationship is not
           always linear.
         </p>
-        <h4 className="text-lg font-semibold">2.4.1 Air Quality Score</h4>
+        <h4 className="text-md font-semibold">2.4.1 Air Quality Score</h4>
         <p>
           We first calculate the Air Quality Index (AQI) based on the
           measurements of five pollutants: PM2.5, NO2, CO, SO2, and O3. We
@@ -282,8 +294,8 @@ export default function ContentMethods() {
           sub-indices. This means that the AQI reflects the level of the most
           problematic pollutant at that time.
         </p>
-        <div className="w-full bg-[#DEEDFF] flex justify-center items-center py-7 px-10 my-5 rounded">
-          <p className="italic">
+        <div className="w-full bg-[#DEEDFF] flex justify-center items-center py-7 px-16 my-5 rounded">
+          <p className="italic text-center">
             For example, if the NO2 level is higher than the other pollutants,
             the NO2 sub-index will be the final AQI score. This is done because
             the health effects of the worst pollutant are considered to
@@ -295,7 +307,7 @@ export default function ContentMethods() {
           indicates poorer air quality with greater potential impact on human
           health. AQI scores are as follows:
         </p>
-        <ul>
+        <ul className="ml-2">
           <li>
             <span className="mr-2 text-lg">&#x2022;</span>0 to 50 represents
             good air quality
@@ -334,8 +346,8 @@ export default function ContentMethods() {
           (NO2, CO, SO2, O3, and PM 2.5). The individual scores are then grouped
           by year and ranked relative to the 0-100 range.
         </p>
-        <h4 className="text-lg font-semibold">2.4.2 Extreme Weather Score</h4>
-        <span className=" ml-2">1. Extreme Temperatures:</span>
+        <h4 className="text-md font-semibold">2.4.2 Extreme Weather Score</h4>
+        <span className=" ml-2 italic">1. Extreme Temperatures:</span>
         <p>
           We take data on the average temperature of each region from 2000-2010
           to determine the 90th and 10th percentile. We use this to identify a
@@ -359,7 +371,7 @@ export default function ContentMethods() {
           We additionally compute the annual percentage change in the region’s
           maximum temperature.
         </p>
-        <span className=" ml-2">2. Extreme Precipitation:</span>
+        <span className=" ml-2 italic">2. Extreme Precipitation:</span>
         <p>
           We take data on the average precipitation of each region from
           2000-2010 to determine the 90th and 10th percentile. We use this to
@@ -383,14 +395,16 @@ export default function ContentMethods() {
           We additionally compute the annual percentage change in the region’s
           maximum precipitation.
         </p>
-        <span className=" ml-2">3. Extreme Weather score calculation:</span>
+        <span className=" ml-2 italic">
+          3. Extreme Weather score calculation:
+        </span>
         <p>
           We apply PCA on these metrics to produce the Extreme Weather score.
           The individual scores are then grouped by year and ranked relative to
           the 0-100 range.
         </p>
-        <h4 className="text-lg font-semibold">2.4.3 Green Space Score</h4>
-        <ul>
+        <h4 className="text-md font-semibold">2.4.3 Green Space Score</h4>
+        <ul className="ml-2">
           <li>
             1. Land cover data processing: The raw Dynamic World V1 land cover
             data is extracted using Google Earth Engine. The mode of the annual
