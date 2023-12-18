@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function ContentMethods() {
   return (
     <div className="flex flex-col gap-6">
-      <div id="methodology" className="w-full flex">
+      <div id="methods" className="w-full flex">
         <span className="text-2xl flex justify-center items-center w-[33px] h-[33px] bg-[#4345AA] text-white font-bold">
           2
         </span>
@@ -14,17 +14,27 @@ export default function ContentMethods() {
       <h2 className="text-3xl text-[#4345AA] font-bold ">Methods</h2>
       {/* 2.1 */}
       <div className="flex flex-col gap-4 ">
-        <h4 className="text-xl font-semibold">
-          2.1 Luminosity Per Capita calculations
+        <h4 className="text-xl font-semibold" id="indicator-selection">
+          2.1 Indicator Selection
         </h4>
         <p>
           We utilized a wide variety of geospatial, publicly available, and
-          frequently updated datasets to construct indicators that make up the
-          Green Economy Diagnostics Tool’s scores. The scalable and modular
-          nature of these datasets allow us to rapidly deploy the GED for any
-          country on demand. They were also chosen based on the availability and
-          comprehensiveness of their technical documentation and existing
-          validation work.
+          frequently updated
+          <Link
+            href={
+              "https://docs.google.com/spreadsheets/d/1YgcIgIebj71lODs6rGbIyRutxBKLmvJK4WjVGjgT1Y4/edit?pli=1#gid=0"
+            }
+            alt="datasets"
+            target="_blank"
+            className="hover:text-[#4345AA] underline"
+          >
+            datasets
+          </Link>
+          to construct indicators that make up the Green Economy Diagnostics
+          Tool’s scores. The scalable and modular nature of these datasets allow
+          us to rapidly deploy the GED for any country on demand. They were also
+          chosen based on the availability and comprehensiveness of their
+          technical documentation and existing validation work.
         </p>
         <p>
           Datasets were sought based on two themes: Economic Development and
@@ -45,7 +55,7 @@ export default function ContentMethods() {
       </div>
       {/* 2.2 */}
       <div className="flex flex-col gap-4 ">
-        <h4 className="text-xl font-semibold">
+        <h4 className="text-xl font-semibold" id="pca">
           2.2 Principal Component Analysis
         </h4>
         <p>
@@ -53,18 +63,37 @@ export default function ContentMethods() {
           several sub-scores. Since these sub-scores are constructed using many
           different metrics, with the prospect of additional metrics being
           incorporated in the future, we cannot just combine them by simple
-          additions. Instead, we use a method called{" "}
-          <u>Principal Component Analysis (PCA)</u> that extracts the most
-          relevant information from these metrics and combines them into indices
-          to represent the above components. PCA is endorsed by the OECD as a{" "}
-          <u>recommended technique for constructing composite indicators</u>.
-          The values of the reduced indices from PCA are then normalized to a
+          additions. Instead, we use a method called
+          <Link
+            href={
+              "https://medium.com/m/global-identity-2?redirectUrl=https%3A%2F%2Ftowardsdatascience.com%2Fthe-most-gentle-introduction-to-principal-component-analysis-9ffae371e93b"
+            }
+            className="hover:text-[#4345AA] underline"
+            target="_blank"
+          >
+            Principal Component Analysis (PCA)
+          </Link>
+          that extracts the most relevant information from these metrics and
+          combines them into indices to represent the above components. PCA is
+          endorsed by the OECD as a
+          <Link
+            href={
+              "https://www.oecd-ilibrary.org/economics/handbook-on-constructing-composite-indicators_533411815016;jsessionid=147WcmBxPnJMSAP1ZXcer6rsh-lc-9Xll0SmeovW.ip-10-240-5-163"
+            }
+            className="hover:text-[#4345AA] underline"
+            target="_blank"
+          >
+            recommended technique for constructing composite indicators
+          </Link>
+          . The values of the reduced indices from PCA are then normalized to a
           scale of 0-100.
         </p>
       </div>
       {/* 2.3 */}
       <div className="flex flex-col gap-4 ">
-        <h4 className="text-xl font-semibold">2.3 Economic Score Overview</h4>
+        <h4 className="text-xl font-semibold" id="econ-score-review">
+          2.3 Economic Score Overview
+        </h4>
         <p>
           This section presents the methodology for calculating an economic
           score for different regions which aims to represent their levels of
@@ -171,7 +200,7 @@ export default function ContentMethods() {
       </div>
       {/* 2.4 */}
       <div className="flex flex-col gap-4 ">
-        <h4 className="text-xl font-semibold">
+        <h4 className="text-xl font-semibold" id="env-score-overview">
           2.4 Environmental Score Overview
         </h4>
         <p>
@@ -431,7 +460,7 @@ export default function ContentMethods() {
             then grouped by year and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-lg font-semibold">
+        <h4 className="text-md font-semibold">
           2.4.4 Environmental Score Calculations
         </h4>
         <p>

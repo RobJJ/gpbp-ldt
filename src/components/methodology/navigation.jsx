@@ -31,19 +31,22 @@ export default function MethodologyNavigation() {
       <div className=" flex flex-col gap-3 font-inter">
         <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
           <span>2.</span>
-          <Link href={"#envr"}>Methods</Link>
+          <Link href={"#methods"}>Methods</Link>
         </h3>
         <div className="flex flex-col gap-3   pl-6">
-          <Link href={"#envr.1"} className="hover:text-[#4345AA] font-semibold">
+          <Link
+            href={"#indicator-selection"}
+            className="hover:text-[#4345AA] font-semibold"
+          >
             2.1 Indicator Selection
           </Link>
-          <Link href={"#envr.2"} className="hover:text-[#4345AA] font-semibold">
+          <Link href={"#pca"} className="hover:text-[#4345AA] font-semibold">
             2.2 Principal Component Analysis
           </Link>
           {/* nested */}
           <div className="flex flex-col gap-2">
             <Link
-              href={"#envr.3"}
+              href={"#econ-score-review"}
               className="hover:text-[#4345AA] font-semibold"
             >
               2.3 Economic Score Overview
@@ -55,7 +58,7 @@ export default function MethodologyNavigation() {
           {/* nested */}
           <div className="flex flex-col gap-2">
             <Link
-              href={"#envr.4"}
+              href={"#env-score-overview"}
               className="hover:text-[#4345AA] font-semibold"
             >
               2.4 Environmental Score Overview
