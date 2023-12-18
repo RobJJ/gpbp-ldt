@@ -19,7 +19,7 @@ export default function ContentMethods() {
         </h4>
         <p>
           We utilized a wide variety of geospatial, publicly available, and
-          frequently updated
+          frequently updated{" "}
           <Link
             href={
               "https://docs.google.com/spreadsheets/d/1YgcIgIebj71lODs6rGbIyRutxBKLmvJK4WjVGjgT1Y4/edit?pli=1#gid=0"
@@ -29,7 +29,7 @@ export default function ContentMethods() {
             className="hover:text-[#4345AA] underline"
           >
             datasets
-          </Link>
+          </Link>{" "}
           to construct indicators that make up the Green Economy Diagnostics
           Tool&apos;s scores. The scalable and modular nature of these datasets
           allow us to rapidly deploy the GED for any country on demand. They
@@ -63,7 +63,7 @@ export default function ContentMethods() {
           several sub-scores. Since these sub-scores are constructed using many
           different metrics, with the prospect of additional metrics being
           incorporated in the future, we cannot just combine them by simple
-          additions. Instead, we use a method called
+          additions. Instead, we use a method called{" "}
           <Link
             href={
               "https://medium.com/m/global-identity-2?redirectUrl=https%3A%2F%2Ftowardsdatascience.com%2Fthe-most-gentle-introduction-to-principal-component-analysis-9ffae371e93b"
@@ -72,10 +72,10 @@ export default function ContentMethods() {
             target="_blank"
           >
             Principal Component Analysis (PCA)
-          </Link>
+          </Link>{" "}
           that extracts the most relevant information from these metrics and
           combines them into indices to represent the above components. PCA is
-          endorsed by the OECD as a
+          endorsed by the OECD as a{" "}
           <Link
             href={
               "https://www.oecd-ilibrary.org/economics/handbook-on-constructing-composite-indicators_533411815016;jsessionid=147WcmBxPnJMSAP1ZXcer6rsh-lc-9Xll0SmeovW.ip-10-240-5-163"
