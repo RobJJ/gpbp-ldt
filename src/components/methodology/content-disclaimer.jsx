@@ -11,7 +11,7 @@ export default function ContentDisclaimer() {
       </h2>
       <p>
         The following provides an overview of the methodology used to compute
-        the GED’s indices. The World Bank team is preparing a comprehensive
+        the GED&apos;s indices. The World Bank team is preparing a comprehensive
         document with additional details to the methodology. The team will also
         work with a small cohort of local governments to further refine the
         overall methodology and develop country specific case studies and use
