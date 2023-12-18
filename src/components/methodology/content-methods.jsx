@@ -31,10 +31,10 @@ export default function ContentMethods() {
             datasets
           </Link>
           to construct indicators that make up the Green Economy Diagnostics
-          Tool’s scores. The scalable and modular nature of these datasets allow
-          us to rapidly deploy the GED for any country on demand. They were also
-          chosen based on the availability and comprehensiveness of their
-          technical documentation and existing validation work.
+          Tool&apos;s scores. The scalable and modular nature of these datasets
+          allow us to rapidly deploy the GED for any country on demand. They
+          were also chosen based on the availability and comprehensiveness of
+          their technical documentation and existing validation work.
         </p>
         <p>
           Datasets were sought based on two themes: Economic Development and
@@ -48,7 +48,7 @@ export default function ContentMethods() {
         </p>
         <p>
           Environmental Performance indicators were selected based on how they
-          reflect a region’s environmental conditions. They are further
+          reflect a region&apos;s environmental conditions. They are further
           classified into three sub-domains: Air Pollution, Extreme Weather
           Conditions, and Green Space.
         </p>
@@ -59,7 +59,7 @@ export default function ContentMethods() {
           2.2 Principal Component Analysis
         </h4>
         <p>
-          The GED’s Economic and Environmental Scores are each composed of
+          The GED&apos;s Economic and Environmental Scores are each composed of
           several sub-scores. Since these sub-scores are constructed using many
           different metrics, with the prospect of additional metrics being
           incorporated in the future, we cannot just combine them by simple
@@ -141,7 +141,7 @@ export default function ContentMethods() {
               className="underline hover:text-[#4345AA]"
               target="_blank"
             >
-              505Economics’
+              505Economics&apos;
             </Link>{" "}
             algorithm.
           </li>
@@ -195,7 +195,7 @@ export default function ContentMethods() {
         </h4>
         <p>
           The Economic Score is calculated using the weighted average of a given
-          region at a given {"year’s"} Utility and Built Area Scores. The
+          region at a given year&apos;s Utility and Built Area Scores. The
           weights are set to be equal. The individual scores are then grouped by
           year and ranked relative to the 0-100 scale.
         </p>
@@ -235,8 +235,8 @@ export default function ContentMethods() {
             3. Green Space: We use satellite images to see how much of a region
             is covered by green spaces like forests, grass, and shrubs, and
             whether this is increasing or decreasing over time. We also take a
-            look at the annual change in the {"region’s"} built environment when
-            {"there’s"} a decrease in green space
+            look at the annual change in the region&apos;s built environment
+            when there&apos;s a decrease in green space
           </li>
         </ul>
         <p>
@@ -320,7 +320,7 @@ export default function ContentMethods() {
         </ul>
         <p>
           If these conditions {"aren't"} met, the AQI is set as {"'NaN'"} (i.e.
-          {"it’s"} a missing value), a marker indicating an undefined value.
+          it&apos;s a missing value), a marker indicating an undefined value.
         </p>
         <p>
           The final AQI itself is calculated as the maximum value of these
@@ -403,8 +403,8 @@ export default function ContentMethods() {
           percentage of number of hot and cold days.
         </p>
         <p>
-          We additionally compute the annual percentage change in the region’s
-          maximum temperature.
+          We additionally compute the annual percentage change in the
+          region&apos;s maximum temperature.
         </p>
         <span className=" ml-2 italic">2. Extreme Precipitation:</span>
         <p>
@@ -427,9 +427,8 @@ export default function ContentMethods() {
           percentage of number of wet and dry days.
         </p>
         <p>
-          We additionally compute the annual percentage change in the{" "}
-          {"region’s"}
-          maximum precipitation.
+          We additionally compute the annual percentage change in the
+          region&apos;s maximum precipitation.
         </p>
         <span className=" ml-2 italic">
           3. Extreme Weather score calculation:
@@ -474,7 +473,7 @@ export default function ContentMethods() {
         </h4>
         <p>
           The Environment Score is calculated using the weighted average of a
-          given region at a given {"year’s"} Air Quality, Extreme Weather, and
+          given region at a given year&apos;s Air Quality, Extreme Weather, and
           Green Space Scores. The weights are set to be equal. The individual
           scores are then grouped by year and ranked relative to the 0-100
           scale.
