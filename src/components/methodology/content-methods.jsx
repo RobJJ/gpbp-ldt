@@ -124,7 +124,7 @@ export default function ContentMethods() {
           and productive economy. This is indicative of a positive economic
           development in the region Conversely, lower scores could signal
           economic slowdown or stagnation in the region. The economic score thus
-          gives us an overall snapshot of the region's economic health and
+          gives us an overall snapshot of the region&apos;s economic health and
           trajectory.
         </p>
         <h4 className="text-md font-semibold" id="2.3.1">
@@ -210,7 +210,7 @@ export default function ContentMethods() {
           is calculated. This score gives an idea of how the environment is
           performing in a particular region, based on various factors like air
           quality, temperature, precipitation, and green spaces. <br />
-          Here's are the most important components:
+          Here&apos;s are the most important components:
         </p>
         <ul className="ml-2">
           <li>
@@ -225,7 +225,8 @@ export default function ContentMethods() {
           <li>
             2. Weather: We look at the temperature for every day in the past
             decade, find out the yearly change in the maximum recorded
-            temperature, what's "extremely hot" (top 10%) and "extremely cold"
+            temperature, what&apos;s {"extremely hot"} (top 10%) and{" "}
+            {"extremely cold"}
             (bottom 10%), and then see how many such days there were in each
             year. Similarly, we also keep track of the change in the maximum
             amount of rainfall in a year, and the proportion of extremely wet or
@@ -386,7 +387,7 @@ export default function ContentMethods() {
         <p>
           We take data on the average temperature of each region from 2000-2010
           to determine the 90th and 10th percentile. We use this to identify a
-          'hot threshold' (90th percentile) and a 'cold threshold' (10th
+          {"hot threshold"} (90th percentile) and a {"cold threshold"} (10th
           percentile).
         </p>
         <p>
@@ -410,7 +411,7 @@ export default function ContentMethods() {
         <p>
           We take data on the average precipitation of each region from
           2000-2010 to determine the 90th and 10th percentile. We use this to
-          identify a 'wet threshold' (90th percentile) and a 'dry threshold'
+          identify a {"wet threshold"} (90th percentile) and a {"dry threshold"}
           (10th percentile).
         </p>
         <p>
