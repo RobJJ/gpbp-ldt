@@ -195,9 +195,9 @@ export default function ContentMethods() {
         </h4>
         <p>
           The Economic Score is calculated using the weighted average of a given
-          region at a given year’s Utility and Built Area Scores. The weights
-          are set to be equal. The individual scores are then grouped by year
-          and ranked relative to the 0-100 scale.
+          region at a given {"year’s"} Utility and Built Area Scores. The
+          weights are set to be equal. The individual scores are then grouped by
+          year and ranked relative to the 0-100 scale.
         </p>
       </div>
       {/* 2.4 */}
@@ -235,8 +235,8 @@ export default function ContentMethods() {
             3. Green Space: We use satellite images to see how much of a region
             is covered by green spaces like forests, grass, and shrubs, and
             whether this is increasing or decreasing over time. We also take a
-            look at the annual change in the region’s built environment when
-            there’s a decrease in green space
+            look at the annual change in the {"region’s"} built environment when
+            {"there’s"} a decrease in green space
           </li>
         </ul>
         <p>
@@ -271,8 +271,8 @@ export default function ContentMethods() {
         <span>
           1. <b>PM2.5 Sub-Index Calculation:</b> The PM2.5 values are measured
           in µg/m³. These are then re-scaled to create a value between 0-500
-          (based on guidance from the EPA. The PM2.5 Sub-Index value is a scaled
-          representation of the PM2.5 concentration.
+          (based on guidance from the EPA). The PM2.5 Sub-Index value is a
+          scaled representation of the PM2.5 concentration.
         </span>
         <span>
           2. <b>NO2 Sub-Index Calculation:</b> The NO2 values are expressed in
@@ -320,7 +320,7 @@ export default function ContentMethods() {
         </ul>
         <p>
           If these conditions {"aren't"} met, the AQI is set as {"'NaN'"} (i.e.
-          it’s a missing value), a marker indicating an undefined value.
+          {"it’s"} a missing value), a marker indicating an undefined value.
         </p>
         <p>
           The final AQI itself is calculated as the maximum value of these
@@ -427,7 +427,8 @@ export default function ContentMethods() {
           percentage of number of wet and dry days.
         </p>
         <p>
-          We additionally compute the annual percentage change in the region’s
+          We additionally compute the annual percentage change in the{" "}
+          {"region’s"}
           maximum precipitation.
         </p>
         <span className=" ml-2 italic">
@@ -473,9 +474,10 @@ export default function ContentMethods() {
         </h4>
         <p>
           The Environment Score is calculated using the weighted average of a
-          given region at a given year’s Air Quality, Extreme Weather, and Green
-          Space Scores. The weights are set to be equal. The individual scores
-          are then grouped by year and ranked relative to the 0-100 scale.
+          given region at a given {"year’s"} Air Quality, Extreme Weather, and
+          Green Space Scores. The weights are set to be equal. The individual
+          scores are then grouped by year and ranked relative to the 0-100
+          scale.
         </p>
         <p>
           We calculate the overall environmental score using the following
