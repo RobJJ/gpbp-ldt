@@ -14,18 +14,6 @@ export default function MethodologyNavigation() {
         <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
           <span>1.</span> <Link href={"#disclaimer"}>Disclaimer</Link>
         </h3>
-        {/* old setup */}
-        {/* <div className="flex flex-col gap-2  pl-6 ">
-          <Link href={"#econ.1"} className="hover:text-[#4345AA]">
-            1.1 Luminosity Per Capita Calculation
-          </Link>
-          <Link href={"#econ.2"} className="hover:text-[#4345AA]">
-            1.2 Luminosity Growth Rate Calculation
-          </Link>
-          <Link href={"#econ.3"} className="hover:text-[#4345AA]">
-            1.3 Calculating overall Economic Score
-          </Link>
-        </div> */}
       </div>
       {/* 2. METHODS */}
       <div className=" flex flex-col gap-3 font-inter">
@@ -51,9 +39,15 @@ export default function MethodologyNavigation() {
             >
               2.3 Economic Score Overview
             </Link>
-            <span className="pl-6">2.3.1 Utility Score calculations</span>
-            <span className="pl-6">2.3.2 Built Area calculations</span>
-            <span className="pl-6">2.3.3 Economic Score calculations</span>
+            <Link href={"#2.3.1"} className="pl-6 hover:text-[#4345AA]">
+              2.3.1 Utility Score calculations
+            </Link>
+            <Link href={"#2.3.2"} className="pl-6 hover:text-[#4345AA]">
+              2.3.2 Built Area calculations
+            </Link>
+            <Link href={"#2.3.3"} className="pl-6 hover:text-[#4345AA]">
+              2.3.3 Economic Score calculations
+            </Link>
           </div>
           {/* nested */}
           <div className="flex flex-col gap-2">
@@ -63,10 +57,18 @@ export default function MethodologyNavigation() {
             >
               2.4 Environmental Score Overview
             </Link>
-            <span className="pl-6">2.4.1 Air Quality Score</span>
-            <span className="pl-6">2.4.2 Extreme Weather Score</span>
-            <span className="pl-6">2.4.3 Green Space Score</span>
-            <span className="pl-6">2.4.4 Environment Score calculations</span>
+            <Link href={"#2.4.1"} className="pl-6 hover:text-[#4345AA]">
+              2.4.1 Air Quality Score
+            </Link>
+            <Link href={"#2.4.2"} className="pl-6 hover:text-[#4345AA]">
+              2.4.2 Extreme Weather Score
+            </Link>
+            <Link href={"#2.4.3"} className="pl-6 hover:text-[#4345AA]">
+              2.4.3 Green Space Score
+            </Link>
+            <Link href={"#2.4.4"} className="pl-6 hover:text-[#4345AA]">
+              2.4.4 Environment Score calculations
+            </Link>
           </div>
         </div>
       </div>

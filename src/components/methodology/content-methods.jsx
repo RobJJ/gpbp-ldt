@@ -127,7 +127,7 @@ export default function ContentMethods() {
           gives us an overall snapshot of the region's economic health and
           trajectory.
         </p>
-        <h4 className="text-md font-semibold">
+        <h4 className="text-md font-semibold" id="2.3.1">
           2.3.1 Utility Score Calculations
         </h4>
         <ul className="ml-2">
@@ -163,7 +163,9 @@ export default function ContentMethods() {
             and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-md font-semibold">2.3.2 Built Area Calculations</h4>
+        <h4 className="text-md font-semibold" id="2.3.2">
+          2.3.2 Built Area Calculations
+        </h4>
         <ul className="ml-2">
           <li>
             1. Land cover data processing: The raw Dynamic World V1 land cover
@@ -188,7 +190,7 @@ export default function ContentMethods() {
             by year and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-md font-semibold">
+        <h4 className="text-md font-semibold" id="2.3.3">
           2.3.3 Economic Score Calculations
         </h4>
         <p>
@@ -247,7 +249,9 @@ export default function ContentMethods() {
           temperatures, decrease the score, although the relationship is not
           always linear.
         </p>
-        <h4 className="text-md font-semibold">2.4.1 Air Quality Score</h4>
+        <h4 className="text-md font-semibold" id="2.4.1">
+          2.4.1 Air Quality Score
+        </h4>
         <p>
           We first calculate the Air Quality Index (AQI) based on the
           measurements of five pollutants: PM2.5, NO2, CO, SO2, and O3. We
@@ -375,7 +379,9 @@ export default function ContentMethods() {
           (NO2, CO, SO2, O3, and PM 2.5). The individual scores are then grouped
           by year and ranked relative to the 0-100 range.
         </p>
-        <h4 className="text-md font-semibold">2.4.2 Extreme Weather Score</h4>
+        <h4 className="text-md font-semibold" id="2.4.2">
+          2.4.2 Extreme Weather Score
+        </h4>
         <span className=" ml-2 italic">1. Extreme Temperatures:</span>
         <p>
           We take data on the average temperature of each region from 2000-2010
@@ -432,7 +438,9 @@ export default function ContentMethods() {
           The individual scores are then grouped by year and ranked relative to
           the 0-100 range.
         </p>
-        <h4 className="text-md font-semibold">2.4.3 Green Space Score</h4>
+        <h4 className="text-md font-semibold" id="2.4.3">
+          2.4.3 Green Space Score
+        </h4>
         <ul className="ml-2">
           <li>
             1. Land cover data processing: The raw Dynamic World V1 land cover
@@ -460,7 +468,7 @@ export default function ContentMethods() {
             then grouped by year and ranked relative to the 0-100 scale.
           </li>
         </ul>
-        <h4 className="text-md font-semibold">
+        <h4 className="text-md font-semibold" id="2.4.4">
           2.4.4 Environmental Score Calculations
         </h4>
         <p>
