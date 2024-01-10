@@ -17,7 +17,7 @@ export default function FilterNavbarExp({ country }) {
         <FilterButtonYear />
         <FilterButtonScoreOne />
         <FilterButtonScoreTwo />
-        <LayerToggle />
+        <LayerToggle country={country} />
       </div>
       <div className=" flex-none mr-6 ">
         <ResetFiltersButton />

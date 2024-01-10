@@ -17,8 +17,8 @@ export default async function CountryPageListComponent({
       {/* header */}
       <section className="w-full flex justify-between bg-white  py-1 items-center font-inter">
         <span className="text-lg bg-white">
-          Provinces in <b>{capitalizeFirstLetter(country)}</b> in{" "}
-          <b>{searchParams.year}</b>
+          {country === "serbia" ? "Districts" : "Provinces"} in{" "}
+          <b>{capitalizeFirstLetter(country)}</b> in <b>{searchParams.year}</b>
         </span>
       </section>
       {/* body - header */}
@@ -29,7 +29,7 @@ export default async function CountryPageListComponent({
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
           <span>Environment</span>
           <span
-            className="relative group
+            className="relative group cursor-pointer
               "
           >
             <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-3 px-4 text-center">
@@ -63,7 +63,7 @@ export default async function CountryPageListComponent({
         <span className="bg-white w-1/3 border-r border-y border-black flex  px-2 py-1 items-center gap-2 ">
           <span>Economic</span>
           <span
-            className="relative group
+            className="relative group cursor-pointer
               "
           >
             <div className=" w-48 tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-3 px-4 text-center">

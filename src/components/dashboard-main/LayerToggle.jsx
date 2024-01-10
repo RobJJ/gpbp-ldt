@@ -14,7 +14,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function LayerToggle() {
+export default function LayerToggle({ country }) {
   const [scatterType, setScatterType] = useAtom(scatterViewType);
   const router = useRouter();
   const pathname = usePathname();
@@ -31,11 +31,30 @@ export default function LayerToggle() {
     );
   };
 
+  const tempSerbiaWorkaround = (capitalizedScatterType) => {
+    // the scatterType is set based on your choice. We are leaving this as Province and District as per data-tag to keep app in sync
+    // We need a temp workaround for Serbia to show Districts and Municipalities instead of Provinces and Districts
+    if (country === "serbia") {
+      // set new display value for serbia specific terminology
+      let valueToDisplay;
+      if (capitalizedScatterType === "Provinces") {
+        valueToDisplay = "Districts";
+      } else if (capitalizedScatterType === "Districts") {
+        valueToDisplay = "Municipalities";
+      }
+      return valueToDisplay;
+    } else if (country !== "serbia") {
+      // if country is not Serbia, return the capitalizedScatterType as per usual
+      return capitalizedScatterType;
+    }
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left font-inter">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-          {capitalizeFirstLetter(scatterType)}
+          {tempSerbiaWorkaround(capitalizeFirstLetter(scatterType))}
+
           <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-black"
             aria-hidden="true"
@@ -64,7 +83,7 @@ export default function LayerToggle() {
                     "block text-left pl-3 py-2 text-sm w-full"
                   )}
                 >
-                  Show Provinces
+                  Show {country === "serbia" ? "Districts" : "Provinces"}
                 </button>
               )}
             </Menu.Item>
@@ -78,7 +97,7 @@ export default function LayerToggle() {
                     "block text-left pl-3 py-2 text-sm w-full"
                   )}
                 >
-                  Show Districts
+                  Show {country === "serbia" ? "Municipalities" : "Districts"}
                 </button>
               )}
             </Menu.Item>
