@@ -135,6 +135,7 @@ export default function MapComponentParentAlpha({
             districtGeoData={data.districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
+            country={country}
           />
         )}
         {/* Map - District */}
@@ -144,6 +145,7 @@ export default function MapComponentParentAlpha({
             districtGeoData={data.districtGeoData}
             gedDataProvince={gedDataProvince}
             gedDataDistrict={gedDataDistrict}
+            country={country}
           />
         )}
       </MapContainer>

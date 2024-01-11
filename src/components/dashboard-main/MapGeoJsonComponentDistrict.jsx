@@ -17,6 +17,7 @@ export default function MapGeoJsonComponentDistrict({
   districtGeoData,
   gedDataProvince,
   gedDataDistrict,
+  country,
 }) {
   const [currentGeoLayers, setCurrentGeoLayers] = useState(districtGeoData);
   //
@@ -223,7 +224,7 @@ export default function MapGeoJsonComponentDistrict({
       sticky: true,
     };
 
-    let content = createPopupContent(layer.feature.properties);
+    let content = createPopupContent(layer.feature.properties, country);
 
     layer.bindTooltip(content, options).openTooltip();
   };

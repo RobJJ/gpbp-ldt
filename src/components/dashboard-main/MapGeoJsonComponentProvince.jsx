@@ -16,8 +16,10 @@ export default function MapGeoJsonComponentProvince({
   districtGeoData,
   gedDataProvince,
   gedDataDistrict,
+  country,
 }) {
   //
+
   const [currentGeoLayers, setCurrentGeoLayers] = useState(provinceGeoData[0]);
   //
   let hashkey = uuidv4();
@@ -246,7 +248,7 @@ export default function MapGeoJsonComponentProvince({
       sticky: true,
     };
 
-    let content = createPopupContent(layer.feature.properties);
+    let content = createPopupContent(layer.feature.properties, country);
     layer.bindTooltip(content, options).openTooltip();
   };
 
