@@ -24,7 +24,7 @@ export default async function CountryPageListComponent({
       {/* body - header */}
       <section className="w-full bg-white font-semibold flex font-inter">
         <span className="bg-white border border-black w-1/3 px-2 py-1">
-          Province
+          {country === "serbia" ? "District" : "Province"}
         </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
           <span>Environment</span>
