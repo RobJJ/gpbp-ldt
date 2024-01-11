@@ -182,7 +182,9 @@ export default function ScatterComponentParentDistricts({
       useHTML: true,
       headerFormat: "<table>",
       pointFormat:
-        `<tr><td colspan="2"><b>District</b>: {point.DISTRICT}</td></tr>` +
+        `<tr><td colspan="2"><b><u>${
+          country === "serbia" ? "Municipality" : "District"
+        }</u></b>: {point.DISTRICT}</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
         `<tr><td style='color:lightblue'>Click to view</td></tr>`,

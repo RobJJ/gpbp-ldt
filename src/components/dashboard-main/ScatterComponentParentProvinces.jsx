@@ -165,8 +165,12 @@ export default function ScatterComponentParentProvinces({
       pointFormat:
         `<tr><td colspan="2">${
           provinceSelected
-            ? `<b><u>District</u></b>: {point.DISTRICT}`
-            : `<b><u>Province</u></b>: {point.PROVINCE}`
+            ? `<b><u>${
+                country === "serbia" ? "Municipality" : "District"
+              }</u></b>: {point.DISTRICT}`
+            : `<b><u>${
+                country === "serbia" ? "District" : "Province"
+              }</u></b>: {point.PROVINCE}`
         }</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
         `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
@@ -272,8 +276,12 @@ export default function ScatterComponentParentProvinces({
         pointFormat:
           `<tr><td colspan="2">${
             provinceSelected
-              ? `<b><u>District</u></b>: {point.DISTRICT}`
-              : `<b><u>Province</u></b>: {point.PROVINCE}`
+              ? `<b><u>${
+                  country === "serbia" ? "Municipality" : "District"
+                }</u></b>: {point.DISTRICT}`
+              : `<b><u>${
+                  country === "serbia" ? "District" : "Province"
+                }</u></b>: {point.PROVINCE}`
           }</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
@@ -315,8 +323,12 @@ export default function ScatterComponentParentProvinces({
         pointFormat:
           `<tr><td colspan="2">${
             provinceSelected
-              ? `<b><u>District</u></b>: {point.DISTRICT}`
-              : `<b><u>Province</u></b>: {point.PROVINCE}`
+              ? `<b><u>${
+                  country === "serbia" ? "Municipality" : "District"
+                }</u></b>: {point.DISTRICT}`
+              : `<b><u>${
+                  country === "serbia" ? "District" : "Province"
+                }</u></b>: {point.PROVINCE}`
           }</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_one]}</b>: {point.x}</td></tr>` +
           `<tr><td><b>${urlToLableMatching[score_two]}</b>: {point.y}</td></tr>` +
