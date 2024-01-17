@@ -17,6 +17,29 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
+            {/* UPDATE : v 0.7.2  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  Jan 4th 2024 | Version 0.7.2 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  Country Specific Terminology
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
+                  Minor
+                </span>
+              </div>
+              <span className="">
+                Implemented user feedback on country specific terminology
+                related to regional administrative levels. This will be a
+                continuous process as we expand to support new countries and
+                gather input on how the application can be shaped to better
+                reflect the local context.
+              </span>
+            </div>
             {/* UPDATE : v 0.7.1  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
