@@ -4,6 +4,7 @@ import ContentSchema from "@/components/methodology/content-schema";
 import ContentFeedback from "@/components/methodology/content-feedback";
 import ContentDisclaimer from "@/components/methodology/content-disclaimer";
 import ContentMethods from "@/components/methodology/content-methods";
+import ContentAiPolicy from "@/components/methodology/content-ai-policy";
 
 export const metadata = {
   title: "GED: Methodology",
@@ -23,15 +24,19 @@ export default function MethodologyPage() {
           id="methodology"
           className=" p-1 w-full h-full flex flex-col gap-9 font-inter"
         >
-          {/* Content section : 1 : DISCLAIMER */}
+          {/* Content : 1 : DISCLAIMER */}
           <ContentDisclaimer />
-          {/* Content section : 2 : METHODS */}
+          {/* Content : 2 : METHODS */}
           <ContentMethods />
-          {/* Content section : 3 : SCHEMA */}
+          {/* Content : 3 : SCHEMA */}
           <div id="schema" className=" w-full flex flex-col gap-4">
             <ContentSchema />
           </div>
-          {/* Content section : 4 : FEEDBACK */}
+          {/* Content : 5 : AI POLICY */}
+
+          <ContentAiPolicy />
+
+          {/* Content : 4 : FEEDBACK */}
           <div className=" w-full flex pb-20 ">
             <ContentFeedback />
           </div>
