@@ -13,13 +13,16 @@ export const metadata = {
 export default function MethodologyPage() {
   return (
     <div className="w-full h-full flex overflow-auto">
-      {/* Navigation section : Right */}
+      {/* Navigation section : Left */}
       <section className="bg-[#F5F8FB] w-1/4 h-full flex flex-col gap-4 pt-14 pl-5 pr-3">
         <MethodologyNavigation />
       </section>
-      {/* Content section : Left */}
+      {/* Content section : Right */}
       <section className="bg-white w-3/4 h-full px-14 pt-14 overflow-auto scroll-smooth">
-        <main className=" p-1 w-full h-full flex flex-col gap-9 font-inter">
+        <main
+          id="methodology"
+          className=" p-1 w-full h-full flex flex-col gap-9 font-inter"
+        >
           {/* Content section : 1 : DISCLAIMER */}
           <ContentDisclaimer />
           {/* Content section : 2 : METHODS */}

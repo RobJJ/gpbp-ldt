@@ -72,10 +72,24 @@ export default function MethodologyNavigation() {
           </div>
         </div>
       </div>
-      {/* 3. */}
+      {/* 3. SCHEMA */}
       <div className=" flex flex-col gap-1 font-inter">
         <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
           <span>3.</span> <Link href={"#schema"}>Schema</Link>
+        </h3>
+      </div>
+      {/* 4. Generative AI & Policy */}
+      <div className=" flex flex-col gap-1 font-inter">
+        <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
+          <span>4.</span>{" "}
+          <Link href={"#ai_policy"}>Generative AI & Policy</Link>
+        </h3>
+      </div>
+      {/* 5. Generative AI within the GED */}
+      <div className=" flex flex-col gap-1 font-inter">
+        <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
+          <span>5.</span>{" "}
+          <Link href={"#ai_ged"}>Generative AI within the GED</Link>
         </h3>
       </div>
     </>
