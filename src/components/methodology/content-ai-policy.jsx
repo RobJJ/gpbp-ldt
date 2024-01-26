@@ -1,7 +1,7 @@
 export default function ContentAiPolicy() {
   return (
     <div className="flex flex-col gap-6 ">
-      <div id="disclaimer" className="w-full flex">
+      <div id="ai_policy" className="w-full flex">
         <span className="text-2xl flex justify-center items-center w-[33px] h-[33px] bg-[#4345AA] text-white font-bold">
           4
         </span>

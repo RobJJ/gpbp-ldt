@@ -49,6 +49,7 @@
   background-color: white;
 }
 
+/* LEAFLET */
 .leaflet-control {
   z-index: 0 !important;
 }
