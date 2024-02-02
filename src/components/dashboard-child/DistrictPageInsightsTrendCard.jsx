@@ -43,7 +43,7 @@ export default function DistrictPageInsightsTrendCard({
           </span>
         </div>
       </section>
-      {country !== "serbia" ? (
+      {/* {country !== "serbia" ? (
         <section className="w-full h-full">
           <span>{insightsData.TRENDS.ECON_SCORE}</span>
           <span>{insightsData.TRENDS.ENVR_SCORE}</span>
@@ -54,7 +54,10 @@ export default function DistrictPageInsightsTrendCard({
         <section className="w-full h-full">
           <span>{insightsData.TRENDS}</span>
         </section>
-      )}
+      )} */}
+      <section className="w-full h-full">
+        <span>{insightsData.TRENDS}</span>
+      </section>
     </div>
   );
 }

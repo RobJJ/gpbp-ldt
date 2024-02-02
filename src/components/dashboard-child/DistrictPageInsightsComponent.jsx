@@ -9,6 +9,7 @@ export default async function DistrictPageInsightsComponent({
     country,
     decodeURIComponent(district)
   );
+  console.log("district binhTan", insights);
 
   return (
     <div className="w-full h-full bg-white flex ">

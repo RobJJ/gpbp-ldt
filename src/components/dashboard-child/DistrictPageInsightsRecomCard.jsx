@@ -42,7 +42,7 @@ export default function DistrictPageInsightsRecomCard({
           </span>
         </div>
       </section>
-      {country !== "serbia" ? (
+      {/* {country !== "serbia" ? (
         <section className="w-full h-full">
           <span>{insightsData.RECOMMENDATIONS.ECON_SCORE}</span>
           <span>{insightsData.RECOMMENDATIONS.ENVR_SCORE}</span>
@@ -53,7 +53,10 @@ export default function DistrictPageInsightsRecomCard({
         <section className="w-full h-full">
           <span>{insightsData.RECOMMENDATIONS}</span>
         </section>
-      )}
+      )} */}
+      <section className="w-full h-full">
+        <span>{insightsData.RECOMMENDATIONS}</span>
+      </section>
     </div>
   );
 }
