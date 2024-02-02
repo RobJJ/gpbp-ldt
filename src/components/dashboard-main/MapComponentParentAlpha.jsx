@@ -78,11 +78,11 @@ const countryMapSettings = {
   vietnam: {
     zoom: 6,
     minZoom: 5,
-    maxZoom: 8.5,
+    maxZoom: 10,
     defaultPos: [16.2, 105.614238],
     innerBounds: [
       [0.01335, 118.31279],
-      [26.31248, 96.377779],
+      [30.072027, 90.8709],
     ],
   },
 };
