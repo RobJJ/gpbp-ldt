@@ -75,6 +75,16 @@ const countryMapSettings = {
       [52.5, 92.5],
     ],
   },
+  vietnam: {
+    zoom: 6,
+    minZoom: 5,
+    maxZoom: 7,
+    defaultPos: [16.2, 105.614238],
+    innerBounds: [
+      [0.01335, 118.31279],
+      [26.31248, 96.377779],
+    ],
+  },
 };
 
 export default function MapComponentParentAlpha({
