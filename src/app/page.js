@@ -64,7 +64,7 @@ export default function Home({ searchParams }) {
           <VideoComponent />
   </div> */}
         {/* LEFT PANEL - CARDS */}
-        <div className="w-full flex flex-col gap-3  mt-5 font-poppins">
+        <div className="w-full flex flex-col gap-3 mt-5 font-poppins ">
           <h3 className="text-xl font-semibold">Part of the PIMxPAM Suite:</h3>
           <div className="w-full flex gap-5">
             <LandingPageCardComponent
@@ -74,9 +74,9 @@ export default function Home({ searchParams }) {
               icon={pimpamIcon}
             />
             <LandingPageCardComponent
-              header={"GPBP"}
-              text={"Geospation Planning & Budgeting Platform"}
-              link={"https://gpbprtd.eu.pythonanywhere.com/"}
+              header={"CCS"}
+              text={"Climate change screening"}
+              link={"https://gpbp.adamplatform.eu/"}
               icon={gpbpIcon}
             />
             <LandingPageCardComponent
