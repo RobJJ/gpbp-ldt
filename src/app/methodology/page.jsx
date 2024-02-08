@@ -16,7 +16,7 @@ export default function MethodologyPage() {
   return (
     <div className="w-full h-full flex overflow-auto">
       {/* Navigation section : Left */}
-      <section className="bg-[#F5F8FB] w-1/4 h-full flex flex-col gap-4 pt-14 pl-5 pr-3">
+      <section className="bg-[#F5F8FB] w-1/4 h-full flex flex-col gap-4 pt-14 pl-5 pr-3 overflow-auto">
         <MethodologyNavigation />
       </section>
       {/* Content section : Right */}
