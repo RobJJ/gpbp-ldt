@@ -89,7 +89,7 @@ export default function MethodologyNavigation() {
       <div className=" flex flex-col gap-1 font-inter">
         <h3 className="text-lg font-bold flex gap-2 hover:text-[#4345AA]">
           <span>5.</span>{" "}
-          <Link href={"#ai_ged"}>Generative AI within the GED</Link>
+          <Link href={"#ai_ged"}>Generative AI within the LDT</Link>
         </h3>
       </div>
     </>

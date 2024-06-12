@@ -2,8 +2,8 @@ import versioningImage from "../../../public/versioning.png";
 import Image from "next/image";
 
 export const metadata = {
-  title: "GED: Release Notes",
-  description: "Green Economy Diagnostic Tool",
+  title: "LDT: Release Notes",
+  description: "Local Development Tracker",
 };
 
 export default function ReleaseNotes() {
@@ -12,7 +12,7 @@ export default function ReleaseNotes() {
       {/* LEFT PANEL */}
       <div className=" w-4/6 h-full p-8 flex flex-col gap-5 bg-[#F5F8FB]">
         <div className="text-3xl font-poppins">
-          <b>Green Economy Development:</b> Release Notes
+          <b>Local Development Tracker:</b> Release Notes
         </div>
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
