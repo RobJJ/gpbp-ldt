@@ -37,7 +37,7 @@ export default function MethodologyNavigation() {
               href={"#econ-score-review"}
               className="hover:text-[#4345AA] font-semibold"
             >
-              2.3 Economic Score Overview
+              2.3 Prosperity Score Overview
             </Link>
             <Link href={"#2.3.1"} className="pl-6 hover:text-[#4345AA]">
               2.3.1 Utility Score calculations
@@ -46,7 +46,7 @@ export default function MethodologyNavigation() {
               2.3.2 Built Area calculations
             </Link>
             <Link href={"#2.3.3"} className="pl-6 hover:text-[#4345AA]">
-              2.3.3 Economic Score calculations
+              2.3.3 Prosperity Score calculations
             </Link>
           </div>
           {/* nested */}
@@ -55,7 +55,7 @@ export default function MethodologyNavigation() {
               href={"#env-score-overview"}
               className="hover:text-[#4345AA] font-semibold"
             >
-              2.4 Environmental Score Overview
+              2.4 Livability Score Overview
             </Link>
             <Link href={"#2.4.1"} className="pl-6 hover:text-[#4345AA]">
               2.4.1 Air Quality Score
@@ -67,7 +67,7 @@ export default function MethodologyNavigation() {
               2.4.3 Green Space Score
             </Link>
             <Link href={"#2.4.4"} className="pl-6 hover:text-[#4345AA]">
-              2.4.4 Environment Score calculations
+              2.4.4 Livability Score calculations
             </Link>
           </div>
         </div>

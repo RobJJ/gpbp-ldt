@@ -7,7 +7,7 @@ export default function ContentDisclaimer() {
         </span>
       </div>
       <h2 className="text-3xl text-[#4345AA] font-bold ">
-        Environmental Score Review
+        Livability Score Review
       </h2>
       <p>
         The following provides an overview of the methodology used to compute

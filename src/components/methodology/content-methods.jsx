@@ -30,24 +30,24 @@ export default function ContentMethods() {
           >
             datasets
           </Link>{" "}
-          to construct indicators that make up the Green Economy Diagnostics
-          Tool&apos;s scores. The scalable and modular nature of these datasets
-          allow us to rapidly deploy the GED for any country on demand. They
-          were also chosen based on the availability and comprehensiveness of
-          their technical documentation and existing validation work.
+          to construct indicators that make up the Local Development
+          Tracker&apos;s scores. The scalable and modular nature of these
+          datasets allow us to rapidly deploy the LDT for any country on demand.
+          They were also chosen based on the availability and comprehensiveness
+          of their technical documentation and existing validation work.
         </p>
         <p>
-          Datasets were sought based on two themes: Economic Development and
-          Environmental Performance.
+          Datasets were sought based on two themes: Prosperity Development and
+          Livability Performance.
         </p>
         <p>
-          Economic Development indicators are to be taken as proxies of
+          Prosperity Development indicators are to be taken as proxies of
           traditional economic indicators such as the Gross Domestic Output
           (GDP) which can be infrequently updated and limited in spatial
           granularity.
         </p>
         <p>
-          Environmental Performance indicators were selected based on how they
+          Livability Performance indicators were selected based on how they
           reflect a region&apos;s environmental conditions. They are further
           classified into three sub-domains: Air Pollution, Extreme Weather
           Conditions, and Green Space.
@@ -59,7 +59,7 @@ export default function ContentMethods() {
           2.2 Principal Component Analysis
         </h4>
         <p>
-          The GED&apos;s Economic and Environmental Scores are each composed of
+          The LDT&apos;s Prosperity and Livability Scores are each composed of
           several sub-scores. Since these sub-scores are constructed using many
           different metrics, with the prospect of additional metrics being
           incorporated in the future, we cannot just combine them by simple
@@ -92,10 +92,10 @@ export default function ContentMethods() {
       {/* 2.3 */}
       <div className="flex flex-col gap-4 ">
         <h4 className="text-xl font-semibold" id="econ-score-review">
-          2.3 Economic Score Overview
+          2.3 Prosperity Score Overview
         </h4>
         <p>
-          This section presents the methodology for calculating an economic
+          This section presents the methodology for calculating an Prosperity
           score for different regions which aims to represent their levels of
           economic development. It is based on two factors, each measures
           economic development from different perspectives: utility and the
@@ -118,8 +118,8 @@ export default function ContentMethods() {
         </ul>
         <p>
           Finally, we use Principle Component Analysis to construct the above
-          individual components of the Economic Score. we take the weighted
-          average of the scored components/indices as the economic score. This
+          individual components of the Prosperity Score. we take the weighted
+          average of the scored components/indices as the Prosperity score. This
           score spans from 0 to 100, with higher values denoting a more robust
           and productive economy. This is indicative of a positive economic
           development in the region Conversely, lower scores could signal
@@ -191,11 +191,11 @@ export default function ContentMethods() {
           </li>
         </ul>
         <h4 className="text-md font-semibold" id="2.3.3">
-          2.3.3 Economic Score Calculations
+          2.3.3 Prosperity Score Calculations
         </h4>
         <p>
-          The Economic Score is calculated using the weighted average of a given
-          region at a given year&apos;s Utility and Built Area Scores. The
+          The Prosperity Score is calculated using the weighted average of a
+          given region at a given year&apos;s Utility and Built Area Scores. The
           weights are set to be equal. The individual scores are then grouped by
           year and ranked relative to the 0-100 scale.
         </p>
@@ -206,8 +206,8 @@ export default function ContentMethods() {
           2.4 Environmental Score Overview
         </h4>
         <p>
-          This section explains how an environmental score for different regions
-          is calculated. This score gives an idea of how the environment is
+          This section explains how an Livability score for different regions is
+          calculated. This score gives an idea of how the environment is
           performing in a particular region, based on various factors like air
           quality, temperature, precipitation, and green spaces. <br />
           Here&apos;s are the most important components:
@@ -241,7 +241,7 @@ export default function ContentMethods() {
           </li>
         </ul>
         <p>
-          Similarly to the components of the Economic Score, we use Principle
+          Similarly to the components of the Prosperity Score, we use Principle
           Component Analysis to construct the individual components of the
           Environment Score. Their weighted average are then computed as the
           Environment Score, where higher scores represent a healthier
@@ -470,17 +470,17 @@ export default function ContentMethods() {
           </li>
         </ul>
         <h4 className="text-md font-semibold" id="2.4.4">
-          2.4.4 Environmental Score Calculations
+          2.4.4 Livability Score Calculations
         </h4>
         <p>
-          The Environment Score is calculated using the weighted average of a
+          The Livability Score is calculated using the weighted average of a
           given region at a given year&apos;s Air Quality, Extreme Weather, and
           Green Space Scores. The weights are set to be equal. The individual
           scores are then grouped by year and ranked relative to the 0-100
           scale.
         </p>
         <p>
-          We calculate the overall environmental score using the following
+          We calculate the overall Livability score using the following
           variables:
         </p>
         <div className="w-full">
@@ -492,12 +492,12 @@ export default function ContentMethods() {
           is used to combine them into their respective component scores. This
           is done to reduce dimensionality and deal with multicollinearity among
           the variables. After PCA, the weighted average of the component scores
-          are computed as the environmental score.
+          are computed as the Livability score.
         </p>
         <p>
           Note that indicators which are harmful for environment (like high
           ozone or PM2.5 levels, or extreme temperatures) are multiplied by -1
-          before analysis so that they decrease, not increase, the environmental
+          before analysis so that they decrease, not increase, the Livability
           score.
         </p>
       </div>

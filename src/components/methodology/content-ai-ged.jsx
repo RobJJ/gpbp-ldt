@@ -9,10 +9,10 @@ export default function Content_AI_GED() {
         </span>
       </div>
       <h2 className="text-3xl text-[#4345AA] font-bold ">
-        Generative AI within the GED
+        Generative AI within the LDT
       </h2>
       <p>
-        We decided to leverage the GED capabilities and the capabilities of
+        We decided to leverage the LDT capabilities and the capabilities of
         Generative AI to produce accurate, relevant, and useful insights and
         recommendations for a policy maker.
       </p>
@@ -22,7 +22,7 @@ export default function Content_AI_GED() {
       <ul className="ml-2">
         <li>
           <span className="mr-2 text-lg">&#x2022;</span>Quickly make sense of
-          the large amounts of data found in the GED
+          the large amounts of data found in the LDT
         </li>
         <li>
           <span className="mr-2 text-lg">&#x2022;</span>Focus on the most
@@ -30,7 +30,7 @@ export default function Content_AI_GED() {
         </li>
         <li>
           <span className="mr-2 text-lg">&#x2022;</span>Highlighting how the
-          practical effectiveness of the GED indicators
+          practical effectiveness of the LDT indicators
         </li>
         <li>
           <span className="mr-2 text-lg">&#x2022;</span>Most importantly, derive
