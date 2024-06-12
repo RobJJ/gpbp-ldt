@@ -27,13 +27,14 @@ export default function Home({ searchParams }) {
         The Local Development Tracker (LDT) is a tool that maps the current level of development of sub-national regions within a country. It is designed to provide powerful analytics capabilities to 1) national governments to identify which sub-national governments require immediate policy and financial intervention and 2) sub-national governments to identify their current greatest developmental needs. To measure the developmental performance of regions, the LDT considers various indicators centered around two key themes: (i) Prosperity and (ii) Livability. These indicators are produced from publicly available geospatial data sources using Digital Public Goods practices.
         </div>
         {/* LEFT PANEL - VIDEO SECTION */}
-        <div className="flex  mb-5 ">
+        <div className="flex  mb-5  ">
           <Link
-            className="group flex gap-3 "
-            href={
-              "https://www.loom.com/share/87319021b63f4e9a90d206b0eb57a487?sid=25c7f405-2dc8-41a0-8d82-c0512edfc091"
-            }
-            target="_blank"
+            className="group flex gap-3 relative group"
+            // href={
+            //   "https://www.loom.com/share/87319021b63f4e9a90d206b0eb57a487?sid=25c7f405-2dc8-41a0-8d82-c0512edfc091"
+            // }
+            // target="_blank"
+            href={"#"}
           >
             <Image
               src={videoIcon}
@@ -43,7 +44,17 @@ export default function Home({ searchParams }) {
             <span className=" font-bold text-[#4345AA]  font-poppins">
               View Introduction Video
             </span>
+            {/* commented out for styling */}
+            {/* <div className=" w-64 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/3 translate-y-full bg-slate-200 text-black text-xs rounded py-3 px-4 text-center ">
+              {
+                <div className=" font-normal ">
+                  Walkthrough tutorial of the Local Development Tracker is under construction
+                </div>
+              }
+              
+            </div> */}
           </Link>
+          
         </div>
         <div className="w-full flex flex-col gap-2  my-5 font-poppins">
           <h3>
