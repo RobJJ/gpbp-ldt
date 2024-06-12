@@ -1,6 +1,6 @@
 export const urlToLableMatching = {
-  econ: "Economic",
-  envr: "Environmental",
+  econ: "Prosperity",
+  envr: "Livability",
   air: "Air Quality",
   forest: "Green Space",
   temp: "Extreme Weather",

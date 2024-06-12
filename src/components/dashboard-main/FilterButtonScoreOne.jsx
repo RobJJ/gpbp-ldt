@@ -60,7 +60,7 @@ export default function FilterButtonScoreOne() {
                     "block text-left pl-3 py-2 text-sm w-full"
                   )}
                 >
-                  Economic
+                  Prosperity
                 </button>
               )}
             </Menu.Item>
@@ -74,7 +74,7 @@ export default function FilterButtonScoreOne() {
                     "block text-left pl-3 py-2 text-sm w-full"
                   )}
                 >
-                  Environmental
+                  Livability
                 </button>
               )}
             </Menu.Item>
