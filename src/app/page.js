@@ -20,19 +20,11 @@ export default function Home({ searchParams }) {
           Geospatial Planning and Budgeting Platform
         </h2>
         <h1 className="w-full font-bold text-4xl mb-5 mt-2 font-poppins">
-          Green Economy Diagnostic Tool
+        Local Development Tracker
         </h1>
 
         <div className="w-full max-w-[900px]  pr-5 overflow-auto mb-5 font-inter">
-          The Green Economy Diagnostic (GED) is a tool that maps the economic
-          and environmental performance of sub-national regions within a
-          country. It is designed to provide a comprehensive picture of the
-          performance of districts in terms of both economic and environmental
-          factors. To measure the economic performance of districts, the GED
-          considers two key indicators: (i) luminosity per capita growth rates
-          and (ii) luminosity per capita levels. These indicators provide a
-          snapshot of the economic well-being of districts and help to paint a
-          picture of their level of development.
+        The Local Development Tracker (LDT) is a tool that maps the current level of development of sub-national regions within a country. It is designed to provide powerful analytics capabilities to 1) national governments to identify which sub-national governments require immediate policy and financial intervention and 2) sub-national governments to identify their current greatest developmental needs. To measure the developmental performance of regions, the LDT considers various indicators centered around two key themes: (i) Prosperity and (ii) Livability. These indicators are produced from publicly available geospatial data sources using Digital Public Goods practices
         </div>
         {/* LEFT PANEL - VIDEO SECTION */}
         <div className="flex  mb-5 ">
