@@ -24,7 +24,7 @@ export default function Home({ searchParams }) {
         </h1>
 
         <div className="w-full max-w-[900px]  pr-5 overflow-auto mb-5 font-inter">
-        The Local Development Tracker (LDT) is a tool that maps the current level of development of sub-national regions within a country. It is designed to provide powerful analytics capabilities to 1) national governments to identify which sub-national governments require immediate policy and financial intervention and 2) sub-national governments to identify their current greatest developmental needs. To measure the developmental performance of regions, the LDT considers various indicators centered around two key themes: (i) Prosperity and (ii) Livability. These indicators are produced from publicly available geospatial data sources using Digital Public Goods practices
+        The Local Development Tracker (LDT) is a tool that maps the current level of development of sub-national regions within a country. It is designed to provide powerful analytics capabilities to 1) national governments to identify which sub-national governments require immediate policy and financial intervention and 2) sub-national governments to identify their current greatest developmental needs. To measure the developmental performance of regions, the LDT considers various indicators centered around two key themes: (i) Prosperity and (ii) Livability. These indicators are produced from publicly available geospatial data sources using Digital Public Goods practices.
         </div>
         {/* LEFT PANEL - VIDEO SECTION */}
         <div className="flex  mb-5 ">
