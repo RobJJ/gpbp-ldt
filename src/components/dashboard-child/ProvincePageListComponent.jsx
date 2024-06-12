@@ -31,14 +31,14 @@ export default async function ProvincePageListComponent({
           {country === "serbia" ? "Municipality" : "District"}
         </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
-          <span>Environment</span>
+          <span>Livability</span>
           <span
             className="relative group
               "
           >
             <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4">
               <div className="font-normal">
-                Learn more about how to calculate environmental scores
+                Learn more about how to calculate Livability scores
               </div>
 
               <Link
@@ -57,7 +57,7 @@ export default async function ProvincePageListComponent({
           </span>
         </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
-          <span>Economic</span>
+          <span>Prosperity</span>
           <span
             className="relative group
               "
@@ -65,7 +65,7 @@ export default async function ProvincePageListComponent({
             <div className="w-52 tooltip-content hidden group-hover:block absolute bottom-0 left-1/2 z-10 transform -translate-x-3/4 translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4 ">
               {
                 <div className=" font-normal">
-                  Learn more about how to calculate economic scores
+                  Learn more about how to calculate Prosperity scores
                 </div>
               }
 
