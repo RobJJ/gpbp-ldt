@@ -8,8 +8,8 @@ import ContentAiPolicy from "@/components/methodology/content-ai-policy";
 import Content_AI_GED from "@/components/methodology/content-ai-ged";
 
 export const metadata = {
-  title: "GED: Methodology",
-  description: "Green Economy Diagnostic Tool",
+  title: "LDT: Methodology",
+  description: "Local Development Tracker",
 };
 
 export default function MethodologyPage() {

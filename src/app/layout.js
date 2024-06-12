@@ -8,8 +8,8 @@ import { isMobileUserAgent } from "@/lib/utils";
 import Mobile from "@/components/landing/Mobile";
 
 export const metadata = {
-  title: "GPBP-GED",
-  description: "Green Economy Diagnostic Tool",
+  title: "GPBP-LDT",
+  description: "Local Development Tracker",
 };
 
 export default function RootLayout({ children }) {

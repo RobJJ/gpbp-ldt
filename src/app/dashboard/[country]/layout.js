@@ -8,8 +8,8 @@ import Spinner from "../../../../public/Spinner-normal-size.svg";
 import Image from "next/image";
 
 export const metadata = {
-  title: "GED: Dashboard",
-  description: "Green Economy Diagnostic Tool",
+  title: "LDT: Dashboard",
+  description: "Local Development Tracker",
 };
 
 export default async function CountryPageLayout({ children, params }) {

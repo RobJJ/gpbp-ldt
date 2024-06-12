@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+
 
 import pimpamIcon from "../../public/pimxpam.png";
 import gpbpIcon from "../../public/gpbp.png";
