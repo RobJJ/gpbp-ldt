@@ -27,7 +27,7 @@ export default function ProvincePageVisualChildHeader({
         }`}
         onClick={handleTabClick}
       >
-        Economic
+        Prosperity
       </button>
       <button
         data-tab="Environmental"
@@ -36,7 +36,7 @@ export default function ProvincePageVisualChildHeader({
         }`}
         onClick={handleTabClick}
       >
-        Environmental
+        Livability
       </button>
       <button
         data-tab="AirQuality"

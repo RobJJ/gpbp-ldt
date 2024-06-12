@@ -9,7 +9,8 @@ export const urlToLableMatching = {
 export const tabToLabel = {
   Overview: "Scores",
   Environmental: "Scores",
-  Economic: "Std deviations from yearly average",
+  // Economic: "Std deviations from yearly average", :: removing this as seems to be incorrect
+  Economic: "Scores",
   AirQuality: "Std deviations from yearly average",
   ExtremeWeather: "Std deviations from yearly average",
   GreenSpace: "Std deviations from yearly average",
@@ -17,8 +18,10 @@ export const tabToLabel = {
 
 // Match data property from GED-DATA --> lable name
 export const scoreTypeToName = {
-  ECON_SCORE: "Economic",
-  ENVR_SCORE: "Environmental",
+  // ECON_SCORE: "Economic", :: renaming this as test for LDT rebranch x-axis label
+  ECON_SCORE: "Prosperity",
+  // ENVR_SCORE: "Environmental", :: renaming this as test for LDT rebranch x-axis label
+  ENVR_SCORE: "Livability",
   AIR_SCORE: "Air Quality",
   FOREST_SCORE: "Deforestation",
   TEMP_SCORE: "Extreme Temp",
