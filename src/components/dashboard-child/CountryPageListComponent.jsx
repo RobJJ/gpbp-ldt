@@ -3,6 +3,16 @@ import Link from "next/link";
 import TableRow from "./TableRow";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
+const adminOneNamingSchema = (countryName) => {
+  if (countryName === "serbia") {
+    return "District";
+  } else if (countryName === "albania") {
+    return "Region";
+  } else {
+    return "Province";
+  }
+};
+
 export default async function CountryPageListComponent({
   country,
   searchParams,
@@ -17,14 +27,15 @@ export default async function CountryPageListComponent({
       {/* header */}
       <section className="w-full flex justify-between bg-white  py-1 items-center font-inter">
         <span className="text-lg bg-white">
-          {country === "serbia" ? "Districts" : "Provinces"} in{" "}
+          {adminOneNamingSchema(country)}s in{" "}
           <b>{capitalizeFirstLetter(country)}</b> in <b>{searchParams.year}</b>
         </span>
       </section>
       {/* body - header */}
       <section className="w-full bg-white font-semibold flex font-inter">
         <span className="bg-white border border-black w-1/3 px-2 py-1">
-          {country === "serbia" ? "District" : "Province"}
+          {/* {country === "serbia" ? "District" : "Province"} */}
+          {adminOneNamingSchema(country)}
         </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
           <span>Livability</span>
