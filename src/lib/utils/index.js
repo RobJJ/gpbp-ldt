@@ -27,6 +27,7 @@ export const isMobileUserAgent = (userAgent) => {
 };
 
 
+// used for country level naming sceham based on country preference
 export const adminOneNamingSchema = (countryName) => {
   if (countryName === "serbia") {
     return "District";

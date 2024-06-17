@@ -21,14 +21,18 @@ export default async function ProvincePageListComponent({
       {/* header */}
       <section className="w-full flex justify-between pr-2 py-1 items-center font-inter ">
         <span className="text-lg bg-white">
-          {country === "serbia" ? "Municipalities" : "Districts"} in{" "}
-          <b>{decodeURIComponent(province)}</b> in <b>{searchParams.year}</b>
+          {country === "serbia" || country === "albania"
+            ? "Municipalities"
+            : "Districts"}{" "}
+          in <b>{decodeURIComponent(province)}</b> in <b>{searchParams.year}</b>
         </span>
       </section>
       {/* body - header */}
       <section className="w-full bg-white font-bold flex font-inter">
         <span className="bg-white border border-black w-1/3 px-2 py-1">
-          {country === "serbia" ? "Municipality" : "District"}
+          {country === "serbia" || country === "albania"
+            ? "Municipality"
+            : "District"}
         </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
           <span>Livability</span>
