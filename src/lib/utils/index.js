@@ -25,3 +25,14 @@ export function capitalizeFirstLetter(word) {
 export const isMobileUserAgent = (userAgent) => {
   return /iPhone|iPad|iPod|Android/i.test(userAgent);
 };
+
+
+export const adminOneNamingSchema = (countryName) => {
+  if (countryName === "serbia") {
+    return "District";
+  } else if (countryName === "albania") {
+    return "Region";
+  } else {
+    return "Province";
+  }
+};

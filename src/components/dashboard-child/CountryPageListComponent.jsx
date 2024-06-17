@@ -1,17 +1,7 @@
 import { getAllProvincesInSelectedCountryByYear } from "@/lib/provinceData";
 import Link from "next/link";
 import TableRow from "./TableRow";
-import { capitalizeFirstLetter } from "@/lib/utils";
-
-const adminOneNamingSchema = (countryName) => {
-  if (countryName === "serbia") {
-    return "District";
-  } else if (countryName === "albania") {
-    return "Region";
-  } else {
-    return "Province";
-  }
-};
+import { adminOneNamingSchema, capitalizeFirstLetter } from "@/lib/utils";
 
 export default async function CountryPageListComponent({
   country,
