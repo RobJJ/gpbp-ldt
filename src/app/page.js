@@ -41,7 +41,7 @@ export default function Home({ searchParams }) {
               alt="play-video-icon"
               className="group-hover:scale-150 duration-300"
             />
-            <span className=" font-bold text-[#4345AA]  font-poppins">
+            <span className=" font-bold text-[#4345AA]  font-poppins hover:cursor-not-allowed">
               View Introduction Video
             </span>
             {/* commented out for styling */}
