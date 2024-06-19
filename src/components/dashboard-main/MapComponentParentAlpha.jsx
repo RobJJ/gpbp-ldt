@@ -41,7 +41,7 @@ const countryMapSettings = {
     maxZoom: 9,
     defaultPos: [41.3, 20.02],
     innerBounds: [
-      [44.4, 14.9],
+      [45.4, 14.9],
       [37.2, 25.4],
     ],
   },
