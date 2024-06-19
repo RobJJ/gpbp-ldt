@@ -2,21 +2,26 @@
 
 import Image from "next/image";
 
-import econ_legend from "../../../public/econ_legend.png";
-import envr_legend from "../../../public/envr_legend.png";
+// import econ_legend from "../../../public/econ_legend.png";
+// import envr_legend from "../../../public/envr_legend.png";
+import prosperity_legend from "../../../public/prosperity_legend.png";
+import livability_legend from "../../../public/livability_legend.png";
 import air_legend from "../../../public/air_quality_legend.png";
 import forest_legend from "../../../public/forest_legend.png";
 import temp_legend from "../../../public/temp_legend.png";
 import { useSearchParams } from "next/navigation";
 
 const icons = {
-  econ: econ_legend,
-  envr: envr_legend,
+  // econ: econ_legend,
+  // envr: envr_legend,
+  econ: prosperity_legend,
+  envr: livability_legend,
   air: air_legend,
   forest: forest_legend,
   temp: temp_legend,
 };
 
+// Revisit :: think how this component renders with the parent
 export default function MapColorLegend() {
   const searchParams = useSearchParams();
   let score_one = searchParams.get("score_one");
