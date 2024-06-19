@@ -1,4 +1,7 @@
 // COLOR SCHEMA
+
+import { adminOneNamingSchema } from "../utils";
+
 // Its important to note that range is decending order - this is for the function to determine range
 export const MAP_COLORS = {
   forest: [
@@ -65,10 +68,11 @@ export const urlToScoreMatching = {
 export function createPopupContent(properties, country) {
   // order is important here the way the conditionals work at the moment
   if (properties.NAME_2) {
-    return `<font size="3"><b>${country === "serbia" ? "Municipality" : "District"}</b></font></br>${properties.NAME_2}<br>`;
+    return `<font size="3"><b>${country === "serbia" || country === "albania" ? "Municipality" : "District"}</b></font></br>${properties.NAME_2}<br>`;
   }
   if (properties.NAME_1) {
-    return `<font size="3"><b>${country === "serbia" ? "District" : "Province"}</b></font></br>${properties.NAME_1}<br>`;
+    // return `<font size="3"><b>${country === "serbia" ? "District" : "Province"}</b></font></br>${properties.NAME_1}<br>`;
+    return `<font size="3"><b>${adminOneNamingSchema(country)}</b></font></br>${properties.NAME_1}<br>`;
   }
 }
 //
