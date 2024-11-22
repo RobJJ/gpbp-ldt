@@ -69,3 +69,26 @@ g:focus {
 path:focus {
   outline: none;
 }
+
+
+/* Custom scrollbar styles */
+.scrollbar-landing::-webkit-scrollbar {
+  width: 10px;
+  padding: 2px;
+  background-color: #2b3441;
+}
+
+.scrollbar-landing::-webkit-scrollbar-track {
+  background-color: #2b3441; /* Same as container background */
+}
+
+.scrollbar-landing::-webkit-scrollbar-thumb {
+  background-color: #87888d; /* Color of the scrollbar thumb */
+  border-radius: 8px;
+  border: 2px solid #2b3441; /* Padding around thumb */
+}
+.scrollbar-landing::-webkit-scrollbar-thumb:hover {
+  background-color: #4c58f6; /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  border: 2px solid #2b3441; /* Padding around thumb */
+}

@@ -17,6 +17,9 @@ module.exports = {
         // slideIn: "translate-x-0 1s ease-out ",
         "slide-in": "slideInFromRight 2s ease-out normal",
       },
+      colors: {
+        "primary-bg": "#101115",
+      },
       keyframes: {
         slideInFromRight: {
           // "0%, 100%": { transform: "rotate(-3deg)" },
