@@ -5,7 +5,7 @@ import gedIcon from "../../../public/GED-logo.png";
 
 export default function NavBar() {
   return (
-    <div className="w-full bg-black p-2 flex gap-5 items-center font-inter tracking-wide">
+    <div className="w-full bg-primary-bg p-2 flex gap-5 items-center font-inter tracking-wide">
       <Image
         src={gedIcon}
         alt="GED-LOGO"
