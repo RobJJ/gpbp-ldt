@@ -66,9 +66,9 @@ export default function SelectCountryButton() {
       </div>
       {isOpen && (
         <div className=" absolute mt-12 w-[310px] h-36 shadow-lg z-50 overflow-auto scrollbar-landing">
-          <div className="rounded-md bg-[#2B3441] shadow-xs ">
+          <div className=" bg-[#2B3441] shadow-xs ">
             <div
-              className="scrollbar-landing"
+              className=""
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="options-menu"
@@ -94,6 +94,8 @@ export default function SelectCountryButton() {
       <>
         {country && (
           <Link
+            // adding for prefetching performance on country selection
+            prefetch={true}
             className="text-white px-4 flex justify-center items-center font-bold  bg-[#4C58F6] rounded-md"
             href={{
               pathname: `/dashboard/${country}`,
