@@ -9,7 +9,7 @@ const open_sans = Open_Sans({
 });
 
 import Image from "next/image";
-import WB_logo from "../../public/landing_page/WB_logo.png";
+import WB_logo from "../../public/landing_page/wb_logo.png";
 import Swiss_logo from "../../public/landing_page/swiss_logo.png";
 import EU_logo from "../../public/landing_page/eu_logo.png";
 import AUS_logo from "../../public/landing_page/aus_logo.png";
