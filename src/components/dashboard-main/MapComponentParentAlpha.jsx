@@ -14,21 +14,22 @@ import Spinner from "../../../public/Spinner-normal-size.svg";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 // Settings for Map and Rectangle :: TODO -> Move to Lib .. keeping here for now for readability
+// zoom = default starting point (higher number = closer)
 const countryMapSettings = {
   bhutan: {
-    zoom: 6.6,
-    minZoom: 6.3,
-    maxZoom: 8.4,
+    zoom: 8,
+    minZoom: 7,
+    maxZoom: 10,
     defaultPos: [27.5, 90.4],
     innerBounds: [
-      [30, 83],
-      [23, 101],
+      [33, 83],
+      [18, 101],
     ],
   },
   austria: {
-    zoom: 6.6,
-    minZoom: 6.3,
-    maxZoom: 8.4,
+    zoom: 8.6,
+    minZoom: 6,
+    maxZoom: 8.6,
     defaultPos: [47.49, 13.8],
     innerBounds: [
       [54.650751, 24.974716],
