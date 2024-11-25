@@ -15,6 +15,16 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 // Settings for Map and Rectangle :: TODO -> Move to Lib .. keeping here for now for readability
 const countryMapSettings = {
+  bhutan: {
+    zoom: 6.6,
+    minZoom: 6.3,
+    maxZoom: 8.4,
+    defaultPos: [27.5, 90.4],
+    innerBounds: [
+      [30, 83],
+      [23, 101],
+    ],
+  },
   austria: {
     zoom: 6.6,
     minZoom: 6.3,
