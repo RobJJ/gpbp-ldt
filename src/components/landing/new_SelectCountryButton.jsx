@@ -15,6 +15,7 @@ import Image from "next/image";
 
 // add available countries here :: TODO -> move this to the server options
 const currentAvailableCountries = [
+  { name: "bhutan", id: 8 },
   { name: "uzbekistan", id: 1 },
   { name: "kosovo", id: 2 },
   { name: "serbia", id: 3 },
