@@ -35,7 +35,6 @@ export default function SelectCountryButton() {
 
   const handleCountrySelect = (e) => {
     const choice = e.target.dataset.tag;
-
     setCountry(choice);
     setIsOpen(!isOpen);
   };
@@ -97,17 +96,17 @@ export default function SelectCountryButton() {
           <Link
             // adding for prefetching performance on country selection
             prefetch={true}
-            className="text-white px-4 flex justify-center items-center font-bold  bg-[#4C58F6] rounded-md"
+            className="text-white px-4 w-[120px] flex justify-center items-center font-bold  bg-[#4C58F6] rounded-md"
             href={{
               pathname: `/dashboard/${country}`,
               query: { year: "2022", score_one: "econ", score_two: "envr" },
             }}
           >
-            Show Data
+            <span>Show Data</span>
           </Link>
         )}
         {!country && (
-          <span className="text-white px-4 flex justify-center items-center font-bold rounded-md bg-[#4C58F6] cursor-not-allowed">
+          <span className="text-white w-[120px] px-4 flex justify-center items-center font-bold rounded-md bg-[#4C58F6] cursor-not-allowed">
             Show Data
           </span>
         )}
