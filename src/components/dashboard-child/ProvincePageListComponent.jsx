@@ -34,32 +34,7 @@ export default async function ProvincePageListComponent({
             ? "Municipality"
             : "District"}
         </span>
-        <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
-          <span>Livability</span>
-          <span
-            className="relative group
-              "
-          >
-            <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4 text-center">
-              <div className="font-normal">
-                Learn more about how to calculate Livability scores
-              </div>
 
-              <Link
-                href="/methodology#envr"
-                target="_blank"
-                className="text-blue-400"
-              >
-                Learn more
-              </Link>
-            </div>
-            <Image
-              src={questionMarkIconFill}
-              alt="question-mark-popup"
-              width={18}
-            />
-          </span>
-        </span>
         <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
           <span>Prosperity</span>
           <span
@@ -75,6 +50,32 @@ export default async function ProvincePageListComponent({
 
               <Link
                 href="/methodology#econ"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Learn more
+              </Link>
+            </div>
+            <Image
+              src={questionMarkIconFill}
+              alt="question-mark-popup"
+              width={18}
+            />
+          </span>
+        </span>
+        <span className="bg-white w-1/3 border-r border-y border-black flex px-2 py-1 items-center gap-2 ">
+          <span>Livability</span>
+          <span
+            className="relative group
+              "
+          >
+            <div className="w-52 tooltip-content hidden group-hover:block absolute z-10 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full bg-slate-800 text-white text-xs rounded py-4 px-4 text-center">
+              <div className="font-normal">
+                Learn more about how to calculate Livability scores
+              </div>
+
+              <Link
+                href="/methodology#envr"
                 target="_blank"
                 className="text-blue-400"
               >

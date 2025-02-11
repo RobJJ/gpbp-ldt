@@ -54,13 +54,15 @@ export default function TableRow({
       >
         <span className="w-full  text-left truncate">{regionName}</span>
       </Link>
-      <span className=" w-1/3 h-full p-2 border-r border-b border-slate-300 flex items-center bg-white">
+
+      {/* Blocks for unique row :: potential to optimise beyond cache :: ** ECON represents Prosperity */}
+      <span className=" w-1/3 h-full border-r p-2 border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
             className="h-full w-full"
             style={{
-              backgroundColor: getFeatureFillColor(envr),
-              width: `${envr}%`,
+              backgroundColor: getFeatureFillColor(econ),
+              width: `${econ}%`,
               transition: "width 0.5s ease-in-out",
             }}
           />
@@ -76,14 +78,14 @@ export default function TableRow({
           </div>
         </div>
       </span>
-      {/* Blocks for unique row :: potential to optimise beyond cache */}
-      <span className=" w-1/3 h-full border-r p-2 border-b border-slate-300 flex items-center bg-white">
+      {/* ENVR represents Livability */}
+      <span className=" w-1/3 h-full p-2 border-r border-b border-slate-300 flex items-center bg-white">
         <div className="relative w-full h-3/4 flex items-center bg-slate-300">
           <div
             className="h-full w-full"
             style={{
-              backgroundColor: getFeatureFillColor(econ),
-              width: `${econ}%`,
+              backgroundColor: getFeatureFillColor(envr),
+              width: `${envr}%`,
               transition: "width 0.5s ease-in-out",
             }}
           />
