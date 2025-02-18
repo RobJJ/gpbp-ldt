@@ -49,7 +49,7 @@ export default function FilterButtonYear({ country }) {
       >
         <Menu.Items className="absolute w-full left-0 z-10 mt-1 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            {country === "replace" && (
+            {country === "bhutan" && (
               <Menu.Item>
                 {({ active }) => (
                   <button
@@ -65,7 +65,7 @@ export default function FilterButtonYear({ country }) {
                 )}
               </Menu.Item>
             )}
-            {country === "replace" && (
+            {country === "bhutan" && (
               <Menu.Item>
                 {({ active }) => (
                   <button
