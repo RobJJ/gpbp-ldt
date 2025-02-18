@@ -17,6 +17,30 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
+            {/* UPDATE : v 0.7.3  */}
+            <div className="flex flex-col  gap-3">
+              <div className="flex flex-col">
+                <span className=" text-slate-400">
+                  Feb 18th 2025 | Version 0.7.3 beta
+                </span>
+                <span className="font-semibold text-xl">
+                  Extended Historical Data Support
+                </span>
+              </div>
+              <div className=" flex gap-5">
+                <span className="rounded-full bg-[#FFF5CA] text-[#995300] px-4 p-1">
+                  Minor
+                </span>
+              </div>
+              <span className="">
+                Added support for two additional years of historical data (2023
+                and 2024). The application has been updated to accommodate and
+                process this new information, providing users with a more
+                comprehensive dataset for analysis and reporting. This
+                enhancement improves the application&apos;s utility for
+                long-term trend analysis and historical comparisons.
+              </span>
+            </div>
             {/* UPDATE : v 0.7.2  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
