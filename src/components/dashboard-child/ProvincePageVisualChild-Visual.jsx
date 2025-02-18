@@ -59,9 +59,11 @@ export default function ProvincePageVisualChildVisual({
         text: undefined,
       },
       // ** we have categories set : min / max can now be manipulated
+      // removing for now ::
       min: -0.2,
-      max: 4 - 0.8,
-      categories: [2019, 2020, 2021, 2022],
+      max: 5.2,
+      // max: 4 - 0.8,
+      categories: [2019, 2020, 2021, 2022, 2023, 2024],
       tickInterval: 1,
       accessibility: {
         rangeDescription: "Range: 2019 to 2022",

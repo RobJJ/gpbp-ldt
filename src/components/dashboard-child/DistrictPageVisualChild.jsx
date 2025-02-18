@@ -60,9 +60,10 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       // min : from left 20% of single tick
       min: -0.2,
       // categories.length - reverse or remaining of 0.2. 20% -- 80%
-      max: 4 - 0.8,
+      // max: 4 - 0.8,
+      max: 5.2,
 
-      categories: [2019, 2020, 2021, 2022],
+      categories: [2019, 2020, 2021, 2022, 2023, 2024],
       tickInterval: 1,
       accessibility: {
         rangeDescription: "Range: 2019 to 2022",
