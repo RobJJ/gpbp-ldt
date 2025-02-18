@@ -76,11 +76,15 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
       maxPadding: 0.5,
       // min changes depending on if : score [0-100] : STD [-10, 10]
       min:
-        selectedTab === "Overview" || selectedTab === "Environmental"
+        selectedTab === "Overview" ||
+        selectedTab === "Environmental" ||
+        selectedTab === "Economic"
           ? 0
           : null,
       max:
-        selectedTab === "Overview" || selectedTab === "Environmental"
+        selectedTab === "Overview" ||
+        selectedTab === "Environmental" ||
+        selectedTab === "Economic"
           ? 100
           : null,
     },
@@ -108,11 +112,15 @@ export default function DistrictPageVisualChild({ selectedTab, districtData }) {
         },
 
         min:
-          selectedTab === "Overview" || selectedTab === "Environmental"
+          selectedTab === "Overview" ||
+          selectedTab === "Environmental" ||
+          selectedTab === "Economic"
             ? 0
             : null,
         max:
-          selectedTab === "Overview" || selectedTab === "Environmental"
+          selectedTab === "Overview" ||
+          selectedTab === "Environmental" ||
+          selectedTab === "Economic"
             ? 100
             : null,
       },

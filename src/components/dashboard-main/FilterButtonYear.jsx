@@ -10,7 +10,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function FilterButtonYear() {
+export default function FilterButtonYear({ country }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -49,6 +49,38 @@ export default function FilterButtonYear() {
       >
         <Menu.Items className="absolute w-full left-0 z-10 mt-1 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
+            {country === "replace" && (
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    data-tag="2024"
+                    onClick={handleYearChange}
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block text-left px-3 py-2 text-sm w-full"
+                    )}
+                  >
+                    2024
+                  </button>
+                )}
+              </Menu.Item>
+            )}
+            {country === "replace" && (
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    data-tag="2023"
+                    onClick={handleYearChange}
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block text-left px-3 py-2 text-sm w-full"
+                    )}
+                  >
+                    2023
+                  </button>
+                )}
+              </Menu.Item>
+            )}
             <Menu.Item>
               {({ active }) => (
                 <button

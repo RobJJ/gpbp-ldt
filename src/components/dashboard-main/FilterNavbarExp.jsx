@@ -14,7 +14,7 @@ export default function FilterNavbarExp({ country }) {
         <SwitchComponent country={country} />
       </div>
       <div className="flex-1 flex gap-4  justify-center ">
-        <FilterButtonYear />
+        <FilterButtonYear country={country} />
         <FilterButtonScoreOne />
         <FilterButtonScoreTwo />
         <LayerToggle country={country} />

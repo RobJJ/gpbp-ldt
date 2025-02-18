@@ -42,18 +42,23 @@ export const scoreTypeToName = {
   TEMP_EXTREMELY_DRY_STD: "Extreme dry",
   FOREST_GREEN_PCT_STD: "PCT",
   FOREST_GREEN_COVER_GROWTH_STD: "Cover growth",
+  // new values being added
+  UTIL_SCORE: "Utility Score",
+  BUILT_SCORE: "Built Score",
 };
 
 // For each Tab selected -> what are the required data fields to show
 export const tabToScoreType = {
   Overview: ["ECON_SCORE", "ENVR_SCORE"],
   Environmental: ["AIR_SCORE", "FOREST_SCORE", "TEMP_SCORE"],
-  Economic: [
-    "ECON_LPC_STD",
-    "ECON_LPC_PCT_CHANGE_STD",
-    "ECON_BUILT_PCT_STD",
-    "ECON_BUILT_COVER_GROWTH_STD",
-  ],
+  // old values here :: lets try new values below
+  // Economic: [
+  //   "ECON_LPC_STD",
+  //   "ECON_LPC_PCT_CHANGE_STD",
+  //   "ECON_BUILT_PCT_STD",
+  //   "ECON_BUILT_COVER_GROWTH_STD",
+  // ],
+  Economic: ["UTIL_SCORE", "BUILT_SCORE"],
   AirQuality: [
     "AIR_PM25_SUBINDEX_STD",
     "AIR_NO2_SUBINDEX_STD",
