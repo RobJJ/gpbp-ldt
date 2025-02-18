@@ -27,7 +27,7 @@ const countryMapSettings = {
     ],
   },
   austria: {
-    zoom: 8.6,
+    zoom: 7,
     minZoom: 6,
     maxZoom: 8.6,
     defaultPos: [47.49, 13.8],
