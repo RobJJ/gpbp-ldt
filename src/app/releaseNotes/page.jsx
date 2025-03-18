@@ -17,7 +17,7 @@ export default function ReleaseNotes() {
         <div className="w-full h-full border-2 border-slate-400  bg-white overflow-auto unique-scrollbar">
           {/* Inner Box */}
           <div className="flex flex-col p-5 px-7 overflow-auto gap-10 font-inter">
-            {/* UPDATE : v 0.7.3  */}
+            {/* UPDATE : v 0.7.3.  */}
             <div className="flex flex-col  gap-3">
               <div className="flex flex-col">
                 <span className=" text-slate-400">
