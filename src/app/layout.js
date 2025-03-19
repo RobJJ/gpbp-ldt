@@ -37,6 +37,7 @@ export default function RootLayout({ children }) {
                 width={120}
                 height={120}
                 className="mx-auto"
+                priority
               />
             </div>
             <h1 className="text-2xl font-bold mb-4">The GPBP-LDT Has Moved</h1>
